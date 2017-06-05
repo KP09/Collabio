@@ -6,11 +6,11 @@ class User < ApplicationRecord
 
   # Associations
   # Companies
-  has_many :projects
+  has_many :projects, dependent: :nullify
   # Individuals
-  has_many :participations
-  has_many :contributions
-  has_many :upvotes
+  has_many :participations, dependent: :destroy
+  has_many :contributions, dependent: :nullify
+  has_many :upvotes, dependent: :destroy
 
   # Validations
   # email and password handled by Devise

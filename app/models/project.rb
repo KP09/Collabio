@@ -1,8 +1,8 @@
 class Project < ApplicationRecord
   # Associations
   belongs_to :user
-  has_many :participations
-  has_many :contributions
+  has_many :participations, dependent: :destroy
+  has_many :contributions, dependent: :nullify
 
   # Validations
   validates :title, presence: true
