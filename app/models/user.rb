@@ -11,4 +11,26 @@ class User < ApplicationRecord
   has_many :participations
   has_many :contributions
   has_many :upvotes
+
+  # Validations
+  # email and password handled by Devise
+  validate :name_validation
+  validates :description, presence: true, on: [:update]
+
+  private
+
+  def name_validation
+    if self.company == true
+      if self.company_name.nil?
+        errors.add(:company_name, "can't be blank")
+      end
+    else
+      if self.first_name.nil?
+        errors.add(:first_name, "can't be blank")
+      end
+      if self.last_name.nil?
+        errors.add(:last_name, "can't be blank")
+      end
+    end
+  end
 end
