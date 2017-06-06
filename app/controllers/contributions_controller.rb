@@ -20,7 +20,6 @@ class ContributionsController < ApplicationController
   	else
   	  render 'contributions/edit'
   	  # need to make sure the edit view of contributions is called 'edit!'
-  	  # question: how will rails take us to the correct edit view? 
   	end
   end
 
