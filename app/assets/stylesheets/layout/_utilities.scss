@@ -46,3 +46,28 @@
   box-shadow: $box-shadow;
   position: relative;
 }
+
+// Dynamic positioning
+@media (min-width: 0px) {
+  .dynamic-align-left {
+    text-align: center;
+  }
+}
+
+@media (min-width: 1200px) {
+  .dynamic-align-left {
+    text-align: left;
+  }
+}
+
+@media (min-width: 0px) {
+  .dynamic-align-right {
+    text-align: center;
+  }
+}
+
+@media (min-width: 1200px) {
+  .dynamic-align-right {
+    text-align: right;
+  }
+}
