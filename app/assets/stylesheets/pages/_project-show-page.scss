@@ -1,7 +1,3 @@
-body {
-  background: $light-gray;
-}
-
 .company-show-information {
   display: flex;
   justify-content: space-between;
@@ -9,6 +5,9 @@ body {
 }
 
 .company-name-title {
+  p {
+    margin: 0px;
+  }
   h2 {
     font-size: 34px;
     margin: 0px;
@@ -34,11 +33,11 @@ body {
 
 .box-title {
   position: absolute;
-  background: $orange;
+  background: $charcoal;
   top: 0px;
   left: 0px;
-  padding: 10px 20px;
-  border-radius: 2px 0 2px 0;
+  padding: 10px 30px;
+  border-radius: 2px 0 30px 0;
   p {
     margin: 0px;
     color: white
@@ -46,22 +45,55 @@ body {
 }
 
 .brief-content {
-  padding: 75px;
+  margin-top: 35px;
+  padding: 5px;
   p {
     font-size: $base-size;
   }
 }
 
-.participations-section {
-  display: flex;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  background: white;
-  border-radius: 2px;
-  min-height: 20vh;
-  box-shadow: 0px 2px 5px #cccccc;
+.render {
+  min-height: 100px;
+  margin-top: 40px;
+  text-align: center;
 }
 
+.counter {
+  background: white;
+  width: 50%;
+  border-radius: 0px 0px 5px 5px;
+  margin-right: 15px;
+  box-shadow: $box-shadow;
+  margin-top: 10px;
+  p {
+    Font-size: 15px;
+    margin: 0px;
+    padding: 10px;
+    color: $charcoal;
+    text-align: center;
+  }
+}
 
+.counter:hover {
+  opacity: 0.8;
+}
+
+.counter-title {
+    background: $brand-color;
+    width: 100%;
+    border-radius: 5px 5px 0px 0px;
+    p {
+      Font-size: 12px;
+      margin: 0px;
+      padding: 10px;
+      color: white;
+    }
+  }
+
+.no-margin {
+  margin-right: 0px;
+}
+
+.funky-radius {
+  border-radius: 2px 30px 2px 30px;
+}
