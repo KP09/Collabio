@@ -1,0 +1,67 @@
+body {
+  background: $light-gray;
+}
+
+.company-show-information {
+  display: flex;
+  justify-content: space-between;
+  justify-content: center;
+}
+
+.company-name-title {
+  h2 {
+    font-size: 34px;
+    margin: 0px;
+  }
+}
+
+.company-logo {
+  margin-right: 30px;
+}
+
+.right-project-details {
+  text-align: right;
+}
+
+.brief {
+  position: relative;
+  width: 100%;
+  background: white;
+  border-radius: 2px;
+  min-height: 20vh;
+  box-shadow: 0px 2px 5px #cccccc;
+}
+
+.box-title {
+  position: absolute;
+  background: $orange;
+  top: 0px;
+  left: 0px;
+  padding: 10px 20px;
+  border-radius: 2px 0 2px 0;
+  p {
+    margin: 0px;
+    color: white
+  }
+}
+
+.brief-content {
+  padding: 75px;
+  p {
+    font-size: $base-size;
+  }
+}
+
+.participations-section {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: white;
+  border-radius: 2px;
+  min-height: 20vh;
+  box-shadow: 0px 2px 5px #cccccc;
+}
+
+

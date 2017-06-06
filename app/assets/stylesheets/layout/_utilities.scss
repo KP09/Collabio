@@ -10,16 +10,39 @@
   padding-bottom: 5em;
 }
 
+// Positioning
+.flex-box {
+  display: flex;
+  align-items: center;
+}
+
+.flex-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// Spacing
+.margin-top {
+  margin-top: 30px;
+}
+
 // Backgrounds
-.bg-black {
-  background: #4a4a4a;
+.page-wrapper {
+  background: $light-gray;
+  min-height: 80vh;
 }
-.bg-grey {
-  background: #aeaeae;
-}
-.bg-blue {
-  background: #00a3e1;
-}
-.bg-dark-blue {
-  background: #3b5998;
+
+// Standard white box with shadow
+.shadow-box {
+  background-color: white;
+  padding: 20px;
+  box-shadow: $box-shadow;
+  position: relative;
 }
