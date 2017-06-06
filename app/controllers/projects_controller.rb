@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   def show
+    @similar_projects = Project.all.sample(3)
     @project = Project.find(params[:id])
   end
 

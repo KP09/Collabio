@@ -1,0 +1,55 @@
+<%= link_to(project) do %>
+  <div class="card_border">
+    <div class="cover-image">
+      <p>Cover image will be background of the div here</p>
+    </div>
+    <div class="card">
+      <div class="creator-avitar">
+          <p>User Image</p>
+      </div>
+
+      <div class="search-icon">
+        <i class="fa fa-search"></i>
+      </div>
+
+      <div class="project_information">
+        <div class="title">
+          <h1><%= project.title %></h1>
+        </div>
+        <hr width="150px">
+        <div class="creator-name">
+          <p><%= project.user.company_name %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card_color_divide">
+      <div class="project_remaining_days">
+        <% days_left = (project.end_date.to_date - DateTime.now.to_date).to_i %>
+        <% if days_left > 0 then %>
+        <p><%= days_left %> days left</p>
+        <% else %>
+          <p>Closed</p>
+        <% end %>
+
+      </div>
+
+      <% if project.max_participations == nil then  %>
+        <div class="pill">
+          <p><%= project.category %></p>
+        </div>
+      <% else %>
+        <div class="right_color_divide">
+          <div class="pill">
+            <% joins_remaining = (project.max_participations) - (project.participations.count) %>
+            <p><%= joins_remaining %></p>
+          </div>
+          <div class="pill">
+            <p><%= project.category %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+

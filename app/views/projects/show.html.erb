@@ -1,9 +1,9 @@
-<div class="bg-gray">
+<div class="page-wrapper">
   <div class="container">
     <div class="company-show-information margin-top">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6 col-xs-12">
+          <div class="col-lg-9 col-xs-12">
             <div class="left-project-info">
               <div class="flex-box">
                 <div class="company-logo">
@@ -16,14 +16,24 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-6 col-xs-12">
-            <div class="right-project-details">
-              <p>10 <span style="font-size: 14px; font-style: italic;">Days Left</span></p>
-              <p>47 <span style="font-size: 14px; font-style: italic;">Spaces Left</span></p>
+          <div class="col-lg-3 col-xs-12 flex-box">
+            <div class="counter">
+              <div class="counter-title">
+                  <p>Days Left</p>
+              </div>
+              <div class="counter-nums">
+                <p><%= @project.days_left %></p>
+              </div>
             </div>
-          </div>
+            <div class="counter">
+              <div class="counter-title">
+                  <p>Spaces Left</p>
+              </div>
+              <div class="counter-nums">
+                <p><%= @project.max_participations %></p>
+              </div>
+            </div>
         </div>
-      </div>
     </div>
     <div class="row">
       <div class="col-lg-9">
@@ -35,10 +45,10 @@
             <p><%= @project.brief %></p>
           </div>
         </div>
-        <!-- logic for different user types -->
+        <!-- logic for different project status -->
         <div class="shadow-box margin-top">
           <!-- If the project is still active show participants render -->
-          <% if @project.days_left >= 0 %>
+          <% if @project.days_left > 0 %>
             <div class="box-title">
               <p>Participants:</p>
             </div>
@@ -55,14 +65,31 @@
             </div>
           <% end %>
         </div>
-      </div>
-
+        <div class="similar margin-top">
+          <p>Similar Projects</p>
+            <div class="row">
+              <% @similar_projects.each do |project| %>
+                <div class="col-md-4 padding-none">
+                  <%= render "card", project: @project %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
       <div class="col-lg-3 margin-top">
+      <% if @project.days_left > 0 %>
         <h2>Join Project</h2>
         <p>Like the look of this project? Get started today by clicking join below!</p>
-        <%= link_to "Join Project", projects_path, class: "btn btn-primary", style: "width:100%" %>
+        <%= link_to "Join Project", participations_path(@project), class: "btn btn-primary", method: :post, style: "width:100%" %>
+      <% else %>
+        <h2>Join Project</h2>
+        <p>It looks like the project you are trying to join has closed. Search for similar projects by clicking below!</p>
+        <%= link_to "Search Similar Projects", search_path, class: "btn btn-primary", style: "width:100%" %>
+      <% end %>
         <br>
       </div>
     </div>
   </div>
 </div>
+
+
