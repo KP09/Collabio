@@ -3,11 +3,13 @@
     <div class="company-show-information margin-top">
       <div class="container">
         <div class="row">
-          <div class="col-lg-9 col-xs-12">
+          <div class="col-lg-12 col-xs-12">
             <div class="left-project-info">
               <div class="flex-box">
                 <div class="company-logo">
-                  <%= image_tag ('company.png'), class: 'avatar-large' %>
+                  <a href="#" data-toggle="popover" data-placement="bottom" title="<%= @project.user.company_name %>" data-content="<%= @project.user.description[0..100] %>">
+                    <%= image_tag ('company.png'), class: 'avatar-large' %>
+                  </a>
                 </div>
                 <div class="company-name-title">
                   <p><%= @project.user.company_name %></p>
@@ -17,22 +19,7 @@
             </div>
           </div>
           <div class="col-lg-3 col-xs-12 flex-box">
-            <div class="counter">
-              <div class="counter-title">
-                  <p>Days Left</p>
-              </div>
-              <div class="counter-nums">
-                <p><%= @project.days_left %></p>
-              </div>
-            </div>
-            <div class="counter no-margin">
-              <div class="counter-title">
-                  <p>Spaces Left</p>
-              </div>
-              <div class="counter-nums">
-                <p><%= @project.max_participations %></p>
-              </div>
-            </div>
+
           </div>
         </div>
         <div class="row">
@@ -77,26 +64,46 @@
               </div>
             </div>
           <div class="col-lg-3 margin-top">
+            <div class="flex-box">
+              <div class="counter">
+                <div class="counter-title">
+                    <p><i class="fa fa-calendar"></i> Days Left</p>
+                </div>
+                <div class="counter-nums">
+                  <p><%= @project.days_left %></p>
+                </div>
+              </div>
+              <div class="counter no-margin">
+                <div class="counter-title">
+                    <p><i class="fa fa-users" aria-hidden="true"></i> Spaces</p>
+                </div>
+                <div class="counter-nums">
+                  <p><%= @project.spaces_left %></p>
+                </div>
+                </div>
+            </div>
           <% if @project.days_left > 0 && @current_user.participated_to?(@project) %>
             <div class="contribution">
-              <%= render "make-contribution", project: @project %>
-            </div>
-            <p class="margin-top" style="font-size: 13px;">Not enjoying this project? Got too much on to complete the task? Click leave project to open up your space!</p>
-            <%= link_to "Leave Project", project_participation_path(@project), class: "btn btn-primary", method: :DELETE, style: "width:100%" %>
-          <% elsif @project.days_left > 0 && !@current_user.participated_to?(@project) %>
-            <p>Like the look of this project? Get started today by clicking join below!</p>
-            <%= link_to "Join Project", project_participations_path(@project), class: "btn btn-primary", method: :post, style: "width:100%" %>
-          <% elsif @project.days_left < 0 %>
-            <p>It looks like the project you are trying to join has closed. Search for similar projects by clicking below!</p>
-            <%= link_to "Search Similar Projects", search_path, class: "btn btn-primary", style: "width:100%" %>
-          <% end %>
-            <br>
+              <div class="contributions-title">
+                <div>
+                  <h2>Contributions</h2>
+                </div>
+              </div>
+                <%= render "make-contribution", project: @project %>
+              </div>
+              <p class="margin-top" style="font-size: 15px;">Not enjoying this project? Got too much on to complete the task? Click leave project to open up your space!</p>
+              <%= link_to "Leave Project", project_participation_path(@project), class: "btn btn-default", method: :DELETE, style: "width:100%" %>
+            <% elsif @project.days_left > 0 && !@current_user.participated_to?(@project) %>
+              <p>Like the look of this project? Get started today by clicking join below!</p>
+              <%= link_to "Join Project", project_participations_path(@project), class: "btn btn-primary", method: :post, style: "width:100%" %>
+            <% elsif @project.days_left < 0 %>
+              <p>It looks like the project you are trying to join has closed. Search for similar projects by clicking below!</p>
+              <%= link_to "Search Similar Projects", search_path, class: "btn btn-primary", style: "width:100%" %>
+            <% end %>
+              <br>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-
