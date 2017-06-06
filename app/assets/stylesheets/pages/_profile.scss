@@ -1,0 +1,65 @@
+h2 {
+  font-size: $base-size ;
+  margin: 0 0 20px 0;
+}
+
+h3 {
+  font-size: $base-size + 2px;
+  margin: 0;
+}
+
+h4 {
+  font-size: $base-size;
+  margin: 5px 0 0 0;
+}
+
+#user-info {
+  position: relative;
+  .avatar-large {
+    position: absolute;
+  }
+}
+
+.profile-page {
+  background-color: #F9F9F9;
+  min-height: 80vh;
+}
+
+.profile-banner {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  margin: 20px 0 20px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.shadow-box {
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0px 2px 5px #CCCCCC;
+  margin: 0 0 10px 0;
+}
+
+.card-inline {
+  hr {
+    margin: 5px 0 5px 60px;
+  }
+}
+
+.card-inline-head {
+  display: flex;
+  align-items: center;
+}
+
+.card-inline-head-title {
+  flex: 1 0 auto;
+  padding: 0 0 0 10px;
+}
+
+@media (min-width: 320px) {
+  .col {
+    width: 280px;
+  }
+}
