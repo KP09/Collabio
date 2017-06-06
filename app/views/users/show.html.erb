@@ -1,4 +1,4 @@
-<div class="page-wrapper">
+<div class="page-wrapper" id="profile-page">
   <!-- Container for the whole page -->
   <div class="container">
     <!-- Left 9 columns for the whole page -->
@@ -26,19 +26,41 @@
     <div class="col-xs-12 col-lg-3">
       <!-- Row that takes all content for the right hand side -->
       <div class="row">
-        <div class="col-xs-12 margin-top text-center">
-          <div class="stats">
-            <p><strong>8</strong> Contributions</p>
-            <p><strong>3</strong> Stars</p>
-            <p><strong>27</strong> Upvotes</p>
-            <p><strong>2</strong> Active projects</p>
+        <div class="col-xs-12 margin-top flex-around">
+          <div class="sidebar-content">
+            <h2>User stats</h2>
+            <hr>
+            <div class="stat dynamic-align-left">
+              <%= image_tag 'star.svg', class: "profile-icon" %>
+              <span><strong>3</strong> Stars</span>
+            </div>
+            <div class="stat dynamic-align-left">
+              <%= image_tag 'contribution.svg', class: "profile-icon" %>
+              <span><strong>8</strong> Contributions</span>
+            </div>
+            <div class="stat dynamic-align-left">
+              <%= image_tag 'upvote.svg', class: "profile-icon" %>
+              <span><strong>27</strong> Upvotes</span>
+            </div>
+            <div class="stat dynamic-align-left">
+              <%= image_tag 'briefcase.svg', class: "profile-icon" %>
+              <span><strong>2</strong> Active projects</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="sidebar-content margin-top">
+            <h2>Currently working on</h2>
+            <hr>
           </div>
         </div>
       </div>
     </div>
 
     <!-- if its a person -->
-    <%= render 'person'%>
+    <%= render 'user_contributions'%>
     <!-- if its a company -->
   </div>
 </div>

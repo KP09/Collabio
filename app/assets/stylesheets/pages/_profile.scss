@@ -17,19 +17,24 @@
   margin-top: -75px;
 }
 
-h2 {
-  font-size: $base-size ;
-  margin: 0 0 20px 0;
-}
-
-h3 {
-  font-size: $base-size + 2px;
-  margin: 0;
-}
-
-h4 {
-  font-size: $base-size;
-  margin: 5px 0 0 0;
+#profile-page {
+  h1 {
+    margin: 10px 0 10px 0;
+  }
+  h2 {
+    font-size: $base-size ;
+    margin: 0 0 10px 0;
+    font-weight: normal;
+  }
+  h3 {
+    font-size: $base-size + 2px;
+    margin: 0;
+  }
+  h4 {
+    font-size: $base-size;
+    margin: 5px 0 0 0;
+    font-weight: normal;
+  }
 }
 
 .card-header {
@@ -39,7 +44,10 @@ h4 {
 .card-inline {
   hr {
     margin: 5px 0 10px 65px;
-    border: 1px solid #E6E6E6;
+    border-top: 1px solid $light-gray;
+  }
+  h4 {
+    font-weight: normal;
   }
 }
 
@@ -49,4 +57,24 @@ h4 {
   p {
     margin: 0;
   }
+}
+
+.sidebar-content {
+  width: 100%;
+  hr {
+    border-top: 1px solid $medium-gray;
+    margin: 0 0 20px 0;
+  }
+}
+
+.stat {
+  margin: 0 0 20px 0;
+  span {
+    padding-left: 5px;
+  }
+}
+
+.profile-icon {
+  height: 35px;
+  width: 50px;
 }
