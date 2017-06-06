@@ -60,7 +60,7 @@
       <div class="col-lg-3 margin-top">
         <h2>Join Project</h2>
         <p>Like the look of this project? Get started today by clicking join below!</p>
-        <%= link_to "Join Project", projects_path, class: "btn btn-primary", style: "width:100%" %>
+        <%= link_to "Join Project", project_participations_path(@project), class: "btn btn-primary", method: :post, style: "width:100%" %>
         <br>
       </div>
     </div>

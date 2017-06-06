@@ -1,14 +1,14 @@
 class ParticipationsController < ApplicationController
-  def create 
+  def create
   	@project = Project.find(params[:project_id])
     @participation = Participation.new
   	@participation.project = @project
-  	@participation.user = current_user
+  	@participation.user_id = current_user.id
   	authorize @participation
   	if @participation.save
   	  redirect_to project_path(@project)
   	else
-  	  render 'projects/show' 
+  	  render 'projects/show'
   	end
   end
 
