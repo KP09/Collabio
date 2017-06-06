@@ -1,22 +1,19 @@
 <div class="col-xs-12 col-sm-6 col-lg-12">
   <div class="sidebar-content margin-top">
-    <h2>Favorite companies</h2>
+    <h2><i class="fa fa-font-awesome"></i> Favorite companies</h2>
     <hr>
-    <div class="flex-box company">
-      <%= image_tag ('http://placehold.it/50'), class: "avatar-small" %>
-      <h4>Uber Ltd.</h4>
-    </div>
-    <div class="flex-box company">
-      <%= image_tag ('http://placehold.it/50'), class: "avatar-small" %>
-      <h4>Uber Ltd.</h4>
-    </div>
-    <div class="flex-box company">
-      <%= image_tag ('http://placehold.it/50'), class: "avatar-small" %>
-      <h4>Uber Ltd.</h4>
-    </div>
-    <div class="flex-box company">
-      <%= image_tag ('http://placehold.it/50'), class: "avatar-small" %>
-      <h4>Uber Ltd.</h4>
-    </div>
+    <% if user.favorite_companies %>
+      <% user.favorite_companies.each do |key, value| %>
+        <div class="flex-box company">
+          <%= image_tag ('http://placehold.it/50'), class: "avatar-small" %>
+          <div>
+            <h4><%= key %></h4>
+            <p>(<%= value %> contributions)</p>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <h4>No contributions yet</h4>
+    <% end %>
   </div>
 </div>

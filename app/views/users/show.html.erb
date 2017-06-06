@@ -19,10 +19,14 @@
             </div>
             <!-- User information -->
             <h1><%= @user.full_name %></h1>
+            <!-- Shows the location if there is one -->
             <% if @user.location %>
               <p><i class="fa fa-map-marker"></i> <%= @user.location %></p>
             <% end %>
+            <!-- Shows the user description -->
             <p><%= @user.description %></p>
+            <!-- Show a get in touch button unless the user is a company -->
+            <!-- or unless they are the active user -->
             <% unless @user.company || @user == current_user %>
               <div class="btn btn-default">
                 Get in touch
@@ -61,10 +65,6 @@
           <% end %>
       </div>
     </div>
-    <!-- End of sidebar -->
-
-
-
-
+    <!-- END OF RIGHT HAND COLUMN -->
   </div>
 </div>

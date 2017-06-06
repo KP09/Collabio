@@ -90,6 +90,24 @@ class User < ApplicationRecord
     end
   end
 
+  def favorite_companies
+    company_frequencies = {}
+    self.contributions.each do |c|
+      owner = c.project.user.full_name
+      if company_frequencies[owner]
+        company_frequencies[owner] += 1
+      else
+        company_frequencies[owner] = 1
+      end
+    end
+
+    if company_frequencies.length >= 1
+      return company_frequencies.sort_by { |k,v| v }.reverse.first(3)
+    else
+      return false
+    end
+  end
+
   private
 
   def name_validation
