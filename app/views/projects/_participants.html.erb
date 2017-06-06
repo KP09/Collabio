@@ -1,0 +1,10 @@
+<% if project.participations.length > 0 then %>
+  <% project.participants.each do %>
+    <div class="col-lg-2">
+      <%= image_tag ('logo.png'), class: 'avatar-medium' %>
+    </div>
+  <% end %>
+<% else %>
+  <p>There are no participants right now!</p>
+<% end %>
+

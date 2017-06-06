@@ -1,0 +1,10 @@
+<% if project.participations.length > 0 then %>
+  <% project.contributions.each do %>
+    <div class="col-lg-2">
+      <%= image_tag ('logo.png'), class: 'avatar-medium' %>
+    </div>
+  <% end %>
+<% else %>
+  <p>There were no contributions made on this project!</p>
+<% end %>
+
