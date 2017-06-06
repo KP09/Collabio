@@ -1,7 +1,70 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# Destroy all existing data
+Upvote.destroy_all
+Contribution.destroy_all
+Participation.destroy_all
+Project.destroy_all
+User.destroy_all
+
+# Individuals
+users = [
+  {
+    first_name: "Kees",
+    last_name: "Postma",
+    email: "kk.postma@gmail.com",
+    password: "123456",
+    location: "London, UK",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum esse odit autem hic consectetur laboriosam, optio, dignissimos, perspiciatis labore amet eius saepe cum tempora, placeat quae quisquam fugit itaque eveniet."
+  },
+  {
+    first_name: "James",
+    last_name: "Block",
+    email: "james@hewines.com",
+    password: "123456",
+    location: "London, UK",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum esse odit autem hic consectetur laboriosam, optio, dignissimos, perspiciatis labore amet eius saepe cum tempora, placeat quae quisquam fugit itaque eveniet."
+  },
+  {
+    first_name: "Rami",
+    last_name: "Bakri",
+    email: "rbakri1@gmail.com",
+    password: "123456",
+    location: "London, UK",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum esse odit autem hic consectetur laboriosam, optio, dignissimos, perspiciatis labore amet eius saepe cum tempora, placeat quae quisquam fugit itaque eveniet."
+  }
+]
+
+users.each do |e|
+  User.create!(first_name: e[:first_name], last_name: e[:last_name], email: e[:email], password: e[:password], location: e[:location], description: e[:description])
+end
+
+# Companies
+companies = [
+  {
+    company_name: "Uber",
+    company: true,
+    email: "uber@uber.com",
+    password: "123456",
+    location: "London, UK",
+    description: "Uber Technologies Inc. is a technology company headquartered in San Francisco, California, United States, operating in 570 cities worldwide. It develops, markets and operates the Uber car transportation and food delivery mobile apps. Uber drivers use their own cars, although drivers can rent a car to drive with Uber."
+  },
+  {
+    company_name: "Facebook",
+    company: true,
+    email: "facebook@facebook.com",
+    password: "123456",
+    location: "London, UK",
+    description: "Facebook is an American for-profit corporation and an online social media and social networking service based in Menlo Park, California. The Facebook website was launched on February 4, 2004, by Mark Zuckerberg, along with fellow Harvard College students and roommates, Eduardo Saverin, Andrew McCollum, Dustin Moskovitz, and Chris Hughes."
+  },
+  {
+    company_name: "Google",
+    company: true,
+    email: "google@google.com",
+    password: "123456",
+    location: "London, UK",
+    description: "Google is an American multinational technology company specializing in Internet-related services and products. These include online advertising technologies, search, cloud computing, software, and hardware. Google was founded in 1998 by Larry Page and Sergey Brin while they were Ph.D. students at Stanford University, in California."
+  }
+]
+
+companies.each do |e|
+  User.create!(company_name: e[:company_name], company: e[:company], email: e[:email], password: e[:password], location: e[:location], description: e[:description])
+end
