@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   resources :contributions, only: [:create, :update, :destroy]
 
   # Upvotes
-  resources :upvotes, only: [:create, :destroy]
+  resources :upvotes, only: [:create, :destroy] 
+
 end
