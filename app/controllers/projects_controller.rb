@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   def show
+    @similar_projects = Project.all.sample(3)
     @project = Project.find(params[:id])
     authorize @project
     # This simply calls the similarly named method in the application_policy file (called Show?)
