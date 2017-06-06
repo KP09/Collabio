@@ -1,7 +1,7 @@
 <% if project.participations.length > 0 then %>
   <% project.contributions.each do %>
     <div class="col-lg-2">
-      <%= image_tag ('logo.png'), class: 'avatar-medium' %>
+      <%= render "contributions-card", project: @project %>
     </div>
   <% end %>
 <% else %>
