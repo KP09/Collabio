@@ -1,2 +1,13 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('<%#= cl_image_path("homepage_dcj50q")%>')">
+  <div class="text-center">
+    <h1>Build Your Portfolio.</h1>
+    <h2>Contribute to real projects by real companies</h2>
+    <br>
+
+    <%= link_to projects_path do %>
+      <div class="btn btn-primary">Start browsing projects</div>
+    <% end %>
+  </div>
+</div>
+
+<%= render "how" %>
