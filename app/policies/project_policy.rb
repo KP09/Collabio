@@ -18,7 +18,7 @@ class ProjectPolicy < ApplicationPolicy
 
   # No specific authorisation is needed to view contributinos other than being logged in
   class Scope < Scope
-    def resolve	
+    def resolve
       scope.where(record.user == user)
     end
   end
