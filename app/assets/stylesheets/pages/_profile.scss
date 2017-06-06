@@ -1,3 +1,22 @@
+#profile-banner {
+  height: 175px;
+  background-size: cover;
+  background-position: center;
+}
+
+#profile-avatar {
+  border: 2px solid white;
+  height: 110px;
+  width: 110px;
+  margin: 0 auto;
+
+}
+
+#avatar-container {
+  height: 110px;
+  margin-top: -75px;
+}
+
 h2 {
   font-size: $base-size ;
   margin: 0 0 20px 0;
@@ -13,26 +32,8 @@ h4 {
   margin: 5px 0 0 0;
 }
 
-#user-info {
-  position: relative;
-  .avatar-large {
-    position: absolute;
-  }
-}
-
-.profile-page {
-  background-color: #F9F9F9;
-  min-height: 80vh;
-}
-
-.profile-banner {
-  height: 200px;
-  background-size: cover;
-  background-position: center;
-  margin: 20px 0 20px 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+.card-header {
+  height: 50px;
 }
 
 .shadow-box {
@@ -44,22 +45,15 @@ h4 {
 
 .card-inline {
   hr {
-    margin: 5px 0 5px 60px;
+    margin: 5px 0 10px 65px;
+    border: 1px solid #E6E6E6;
   }
 }
 
-.card-inline-head {
+.card-inline-date {
+  height: 50px;
   display: flex;
-  align-items: center;
-}
-
-.card-inline-head-title {
-  flex: 1 0 auto;
-  padding: 0 0 0 10px;
-}
-
-@media (min-width: 320px) {
-  .col {
-    width: 280px;
+  p {
+    margin: 0;
   }
 }
