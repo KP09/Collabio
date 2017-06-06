@@ -1,0 +1,11 @@
+<div class="contribution shadow-box">
+  <div>
+    <h2>Make Contribution</h2>
+    <%= simple_form_for([@project, @contribution]) do |f| %>
+      <%= f.input :comment, class: "form-control" %>
+      <div class="text-center">
+        <%= f.submit "Contribute to project", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

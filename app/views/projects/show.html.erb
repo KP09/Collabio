@@ -37,7 +37,7 @@
         </div>
         <div class="row">
           <div class="col-lg-9">
-            <div class="shadow-box margin-top funky-radius">
+            <div class="shadow-box margin-top">
               <div class="box-title">
                 <p>Brief:</p>
               </div>
@@ -46,7 +46,7 @@
               </div>
             </div>
             <!-- logic for different project status -->
-            <div class="shadow-box margin-top funky-radius">
+            <div class="shadow-box margin-top">
               <!-- If the project is still active show participants render -->
               <% if @project.days_left > 0 %>
                 <div class="box-title">
@@ -78,15 +78,15 @@
             </div>
           <div class="col-lg-3 margin-top">
           <% if @project.days_left > 0 && @current_user.participated_to?(@project) %>
-            <h2>Leave Project</h2>
-            <p>Not enjoying this project? Got too much on to complete the task? Click leave project to open up your space!</p>
+            <div class="contribution">
+              <%= render "make-contribution", project: @project %>
+            </div>
+            <p class="margin-top" style="font-size: 13px;">Not enjoying this project? Got too much on to complete the task? Click leave project to open up your space!</p>
             <%= link_to "Leave Project", project_participation_path(@project), class: "btn btn-primary", method: :DELETE, style: "width:100%" %>
           <% elsif @project.days_left > 0 && !@current_user.participated_to?(@project) %>
-            <h2>Join Project</h2>
             <p>Like the look of this project? Get started today by clicking join below!</p>
             <%= link_to "Join Project", project_participations_path(@project), class: "btn btn-primary", method: :post, style: "width:100%" %>
           <% elsif @project.days_left < 0 %>
-            <h2>Project Closed</h2>
             <p>It looks like the project you are trying to join has closed. Search for similar projects by clicking below!</p>
             <%= link_to "Search Similar Projects", search_path, class: "btn btn-primary", style: "width:100%" %>
           <% end %>
