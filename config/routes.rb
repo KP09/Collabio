@@ -10,13 +10,15 @@ Rails.application.routes.draw do
   resources :users, except: [:index]
 
   # Projects
-  resources :projects, except: [:index]
+  resources :projects, except: [:index] do
 
-  # Participations
-  resources :participations, only: [:create, :destroy]
+    # Participations
+    resources :participations, only: [:create, :destroy]
 
-  # Contributions
-  resources :contributions, only: [:create, :update, :destroy]
+    # Contributions
+    resources :contributions, only: [:create, :update, :destroy]
+    
+  end
 
   # Upvotes
   resources :upvotes, only: [:create, :destroy] 
