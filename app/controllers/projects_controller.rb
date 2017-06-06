@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   def show
+    @contribution = Contribution.new
     @similar_projects = Project.all.sample(3)
     @project = Project.find(params[:id])
     authorize @project
