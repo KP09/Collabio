@@ -5,7 +5,8 @@
     <% if user.favorite_companies %>
       <% user.favorite_companies.each do |key, value| %>
         <div class="flex-box company">
-          <%= image_tag ('http://placehold.it/50'), class: "avatar-small" %>
+          <div class="avatar-small" style="background-image: url('https://static.pexels.com/photos/149541/pexels-photo-149541.jpeg')">
+          </div>
           <div>
             <h4><%= key %></h4>
             <p>(<%= value %> contributions)</p>
