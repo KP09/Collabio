@@ -16,6 +16,11 @@ class Project < ApplicationRecord
     days_left = (self.end_date.to_date - DateTime.now.to_date).to_i
   end
 
+
+  def spaces_left
+    space_left = (self.max_participations - self.participations.count).to_i
+  end
+
   private
 
   def time_valid
