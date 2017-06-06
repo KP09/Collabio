@@ -35,6 +35,9 @@
     margin: 5px 0 0 0;
     font-weight: normal;
   }
+  hr {
+    border-top: 1px solid $medium-gray;
+  }
 }
 
 .card-header {
@@ -68,9 +71,14 @@
 
 .sidebar-content {
   width: 100%;
+  h4 {
+    padding-left: 10px;
+  }
   hr {
-    border-top: 1px solid $medium-gray;
     margin: 0 0 20px 0;
+  }
+  .company {
+    margin-bottom: 10px;
   }
 }
 

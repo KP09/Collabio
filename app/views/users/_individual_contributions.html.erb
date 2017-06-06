@@ -1,11 +1,9 @@
-<!-- Left hand side -->
-<div class="col-xs-12 col-lg-9">
-  <!-- Nested row for contributions -->
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="shadow-box margin-top">
-        <h2>Past contributions</h2>
-        <!-- Contribution card -->
+<div class="col-xs-12">
+  <div class="shadow-box margin-top">
+    <% if user.closed_contributions %>
+      <h2>Past contributions</h2>
+      <!-- Contribution card -->
+      <% user.closed_contributions.each do |contribution| %>
         <div class="card-inline margin-top">
           <div class="row">
             <div class="col-xs-12 col-lg-1 dynamic-align-left flex-box">
@@ -14,14 +12,14 @@
             <div class="col-xs-12 col-lg-8">
               <div class="card-header dynamic-align-left flex-box">
                 <div>
-                  <h3>Project title</h3>
-                  <h4>Company name</h4>
+                  <h3><%= contribution.project.title %></h3>
+                  <h4><%= contribution.project.user.full_name %></h4>
                 </div>
               </div>
             </div>
             <div class="col-xs-12 col-lg-3">
               <div class="card-inline-date flex-box dynamic-align-right">
-                <p class="">December 2017</p>
+                <p class=""><%= contribution.updated_at %></p>
               </div>
             </div>
           </div>
@@ -29,17 +27,22 @@
           <hr>
           <div class="row">
             <div class="col-xs-12 col-lg-9 col-lg-offset-1">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim dolorem quia soluta unde perspiciatis suscipit sequi, nulla quae, sit assumenda eum, excepturi minus. Soluta vel animi harum, velit amet quia.</p>
+              <p><%= contribution.comment %></p>
             </div>
             <div class="col-xs-12 col-lg-2 text-center">
               <div class="btn btn-default">Check it out</div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      <% end %>
+      <!-- End of contribution card -->
+    <% else %>
+      <h2>No contributions yet</h2>
+    <% end %>
   </div>
 </div>
+
+
 
 
 

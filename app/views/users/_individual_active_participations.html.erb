@@ -1,0 +1,24 @@
+<% if user.active_participations %>
+  <div class="col-xs-12">
+    <div class="margin-top">
+      <h2>Currently working on</h2>
+      <hr>
+      <div class="row">
+        <!-- Project cards for active participations -->
+        <% user.participations.each do |participation| %>
+          <div class="col-xs-12 col-sm-6 padding-none">
+            <%= render 'projects/card', project: participation.project %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% elsif user == current_user %>
+  <div class="col-xs-12 flex-around">
+    <div class="margin-top">
+      <div class="btn btn-primary">
+        Discover projects
+      </div>
+    </div>
+  </div>
+<% end %>

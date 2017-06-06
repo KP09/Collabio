@@ -1,66 +1,70 @@
 <div class="page-wrapper" id="profile-page">
   <!-- Container for the whole page -->
   <div class="container">
-    <!-- Left 9 columns for the whole page -->
+
+    <!-- LEFT HAND COLUMN -->
+    <!-- Left hand side of page is made up of 9 columns on desktop -->
+    <!-- and full-screen on less -->
     <div class="col-xs-12 col-lg-9">
-      <!-- Row that takes all content for the left-hand side -->
       <div class="row">
+
+        <!-- Cover photo and profile picture -->
         <div class="col-xs-12">
           <div class="margin-top flex-around" id="profile-banner" style="background-image: url('https://static.pexels.com/photos/149541/pexels-photo-149541.jpeg')">
           </div>
-        </div>
-        <div class="col-xs-12">
           <div class="shadow-box text-center">
             <div id="avatar-container">
               <div class="avatar-xl" id="profile-avatar" style="background-image: url('http://unsplash.it/50')">
               </div>
             </div>
-            <h1>Kees Postma</h1>
-            <p>London, UK</p>
-            <p>Student @ Le Wagon</p>
+            <!-- User information -->
+            <h1><%= @user.full_name %></h1>
+            <% if @user.location %>
+              <p><i class="fa fa-map-marker"></i> <%= @user.location %></p>
+            <% end %>
+            <p><%= @user.description %></p>
+            <% unless @user.company || @user == current_user %>
+              <div class="btn btn-default">
+                Get in touch
+              </div>
+            <% end %>
           </div>
         </div>
-      </div>
-    </div>
-    <!-- Right 3 columns for the whole page -->
-    <div class="col-xs-12 col-lg-3">
-      <!-- Row that takes all content for the right hand side -->
-      <div class="row">
-        <div class="col-xs-12 margin-top flex-around">
-          <div class="sidebar-content">
-            <h2>User stats</h2>
-            <hr>
-            <div class="stat dynamic-align-left">
-              <%= image_tag 'star.svg', class: "profile-icon" %>
-              <span><strong>3</strong> Stars</span>
-            </div>
-            <div class="stat dynamic-align-left">
-              <%= image_tag 'contribution.svg', class: "profile-icon" %>
-              <span><strong>8</strong> Contributions</span>
-            </div>
-            <div class="stat dynamic-align-left">
-              <%= image_tag 'upvote.svg', class: "profile-icon" %>
-              <span><strong>27</strong> Upvotes</span>
-            </div>
-            <div class="stat dynamic-align-left">
-              <%= image_tag 'briefcase.svg', class: "profile-icon" %>
-              <span><strong>2</strong> Active projects</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="sidebar-content margin-top">
-            <h2>Currently working on</h2>
-            <hr>
-          </div>
-        </div>
-      </div>
-    </div>
+        <!-- End of profile banner and info -->
 
-    <!-- if its a person -->
-    <%= render 'user_contributions'%>
-    <!-- if its a company -->
+        <!-- If the user is a company -->
+        <% if @user.is_company? %>
+        <% end %>
+
+        <!-- If the user is a person -->
+        <% if @user.is_individual? %>
+          <%= render 'individual_active_participations', user: @user %>
+          <%= render 'individual_contributions', user: @user %>
+        <% end %>
+      </div>
+    </div>
+    <!-- END OF LEFT HAND COLUMN -->
+
+    <!-- RIGHT HAND COLUMN -->
+    <!-- Left hand side of page is made up of 3 columns on desktop -->
+    <!-- and full-screen on less -->
+    <div class="col-xs-12 col-lg-3">
+      <div class="row">
+          <!-- If the user is a company -->
+          <% if @user.is_company? %>
+          <% end %>
+
+          <!-- If the user is a person -->
+          <% if @user.is_individual? %>
+            <%= render 'individual_stats', user: @user %>
+            <%= render 'individual_fav_companies', user: @user %>
+          <% end %>
+      </div>
+    </div>
+    <!-- End of sidebar -->
+
+
+
+
   </div>
 </div>

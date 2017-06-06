@@ -27,6 +27,69 @@ class User < ApplicationRecord
     !participation(project).nil?
   end
 
+  # Returns the full_name of the user
+  def full_name
+    if self.company
+      return "#{self.company_name}"
+    else
+      return "#{self.first_name} #{self.last_name}"
+    end
+  end
+
+  # Returns true if the user is an individual
+  def is_individual?
+    self.company == false
+  end
+
+  # Returns true if the user is a company
+  def is_company?
+    self.company
+  end
+
+  # Returns the number of closed contributions
+  def count_contributions
+    self.contributions.select{ |c| c.end_date < DateTime.now }.count
+  end
+
+  # Returns the number of starred and closed contributions
+  def count_starred_contributions
+    self.contributions.select{ |c| c.end_date < DateTime.now && c.starred == true }.count
+  end
+
+  # Returns the total number of upvotes a user has on all their contributions
+  def count_upvotes
+    total = 0
+    self.contributions.each do |c|
+      total += c.upvotes.count
+    end
+    return total
+  end
+
+  def count_participations
+    self.participations.select { |p| p.project.end_date > DateTime.now }.count
+  end
+
+  # Returns the participations that are currently active
+  # i.e. for which the end_date is greater than the current date
+  def active_participations
+    active_participations = self.participations.select { |p| p.project.end_date > DateTime.now }
+    if active_participations.length >= 1
+      return active_participations
+    else
+      return false
+    end
+  end
+
+  # Returns the contributions of a user for which the deadline has expired
+  def closed_contributions
+    closed_contributions = self.contributions.select{ |c| c.end_date < DateTime.now }
+    if closed_contributions.length >= 1
+      return closed_contributions
+    else
+      return false
+    end
+  end
+
   private
 
   def name_validation
