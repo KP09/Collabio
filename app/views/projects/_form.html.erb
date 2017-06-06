@@ -1,0 +1,8 @@
+<%= simple_form_for(@project) do |f| %>
+ <%= f.input :title %>
+ <%= f.input :brief %>
+ <%= f.input :category %>
+ <%= f.input :end_date %>
+ <%= f.input :max_participations %>
+ <%= f.submit class: "btn btn-primary" %>
+<% end %>
