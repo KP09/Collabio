@@ -1,7 +1,7 @@
 class ParticipationsController < ApplicationController
 
   def create
-    @project = project.find(params[:project_id])
+    @project = Project.find(params[:project_id])
     @participation = Participation.new
     @participation.project = @project
     @participation.user = current_user
@@ -14,10 +14,11 @@ class ParticipationsController < ApplicationController
   end
 
   def destroy
-  	@project = Partcipation.find(params[:id]).project
-  	Participation.find(params[:id]).destroy
+  	@project = Project.find(params[:id])
+    @current_user = current_user
+  	@participation = Participation.where(user_id: @current_user.id, project_id: @project.id).first
+    @participation.destroy
   	authorize @participation
   	redirect_to project_path(@project)
   end
-
 end

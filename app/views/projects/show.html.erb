@@ -25,7 +25,7 @@
                 <p><%= @project.days_left %></p>
               </div>
             </div>
-            <div class="counter">
+            <div class="counter no-margin">
               <div class="counter-title">
                   <p>Spaces Left</p>
               </div>
@@ -33,63 +33,70 @@
                 <p><%= @project.max_participations %></p>
               </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-9">
-        <div class="shadow-box margin-top">
-          <div class="box-title">
-            <p>Brief:</p>
-          </div>
-          <div class="brief-content">
-            <p><%= @project.brief %></p>
           </div>
         </div>
-        <!-- logic for different project status -->
-        <div class="shadow-box margin-top">
-          <!-- If the project is still active show participants render -->
-          <% if @project.days_left > 0 %>
-            <div class="box-title">
-              <p>Participants:</p>
+        <div class="row">
+          <div class="col-lg-9">
+            <div class="shadow-box margin-top funky-radius">
+              <div class="box-title">
+                <p>Brief:</p>
+              </div>
+              <div class="brief-content">
+                <p><%= @project.brief %></p>
+              </div>
             </div>
-            <div class="render">
-              <%= render "participants", project: @project %>
-            </div>
-          <!-- If the project is no longer active show contributions render -->
-          <% else %>
-            <div class="box-title">
-              <p>Contributions:</p>
-            </div>
-            <div class="render">
-              <%= render "contributers", project: @project %>
-            </div>
-          <% end %>
-        </div>
-        <div class="similar margin-top">
-          <p>Similar Projects</p>
-            <div class="row">
-              <% @similar_projects.each do |project| %>
-                <div class="col-md-4 padding-none">
-                  <%= render "card", project: @project %>
+            <!-- logic for different project status -->
+            <div class="shadow-box margin-top funky-radius">
+              <!-- If the project is still active show participants render -->
+              <% if @project.days_left > 0 %>
+                <div class="box-title">
+                  <p>Participants:</p>
+                </div>
+                <div class="render">
+                  <%= render "participants", project: @project %>
+                </div>
+              <!-- If the project is no longer active show contributions render -->
+              <% else %>
+                <div class="box-title">
+                  <p>Contributions:</p>
+                </div>
+                <div class="render">
+                  <%= render "contributers", project: @project %>
                 </div>
               <% end %>
             </div>
+            <div class="similar margin-top">
+              <p>Similar Projects</p>
+                <div class="row">
+                  <% @similar_projects.each do |project| %>
+                    <div class="col-md-4 padding-none">
+                      <%= render "card", project: @project %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <div class="col-lg-3 margin-top">
+          <% if @project.days_left > 0 && @current_user.participated_to?(@project) %>
+            <h2>Leave Project</h2>
+            <p>Not enjoying this project? Got too much on to complete the task? Click leave project to open up your space!</p>
+            <%= link_to "Leave Project", project_participation_path(@project), class: "btn btn-primary", method: :DELETE, style: "width:100%" %>
+          <% elsif @project.days_left > 0 && !@current_user.participated_to?(@project) %>
+            <h2>Join Project</h2>
+            <p>Like the look of this project? Get started today by clicking join below!</p>
+            <%= link_to "Join Project", project_participations_path(@project), class: "btn btn-primary", method: :post, style: "width:100%" %>
+          <% elsif @project.days_left < 0 %>
+            <h2>Project Closed</h2>
+            <p>It looks like the project you are trying to join has closed. Search for similar projects by clicking below!</p>
+            <%= link_to "Search Similar Projects", search_path, class: "btn btn-primary", style: "width:100%" %>
+          <% end %>
+            <br>
           </div>
         </div>
-      <div class="col-lg-3 margin-top">
-      <% if @project.days_left > 0 %>
-        <h2>Join Project</h2>
-        <p>Like the look of this project? Get started today by clicking join below!</p>
-        <%= link_to "Join Project", participations_path(@project), class: "btn btn-primary", method: :post, style: "width:100%" %>
-      <% else %>
-        <h2>Join Project</h2>
-        <p>It looks like the project you are trying to join has closed. Search for similar projects by clicking below!</p>
-        <%= link_to "Search Similar Projects", search_path, class: "btn btn-primary", style: "width:100%" %>
-      <% end %>
-        <br>
       </div>
     </div>
   </div>
 </div>
+
 
 
