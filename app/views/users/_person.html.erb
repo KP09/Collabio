@@ -1,60 +1,45 @@
-<!-- Left hand side column -->
+<!-- Left hand side -->
 <div class="col-xs-12 col-lg-9">
-  <!-- User information -->
-  <div class="shadow-box text-center">
-    <div id="avatar-container">
-      <div class="avatar-xl" id="profile-avatar" style="background-image: url('http://unsplash.it/50')">
-      </div>
-    </div>
-    <h1>Kees Postma</h1>
-    <p>London, UK</p>
-    <p>Student @ Le Wagon</p>
-  </div>
-</div>
-<!-- Right hand side column -->
-<div class="col-xs-12 col-lg-3 margin-top text-center">
-  <div class="stats">
-    <p><strong>8</strong> Contributions</p>
-    <p><strong>3</strong> Stars</p>
-    <p><strong>27</strong> Upvotes</p>
-    <p><strong>2</strong> Active projects</p>
-  </div>
-</div>
-
-
-<!-- Contributions -->
-
-<div class="col-xs-12 col-lg-9">
-  <div class="shadow-box margin-top">
-    <h2>Past contributions</h2>
-    <!-- Contribution card -->
-    <div class="card-inline">
-      <div class="row">
-        <div class="col-xs-12 col-lg-1 dynamic-align-left">
-          <%= image_tag ('http://placehold.it/50'), class: "avatar-small" %>
-        </div>
-        <div class="col-xs-12 col-lg-9">
-          <div class="card-header dynamic-align-left">
-            <div>
-              <h3>Project title</h3>
-              <h4>Company name</h4>
+  <!-- Nested row for contributions -->
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="shadow-box margin-top">
+        <h2>Past contributions</h2>
+        <!-- Contribution card -->
+        <div class="card-inline">
+          <div class="row">
+            <div class="col-xs-12 col-lg-1 dynamic-align-left flex-box">
+              <%= image_tag ('http://placehold.it/50'), class: "avatar-small" %>
+            </div>
+            <div class="col-xs-12 col-lg-8">
+              <div class="card-header dynamic-align-left flex-box">
+                <div>
+                  <h3>Project title</h3>
+                  <h4>Company name</h4>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-lg-3">
+              <div class="card-inline-date flex-box dynamic-align-right">
+                <p class="">December 2017</p>
+              </div>
+            </div>
+          </div>
+          <!-- Horizontal line -->
+          <hr>
+          <div class="row">
+            <div class="col-xs-12 col-lg-9 col-lg-offset-1">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim dolorem quia soluta unde perspiciatis suscipit sequi, nulla quae, sit assumenda eum, excepturi minus. Soluta vel animi harum, velit amet quia.</p>
+            </div>
+            <div class="col-xs-12 col-lg-2 text-center">
+              <div class="btn btn-default">Check it out</div>
             </div>
           </div>
         </div>
-        <div class="col-xs-12 col-lg-2 dynamic-align-right">
-          <p>June 2017</p>
-        </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-xs-12 col-lg-9 col-lg-offset-1">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim dolorem quia soluta unde perspiciatis suscipit sequi, nulla quae, sit assumenda eum, excepturi minus. Soluta vel animi harum, velit amet quia.</p>
-        </div>
-        <div class="col-xs-12 col-lg-2 text-center">
-          <div class="btn btn-default">Check it out</div>
-        </div>
       </div>
     </div>
   </div>
 </div>
+
+
 

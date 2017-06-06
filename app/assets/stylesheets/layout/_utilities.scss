@@ -50,24 +50,28 @@
 // Dynamic positioning
 @media (min-width: 0px) {
   .dynamic-align-left {
+    justify-content: space-around;
     text-align: center;
   }
 }
 
 @media (min-width: 1200px) {
   .dynamic-align-left {
+    justify-content: flex-start;
     text-align: left;
   }
 }
 
 @media (min-width: 0px) {
   .dynamic-align-right {
+    justify-content: space-around;
     text-align: center;
   }
 }
 
 @media (min-width: 1200px) {
   .dynamic-align-right {
+    justify-content: flex-end;
     text-align: right;
   }
 }
