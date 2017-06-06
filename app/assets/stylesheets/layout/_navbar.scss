@@ -1,6 +1,6 @@
 /* Main class */
 .navbar-custom {
-  background: white;
+  background: $charcoal;
   transition: all 0.3s ease;
   border: 1px solid rgba(204,204,204,0.55);
   display: flex;
@@ -44,11 +44,11 @@
 
 /* Navbar standard link */
 .navbar-link {
-  color: #616668;
+  color: white;
   font-size: 14px;
 }
 .navbar-link:hover {
-  color: #da552f;
+  color: white;
   text-decoration: none;
 }
 
@@ -97,7 +97,7 @@
   border: 1px solid #E6E6E6;
   border-radius: 5px;
   padding: 0 10px;
-  font-size: 14px;
+  font-size: 15 px;
   outline: none;
 }
 .navbar-search-input:focus  {
@@ -107,6 +107,7 @@
 /* Navbar dropdown menu */
 .navbar-username {
   padding-right: 10px;
+  color: white;
 }
 .navbar-dropdown-menu {
   margin-top: 15px;
