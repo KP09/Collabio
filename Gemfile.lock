@@ -73,6 +73,8 @@ GEM
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.4)
+    impressionist (1.6.0)
+      nokogiri (~> 1)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -192,6 +194,7 @@ DEPENDENCIES
   devise
   figaro
   font-awesome-sass
+  impressionist
   jbuilder (~> 2.0)
   jquery-rails
   listen (~> 3.0.5)
@@ -212,4 +215,4 @@ RUBY VERSION
    ruby 2.3.3p222
 
 BUNDLED WITH
-   1.14.6
+   1.15.0
