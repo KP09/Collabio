@@ -13,7 +13,7 @@ class Project < ApplicationRecord
   validate :time_valid
 
   def days_left
-    @days_left = (self.end_date.to_date - DateTime.now.to_date).to_i
+    days_left = (self.end_date.to_date - DateTime.now.to_date).to_i
   end
 
   private
