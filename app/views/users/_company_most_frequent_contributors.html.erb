@@ -1,9 +1,9 @@
 <div class="col-xs-12 col-sm-6 col-lg-12">
   <div class="sidebar-content margin-top">
-    <h2><i class="fa fa-star"></i> Highest rated contributors</h2>
+    <h2><i class="fa fa-font-awesome"></i> Most frequent contributors</h2>
     <hr>
-    <% if user.top_individuals %>
-      <% user.top_individuals.each do |owner, frequency| %>
+    <% if user.most_frequent_contributors %>
+      <% user.most_frequent_contributors.each do |owner, frequency| %>
         <%= link_to user_path(owner), class: "sidebar-card-link" do %>
           <div class="flex-box sidebar-card">
             <div class="avatar-small" style="background-image: url('<%= cl_image_path (owner.get_profile_picture) %>')">
@@ -11,7 +11,7 @@
             <div>
               <h4><strong><%= owner.full_name %></strong></h4>
               <h4 class="flex-box">
-                <%= image_tag 'star-dark.svg', class: "profile-icon-tiny" %>
+              <%= image_tag 'contribution-dark.svg', class: "profile-icon-tiny" %>
                 <%= frequency %>
               </h4>
             </div>

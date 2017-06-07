@@ -34,7 +34,7 @@
       <% if user.count_starred_contributions >= 1 %>
         <span>
           <strong><%= user.count_starred_contributions %></strong>
-          <%= "Stars".pluralize(user.count_starred_contributions) %>
+          <%= "Star".pluralize(user.count_starred_contributions) %>
         </span>
       <% else %>
         <span>No stars yet</span>
@@ -46,7 +46,7 @@
       <% if user.count_upvotes >= 1 %>
         <span>
           <strong><%= user.count_upvotes %></strong>
-          <%= "Upvotes".pluralize(user.count_upvotes) %>
+          <%= "Upvote".pluralize(user.count_upvotes) %>
         </span>
       <% else %>
         <span>No upvotes yet</span>

@@ -1,13 +1,13 @@
-<% if user.active_participations %>
+<% if user.active_projects %>
   <div class="col-xs-12">
     <div class="margin-top">
-      <h2>Currently working on</h2>
+      <h2>Open projects</h2>
       <hr>
       <div class="row">
         <!-- Project cards for active participations -->
-        <% user.active_participations.each do |participation| %>
+        <% user.active_projects.each do |project| %>
           <div class="col-xs-12 col-sm-6 padding-none">
-            <%= render 'projects/card', project: participation.project %>
+            <%= render 'projects/card', project: project %>
           </div>
         <% end %>
       </div>
@@ -16,7 +16,9 @@
 <% elsif user == current_user %>
   <div class="col-xs-12 flex-around">
     <div class="margin-top">
-      <%= link_to "Discover projects", search_path, class: "btn btn-primary" %>
+      <div class="btn btn-primary">
+        Discover projects
+      </div>
     </div>
   </div>
 <% end %>

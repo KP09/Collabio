@@ -31,6 +31,7 @@ class User < ApplicationRecord
     !participation(project).nil?
   end
 
+  # Gets the profile picture for a user
   def get_profile_picture
     if profile_picture
       return profile_picture.path
@@ -41,6 +42,7 @@ class User < ApplicationRecord
     end
   end
 
+  # Gets the cover_photo for a user
   def get_cover_photo
     if cover_photo # Need to add attachinary into the model so 'profile_picture' method is in place
       # Waiting for James to merge.
@@ -80,7 +82,7 @@ class User < ApplicationRecord
       end
 
     end
-    number_projects_open  
+    number_projects_open
   end
 
   # Returns the number of closed contributions
@@ -139,6 +141,22 @@ class User < ApplicationRecord
   end
 
   # Returns all starred contributions received by a user (company)
+  def all_contributions
+    # Create an empty array
+    all_contributions = []
+    # For each project
+    self.projects.each do |project|
+    # Select the contributions that are starred
+      project_contributions = project.contributions.select { |c| c.project.end_date < DateTime.now }
+      # And push them into an array
+      project_contributions.each do |contribution|
+        all_contributions << contribution
+      end
+    end
+    return all_contributions
+  end
+
+  # Returns all starred contributions received by a user (company)
   def starred_contributions
     # Create an empty array
     starred_contributions = []
@@ -176,6 +194,26 @@ class User < ApplicationRecord
     end
   end
 
+  # Returns a hash with the most frequent contributors of a company
+  # or false if there aren't any contributions
+  def most_frequent_contributors
+    all_contributions = self.all_contributions
+    if all_contributions.count >= 1
+      contributor_frequencies = {}
+      all_contributions.each do |c|
+        owner = c.user
+        if contributor_frequencies[owner]
+          contributor_frequencies[owner] += 1
+        else
+          contributor_frequencies[owner] = 1
+        end
+      end
+      return contributor_frequencies.sort_by { |k,v| v }.reverse.first(3)
+    else
+      return false
+    end
+  end
+
   # Returns the number of participations for a user
   # where the projects is still open
   def count_participations
@@ -198,6 +236,25 @@ class User < ApplicationRecord
     closed_contributions = self.contributions.select{ |c| c.project.end_date < DateTime.now }
     if closed_contributions.count >= 1
       return closed_contributions
+    else
+      return false
+    end
+  end
+
+  # Returns a hash of companies from which a user (individual has received the most stars)
+  def most_rated_by
+    rated_frequencies = {}
+    starred_contributions = self.contributions.select { |c| c.starred == true && c.project.end_date < DateTime.now }
+    if starred_contributions.count >= 1
+      starred_contributions.each do |c|
+        project_owner = c.project.user
+        if rated_frequencies[project_owner]
+          rated_frequencies[project_owner] += 1
+        else
+          rated_frequencies[project_owner] = 1
+        end
+      end
+      return rated_frequencies.sort_by { |k,v| v }.reverse.first(3)
     else
       return false
     end
