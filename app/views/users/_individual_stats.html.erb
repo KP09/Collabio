@@ -1,0 +1,55 @@
+<div class="col-xs-12 col-sm-6 col-lg-12">
+  <div class="sidebar-content margin-top">
+    <h2><i class="fa fa-dashboard"></i> Portfolio stats</h2>
+    <hr>
+    <!-- Contributions -->
+    <div class="stat">
+      <%= image_tag 'contribution.svg', class: "profile-icon" %>
+      <% if user.closed_contributions %>
+        <span>
+          <strong><%= user.count_contributions %></strong>
+          <%= "Contribution".pluralize(user.count_contributions) %>
+        </span>
+      <% else %>
+        <span>No contributions yet</span>
+      <% end %>
+    </div>
+    <!-- Stars -->
+    <div class="stat">
+      <%= image_tag 'star.svg', class: "profile-icon" %>
+      <% if user.count_starred_contributions >= 1 %>
+        <span>
+          <strong><%= user.count_starred_contributions %></strong>
+          <%= "Stars".pluralize(user.count_starred_contributions) %>
+        </span>
+      <% else %>
+        <span>No stars yet</span>
+      <% end %>
+    </div>
+    <!-- Upvotes -->
+    <div class="stat">
+      <%= image_tag 'upvote.svg', class: "profile-icon" %>
+      <% if user.count_upvotes >= 1 %>
+        <span>
+          <strong><%= user.count_upvotes %></strong>
+          <%= "Upvotes".pluralize(user.count_upvotes) %>
+        </span>
+      <% else %>
+        <span>No upvotes yet</span>
+      <% end %>
+    </div>
+    <!-- Briefcase -->
+    <div class="stat">
+      <%= image_tag 'briefcase.svg', class: "profile-icon" %>
+      <% if user.active_participations %>
+        <span>
+          <strong><%= user.count_participations %></strong>
+          <%= "Contribution".pluralize(user.count_participations) %>
+          in progress
+        </span>
+      <% else %>
+        <span>No active projects</span>
+      <% end %>
+    </div>
+  </div>
+</div>

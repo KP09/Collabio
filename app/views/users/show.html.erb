@@ -1,44 +1,70 @@
-<div class="page-wrapper">
+<div class="page-wrapper" id="profile-page">
   <!-- Container for the whole page -->
   <div class="container">
-    <!-- Left 9 columns for the whole page -->
+
+    <!-- LEFT HAND COLUMN -->
+    <!-- Left hand side of page is made up of 9 columns on desktop -->
+    <!-- and full-screen on less -->
     <div class="col-xs-12 col-lg-9">
-      <!-- Row that takes all content for the left-hand side -->
       <div class="row">
+
+        <!-- Cover photo and profile picture -->
         <div class="col-xs-12">
-          <div class="margin-top flex-around" id="profile-banner" style="background-image: url('https://static.pexels.com/photos/149541/pexels-photo-149541.jpeg')">
+          <div class="margin-top flex-around" id="profile-banner" style="background-image: url('http://unsplash.it/1200/?random')">
           </div>
-        </div>
-        <div class="col-xs-12">
           <div class="shadow-box text-center">
             <div id="avatar-container">
-              <div class="avatar-xl" id="profile-avatar" style="background-image: url('http://unsplash.it/50')">
+              <div class="avatar-xl" id="profile-avatar" style="background-image: url('http://unsplash.it/600/?random')">
               </div>
             </div>
-            <h1>Kees Postma</h1>
-            <p>London, UK</p>
-            <p>Student @ Le Wagon</p>
+            <!-- User information -->
+            <h1><%= @user.full_name %></h1>
+            <!-- Shows the location if there is one -->
+            <% if @user.location %>
+              <p><i class="fa fa-map-marker"></i> <%= @user.location %></p>
+            <% end %>
+            <!-- Shows the user description -->
+            <p><%= @user.description %></p>
+            <!-- Show a get in touch button unless the user is a company -->
+            <!-- or unless they are the active user -->
+            <% unless @user.company || @user == current_user %>
+              <div class="btn btn-default">
+                Get in touch
+              </div>
+            <% end %>
           </div>
         </div>
-      </div>
-    </div>
-    <!-- Right 3 columns for the whole page -->
-    <div class="col-xs-12 col-lg-3">
-      <!-- Row that takes all content for the right hand side -->
-      <div class="row">
-        <div class="col-xs-12 margin-top text-center">
-          <div class="stats">
-            <p><strong>8</strong> Contributions</p>
-            <p><strong>3</strong> Stars</p>
-            <p><strong>27</strong> Upvotes</p>
-            <p><strong>2</strong> Active projects</p>
-          </div>
-        </div>
-      </div>
-    </div>
+        <!-- End of profile banner and info -->
 
-    <!-- if its a person -->
-    <%= render 'person'%>
-    <!-- if its a company -->
+        <!-- If the user is a company -->
+        <% if @user.is_company? %>
+        <% end %>
+
+        <!-- If the user is a person -->
+        <% if @user.is_individual? %>
+          <%= render 'individual_active_participations', user: @user %>
+          <%= render 'individual_contributions', user: @user %>
+        <% end %>
+      </div>
+    </div>
+    <!-- END OF LEFT HAND COLUMN -->
+
+    <!-- RIGHT HAND COLUMN -->
+    <!-- Left hand side of page is made up of 3 columns on desktop -->
+    <!-- and full-screen on less -->
+    <div class="col-xs-12 col-lg-3">
+      <div class="row">
+          <!-- If the user is a company -->
+          <% if @user.is_company? %>
+          <% end %>
+
+          <!-- If the user is a person -->
+          <% if @user.is_individual? %>
+            <%= render 'individual_stats', user: @user %>
+            <%= render 'individual_fav_companies', user: @user %>
+          <% end %>
+      </div>
+    </div>
+    <!-- END OF RIGHT HAND COLUMN -->
   </div>
 </div>
