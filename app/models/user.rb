@@ -30,6 +30,21 @@ class User < ApplicationRecord
   def participated_to?(project)
     !participation(project).nil?
   end
+  
+  def get_profile_picture
+    if profile_picture?
+      return profile_picture.path
+    elsif linkedin_picture_url
+      return linkedin_picture_url
+    else
+      return 'sample'
+    end
+  end
+
+   def get_cover_picture
+    if cover_photo? # Need to add attachinary into the model so 'profile_picture' method is in place
+      # Waiting for James to merge. 
+      return cover_photo.path
 
   # Returns the full_name of the user
   def full_name

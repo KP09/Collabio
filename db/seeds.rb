@@ -34,10 +34,7 @@ companies = [
 ]
 
 companies.each do |e|
-  company = User.create!(company_name: e[:company_name], company: e[:company], email: e[:email], password: e[:password], location: e[:location], description: e[:description])
-  3.times do
-    Project.create!(user: company, title: "#{company.company_name} Project Title", brief: "Seed Project brief", end_date: (DateTime.now + 14), max_participations: 100, category: "Marketing")
-  end
+  User.create!(company_name: e[:company_name], company: e[:company], email: e[:email], password: e[:password], location: e[:location], description: e[:description])
 end
 
 # Individuals
@@ -76,6 +73,37 @@ users.each do |e|
   end
 end
 
+# Projects
+projects = [
+  {
+    user_id: 1,
+    title: "The Big Project",
+    brief: "This is to address the marketing department's needs to build an audience in China.",
+    end_date: (DateTime.now + 5),
+    max_participations: 30,
+    category: "Marketing"
+  },
+  {
+    user_id: 2,
+    title: "Finance investigation",
+    brief: "Our annual accounts were out by several million pounds and we're looking for talented mathmeticians to correct this. ",
+    end_date: (DateTime.now + 9),
+    max_participations: 40,
+    category: "Finance"
+  },
+  {
+    user_id: 3,
+    title: "Suggestions for improving our internal organisation",
+    brief: "We are looking to learn from forward thinking young professionals to understand how we can make the working environment better for them and us.",
+    end_date: (DateTime.now + 5),
+    max_participations: 30,
+    category: "Operations"
+  }
+]
+
+projects.each do |e|
+  Project.create!(user_id: e[:user_id], title: e[:title], brief: e[:brief], end_date: e[:end_date], max_participations: e[:max_participations], category: e[:category])
+
 User.all.each do |user|
   if user.is_individual?
     Contribution.all.each do |c|
@@ -83,3 +111,4 @@ User.all.each do |user|
     end
   end
 end
+
