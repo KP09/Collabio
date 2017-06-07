@@ -1,11 +1,11 @@
-<div class="contribution">
-  <p style="font-size: 16px"><i class="fa fa-cloud-upload"></i>  Contribution Options</p>
-  <hr>
-  <%= simple_form_for([@project, @contribution]) do |f| %>
-    <%= f.input :comment, class: "form-control" %>
-    <%= f.input :file, as: :attachinary %>
-    <div class="text-center">
+<div class="margin-top">
+  <div class="contribution">
+    <p style="font-size: 16px"><i class="fa fa-cloud-upload"></i>  Contribution Options</p>
+    <hr>
+    <%= simple_form_for([@project, @contribution]) do |f| %>
+      <%= f.input :comment, label: "Tell us about your contribution", class: "form-control" %>
+      <%= f.input :file, label: "Please select file" , as: :attachinary %>
       <%= f.submit "Contribute to project", class: "btn btn-primary", style: "width:100%" %>
-    </div>
-  <% end %>
+      </div>
+    <% end %>
 </div>
