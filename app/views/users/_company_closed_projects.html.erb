@@ -1,0 +1,16 @@
+<% if user.closed_projects %>
+  <div class="col-xs-12">
+    <div class="margin-top">
+      <h2>Closed projects</h2>
+      <hr>
+      <div class="row">
+        <!-- Project cards for active participations -->
+        <% user.closed_projects.each do |project| %>
+          <div class="col-xs-12 col-sm-6 padding-none">
+            <%= render 'projects/card_without_images', project: project %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -153,7 +153,7 @@ class User < ApplicationRecord
         all_contributions << contribution
       end
     end
-    return all_contributions
+    return all_contributions.sort_by { |c| c.created_at }
   end
 
   # Returns all starred contributions received by a user (company)
@@ -169,7 +169,22 @@ class User < ApplicationRecord
         starred_contributions << contribution
       end
     end
-    return starred_contributions
+    return starred_contributions.sort_by { |c| c.created_at }
+  end
+
+   def non_starred_contributions
+    # Create an empty array
+    non_starred_contributions = []
+    # For each project
+    self.projects.each do |project|
+    # Select the contributions that are starred
+      project_starred_contributions = project.contributions.select { |c| c.starred == false && c.project.end_date < DateTime.now }
+      # And push them into an array
+      project_starred_contributions.each do |contribution|
+        non_starred_contributions << contribution
+      end
+    end
+    return non_starred_contributions.sort_by { |c| c.created_at }
   end
 
   # Returns a hash with the top_individuals of a company

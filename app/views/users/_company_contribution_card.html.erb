@@ -1,0 +1,40 @@
+<div class="shadow-box margin-top">
+  <div class="card-inline">
+    <div class="row">
+      <div class="col-xs-12 col-lg-1 dynamic-align-left flex-box contribution-avatar">
+      <%= link_to user_path(contribution.user), style: "margin: 0 auto" do %>
+        <div class="avatar-small" style="background-image: url('<%= cl_image_path (contribution.user.get_profile_picture) %>')">
+        </div>
+      <% end %>
+      </div>
+      <div class="col-xs-12 col-lg-8">
+        <div class="card-header dynamic-align-left flex-box">
+          <div>
+            <%= link_to project_path(contribution.project) do %>
+              <h3 class="text-link"><%= contribution.project.title %></h3>
+            <% end %>
+            <%= link_to user_path(contribution.user) do %>
+              <h4 class="text-link"><%= contribution.user.full_name %></h4>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-lg-3">
+        <div class="card-inline-date flex-between dynamic-align-right">
+          <p class=""><%= contribution.updated_at.strftime('%B %Y') %></p>
+          <%= image_tag 'star.svg', class: "profile-icon" %>
+        </div>
+      </div>
+    </div>
+    <!-- Horizontal line -->
+    <hr>
+    <div class="row">
+      <div class="col-xs-12 col-lg-9 col-lg-offset-1">
+        <p><%= contribution.comment %></p>
+      </div>
+      <div class="col-xs-12 col-lg-2 text-center">
+        <div class="btn btn-default">Check it out</div>
+      </div>
+    </div>
+  </div>
+</div>
