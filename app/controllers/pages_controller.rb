@@ -5,6 +5,8 @@ class PagesController < ApplicationController
   end
 
   def search
+    # @top_projects = Project.number_participations
+    @expired_projects = Project.expired_projects
     if params[:term].blank?
   		@projects = Project.all
       @companies = User.all.where(company: true)

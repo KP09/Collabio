@@ -93,7 +93,7 @@ projects = [
   },
   {
     user_id: 3,
-    title: "Suggestions for improving our internal organisation",
+    title: "How can we improve our internal organisation",
     brief: "We are looking to learn from forward thinking young professionals to understand how we can make the working environment better for them and us.",
     end_date: (DateTime.now + 5),
     max_participations: 30,

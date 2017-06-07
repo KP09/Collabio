@@ -44,8 +44,7 @@ class User < ApplicationRecord
 
   # Gets the cover_photo for a user
   def get_cover_photo
-    if cover_photo # Need to add attachinary into the model so 'profile_picture' method is in place
-      # Waiting for James to merge.
+    if cover_photo
       return cover_photo.path
     else
       return 'http://unsplash.it/1200/?random'
