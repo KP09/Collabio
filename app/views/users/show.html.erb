@@ -5,7 +5,7 @@
     <!-- LEFT HAND COLUMN -->
     <!-- Left hand side of page is made up of 9 columns on desktop -->
     <!-- and full-screen on less -->
-    <div class="col-xs-12 col-lg-9">
+    <div class="col-xs-12 col-lg-9 left-column">
       <div class="row">
 
         <!-- Cover photo and profile picture -->
@@ -30,7 +30,9 @@
             <!-- Show a get in touch button unless the user is a company -->
             <!-- or unless they are the active user -->
             <% unless @user.company || @user == current_user %>
-              <%= mail_to @user.email, "Get in touch", class: "btn btn-default" %>
+              <% if current_user.company %>
+                <%= mail_to @user.email, "Get in touch", class: "btn btn-default" %>
+              <% end %>
             <% end %>
           </div>
         </div>
