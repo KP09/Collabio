@@ -4,6 +4,11 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   # [...]
   include Pundit
+  before_action :better_errors_hack, if: -> { Rails.env.development? }
+
+  def better_errors_hack
+    request.env['puma.config'].options.user_options.delete :app
+  end
 
   # Pundit: white-list approach.
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
