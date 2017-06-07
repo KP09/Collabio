@@ -1,8 +1,8 @@
 <%= simple_form_for(@project) do |f| %>
- <%= f.input :title %>
- <%= f.input :brief %>
- <%= f.input :category %>
- <%= f.input :end_date %>
- <%= f.input :max_participations %>
+ <%= f.input :title, maxlength: 40, placeholder: "40 characters maximum" %>
+ <%= f.input :brief, placeholder: "Tell us more about your project" %>
+ <%= f.input :category, placeholder: "Choose a category" %>
+ <%= f.input :end_date, placeholder: "When should project end?" %>
+ <%= f.input :max_participations, placeholder: "How many people can contribute?" %>
  <%= f.submit class: "btn btn-primary" %>
 <% end %>

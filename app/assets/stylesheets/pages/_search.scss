@@ -44,6 +44,15 @@
 .project-card {
 	color: black;
 	position: relative;
+	font-weight: lighter;
+	h2 {
+		font-size: 22px;
+		font-weight: lighter;
+	}
+	h3 {
+		font-size: 18px;
+		font-weight: lighter;
+	}
 	img {
 		position: absolute;
 		top: 75px;
@@ -53,6 +62,9 @@
 		height: 130px;
 		border-top-left-radius: 2px;
 		border-top-right-radius: 2px;
+		background-size: cover;
+		object-fit: cover;
+		background-position: center;
 		.card-category {
 			color: white;
 			position: absolute;
@@ -63,7 +75,8 @@
 	.titles {
 		background-color: white;
 		color: $charcoal;
-		padding: 80px 20px 20px 20px;
+		padding: 50px 20px 10px 20px;
+		height: 200px;
 		h2:last-child {
 			margin-bottom: 0;
 		}
@@ -71,13 +84,14 @@
 	.counters {
 		display: flex;
 		justify-content: space-between;
-		background-color: $medium-gray;
-		color: white;
-		padding: 10px 20px;
+		background-color: $charcoal;
+		color: $charcoal;
+		padding: 15px 10px;
 		border-bottom-left-radius: 2px;
 		border-bottom-right-radius: 2px;
 		p {
 			margin-bottom: 0;
+			font-size: 14px;
 		}
 	}
 }
@@ -85,9 +99,15 @@
 .wide-card {
 	display: flex;
 	justify-content: space-between;
-	background-color: $medium-gray;
-	color: white;
+	background-color: white;
+	color: $charcoal;
 	border-radius: 2px;
+	border-bottom-right-radius: 20px;
+	object-fit: cover;
+	h2 {
+		font-size: 24px;
+		font-weight: lighter;
+	}
 	.image {
 		background-size: cover;
 		margin: 0px 20px;
@@ -106,7 +126,7 @@
 		align-self: center;
 	}
 	p {
-		size: 14px;
+		size: 16px;
 		margin-bottom: 0px;
 	}
 }
