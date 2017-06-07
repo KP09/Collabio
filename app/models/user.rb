@@ -135,6 +135,12 @@ class User < ApplicationRecord
         return false
       end
     end
+
+    if company_frequencies.length >= 1
+      return company_frequencies.sort_by { |k,v| v }.reverse.first(3)
+    else
+      return false
+    end
   end
 
   private

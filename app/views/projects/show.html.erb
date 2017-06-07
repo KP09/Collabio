@@ -18,9 +18,6 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-xs-12 flex-box">
-
-          </div>
         </div>
         <div class="row">
           <div class="col-lg-9">
@@ -39,20 +36,10 @@
             <div class="shadow-box margin-top">
               <!-- If the project is still active show participants render -->
               <% if @project.days_left > 0 %>
-                <div class="box-title">
-                  <p>Participants:</p>
-                </div>
-                <div class="render">
-                  <%= render "participants", project: @project %>
-                </div>
+                  <%= render "projects/participants", project: @project %>
               <!-- If the project is no longer active show contributions render -->
               <% else %>
-                <div class="box-title">
-                  <p>Contributions:</p>
-                </div>
-                <div class="render">
-                  <%= render "contributers", project: @project %>
-                </div>
+                  <%= render "projects/contributers", project: @project %>
               <% end %>
             </div>
             <div class="similar margin-top">
@@ -60,50 +47,27 @@
                 <div class="row">
                   <% @similar_projects.each do |project| %>
                     <div class="col-md-4 padding-none">
-                      <%= render "card", project: @project %>
+                      <%= render "projects/card", project: @project %>
                     </div>
                   <% end %>
                 </div>
-              </div>
             </div>
+          </div>
           <div class="col-lg-3 margin-top">
-            <div class="flex-box">
-              <div class="counter">
-                <div class="counter-title">
-                    <p><i class="fa fa-calendar"></i> Days Left</p>
-                </div>
-                <div class="counter-nums">
-                  <p><%= @project.days_left %></p>
-                </div>
-              </div>
-              <div class="counter no-margin">
-                <div class="counter-title">
-                    <p><i class="fa fa-users" aria-hidden="true"></i> Spaces</p>
-                </div>
-                <div class="counter-nums">
-                  <p><%= @project.spaces_left %></p>
-                </div>
-                </div>
-            </div>
-          <% if @project.days_left > 0 && @current_user.participated_to?(@project) %>
-            <div class="contribution">
-              <div class="contributions-title">
-                <div>
-                  <h2>Contributions</h2>
-                </div>
-              </div>
-                <%= render "make-contribution", project: @project %>
-              </div>
-              <p class="margin-top" style="font-size: 15px;">Not enjoying this project? Got too much on to complete the task? Click leave project to open up your space!</p>
-              <%= link_to "Leave Project", project_participation_path(@project), class: "btn btn-default", method: :DELETE, style: "width:100%" %>
-            <% elsif @project.days_left > 0 && !@current_user.participated_to?(@project) %>
-              <p>Like the look of this project? Get started today by clicking join below!</p>
-              <%= link_to "Join Project", project_participations_path(@project), class: "btn btn-primary", method: :post, style: "width:100%" %>
-            <% elsif @project.days_left < 0 %>
-              <p>It looks like the project you are trying to join has closed. Search for similar projects by clicking below!</p>
-              <%= link_to "Search Similar Projects", search_path, class: "btn btn-primary", style: "width:100%" %>
+            <%= render "projects/counters", project: @project %>
+            <% if current_user.participated_to?(@project) %>
+            <%= link_to "Leave Project", project_participation_path(@project), class: "btn btn-default", method: :DELETE, style: "width:100%" %>
             <% end %>
+            <div class="margin-top">
+              <% if @project.days_left > 0 && @current_user.participated_to?(@project) %>
+                  <%= render "projects/make-contribution", project: @project %>
+              <% elsif @project.days_left > 0 && !@current_user.participated_to?(@project) %>
+                  <%= render "projects/join-project", project: @project %>
+              <% elsif @project.days_left < 0 %>
+                  <%= render "projects/project-closed", project: @project %>
+              <% end %>
               <br>
+            </div>
           </div>
         </div>
       </div>
