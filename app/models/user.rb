@@ -106,6 +106,78 @@ class User < ApplicationRecord
     end
   end
 
+  # Returns the total number of active projects created by a user (company)
+  # or returns false if there aren't any
+  def active_projects
+    active_projects = self.projects.select {|p| p.end_date > DateTime.now }
+    if active_projects.count >= 1
+      return active_projects
+    else
+      return false
+    end
+  end
+
+  # Returns the total number of closed projects created by a user (company)
+  # or returns false if there aren't any
+  def closed_projects
+    closed_projects = self.projects.select {|p| p.end_date <= DateTime.now }
+    if closed_projects.count >= 1
+      return closed_projects
+    else
+      return false
+    end
+  end
+
+  # Returns the total number of contributions received by a user (company)
+  # or returns false if there aren't any
+  def count_contributions_received
+    contributions_received = 0
+    self.projects.each do |p|
+      contributions_received += p.contributions.count
+    end
+    return contributions_received
+  end
+
+  # Returns all starred contributions received by a user (company)
+  def starred_contributions
+    # Create an empty array
+    starred_contributions = []
+    # For each project
+    self.projects.each do |project|
+    # Select the contributions that are starred
+      project_starred_contributions = project.contributions.select { |c| c.starred == true && c.project.end_date < DateTime.now }
+      # And push them into an array
+      project_starred_contributions.each do |contribution|
+        starred_contributions << contribution
+      end
+    end
+    return starred_contributions
+  end
+
+  # Returns a hash with the top_individuals of a company
+  # Where top individuals are defined by those with the most stars awarded by the company
+  def top_individuals
+    starred_contributions = self.starred_contributions
+    # Create an empty hash
+    frequencies = {}
+    # Using the array of all starred contributions, build a frequency hash
+    if starred_contributions.count >= 1
+      starred_contributions.each do |c|
+        owner = c.user
+        if frequencies[owner]
+          frequencies[owner] += 1
+        else
+          frequencies[owner] = 1
+        end
+      end
+      return frequencies.sort_by { |k,v| v }.reverse.first(3)
+    else
+      return false
+    end
+  end
+
+  # Returns the number of participations for a user
+  # where the projects is still open
   def count_participations
     self.participations.select { |p| p.project.end_date > DateTime.now }.count
   end
@@ -114,7 +186,7 @@ class User < ApplicationRecord
   # i.e. for which the end_date is greater than the current date
   def active_participations
     active_participations = self.participations.select { |p| p.project.end_date > DateTime.now }
-    if active_participations.length >= 1
+    if active_participations.count >= 1
       return active_participations
     else
       return false

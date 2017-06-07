@@ -36,6 +36,7 @@
 
         <!-- If the user is a company -->
         <% if @user.is_company? %>
+
         <% end %>
 
         <!-- If the user is a person -->
@@ -54,6 +55,8 @@
       <div class="row">
           <!-- If the user is a company -->
           <% if @user.is_company? %>
+            <%= render 'company_stats', user: @user %>
+            <%= render 'company_top_individuals', user: @user %>
           <% end %>
 
           <!-- If the user is a person -->
