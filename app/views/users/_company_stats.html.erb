@@ -1,0 +1,45 @@
+<div class="col-xs-12 col-sm-6 col-lg-12">
+  <div class="sidebar-content margin-top">
+    <h2><i class="fa fa-dashboard"></i> Company stats</h2>
+    <hr>
+    <!-- Open projects -->
+    <div class="stat">
+      <%= image_tag 'briefcase.svg', class: "profile-icon" %>
+      <% if user.active_projects %>
+        <span>
+          <strong><%= user.active_projects.count %></strong>
+          Open
+          <%= "project".pluralize(user.active_projects.count) %>
+        </span>
+      <% else %>
+        <span>No open projects</span>
+      <% end %>
+    </div>
+    <!-- Closed projects -->
+    <div class="stat">
+      <%= image_tag 'posted.svg', class: "profile-icon" %>
+      <% if user.closed_projects %>
+        <span>
+          <strong><%= user.closed_projects.count %></strong>
+          Closed
+          <%= "project".pluralize(user.closed_projects.count) %>
+        </span>
+      <% else %>
+        <span>No closed projects yet</span>
+      <% end %>
+    </div>
+    <!-- Contributions -->
+    <div class="stat">
+      <%= image_tag 'cloud.svg', class: "profile-icon" %>
+      <% if user.count_contributions_received >= 1 %>
+        <span>
+          <strong><%= user.count_contributions_received %></strong>
+          <%= "Contribution".pluralize(user.count_contributions_received) %>
+          received
+        </span>
+      <% else %>
+        <span>No contributions received yet</span>
+      <% end %>
+    </div>
+  </div>
+</div>
