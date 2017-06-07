@@ -24,7 +24,9 @@
               <p><i class="fa fa-map-marker"></i> <%= @user.location %></p>
             <% end %>
             <!-- Shows the user description -->
-            <p><%= @user.description %></p>
+            <div id="user-description">
+              <p><%= @user.description %></p>
+            </div>
             <!-- Show a get in touch button unless the user is a company -->
             <!-- or unless they are the active user -->
             <% unless @user.company || @user == current_user %>
@@ -37,6 +39,8 @@
         <!-- If the user is a company -->
         <% if @user.is_company? %>
           <%= render 'company_open_projects', user: @user %>
+          <%= render 'company_closed_projects', user: @user %>
+          <%= render 'company_contributions', user: @user %>
         <% end %>
 
         <!-- If the user is a person -->

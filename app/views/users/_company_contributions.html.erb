@@ -1,0 +1,21 @@
+<div class="col-xs-12 margin-top">
+  <h2>Recent and popular contributions to <%= user.full_name %></h2>
+  <hr>
+  <!-- Starred contributions first -->
+  <% if user.starred_contributions %>
+    <% user.starred_contributions.each do |contribution| %>
+      <%= render 'company_contribution_card', contribution: contribution %>
+    <% end %>
+  <% end %>
+  <!-- Non-starred contributions second -->
+  <% if user.non_starred_contributions %>
+    <% user.non_starred_contributions.each do |contribution| %>
+      <%= render 'company_contribution_card', contribution: contribution %>
+    <% end %>
+  <% end %>
+</div>
+
+
+
+
+
