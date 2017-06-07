@@ -28,6 +28,9 @@
               <div class="box-title">
                 <p>Brief:</p>
               </div>
+              <div class="view-count">
+                <p><i class="fa fa-eye"></i> <%= @project.impressionist_count(:filter=>:ip_address) %> times</p>
+              </div>
               <div class="brief-content">
                 <p><%= @project.brief %></p>
               </div>
@@ -103,6 +106,12 @@
               <br>
           </div>
         </div>
+      </div>
+      <div class="col-lg-3 margin-top">
+        <h2>Join Project</h2>
+        <p>Like the look of this project? Get started today by clicking join below!</p>
+        <%= link_to "Join Project", project_participations_path(@project), class: "btn btn-primary", method: :post, style: "width:100%" %>
+        <br>
       </div>
     </div>
   </div>
