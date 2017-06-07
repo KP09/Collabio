@@ -36,7 +36,7 @@
 
         <!-- If the user is a company -->
         <% if @user.is_company? %>
-
+          <%= render 'company_open_projects', user: @user %>
         <% end %>
 
         <!-- If the user is a person -->
@@ -57,11 +57,13 @@
           <% if @user.is_company? %>
             <%= render 'company_stats', user: @user %>
             <%= render 'company_top_individuals', user: @user %>
+            <%= render 'company_most_frequent_contributors', user: @user %>
           <% end %>
 
           <!-- If the user is a person -->
           <% if @user.is_individual? %>
             <%= render 'individual_stats', user: @user %>
+            <%= render 'individual_companies_rank', user: @user %>
             <%= render 'individual_fav_companies', user: @user %>
           <% end %>
       </div>
