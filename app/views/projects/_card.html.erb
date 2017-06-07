@@ -1,11 +1,9 @@
 <%= link_to(project) do %>
   <div class="card_border">
-    <div class="cover-image">
-      <p>Cover image will be background of the div here</p>
+    <div class="cover-image" style="background-image: url('<%= cl_image_path (project.user.get_cover_photo) %>')">
     </div>
     <div class="card">
-      <div class="creator-avitar">
-          <p>User Image</p>
+      <div class="creator-avatar avatar-medium" style="background-image: url('<%= cl_image_path (project.user.get_profile_picture) %>')">
       </div>
 
       <div class="search-icon">
