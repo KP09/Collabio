@@ -53,6 +53,16 @@
   }
 }
 
+.left-column {
+  hr {
+    margin-bottom: 0;
+  }
+}
+
+.spacing-top {
+  margin-top: 15px;
+}
+
 #above-card-hr {
   margin-bottom: 7pxc !important;
 }
@@ -81,11 +91,9 @@
       border-top: 1px solid $light-gray;
     }
   }
-
   h4 {
     font-weight: normal;
   }
-
 }
 
 .card-inline-date {

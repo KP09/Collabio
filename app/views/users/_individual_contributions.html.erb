@@ -4,7 +4,7 @@
     <hr>
     <!-- Contribution card -->
     <% user.closed_contributions.each do |contribution| %>
-    <div class="shadow-box">
+    <div class="shadow-box spacing-top">
       <div class="card-inline">
         <div class="row">
           <div class="col-xs-12 col-lg-1 dynamic-align-left flex-box contribution-avatar">
@@ -34,7 +34,12 @@
         <!-- Horizontal line -->
         <hr>
         <div class="row">
-          <div class="col-xs-12 col-lg-9 col-lg-offset-1">
+          <div class="col-lg-1 flex-around">
+            <% if contribution.starred %>
+              <%= image_tag 'star.svg', class: "profile-icon" %>
+            <% end %>
+          </div>
+          <div class="col-xs-12 col-lg-9">
             <p><%= contribution.comment %></p>
           </div>
           <div class="col-xs-12 col-lg-2 text-center">
