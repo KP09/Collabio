@@ -28,9 +28,7 @@
             <!-- Show a get in touch button unless the user is a company -->
             <!-- or unless they are the active user -->
             <% unless @user.company || @user == current_user %>
-              <div class="btn btn-default">
-                Get in touch
-              </div>
+              <%= mail_to @user.email, "Get in touch", class: "btn btn-default" %>
             <% end %>
           </div>
         </div>
