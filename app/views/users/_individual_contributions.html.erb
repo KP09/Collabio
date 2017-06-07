@@ -7,7 +7,7 @@
         <div class="card-inline margin-top">
           <div class="row">
             <div class="col-xs-12 col-lg-1 dynamic-align-left flex-box contribution-avatar">
-            <%= link_to user_path(contribution.project.user) do %>
+            <%= link_to user_path(contribution.project.user), style: "margin: 0 auto" do %>
               <div class="avatar-small" style="background-image: url('<%= cl_image_path (contribution.project.user.get_profile_picture) %>')">
               </div>
             <% end %>
