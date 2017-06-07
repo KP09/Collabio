@@ -5,38 +5,6 @@ Participation.destroy_all
 Project.destroy_all
 User.destroy_all
 
-# Individuals
-users = [
-  {
-    first_name: "Kees",
-    last_name: "Postma",
-    email: "kk.postma@gmail.com",
-    password: "123456",
-    location: "London, UK",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum esse odit autem hic consectetur laboriosam, optio, dignissimos, perspiciatis labore amet eius saepe cum tempora, placeat quae quisquam fugit itaque eveniet."
-  },
-  {
-    first_name: "James",
-    last_name: "Block",
-    email: "james@hewines.com",
-    password: "123456",
-    location: "London, UK",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum esse odit autem hic consectetur laboriosam, optio, dignissimos, perspiciatis labore amet eius saepe cum tempora, placeat quae quisquam fugit itaque eveniet."
-  },
-  {
-    first_name: "Rami",
-    last_name: "Bakri",
-    email: "rbakri1@gmail.com",
-    password: "123456",
-    location: "London, UK",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum esse odit autem hic consectetur laboriosam, optio, dignissimos, perspiciatis labore amet eius saepe cum tempora, placeat quae quisquam fugit itaque eveniet."
-  }
-]
-
-users.each do |e|
-  User.create!(first_name: e[:first_name], last_name: e[:last_name], email: e[:email], password: e[:password], location: e[:location], description: e[:description])
-end
-
 # Companies
 companies = [
   {
@@ -66,5 +34,52 @@ companies = [
 ]
 
 companies.each do |e|
-  User.create!(company_name: e[:company_name], company: e[:company], email: e[:email], password: e[:password], location: e[:location], description: e[:description])
+  company = User.create!(company_name: e[:company_name], company: e[:company], email: e[:email], password: e[:password], location: e[:location], description: e[:description])
+  3.times do
+    Project.create!(user: company, title: "#{company.company_name} Project Title", brief: "Seed Project brief", end_date: (DateTime.now + 14), max_participations: 100, category: "Marketing")
+  end
+end
+
+# Individuals
+users = [
+  {
+    first_name: "Kees",
+    last_name: "Postma",
+    email: "kk.postma@gmail.com",
+    password: "123456",
+    location: "London, UK",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum esse odit autem hic consectetur laboriosam, optio, dignissimos, perspiciatis labore amet eius saepe cum tempora, placeat quae quisquam fugit itaque eveniet."
+  },
+  {
+    first_name: "James",
+    last_name: "Block",
+    email: "james@hewines.com",
+    password: "123456",
+    location: "London, UK",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum esse odit autem hic consectetur laboriosam, optio, dignissimos, perspiciatis labore amet eius saepe cum tempora, placeat quae quisquam fugit itaque eveniet."
+  },
+  {
+    first_name: "Rami",
+    last_name: "Bakri",
+    email: "rbakri1@gmail.com",
+    password: "123456",
+    location: "London, UK",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum esse odit autem hic consectetur laboriosam, optio, dignissimos, perspiciatis labore amet eius saepe cum tempora, placeat quae quisquam fugit itaque eveniet."
+  }
+]
+
+users.each do |e|
+  individual = User.create!(first_name: e[:first_name], last_name: e[:last_name], email: e[:email], password: e[:password], location: e[:location], description: e[:description])
+  Project.all.each do |project|
+    Participation.create!(user: individual, project: project)
+    Contribution.create!(user: individual, project: project, starred: true, comment: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem voluptatum, asperiores animi quis quisquam corporis excepturi doloremque quia vitae! Est perspiciatis repellat aut quis veritatis explicabo eligendi, at iusto dolore.")
+  end
+end
+
+User.all.each do |user|
+  if user.is_individual?
+    Contribution.all.each do |c|
+      Upvote.create!(user: user, contribution: c)
+    end
+  end
 end
