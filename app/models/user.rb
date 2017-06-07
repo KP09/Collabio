@@ -52,12 +52,12 @@ class User < ApplicationRecord
 
   # Returns the number of closed contributions
   def count_contributions
-    self.contributions.select{ |c| c.end_date < DateTime.now }.count
+    self.contributions.select{ |c| c.project.end_date < DateTime.now }.count
   end
 
   # Returns the number of starred and closed contributions
   def count_starred_contributions
-    self.contributions.select{ |c| c.end_date < DateTime.now && c.starred == true }.count
+    self.contributions.select{ |c| c.project.end_date < DateTime.now && c.starred == true }.count
   end
 
   # Returns the total number of upvotes a user has on all their contributions
@@ -86,7 +86,7 @@ class User < ApplicationRecord
 
   # Returns the contributions of a user for which the deadline has expired
   def closed_contributions
-    closed_contributions = self.contributions.select{ |c| c.end_date < DateTime.now }
+    closed_contributions = self.contributions.select{ |c| c.project.end_date < DateTime.now }
     if closed_contributions.length >= 1
       return closed_contributions
     else
