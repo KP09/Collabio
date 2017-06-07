@@ -109,8 +109,9 @@ class User < ApplicationRecord
       return company_frequencies.sort_by { |k,v| v }.reverse.first(3)
     else
       return false
+    end
   end
-  
+
   def get_picture
     if profile_picture?
       return profile_picture.path

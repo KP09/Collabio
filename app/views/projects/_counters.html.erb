@@ -1,0 +1,29 @@
+<div class="stat flex-box">
+  <div class="stat-image">
+    <%= image_tag 'connection.svg', class: "profile-icon" %>
+  </div>
+  <div class="stat-title">
+    <p><%= project.spaces_left %> Spaces Left</p>
+  </div>
+</div>
+
+<div class="stat flex-box">
+  <div class="stat-image">
+    <%= image_tag 'calendar.svg', class: "profile-icon" %>
+  </div>
+  <div class="stat-title">
+    <p><%= project.days_left %>
+    <%= "Day".pluralize(project.days_left) %> Left</p>
+  </div>
+</div>
+
+<div class="stat flex-box">
+    <div class="stat-image">
+    <%= image_tag 'contribution.svg', class: "profile-icon" %>
+    </div>
+    <div class="stat-title">
+      <p><%= project.contributions.count %>
+      <%= "Contributions".pluralize(project.contributions.count) %> made
+      </p>
+    </div>
+</div>

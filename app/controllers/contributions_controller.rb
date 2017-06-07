@@ -1,13 +1,14 @@
 class ContributionsController < ApplicationController
   def create
   	@project = Project.find(params[:project_id])
-  	@contribution = Contribution.new
+  	@contribution = Contribution.new(contribution_params)
   	authorize @contribution
   	@contribution.project = @project
   	if @contribution.save
   	  redirect_to project_path(@contribution)
   	else
-  	  render 'contributions/edit'
+      @similar_projects = Project.all.sample(3)
+  	  render 'projects/show'
   	end
   end
 
@@ -30,4 +31,12 @@ class ContributionsController < ApplicationController
   	@contribution.delete
     redirect_to project_path(@project)
   end
+
+  private
+
+  def contribution_params
+    params.require(:contribution).permit(:comment, :file)
+  end
+
 end
+

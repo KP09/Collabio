@@ -13,7 +13,7 @@ class ParticipationsController < ApplicationController
   end
 
   def destroy
-  	@project = Project.find(params[:id])
+  	@project = Project.find(params[:project_id])
     @current_user = current_user
   	@participation = Participation.where(user_id: @current_user.id, project_id: @project.id).first
     @participation.destroy

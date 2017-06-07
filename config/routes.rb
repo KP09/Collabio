@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   resources :projects, except: [:index] do
 
     # Participations
-    resources :participations, only: [:create, :destroy]
+    resources :participations, only: [:create]
+    delete 'participations' => 'participations#destroy', as: 'participation'
 
     # Contributions
     resources :contributions, only: [:create, :update, :destroy]
