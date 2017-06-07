@@ -6,6 +6,6 @@ class Contribution < ApplicationRecord
 
   # Validations
   validates :comment, presence: true
-  validates :file, presence: true
+# validates :file, presence: true
   validates :project_id, uniqueness: { scope: :user_id }
 end

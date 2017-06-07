@@ -5,7 +5,6 @@ Participation.destroy_all
 Project.destroy_all
 User.destroy_all
 
-
 # Companies
 companies = [
   {
@@ -67,7 +66,11 @@ users = [
 ]
 
 users.each do |e|
-  User.create!(first_name: e[:first_name], last_name: e[:last_name], email: e[:email], password: e[:password], location: e[:location], description: e[:description])
+  individual = User.create!(first_name: e[:first_name], last_name: e[:last_name], email: e[:email], password: e[:password], location: e[:location], description: e[:description])
+  Project.all.each do |project|
+    Participation.create!(user: individual, project: project)
+    Contribution.create!(user: individual, project: project, starred: true, comment: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem voluptatum, asperiores animi quis quisquam corporis excepturi doloremque quia vitae! Est perspiciatis repellat aut quis veritatis explicabo eligendi, at iusto dolore.")
+  end
 end
 
 # Projects
@@ -100,5 +103,12 @@ projects = [
 
 projects.each do |e|
   Project.create!(user_id: e[:user_id], title: e[:title], brief: e[:brief], end_date: e[:end_date], max_participations: e[:max_participations], category: e[:category])
+
+User.all.each do |user|
+  if user.is_individual?
+    Contribution.all.each do |c|
+      Upvote.create!(user: user, contribution: c)
+    end
+  end
 end
 
