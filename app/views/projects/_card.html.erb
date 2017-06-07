@@ -40,7 +40,7 @@
         <div class="right_color_divide">
           <div class="pill">
             <% joins_remaining = (project.max_participations) - (project.participations.count) %>
-            <p><%= joins_remaining %></p>
+            <p><%= joins_remaining %> <%= "space".pluralize(joins_remaining) %> left</p>
           </div>
           <div class="pill">
             <p><%= project.category %></p>
