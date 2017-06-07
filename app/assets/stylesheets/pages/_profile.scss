@@ -30,11 +30,15 @@
   }
   h4 {
     font-size: $base-size;
-    margin: 5px 0 0 0;
+    margin: 3px 0 3px 0;
     font-weight: normal;
   }
   hr {
     border-top: 1px solid $medium-gray;
+    margin-top: 5px;
+  }
+  a {
+    color: $gray-base;
   }
 }
 
@@ -57,6 +61,7 @@
   h4 {
     font-weight: normal;
   }
+
 }
 
 .card-inline-date {
@@ -87,7 +92,32 @@
   }
 }
 
+.fav-company-link {
+
+
+}
+
+.fav-company {
+  margin: 0 0 20px 0;
+  padding: 5px;
+  border-radius: 5px;
+  &:hover {
+    background-color: white;
+    -webkit-transition: 0.2s ease;
+  }
+}
+
 .profile-icon {
   height: 35px;
   width: 50px;
+}
+
+.contribution-avatar {
+  padding-right: 0;
+}
+
+.text-link {
+  &:hover {
+    text-decoration: underline;
+  }
 }

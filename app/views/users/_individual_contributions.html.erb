@@ -6,20 +6,27 @@
       <% user.closed_contributions.each do |contribution| %>
         <div class="card-inline margin-top">
           <div class="row">
-            <div class="col-xs-12 col-lg-1 dynamic-align-left flex-box">
-              <%= image_tag ('http://placehold.it/50'), class: "avatar-small" %>
+            <div class="col-xs-12 col-lg-1 dynamic-align-left flex-box contribution-avatar">
+            <%= link_to user_path(contribution.project.user) do %>
+              <div class="avatar-small" style="background-image: url('<%= cl_image_path (contribution.project.user.get_profile_picture) %>')">
+              </div>
+            <% end %>
             </div>
             <div class="col-xs-12 col-lg-8">
               <div class="card-header dynamic-align-left flex-box">
                 <div>
-                  <h3><%= contribution.project.title %></h3>
-                  <h4><%= contribution.project.user.full_name %></h4>
+                  <%= link_to project_path(contribution.project) do %>
+                    <h3 class="text-link"><%= contribution.project.title %></h3>
+                  <% end %>
+                  <%= link_to user_path(contribution.project.user) do %>
+                    <h4 class="text-link"><%= contribution.project.user.full_name %></h4>
+                  <% end %>
                 </div>
               </div>
             </div>
             <div class="col-xs-12 col-lg-3">
               <div class="card-inline-date flex-box dynamic-align-right">
-                <p class=""><%= contribution.updated_at %></p>
+                <p class=""><%= contribution.updated_at.strftime('%B %Y') %></p>
               </div>
             </div>
           </div>

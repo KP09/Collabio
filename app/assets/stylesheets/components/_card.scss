@@ -7,7 +7,7 @@
 .card_border:hover {
   opacity: 0.8;
   box-shadow: 0px 0px 8px 9px rgba(128,128,128,0.08);
-  -webkit-transition: opacity 0.6s ease;
+  -webkit-transition: opacity 0.2s ease;
 }
 
 .search-icon {
@@ -41,8 +41,7 @@
   }
 }
 
-
-.creator-avitar {
+.creator-avatar {
   position: absolute;
   top: -35px;
 }

@@ -10,11 +10,11 @@
 
         <!-- Cover photo and profile picture -->
         <div class="col-xs-12">
-          <div class="margin-top flex-around" id="profile-banner" style="background-image: url('http://unsplash.it/1200/?random')">
+          <div class="margin-top flex-around" id="profile-banner" style="background-image: url('<%= cl_image_path (@user.get_cover_photo) %>')">
           </div>
           <div class="shadow-box text-center">
             <div id="avatar-container">
-              <div class="avatar-xl" id="profile-avatar" style="background-image: url('http://unsplash.it/600/?random')">
+              <div class="avatar-xl" id="profile-avatar" style="background-image: url('<%= cl_image_path (@user.get_profile_picture) %>')">
               </div>
             </div>
             <!-- User information -->
@@ -28,9 +28,7 @@
             <!-- Show a get in touch button unless the user is a company -->
             <!-- or unless they are the active user -->
             <% unless @user.company || @user == current_user %>
-              <div class="btn btn-default">
-                Get in touch
-              </div>
+              <%= mail_to @user.email, "Get in touch", class: "btn btn-default" %>
             <% end %>
           </div>
         </div>

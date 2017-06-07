@@ -3,15 +3,17 @@
     <h2><i class="fa fa-font-awesome"></i> Favorite companies</h2>
     <hr>
     <% if user.favorite_companies %>
-      <% user.favorite_companies.each do |key, value| %>
-        <div class="flex-box company">
-          <div class="avatar-small" style="background-image: url('https://static.pexels.com/photos/149541/pexels-photo-149541.jpeg')">
+      <% user.favorite_companies.each do |owner, frequency| %>
+        <%= link_to user_path(owner), class: "fav-company-link" do %>
+          <div class="flex-box fav-company">
+            <div class="avatar-small" style="background-image: url('<%= cl_image_path (owner.get_profile_picture) %>')">
+            </div>
+            <div>
+              <h4><strong><%= owner.full_name %></strong></h4>
+              <h4><%= frequency %> <%= "contribution".pluralize(frequency) %></h4>
+            </div>
           </div>
-          <div>
-            <h4><%= key %></h4>
-            <p>(<%= value %> contributions)</p>
-          </div>
-        </div>
+        <% end %>
       <% end %>
     <% else %>
       <h4>No contributions yet</h4>
