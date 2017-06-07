@@ -32,7 +32,7 @@ class User < ApplicationRecord
   end
 
   def get_profile_picture
-    if profile_picture?
+    if profile_picture
       return profile_picture.path
     elsif linkedin_picture_url
       return linkedin_picture_url
@@ -41,8 +41,8 @@ class User < ApplicationRecord
     end
   end
 
-  def get_cover_picture
-    if cover_photo? # Need to add attachinary into the model so 'profile_picture' method is in place
+  def get_cover_photo
+    if cover_photo # Need to add attachinary into the model so 'profile_picture' method is in place
       # Waiting for James to merge.
       return cover_photo.path
     else
@@ -127,14 +127,6 @@ class User < ApplicationRecord
       return company_frequencies.sort_by { |k,v| v }.reverse.first(3)
     else
       return false
-    end
-  end
-
-  def get_picture
-    if profile_picture?
-      return profile_picture.path
-    else
-      return 'sample'
     end
   end
 
