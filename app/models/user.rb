@@ -17,6 +17,10 @@ class User < ApplicationRecord
   validate :name_validation
   validates :description, presence: true, on: [:update]
 
+  # Attachinary associations
+  has_attachment :profile_picture
+  has_attachment :cover_photo
+
    # Finds specific participation instance if there is one for that user on that project.
   def participation(project)
     participations.find_by(project: project)
@@ -105,6 +109,13 @@ class User < ApplicationRecord
       return company_frequencies.sort_by { |k,v| v }.reverse.first(3)
     else
       return false
+  end
+  
+  def get_picture
+    if profile_picture?
+      return profile_picture.path
+    else
+      return 'sample'
     end
   end
 
@@ -124,4 +135,5 @@ class User < ApplicationRecord
       end
     end
   end
+
 end

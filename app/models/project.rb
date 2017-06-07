@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
+  is_impressionable
   # Associations
   belongs_to :user
   has_many :participations, dependent: :destroy

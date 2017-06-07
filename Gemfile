@@ -18,6 +18,11 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'impressionist'
+gem 'cloudinary'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
+gem 'coffee-rails'
+
 
 group :development, :test do
   gem 'binding_of_caller'

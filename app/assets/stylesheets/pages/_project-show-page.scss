@@ -81,7 +81,7 @@
 }
 
 .counter-title {
-    background: $brand-color;
+    background: $charcoal;
     width: 100%;
     border-radius: 5px 5px 0px 0px;
     p {
@@ -115,4 +115,10 @@
     margin: 0px;
     font-weight: 100;
   }
+}
+
+.view-count {
+  position: absolute;
+  right:10px;
+  top: 10px;
 }
