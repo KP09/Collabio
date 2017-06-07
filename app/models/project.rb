@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
+  is_impressionable
   # Associations
   belongs_to :user
   has_many :participations, dependent: :destroy
@@ -14,6 +15,11 @@ class Project < ApplicationRecord
 
   def days_left
     days_left = (self.end_date.to_date - DateTime.now.to_date).to_i
+  end
+
+
+  def spaces_left
+    space_left = (self.max_participations - self.participations.count).to_i
   end
 
   private

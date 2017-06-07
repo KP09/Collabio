@@ -1,13 +1,44 @@
-<div class="profile-page">
+<div class="page-wrapper">
+  <!-- Container for the whole page -->
   <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="profile-banner" style="background-image: url('https://static.pexels.com/photos/149541/pexels-photo-149541.jpeg')">
+    <!-- Left 9 columns for the whole page -->
+    <div class="col-xs-12 col-lg-9">
+      <!-- Row that takes all content for the left-hand side -->
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="margin-top flex-around" id="profile-banner" style="background-image: url('https://static.pexels.com/photos/149541/pexels-photo-149541.jpeg')">
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <div class="shadow-box text-center">
+            <div id="avatar-container">
+              <div class="avatar-xl" id="profile-avatar" style="background-image: url('http://unsplash.it/50')">
+              </div>
+            </div>
+            <h1>Kees Postma</h1>
+            <p>London, UK</p>
+            <p>Student @ Le Wagon</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Right 3 columns for the whole page -->
+    <div class="col-xs-12 col-lg-3">
+      <!-- Row that takes all content for the right hand side -->
+      <div class="row">
+        <div class="col-xs-12 margin-top text-center">
+          <div class="stats">
+            <p><strong>8</strong> Contributions</p>
+            <p><strong>3</strong> Stars</p>
+            <p><strong>27</strong> Upvotes</p>
+            <p><strong>2</strong> Active projects</p>
+          </div>
         </div>
       </div>
     </div>
 
-    <%= render 'company' %>
+    <!-- if its a person -->
+    <%= render 'person'%>
+    <!-- if its a company -->
   </div>
 </div>
-
