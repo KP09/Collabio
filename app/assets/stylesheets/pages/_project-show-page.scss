@@ -127,3 +127,20 @@
 .stat-image {
   margin-right: 10px;
 }
+
+.shift-contributor-left {
+  margin-right: -20px;
+}
+
+.popover {
+  width: 220px;
+  color: $dark-gray;
+  border-radius: 0px;
+  box-shadow: $box-shadow;
+  text-align: center;
+}
+
+.form-control {
+  background: transparent;
+  resize: none;
+}

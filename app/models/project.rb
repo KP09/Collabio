@@ -11,7 +11,7 @@ class Project < ApplicationRecord
   validates :end_date, presence: true
   validates :max_participations, presence: true
   validates :category, presence: true
-  validate :time_valid
+  # validate :time_valid
 
   def days_left
     days_left = (self.end_date.to_date - DateTime.now.to_date).to_i

@@ -7,8 +7,10 @@
             <div class="left-project-info">
               <div class="flex-box">
                 <div class="company-logo">
-                  <a href="#" data-toggle="popover" data-placement="bottom" title="<%= @project.user.company_name %>" data-content="<%= @project.user.description[0..100] %>">
-                    <%= image_tag ('company.png'), class: 'avatar-large' %>
+                  <%= link_to(user_path(@project.user)) do %>
+                    <div class="avatar-xl" style="background-image: url('<%= cl_image_path @project.user.get_profile_picture %>')">
+                    </div>
+                  <% end %>
                   </a>
                 </div>
                 <div class="company-name-title">
@@ -25,28 +27,22 @@
               <div class="box-title">
                 <p>Brief:</p>
               </div>
-              <div class="view-count">
-                <p><i class="fa fa-eye"></i> <%= @project.impressionist_count(:filter=>:ip_address) %> times</p>
-              </div>
               <div class="brief-content">
                 <p><%= @project.brief %></p>
               </div>
             </div>
-            <!-- logic for different project status -->
-            <div class="shadow-box margin-top">
-              <!-- If the project is still active show participants render -->
-              <% if @project.days_left > 0 %>
-                  <%= render "projects/participants", project: @project %>
-              <!-- If the project is no longer active show contributions render -->
-              <% else %>
-                  <%= render "projects/contributers", project: @project %>
-              <% end %>
-            </div>
+            <!-- If the project is still active show participants render -->
+            <% if @project.days_left > 0 %>
+                <%= render "projects/participants", project: @project %>
+            <!-- If the project is no longer active show contributions render -->
+            <% else %>
+                <%= render "projects/contributers", project: @project %>
+            <% end %>
             <div class="similar margin-top">
               <p>Similar Projects</p>
                 <div class="row">
                   <% @similar_projects.each do |project| %>
-                    <div class="col-md-4 padding-none">
+                    <div class="col-md-6 padding-none">
                       <%= render "projects/card", project: @project %>
                     </div>
                   <% end %>
@@ -54,9 +50,11 @@
             </div>
           </div>
           <div class="col-lg-3 margin-top">
-            <%= render "projects/counters", project: @project %>
             <% if current_user.participated_to?(@project) %>
-            <%= link_to "Leave Project", project_participation_path(@project), class: "btn btn-default", method: :DELETE, style: "width:100%" %>
+              <%= render "projects/counters", project: @project %>
+              <%= link_to "Leave Project", project_participation_path(@project), class: "btn btn-default", method: :DELETE, style: "width:100%" %>
+            <% else %>
+              <%= render "projects/counters", project: @project %>
             <% end %>
             <div class="margin-top">
               <% if @project.days_left > 0 && @current_user.participated_to?(@project) %>

@@ -1,15 +1,20 @@
-<div class="box-title">
-  <p>Participants:</p>
-</div>
-<div class="render">
-<% if project.participations.length > 0 then %>
-  <% project.participations.each do %>
-    <div class="col-lg-2">
-      <%= image_tag ('logo.png'), class: 'avatar-medium' %>
-    </div>
-  <% end %>
-<% else %>
-  <p>There are no participants right now!</p>
-<% end %>
-</div>
+<div class="shadow-box margin-top">
+  <div class="box-title">
+    <p>Participants:</p>
+  </div>
+  <div class="render">
+  <% if project.participations.length > 0 then %>
+    <% project.participations.each do |participant| %>
+      <%= link_to (user_path(participant.user)) do %>
+        <div class="col-lg-1 shift-contributor-left">
+            <div class="avatar-medium" style="border: solid white 3px; background-image: url('<%= cl_image_path participant.user.get_profile_picture %>')" data-toggle="popover", data-title="<%= participant.user.full_name %>", placement: "bottom" , data-content="<%=@project.user.description[0..100]%>">
+            </div>
+          </div>
+        <% end %>
 
+    <% end %>
+  <% else %>
+    <p>There are no participants right now!</p>
+  <% end %>
+  </div>
+</div>

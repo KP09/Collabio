@@ -27,3 +27,13 @@
       </p>
     </div>
 </div>
+
+<div class="stat flex-box">
+  <div class="stat-image">
+    <%= image_tag 'view.svg', class: "profile-icon" %>
+  </div>
+  <div class="stat-title">
+    <p><%= project.impressionist_count(filter: :ip_address) %>
+    <%= "View".pluralize(project.impressionist_count(filter: :ip_address)) %></p>
+  </div>
+</div>
