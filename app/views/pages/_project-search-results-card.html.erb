@@ -1,0 +1,21 @@
+<!-- Responsive project results card -->
+<%= link_to project_path(project) do %>
+	<div class="col-xs-12 col-md-6">
+		<div class="project-card margin-top">
+			<div class="image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= project.user.get_cover_picture %>')">
+				<p class="card-category"> <%= project.category %> </p>
+			</div>
+			<%= cl_image_tag project.user.get_profile_picture, class: "avatar-xl" %>
+			<div class="titles">
+				<div class="description text-center">
+					<h2> <%= project.title %></h2>
+					<h2> <%= project.user.company_name %></h2>
+				</div>
+			</div>
+			<div class="counters">
+				<p> <%= project.spaces_left %> spaces left </p>
+				<p><%= project.days_left %> days remaining</p>
+			</div>
+		</div>
+	</div>
+<% end %>

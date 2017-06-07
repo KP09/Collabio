@@ -5,8 +5,15 @@ class PagesController < ApplicationController
   end
 
   def search
-  	@projects = Project.all
-  	@companies = User.where(company: true)
-  	@people = User.where (company: false)
+    if params[:term].blank?
+  		@projects = Project.all
+      @companies = User.all.where(company: true)
+  		@people = User.where(company: false)
+    else
+      @projects = Project.where("title iLIKE :term OR category iLIKE :term", term: "%#{params[:term]}%")
+      @companies = User.where(company: true).where("company_name iLIKE :term", term: "%#{params[:term]}%")
+      @people = User.where(company: false).where("first_name iLIKE :term OR last_name iLIKE :term", term: "%#{params[:term]}%")
+    end
   end
+
 end

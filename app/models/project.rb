@@ -22,6 +22,10 @@ class Project < ApplicationRecord
     space_left = (self.max_participations - self.participations.count).to_i
   end
 
+  def project_open?
+    days_left > 0   
+  end
+
   private
 
   def time_valid

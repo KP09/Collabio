@@ -11,126 +11,32 @@
 				</ul>
 			</div>
 		</div>
-		<!-- Project Tabs -->
+
+		<!-- Project Tab -->
 		<div class="tab-content">
 			<div id="projects" class="tab-pane fade in active">
 				<div class="row">
-					<div class="col-xs-12 col-md-6">
-						<div class="project-card margin-top">
-							<div class="image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://unsplash.it/200/200/?random');">
-								<p class="card-category">Category</p>
-							</div>
-							<%= image_tag "http://unsplash.it/200/200/?random", class: "avatar-xl" %>
-							<div class="titles">
-								<div class="description text-center">
-									<h2>Project title</h2>
-									<h2>Company name</h2>
-								</div>
-							</div>
-							<div class="counters">
-								<p>Spaces: </p>
-								<p>Days remaining:</p>
-							</div>
-						</div>
-					</div>
+				<% 	@projects.each do |project| %>
+					<%= render 'pages/project-search-results-card', project: project %>
+				<% end %>
+				</div>
+			</div>
 
-					<div class="col-xs-12 col-md-6">
-						<div class="project-card margin-top">
-							<div class="image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://unsplash.it/200/200/?random');">
-								<p class="card-category">Category</p>
-							</div>
-							<%= image_tag "http://unsplash.it/200/200/?random", class: "avatar-large" %>
-							<div class="titles">
-								<div class="description text-center">
-									<h2>Project title</h2>
-									<h2>Company name</h2>
-								</div>
-							</div>
-							<div class="counters">
-								<p>Spaces: </p>
-								<p>Days remaining:</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-xs-12 col-md-6">
-						<div class="project-card margin-top">
-							<div class="image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://unsplash.it/200/200/?random');">
-								<p class="card-category">Category</p>
-							</div>
-							<%= image_tag "http://unsplash.it/200/200/?random", class: "avatar-large" %>
-							<div class="titles">
-								<div class="description text-center">
-									<h2>Project title</h2>
-									<h2>Company name</h2>
-								</div>
-							</div>
-							<div class="counters">
-								<p>Spaces: </p>
-								<p>Days remaining:</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-xs-12 col-md-6">
-						<div class="project-card margin-top">
-							<div class="image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://unsplash.it/200/200/?random');">
-								<p class="card-category">Category</p>
-							</div>
-							<%= image_tag "http://unsplash.it/200/200/?random", class: "avatar-large" %>
-							<div class="titles">
-								<div class="description text-center">
-									<h2>Project title</h2>
-									<h2>Company name</h2>
-								</div>
-							</div>
-							<div class="counters">
-								<p>Spaces: </p>
-								<p>Days remaining:</p>
-							</div>
-						</div>
-					</div>
-
-
-				</div>	
-			</div>			
 			<!-- Company Tabs -->
 			<div id="companies" class="tab-pane fade">
 				<div class="row">
-					<div class="col-xs-12 col-md-10 col-md-offset-1">
-						<div class="wide-card shadow-box margin-top">
-							<div class="image">
-								<%= image_tag "http://unsplash.it/200/200/?random", class: "avatar-large" %>
-							</div>
-							<div class="company-info">
-								<p>Company name</p>
-								<p>Location</p>
-							</div>
-							<div class="project-metadata">
-								<p>7 projects open</p>
-							</div>
-						</div> 
-					</div>
+					<% @companies.each do |user| %>
+						<%= render 'company_search_results', user: user %>
+					<% end %>
 				</div>
 			</div>		
 
 			<!-- Profile Tabs -->
 			<div id="people" class="tab-pane fade">	
 				<div class="row" id="profiles" class="tab-pane fade in">
-					<div class="col-xs-12 col-md-10 col-md-offset-1">
-						<div class="wide-card shadow-box margin-top">
-							<div class="image">
-								<%= image_tag "http://unsplash.it/200/200/?random", class: "avatar-large" %>
-							</div>
-							<div class="company-info">
-								<p>Company name</p>
-								<p>Location</p>
-							</div>
-							<div class="project-metadata">
-								<p>3 projects open</p>
-							</div>
-						</div> 
-					</div>
+					<% @people.each do |user| %>
+						<%= render 'people-search-results', user: user %>
+					<% end %>
 				</div>
 			</div>		
 		</div>
