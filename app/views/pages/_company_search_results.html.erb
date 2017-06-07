@@ -5,12 +5,13 @@
 				<%= cl_image_tag user.get_profile_picture, class: "avatar-xl" %>
 			</div>
 			<div class="company-info">
-				<p><%= user.company_name %></p>
+				<h2><%= user.company_name %></h2>
 				<p> <%= user.location %></p>
 			</div>
 			<div class="project-metadata">
-				<p><%= user.projects_open || 0 %> projects open</p>
+				<p><%=  pluralize(user.projects_open, 'project') || 0 %> open</p>
 			</div>
 		</div> 
 	</div>
 <% end %>
+

@@ -1,6 +1,6 @@
 <!-- Responsive project results card -->
 <%= link_to project_path(project) do %>
-	<div class="col-xs-12 col-md-6">
+	<div class="col-xs-12 col-md-4">
 		<div class="project-card margin-top">
 			<div class="image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= project.user.get_cover_photo %>')">
 				<p class="card-category"> <%= project.category %> </p>
@@ -9,13 +9,16 @@
 			<div class="titles">
 				<div class="description text-center">
 					<h2> <%= project.title %></h2>
-					<h2> <%= project.user.company_name %></h2>
+					<h3> <%= project.user.company_name %></h3>
 				</div>
 			</div>
 			<div class="counters">
-				<p> <%= project.spaces_left %> spaces left </p>
-				<p><%= project.days_left %> days remaining</p>
+				<p class="pill"> <%= pluralize(project.spaces_left, 'space') %> left </p>
+			<p class="pill"><%= pluralize(project.days_left, 'day') %> remaining</p>
 			</div>
 		</div>
 	</div>
 <% end %>
+
+
+
