@@ -13,8 +13,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    authorize @user
     @user.update(user_params)
+    authorize @user
     if @user.save
       redirect_to user_path(@user)
     else

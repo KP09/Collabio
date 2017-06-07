@@ -1,11 +1,11 @@
 class ContributionPolicy < ApplicationPolicy
-  
+
 	def create?
 	  user.company == false
   end
 
   def edit?
-    record.user == user
+    true
   end
 
 	def update?

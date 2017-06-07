@@ -110,6 +110,7 @@
   background: $charcoal;
   padding: 3px;
   color: white;
+  border-radius: 2px 2px 0px 0px;
   h2 {
     padding: 8px;
     margin: 0px;
@@ -121,4 +122,8 @@
   position: absolute;
   right:10px;
   top: 10px;
+}
+
+.stat-image {
+  margin-right: 10px;
 }

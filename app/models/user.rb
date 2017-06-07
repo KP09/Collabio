@@ -149,7 +149,6 @@ class User < ApplicationRecord
         return false
       end
     end
-
   end
 
   private

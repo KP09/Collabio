@@ -4,6 +4,8 @@ class Contribution < ApplicationRecord
   belongs_to :project
   has_many :upvotes, dependent: :destroy
 
+  has_attachment :file
+
   # Validations
   validates :comment, presence: true
 # validates :file, presence: true

@@ -1,4 +1,5 @@
 class UserPolicy < ApplicationPolicy
+
   def edit?
     true
   end
@@ -10,4 +11,5 @@ class UserPolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+
 end

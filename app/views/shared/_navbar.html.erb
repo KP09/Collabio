@@ -47,11 +47,13 @@
                 <i class="fa fa-cog"></i>  <%= t(".profile", default: "Settings") %>
               <% end %>
             </li>
-            <li>
-              <%= link_to new_project_path(current_user) do %>
-                <i class="fa fa-plus"></i>  <%= t(".profile", default: "Post a project") %>
-              <% end %>
-            </li>
+            <% if policy(Project).create?  %>
+              <li>
+                <%= link_to new_project_path(current_user) do %>
+                  <i class="fa fa-plus"></i>  <%= t(".profile", default: "Post a project") %>
+                <% end %>
+              </li>
+            <% end %>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
