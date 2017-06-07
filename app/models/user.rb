@@ -130,14 +130,6 @@ class User < ApplicationRecord
     end
   end
 
-  def get_picture
-    if profile_picture?
-      return profile_picture.path
-    else
-      return 'sample'
-    end
-  end
-
   private
 
   def name_validation
