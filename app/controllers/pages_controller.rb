@@ -5,5 +5,8 @@ class PagesController < ApplicationController
   end
 
   def search
+  	@projects = Project.all
+  	@companies = User.where(company: true)
+  	@people = User.where(company: false)
   end
 end

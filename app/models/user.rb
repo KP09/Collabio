@@ -31,6 +31,25 @@ class User < ApplicationRecord
     !participation(project).nil?
   end
 
+  def get_profile_picture
+    if profile_picture
+      return profile_picture.path
+    # elsif linkedin_picture_url
+    #   return linkedin_picture_url
+    else
+      return 'sample'
+    end
+  end
+
+  def get_cover_photo
+    if cover_photo # Need to add attachinary into the model so 'profile_picture' method is in place
+      # Waiting for James to merge.
+      return cover_photo.path
+    else
+      return 'http://unsplash.it/1200/?random'
+    end
+  end
+
   # Returns the full_name of the user
   def full_name
     if self.company
@@ -52,21 +71,25 @@ class User < ApplicationRecord
 
   # Returns the number of closed contributions
   def count_contributions
-    self.contributions.select{ |c| c.end_date < DateTime.now }.count
+    self.contributions.select{ |c| c.project.end_date < DateTime.now }.count
   end
 
   # Returns the number of starred and closed contributions
   def count_starred_contributions
-    self.contributions.select{ |c| c.end_date < DateTime.now && c.starred == true }.count
+    self.contributions.select{ |c| c.project.end_date < DateTime.now && c.starred == true }.count
   end
 
-  # Returns the total number of upvotes a user has on all their contributions
+  # Returns the total number of upvotes a user has on all their closed contributions
   def count_upvotes
     total = 0
-    self.contributions.each do |c|
-      total += c.upvotes.count
+    if self.closed_contributions
+      self.closed_contributions.each do |c|
+        total += c.upvotes.count
+      end
+      return total
+    else
+      return total
     end
-    return total
   end
 
   def count_participations
@@ -86,22 +109,30 @@ class User < ApplicationRecord
 
   # Returns the contributions of a user for which the deadline has expired
   def closed_contributions
-    closed_contributions = self.contributions.select{ |c| c.end_date < DateTime.now }
-    if closed_contributions.length >= 1
+    closed_contributions = self.contributions.select{ |c| c.project.end_date < DateTime.now }
+    if closed_contributions.count >= 1
       return closed_contributions
     else
       return false
     end
   end
 
+  # Returns a hash of companies and frequencies for closed contributions
   def favorite_companies
     company_frequencies = {}
-    self.contributions.each do |c|
-      owner = c.project.user.full_name
-      if company_frequencies[owner]
-        company_frequencies[owner] += 1
+    if self.closed_contributions
+      self.closed_contributions.each do |c|
+        owner = c.project.user
+        if company_frequencies[owner]
+          company_frequencies[owner] += 1
+        else
+          company_frequencies[owner] = 1
+        end
+      end
+      if company_frequencies.length >= 1
+        return company_frequencies.sort_by { |k,v| v }.reverse.first(3)
       else
-        company_frequencies[owner] = 1
+        return false
       end
     end
 
@@ -109,14 +140,6 @@ class User < ApplicationRecord
       return company_frequencies.sort_by { |k,v| v }.reverse.first(3)
     else
       return false
-    end
-  end
-
-  def get_picture
-    if profile_picture?
-      return profile_picture.path
-    else
-      return 'sample'
     end
   end
 

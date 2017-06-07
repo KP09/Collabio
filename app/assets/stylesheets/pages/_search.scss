@@ -1,0 +1,125 @@
+
+.search-page-background {
+	background-color: $light-gray !important;
+	min-height: 100vh;
+	.nav-tabs > li.active > a {
+		color: $brand-color;
+	}
+	.nav-tabs > li > a {
+		color: $charcoal;
+	}
+}
+	// , .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus
+	// &:active {
+	// 	color: $brand-color !important;
+	// 	}
+
+
+.background-image {
+	height: 130px;
+	background-size: cover;
+}
+
+.card {
+	h2 {
+		margin-bottom: 0px !important;
+	}
+	.shadow-box {
+		background-color: $light-gray !important;
+	}
+}
+
+.card-category {
+}
+
+.card-description {
+}
+
+#projects {
+	margin-bottom: 40px;
+}
+
+
+
+.project-card {
+	color: black;
+	position: relative;
+	img {
+		position: absolute;
+		top: 75px;
+		left: calc(50% - 55px);
+	}
+	.image {
+		height: 130px;
+		border-top-left-radius: 2px;
+		border-top-right-radius: 2px;
+		.card-category {
+			color: white;
+			position: absolute;
+			top: 20px;
+			left: 20px;
+		}
+	}
+	.titles {
+		background-color: white;
+		color: $charcoal;
+		padding: 80px 20px 20px 20px;
+		h2:last-child {
+			margin-bottom: 0;
+		}
+	}
+	.counters {
+		display: flex;
+		justify-content: space-between;
+		background-color: $medium-gray;
+		color: white;
+		padding: 10px 20px;
+		border-bottom-left-radius: 2px;
+		border-bottom-right-radius: 2px;
+		p {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.wide-card {
+	display: flex;
+	justify-content: space-between;
+	background-color: $medium-gray;
+	color: white;
+	border-radius: 2px;
+	.image {
+		background-size: cover;
+		margin: 0px 20px;
+		align-self: center;
+	}
+	.company-info {
+		flex-grow: 1;
+		margin: 0px 20px;
+		align-self: center;
+		p:first-child {
+			margin-bottom: 10px;
+		}
+	}
+	.project-metadata {
+		margin: 0px 20px;
+		align-self: center;
+	}
+	p {
+		size: 14px;
+		margin-bottom: 0px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
