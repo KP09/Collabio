@@ -1,16 +1,15 @@
 class ParticipationsController < ApplicationController
-
   def create
-    @project = Project.find(params[:project_id])
+  	@project = Project.find(params[:project_id])
     @participation = Participation.new
-    @participation.project = @project
-    @participation.user = current_user
-    authorize @participation
-    if @participation.save
-      redirect_to project_path(@participation.project_id)
-    else
-      render :new
-    end
+  	@participation.project = @project
+  	@participation.user_id = current_user.id
+  	authorize @participation
+  	if @participation.save
+  	  redirect_to project_path(@project)
+  	else
+  	  render 'projects/show'
+  	end
   end
 
   def destroy

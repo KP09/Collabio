@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   # Homepage
   root to: 'pages#home'
 
+  #mounting attachinary => plugin for image upload
+  mount Attachinary::Engine => "/attachinary"
+
+
   # Search results
   get '/search', to: 'pages#search'
 
@@ -17,10 +21,10 @@ Rails.application.routes.draw do
 
     # Contributions
     resources :contributions, only: [:create, :update, :destroy]
-    
+
   end
 
   # Upvotes
-  resources :upvotes, only: [:create, :destroy] 
+  resources :upvotes, only: [:create, :destroy]
 
 end
