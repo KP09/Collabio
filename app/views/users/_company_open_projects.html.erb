@@ -7,7 +7,7 @@
         <!-- Project cards for active participations -->
         <% user.active_projects.each do |project| %>
           <div class="col-xs-12 col-sm-6 padding-none">
-            <%= render 'projects/card', project: project %>
+            <%= render 'projects/card_without_images', project: project %>
           </div>
         <% end %>
       </div>
