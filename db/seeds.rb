@@ -103,6 +103,7 @@ projects = [
 
 projects.each do |e|
   Project.create!(user_id: e[:user_id], title: e[:title], brief: e[:brief], end_date: e[:end_date], max_participations: e[:max_participations], category: e[:category])
+end
 
 User.all.each do |user|
   if user.is_individual?

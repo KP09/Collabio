@@ -37,7 +37,7 @@ class User < ApplicationRecord
     # elsif linkedin_picture_url
     #   return linkedin_picture_url
     else
-      return 'sample'
+    return 'sample'
     end
   end
 
@@ -67,6 +67,20 @@ class User < ApplicationRecord
   # Returns true if the user is a company
   def is_company?
     self.company
+  end
+
+  # Returns integer of number of projects currently open
+  def projects_open
+    number_projects_open = 0
+    if self.company
+      self.projects.each do |project|
+        if project.end_date.to_date > DateTime.now.to_date
+          number_projects_open += 1
+        end
+      end
+
+    end
+    number_projects_open  
   end
 
   # Returns the number of closed contributions
@@ -134,12 +148,6 @@ class User < ApplicationRecord
       else
         return false
       end
-    end
-
-    if company_frequencies.length >= 1
-      return company_frequencies.sort_by { |k,v| v }.reverse.first(3)
-    else
-      return false
     end
   end
 
