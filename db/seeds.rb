@@ -5,37 +5,6 @@ Participation.destroy_all
 Project.destroy_all
 User.destroy_all
 
-# Individuals
-users = [
-  {
-    first_name: "Kees",
-    last_name: "Postma",
-    email: "kk.postma@gmail.com",
-    password: "123456",
-    location: "London, UK",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum esse odit autem hic consectetur laboriosam, optio, dignissimos, perspiciatis labore amet eius saepe cum tempora, placeat quae quisquam fugit itaque eveniet."
-  },
-  {
-    first_name: "James",
-    last_name: "Block",
-    email: "james@hewines.com",
-    password: "123456",
-    location: "London, UK",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum esse odit autem hic consectetur laboriosam, optio, dignissimos, perspiciatis labore amet eius saepe cum tempora, placeat quae quisquam fugit itaque eveniet."
-  },
-  {
-    first_name: "Rami",
-    last_name: "Bakri",
-    email: "rbakri1@gmail.com",
-    password: "123456",
-    location: "London, UK",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum esse odit autem hic consectetur laboriosam, optio, dignissimos, perspiciatis labore amet eius saepe cum tempora, placeat quae quisquam fugit itaque eveniet."
-  }
-]
-
-users.each do |e|
-  User.create!(first_name: e[:first_name], last_name: e[:last_name], email: e[:email], password: e[:password], location: e[:location], description: e[:description])
-end
 
 # Companies
 companies = [
@@ -68,3 +37,68 @@ companies = [
 companies.each do |e|
   User.create!(company_name: e[:company_name], company: e[:company], email: e[:email], password: e[:password], location: e[:location], description: e[:description])
 end
+
+# Individuals
+users = [
+  {
+    first_name: "Kees",
+    last_name: "Postma",
+    email: "kk.postma@gmail.com",
+    password: "123456",
+    location: "London, UK",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum esse odit autem hic consectetur laboriosam, optio, dignissimos, perspiciatis labore amet eius saepe cum tempora, placeat quae quisquam fugit itaque eveniet."
+  },
+  {
+    first_name: "James",
+    last_name: "Block",
+    email: "james@hewines.com",
+    password: "123456",
+    location: "London, UK",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum esse odit autem hic consectetur laboriosam, optio, dignissimos, perspiciatis labore amet eius saepe cum tempora, placeat quae quisquam fugit itaque eveniet."
+  },
+  {
+    first_name: "Rami",
+    last_name: "Bakri",
+    email: "rbakri1@gmail.com",
+    password: "123456",
+    location: "London, UK",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum esse odit autem hic consectetur laboriosam, optio, dignissimos, perspiciatis labore amet eius saepe cum tempora, placeat quae quisquam fugit itaque eveniet."
+  }
+]
+
+users.each do |e|
+  User.create!(first_name: e[:first_name], last_name: e[:last_name], email: e[:email], password: e[:password], location: e[:location], description: e[:description])
+end
+
+# Projects
+projects = [
+  {
+    user_id: 1,
+    title: "The Big Project",
+    brief: "This is to address the marketing department's needs to build an audience in China.",
+    end_date: (DateTime.now + 5),
+    max_participations: 30,
+    category: "Marketing"
+  },
+  {
+    user_id: 2,
+    title: "Finance investigation",
+    brief: "Our annual accounts were out by several million pounds and we're looking for talented mathmeticians to correct this. ",
+    end_date: (DateTime.now + 9),
+    max_participations: 40,
+    category: "Finance"
+  },
+  {
+    user_id: 3,
+    title: "Suggestions for improving our internal organisation",
+    brief: "We are looking to learn from forward thinking young professionals to understand how we can make the working environment better for them and us.",
+    end_date: (DateTime.now + 5),
+    max_participations: 30,
+    category: "Operations"
+  }
+]
+
+projects.each do |e|
+  Project.create!(user_id: e[:user_id], title: e[:title], brief: e[:brief], end_date: e[:end_date], max_participations: e[:max_participations], category: e[:category])
+end
+
