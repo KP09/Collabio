@@ -100,7 +100,7 @@ class User < ApplicationRecord
       self.projects.each do |p|
         total_views += p.impressionist_count(filter: :ip_address)
       end
-    end 
+    end
     return total_views
   end
 
@@ -108,7 +108,7 @@ class User < ApplicationRecord
     average_views = 0
     if self.company
       average_views = (total_project_views / self.projects.count)
-    else 
+    else
       return 0
     end
     return average_views
