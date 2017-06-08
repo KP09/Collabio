@@ -32,7 +32,7 @@
       <div class="navbar-item">
         <div class="dropdown flex-between">
 
-          <span class="navbar-username">Hi <%= current_user.first_name %></span>
+          <span class="navbar-username"><%= current_user.full_name %></span>
           <div class="avatar-xs dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown" style="background-image: url('<%= cl_image_path (current_user.get_profile_picture) %>')"></div>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
 
@@ -41,18 +41,18 @@
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
               <% end %>
             </li>
+            <% if current_user.company %>
+              <li>
+                <%= link_to company_dashboard_index_path do %>
+                  <i class="fa fa-dashboard"></i>  <%= t(".profile", default: "Dashboard") %>
+                <% end %>
+              </li>
+            <% end %>
             <li>
               <%= link_to edit_user_path(current_user) do %>
                 <i class="fa fa-cog"></i>  <%= t(".profile", default: "Settings") %>
               <% end %>
             </li>
-            <% if policy(Project).create?  %>
-              <li>
-                <%= link_to new_project_path(current_user) do %>
-                  <i class="fa fa-plus"></i>  <%= t(".profile", default: "Post a project") %>
-                <% end %>
-              </li>
-            <% end %>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>

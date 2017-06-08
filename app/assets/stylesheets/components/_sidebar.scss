@@ -1,0 +1,22 @@
+.sidebar-content {
+  width: 100%;
+  h4 {
+    padding-left: 10px;
+  }
+  hr {
+    margin: 0 0 10px 0;
+  }
+  .company {
+    margin-bottom: 10px;
+  }
+}
+
+.sidebar-card {
+  margin: 0 0 10px 0;
+  padding: 5px;
+  border-radius: 5px;
+  &:hover {
+    background-color: white;
+    -webkit-transition: 0.2s ease;
+  }
+}

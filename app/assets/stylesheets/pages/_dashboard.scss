@@ -1,0 +1,20 @@
+.index-page {
+	position: relative;
+	.nav-tabs > li.active > a {
+		color: $brand-color;
+	}
+	.nav-tabs > li > a {
+		color: $charcoal;
+	}
+	#dashboard-tabs {
+		display: inline-block;
+	}
+	#main-bar {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+
+
+}

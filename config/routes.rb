@@ -12,6 +12,12 @@ Rails.application.routes.draw do
   get '/questions/:id', to: 'questions#edit', as: 'question'
   patch '/questions/:id', to: 'questions#update', as: 'answer'
 
+  # Company namespace
+  namespace :company do
+    resources :dashboard, only: [:index]
+    resources :projects, only: [:show]
+  end
+
   # Users
   devise_for :users
   resources :users, except: [:index]

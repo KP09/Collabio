@@ -38,7 +38,7 @@ class User < ApplicationRecord
     # elsif linkedin_picture_url
     #   return linkedin_picture_url
     else
-    return 'sample'
+      return 'sample'
     end
   end
 
@@ -82,6 +82,36 @@ class User < ApplicationRecord
 
     end
     number_projects_open
+  end
+
+  def companies_total_joins
+    number_joins = 0
+    if self.company
+      self.projects.each do |p|
+        number_joins += p.participations.count
+      end
+    end
+    return number_joins
+  end
+
+  def total_project_views
+    total_views = 0
+    if self.company
+      self.projects.each do |p|
+        total_views += p.impressionist_count(filter: :ip_address)
+      end
+    end 
+    return total_views
+  end
+
+  def average_project_views
+    average_views = 0
+    if self.company
+      average_views = (total_project_views / self.projects.count)
+    else 
+      return 0
+    end
+    return average_views
   end
 
   # Returns the number of closed contributions

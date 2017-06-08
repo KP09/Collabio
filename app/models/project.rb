@@ -1,5 +1,6 @@
 class Project < ApplicationRecord
   is_impressionable
+  
   # Associations
   belongs_to :user
   has_many :participations, dependent: :destroy
@@ -14,7 +15,7 @@ class Project < ApplicationRecord
   # validate :time_valid
 
   def project_open?
-    days_left > 0   
+    days_left > 0
   end
 
   def self.expired_projects

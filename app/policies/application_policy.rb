@@ -6,8 +6,12 @@ class ApplicationPolicy
     @record = record
   end
 
+  def search?
+    true
+  end
+
   def index?
-    false
+    true
   end
 
   def show?

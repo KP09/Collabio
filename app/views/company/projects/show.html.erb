@@ -1,0 +1,168 @@
+<div class="page-wrapper" id="dashboard-project-show">
+  <div class="container">
+  <div class="col-xs-12">
+    <br>
+    <%= link_to "Back to dashboard", company_dashboard_index_path, class: "text-link" %>
+  </div>
+
+  <!-- LEFT HAND COLUMN -->
+  <div class="col-xs-12 col-lg-9 margin-top">
+    <!-- Project details -->
+      <!-- Title -->
+      <div class="flex-between">
+        <h2>
+          <%= @project.title %>
+        </h2>
+        <div>
+          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#editProject">
+            Edit
+          </button>
+          <!-- Delete button -->
+          <%= link_to "Delete", project_path(@project), id: "delete", class: "btn btn-danger", data: { confirm: "Are you sure?" }, method: :delete %>
+        </div>
+      </div>
+      <hr>
+      <% if @project.project_open? %>
+        <h3><strong>Status: </strong><strong id="active">Active</strong></h3>
+      <% else %>
+        <h3><strong>Status: </strong><strong id="closed">Closed</strong></h3>
+      <% end %>
+      <br>
+      <h3><strong>Brief:</strong> <%= @project.brief %></h3>
+      <br>
+      <h3><strong>Category:</strong> <%= @project.category %></h3>
+      <br>
+      <h3><strong>End date:</strong> <%= @project.end_date.strftime('%A, %e %B %Y') %></h3>
+      <br>
+      <h3><strong>Maximum number of participations:</strong> <%= @project.max_participations %></h3>
+
+    <!-- Q&A -->
+    <div class="margin-top">
+      <h2>Questions</h2>
+      <hr>
+      <div class="shadow-box">
+
+      </div>
+    </div>
+
+    <!-- Contributions -->
+    <div class="margin-top">
+      <h2>Contributions</h2>
+      <hr>
+
+      <div class="shadow-box">
+      </div>
+
+    </div>
+  </div>
+  <!-- END OF LEFT HAND COLUMN -->
+
+  <!-- RIGHT HAND COLUMN -->
+  <div class="col-xs-12 col-lg-3 margin-top">
+    <div class="sidebar-content">
+      <!-- Project stats -->
+      <div>
+        <h3><i class="fa fa-bar-chart"></i> Project stats</h3>
+        <hr>
+        <!-- Views -->
+        <div class="flex-box stat">
+          <%= image_tag ('eye'), class: "profile-icon" %>
+          <div>
+            <h4>
+              <% if @project.impressionist_count(filter: :ip_address) > 0 %>
+                <strong>
+                  <%= @project.impressionist_count(filter: :ip_address) %>
+                </strong>
+                <%= "View".pluralize(@project.impressionist_count(filter: :ip_address)) %>
+              <% else %>
+                No views yet
+              <% end %>
+            </h4>
+          </div>
+        </div>
+        <!-- Spaces left -->
+        <div class="flex-box stat">
+          <%= image_tag ('connection'), class: "profile-icon" %>
+          <div>
+            <h4>
+              <% if @project.spaces_left > 0 %>
+                <strong>
+                  <%= @project.spaces_left %>
+                </strong>
+                <%= "Space".pluralize(@project.spaces_left) %>
+                left
+              <% else %>
+                No spaces left
+              <% end %>
+            </h4>
+          </div>
+        </div>
+        <!-- Contributions received -->
+        <div class="flex-box stat">
+          <%= image_tag ('contribution'), class: "profile-icon" %>
+          <div>
+            <h4>
+              <% if @project.contributions.count > 0 %>
+                <strong>
+                  <%= @project.contributions.count %>
+                </strong>
+                <%= "Contribution".pluralize(@project.contributions.count) %>
+                received
+              <% else %>
+                No contributions yet
+              <% end %>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <!-- Participants -->
+      <div class="margin-top">
+        <h3>
+          <% if @project.participations.count > 0 %>
+            <%= @project.participations.count %>
+            <%= "person".pluralize(@project.participations.count) %>
+            working on this
+          <% else %>
+            No active participants
+          <% end %>
+        </h3>
+        <hr>
+        <% @project.participations.each do |participation| %>
+            <%= link_to user_path(participation.user) do %>
+              <div class="flex-box sidebar-card">
+                <div class="avatar-small" style="background-image: url('<%= cl_image_path (participation.user.get_profile_picture) %>')">
+                </div>
+                <div>
+                  <h4><%= participation.user.full_name %></h4>
+                </div>
+              </div>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit modal -->
+  <div class="modal fade" id="editProject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Edit project details</h4>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for(@project) do |f| %>
+          <%= f.input :title, maxlength: 40, placeholder: "40 characters maximum" %>
+          <%= f.input :brief, placeholder: "Tell us more about your project" %>
+          <%= f.input :category, placeholder: "Choose a category" %>
+          <%= f.input :end_date, placeholder: "When should project end?" %>
+          <%= f.input :max_participations, placeholder: "How many people can contribute?" %>
+          <%= f.submit class: "btn btn-primary" %>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
