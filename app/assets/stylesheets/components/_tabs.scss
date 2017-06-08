@@ -49,8 +49,8 @@
 }
 .tab.active {
   background: transparent;
-  color: black;
-  border-bottom: 3px solid $charcoal;
+  color: $blue-gray;
+  border-bottom: 3px solid $blue-gray;
   transition: all 0.1s ease;
 }
 
