@@ -1,4 +1,7 @@
-/* -------------------------------------
- * CSS code specific to home page
- * (margin/padding adjustments)
- * ------------------------------------- */
+#homepage-main-banner {
+  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('https://static.pexels.com/photos/28462/pexels-photo-28462.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  color: white;
+}
