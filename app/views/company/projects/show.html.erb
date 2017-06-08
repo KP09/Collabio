@@ -1,1 +1,76 @@
-<p>This is the projects page</p>
+<div class="page-wrapper">
+  <div class="container">
+    <div class="company-show-information margin-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-xs-12">
+            <div class="left-project-info">
+              <div class="flex-box">
+                <div class="company-logo">
+                  <%#= link_to(user_path(@project.user)) do %>
+                    <div class="avatar-large" style="background-image: url('<%#= cl_image_path @project.user.get_profile_picture %>')">
+                    </div>
+                  <%# end %>
+                  </a>
+                </div>
+                <div class="company-name-title">
+                  <p><%= @project.user.company_name %></p>
+                  <h2><%#= @project.title %></h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-9">
+            <div class="shadow-box margin-top">
+              <div class="box-title">
+                <p>Brief:</p>
+              </div>
+              <div class="brief-content">
+                <p><%= @project.brief %></p>
+              </div>
+            </div>
+            <!-- If the project is still active show participants render -->
+            <%# if @project.days_left > 0 %>
+                <%= render "projects/participants", project: @project %>
+            <!-- If the project is no longer active show contributions render -->
+            <%# else %>
+              <div class="similar margin-top">
+                <p>Contributions made to this closed project</p>
+              </div>
+              <%# @project.contributions.each do |contribution| %>
+                <%#= render "projects/contributers", contribution: contribution %>
+              <%# end %>
+            <%# end %>
+            <div class="questions-content">
+              <h1>Q & A</h1>
+               <%#= render "projects/question", project: @project %>
+               <%#= render "projects/question", project: @project %>
+               <%#= render "projects/question", project: @project %>
+            </div>
+          </div>
+          <div class="col-lg-3 margin-top">
+            <%# if current_user.participated_to?(@project) %>
+              <%#= render "projects/counters", project: @project %>
+              <%#= link_to "Leave Project", project_participation_path(@project), class: "btn btn-default", method: :DELETE, style: "width:100%" %>
+            <%# else %>
+              <%#= render "projects/counters", project: @project %>
+            <%# end %>
+            <div class="margin-top">
+              <%# if @project.days_left > 0 && @current_user.participated_to?(@project) %>
+                  <%#= render "projects/make-contribution", project: @project %>
+              <%# elsif @project.days_left > 0 && !@current_user.participated_to?(@project) %>
+                  <%#= render "projects/join-project", project: @project %>
+              <%# elsif @project.days_left < 0 %>
+                  <%#= render "projects/project-closed", project: project %>
+              <%# end %>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
