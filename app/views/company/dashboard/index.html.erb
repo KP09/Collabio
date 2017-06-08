@@ -1,0 +1,7 @@
+<p>This is the dashboard</p>
+
+<% current_user.projects.each do |project| %>
+  <%= link_to company_project_path(project) do %>
+    <p><%= project.title %></p>
+  <% end %>
+<% end %>

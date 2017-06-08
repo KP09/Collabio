@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   # Search results
   get '/search', to: 'pages#search'
 
+  # Company namespace
+  namespace :company do
+    resources :dashboard, only: [:index]
+    resources :projects, only: [:show]
+  end
+
   # Users
   devise_for :users
   resources :users, except: [:index]
