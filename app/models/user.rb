@@ -38,7 +38,7 @@ class User < ApplicationRecord
     # elsif linkedin_picture_url
     #   return linkedin_picture_url
     else
-    return 'sample'
+      return 'sample'
     end
   end
 
