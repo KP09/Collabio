@@ -1,11 +1,10 @@
 .card_border {
   border-radius: 2px;
   box-shadow: $box-shadow;
-  margin: 15px;
 }
 
 .card_border:hover {
-  opacity: 0.8;
+  opacity: 0.9;
   -webkit-transition: opacity 0.2s ease;
 }
 
@@ -69,9 +68,7 @@
   border-radius: 20px;
   padding: 2px 10px;
   margin: 0px 5px;
-  p {
-    color: $charcoal;
-  }
+  color: $charcoal;
 }
 
 .brief {
@@ -88,7 +85,7 @@
   position: absolute;
   top: 15px;
   right: 50px;
-  p{
+  p {
     font-size: 12px;
   }
 }
@@ -112,4 +109,63 @@ a:-webkit-any-link {
 
 .padding-none {
   padding: 0;
+}
+
+.project-card {
+  color: black;
+  position: relative;
+  font-weight: lighter;
+  h2 {
+    font-size: 22px;
+    font-weight: lighter;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: lighter;
+  }
+  img {
+    position: absolute;
+    top: 75px;
+    left: calc(50% - 55px);
+  }
+  .image {
+    height: 130px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    background-size: cover;
+    object-fit: cover;
+    background-position: center;
+    .card-category {
+      color: white;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: $base-size;
+      font-weight: normal;
+    }
+  }
+  .titles {
+    background-color: white;
+    color: $charcoal;
+    padding: 50px 20px 10px 20px;
+    height: 200px;
+    h2:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .counters {
+    display: flex;
+    justify-content: space-between;
+    background-color: $charcoal;
+    color: $charcoal;
+    padding: 15px 10px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    p {
+      margin-bottom: 0;
+      font-size: 14px;
+      font-weight: normal;
+
+    }
+  }
 }

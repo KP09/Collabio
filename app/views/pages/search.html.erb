@@ -1,55 +1,55 @@
-<div class="search-page-background">
+<div class="container">
+  <!-- Tabs -->
+  <div class="row ">
+  	<div class="col-xs-12">
+      <div class="tabs">
+        <a class="tab tab-fix-width active" role="tab" data-toggle="tab" data-target="#projects" aria-controls="projects">
+          <h3>Open projects</h3>
+        </a>
+        <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#companies" aria-controls="companies">
+          <h3>Companies</h3>
+        </a>
+        <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#people" aria-controls="people">
+          <h3>People</h3>
+        </a>
+        <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#closedprojects" aria-controls="closedprojects">
+          <h3>Closed projects</h3>
+        </a>
+      </div>
+    </div>
+  </div>
 
-	<div class="container">
-		<!-- Tabs -->
-		<div class="row ">
-			<div class="col-xs-12">
-				<ul class="nav nav-tabs">
-					<li role="presentation" class="active"><a data-toggle="tab" href="#projects">Projects</a></li>
-					<!-- <li role="presentation"><a data-toggle="tab" href="#topprojects">Top projects</a></li> -->
-					<li role="presentation"><a data-toggle="tab" href="#companies">Companies</a></li>
-					<li role="presentation"><a data-toggle="tab" href="#people">People</a></li>
-					<li role="presentation"><a data-toggle="tab" href="#closedprojects">Closed projects</a></li>
-				</ul>
-			</div>
-			<div class="tab-content">
-		<!-- Project Tab -->
-			<div id="projects" class="tab-pane fade in active">
-				<div class="row">
-				<% 	@projects.each do |project| %>
-					<%= render 'pages/project-search-results-card', project: project %>
-				<% end %>
-				</div>
-			</div>	
+  <!-- Project Tab -->
+	<div id="projects" class="tab-content fade in">
+    <div class="row">
+			<% 	@projects.each do |project| %>
+				<%= render 'shared/card_full_imagery', project: project %>
+			<% end %>
+    </div>
+	</div>
 
-			<!-- Company Tabs -->
-			<div id="companies" class="tab-pane fade">
-				<div class="row">
-					<% @companies.each do |user| %>
-						<%= render 'company_search_results', user: user %>
-					<% end %>
-				</div>
-			</div>		
+	<!-- Company Tabs -->
+	<div id="companies" class="tab-content fade">
+    <div class="row">
+			<% @companies.each do |user| %>
+				<%= render 'company_search_results', user: user %>
+			<% end %>
+    </div>
+	</div>
 
-			<!-- Profile Tabs -->
-			<div id="people" class="tab-pane fade">	
-				<div class="row" id="profiles" class="tab-pane fade in">
-					<% @people.each do |user| %>
-						<%= render 'people-search-results', user: user %>
-					<% end %>
-				</div>
-			</div>
+	<!-- Profile Tabs -->
+	<div id="people" class="tab-content fade">
+		<% @people.each do |user| %>
+			<%= render 'people-search-results', user: user %>
+		<% end %>
+	</div>
 
-			<!-- Closed Projects -->
-				<div id="closedprojects" class="tab-pane fade in">
-					<div class="row">
-					<% 	@expired_projects.each do |project| %>
-						<%= render 'pages/project-search-expired-projects', project: project %>
-					<% end %>
-					</div>
-				</div>
+	<!-- Closed Projects -->
+	<div id="closedprojects" class="tab-content fade in">
+		<% 	@expired_projects.each do |project| %>
+			<%= render 'pages/project-search-expired-projects', project: project %>
+		<% end %>
+	</div>
 
-			</div>
-		</div>
-	</div>	
-</div>	
+
+</div>

@@ -6,8 +6,8 @@
       <div class="row">
         <!-- Project cards for active participations -->
         <% user.active_participations.each do |participation| %>
-          <div class="col-xs-12 col-sm-6 padding-none">
-            <%= render 'projects/card', project: participation.project %>
+          <div class="col-xs-12 col-sm-6">
+            <%= render 'shared/card_profile_pic_only', project: participation.project %>
           </div>
         <% end %>
       </div>

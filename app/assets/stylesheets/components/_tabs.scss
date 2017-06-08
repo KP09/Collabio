@@ -7,11 +7,20 @@
   color: $charcoal;
 }
 
-.tabs h3 {
-  font-size: 17px;
-  font-weight: bold;
-  margin: 0;
+.tabs {
+  h3 {
+    font-size: 17px;
+    font-weight: normal;
+    margin: 0;
+  }
 }
+
+.tabs .active {
+  h3 {
+    font-weight: bolder;
+  }
+}
+
 .tabs p {
   opacity: 0.5;
   margin-bottom: 0;
@@ -19,16 +28,19 @@
 .tab {
   width: 50%;
   text-align: center;
-  padding: 20px 0;
+  padding: 20px 0 10px 0;
   transition: all 0.2s ease;
   box-sizing: border-box;
-  border-bottom: 3px solid white;
   &:hover {
   cursor: pointer;
   text-decoration: none;
   opacity: 0.8;
   }
 }
+.tab-transparent{
+  border-bottom: 3px solid transparent;
+}
+
 .tab:first-child {
   border-radius: 10px 0 0 0;
 }
@@ -36,15 +48,16 @@
   border-radius: 0 10px 0 0;
 }
 .tab.active {
-  background: white;
+  background: transparent;
   color: black;
   border-bottom: 3px solid $charcoal;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
-.tab-content {
-  padding-top: 50px;
-}
+
 .tab-content p {
   font-size: 30px;
   font-weight: bold;
+}
+.tab-fix-width {
+  width: 150px;
 }
