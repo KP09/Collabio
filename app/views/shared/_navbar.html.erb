@@ -32,7 +32,7 @@
       <div class="navbar-item">
         <div class="dropdown flex-between">
 
-          <span class="navbar-username">Hi <%= current_user.first_name %></span>
+          <span class="navbar-username"><%= current_user.full_name %></span>
           <div class="avatar-xs dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown" style="background-image: url('<%= cl_image_path (current_user.get_profile_picture) %>')"></div>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
 
