@@ -45,10 +45,14 @@
 .navbar-link {
   color: white;
   font-size: 14px;
-}
-.navbar-link:hover {
-  color: white;
-  text-decoration: none;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+  &:focus {
+    color: white;
+    outline: none;
+  }
 }
 
 /* Navbar right button */
