@@ -1,7 +1,55 @@
-<p>This is the dashboard</p>
+<div class="page-backgroud index-page">
+	<div class="container">
+		<!-- Tabs -->
+		<div class="row">
+			<div class="col-xs-12" id="main-bar">
+				<div id="dashboard-tabs">
+					<ul class="nav nav-tabs">
+						<li role="presentation" class="active"><a data-toggle="tab" href="#projects">Projects</a></li>
+						<li role="presentation"><a data-toggle="tab" href="#contributions">Contribution</a></li>
+					</ul>
+				</div>
+				<%= link_to 'Add Project', new_project_path, class: 'btn btn-primary' %>
+			</div>
+		</div>
 
-<% current_user.projects.each do |project| %>
-  <%= link_to company_project_path(project) do %>
-    <p><%= project.title %></p>
-  <% end %>
-<% end %>
+		<!-- COMPANY STATISTICS -->
+		<div class="row">
+			<%= current_user.total_project_views %>
+			<%= current_user.average_project_views %>
+			<%= current_user.companies_total_joins %>
+			<%= current_user.count_contributions_received %>
+		</div>
+
+		<!-- USER'S ACTIVE PROJECTS -->
+		<div class="row">
+			<div id="projects" class="tab-pane fade in active">
+				<div class="row">
+					<% if @active_projects == false %>
+							<p>"You have no active projects"</p>
+					<% elsif @active_projects.count > 0 %>
+						<% @active_projects.each do |project| %>
+								<%= render 'dashboard-project', project: project %>
+						<% end %>
+					<% end %>
+				</div>
+			</div>	
+		</div>
+
+		<!-- USER'S CLOSED PROJECTS -->
+		<div class="row">
+			<div id="projects" class="tab-pane fade in active">
+				<% if @closed_projects == false %>
+					<p>"You have no closed projects"</p>
+				<% elsif @closed_projects.count > 0  %>
+					<% @closed_projects.each do |project| %>
+						<%= render 'dashboard-project', project: project %>
+					<% end %>
+				<% end %>
+			</div>	
+		</div>
+
+
+
+	</div>
+</div>
