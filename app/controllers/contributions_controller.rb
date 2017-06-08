@@ -9,7 +9,7 @@ class ContributionsController < ApplicationController
   	if @contribution.save
   	  redirect_to project_path(@contribution)
   	else
-      @similar_projects = Project.all.sample(3)
+      @similar_projects = Project.all(3)
   	  render 'projects/show'
   	end
   end
