@@ -2,9 +2,11 @@ class ProjectsController < ApplicationController
   impressionist :actions=>[:show]
 
   def show
+    @question = Question.new
     @contribution = Contribution.new
     @similar_projects = Project.all[0..2]
     @project = Project.find(params[:id])
+    @questions = Question.where(project_id: @project.id)
     authorize @project
     impressionist(@project)
     # This simply calls the similarly named method in the application_policy file (called Show?)
