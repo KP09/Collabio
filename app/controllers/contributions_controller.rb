@@ -1,15 +1,17 @@
 class ContributionsController < ApplicationController
   def create
-  	@project = Project.find(params[:project_id])
+  	@questions = Question.all
+    @project = Project.find(params[:project_id])
     @user = current_user
   	@contribution = Contribution.new(contribution_params)
-  	@contribution.project = @project
-    @contribution.user = @user
+  	@contribution.project_id = @project.id
+    @contribution.user_id = @user.id
     authorize @contribution
   	if @contribution.save
-  	  redirect_to project_path(@contribution)
+  	  redirect_to project_path(@project)
   	else
-      @similar_projects = Project.all(3)
+      @question = Question.new
+      @similar_projects = Project.all
   	  render 'projects/show'
   	end
   end

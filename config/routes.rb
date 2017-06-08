@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     resources :projects, only: [:show]
   end
 
+  namespace :account do
+    resources :dashboard, only: [:index]
+  end
+
   # Users
   devise_for :users
   resources :users, except: [:index]
@@ -25,15 +29,15 @@ Rails.application.routes.draw do
   # Projects
   resources :projects, except: [:index] do
 
-    #questions
-    resources :questions, only: [:create]
-
     # Participations
     resources :participations, only: [:create]
     delete 'participations' => 'participations#destroy', as: 'participation'
 
     # Contributions
     resources :contributions, only: [:create, :update, :destroy]
+
+    #questions
+    resources :questions, only: [:create]
 
   end
 
