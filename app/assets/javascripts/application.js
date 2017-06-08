@@ -12,4 +12,7 @@ $(document).ready(function(){
         placement : 'top',
         trigger : 'hover'
     });
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
 });
