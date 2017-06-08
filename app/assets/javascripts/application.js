@@ -15,4 +15,17 @@ $(document).ready(function(){
     $(function () {
       $('[data-toggle="tooltip"]').tooltip()
     })
+    $(function(){
+      $(".tab").on("click", function(e){
+        // Change active tab
+        $(this).addClass('active');
+        $(this).siblings('.tab').removeClass('active');
+        // Hide all tab-content (use class="hidden")
+        $('.tab-content').addClass('hidden');
+        // Show target tab-content (use class="hidden")
+        var target = $(this).data("target");
+        $(target).removeClass("hidden");
+      });
+
+    });
 });
