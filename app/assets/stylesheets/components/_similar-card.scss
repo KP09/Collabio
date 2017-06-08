@@ -1,0 +1,35 @@
+.similar-card {
+  position: relative;
+  background-size: contain;
+  text-align: center;
+  justify-content: center;
+  height: 200px;
+  text-decoration: none;
+  color: white;
+}
+
+
+#similar-avatar {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+.similar-title {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  height: 30px;
+  background: #263E4C;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  p {
+    margin: 0px;
+
+  }
+}

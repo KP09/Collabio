@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
 
   def show
     @contribution = Contribution.new
-    @similar_projects = Project.all.sample(3)
+    @similar_projects = Project.all[0..2]
     @project = Project.find(params[:id])
     authorize @project
     impressionist(@project)
