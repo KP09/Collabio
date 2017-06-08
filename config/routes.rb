@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   # Search results
   get '/search', to: 'pages#search'
 
+  get '/questions/:id', to: 'questions#edit', as: 'question'
+  patch '/questions/:id', to: 'questions#update', as: 'answer'
+
   # Company namespace
   namespace :company do
     resources :dashboard, only: [:index]
@@ -21,6 +24,9 @@ Rails.application.routes.draw do
 
   # Projects
   resources :projects, except: [:index] do
+
+    #questions
+    resources :questions, only: [:create]
 
     # Participations
     resources :participations, only: [:create]
