@@ -8,7 +8,7 @@
               <div class="flex-box">
                 <div class="company-logo">
                   <%= link_to(user_path(@project.user)) do %>
-                    <div class="avatar-xl" style="background-image: url('<%= cl_image_path @project.user.get_profile_picture %>')">
+                    <div class="avatar-large" style="background-image: url('<%= cl_image_path @project.user.get_profile_picture %>')">
                     </div>
                   <% end %>
                   </a>
@@ -36,17 +36,18 @@
                 <%= render "projects/participants", project: @project %>
             <!-- If the project is no longer active show contributions render -->
             <% else %>
-                <%= render "projects/contributers", project: @project %>
+              <div class="similar margin-top">
+                <p>Contributions made to this closed project</p>
+              </div>
+              <% @project.contributions.each do |contribution| %>
+                <%= render "projects/contributers", contribution: contribution %>
+              <% end %>
             <% end %>
-            <div class="similar margin-top">
-              <p>Similar Projects</p>
-                <div class="row">
-                  <% @similar_projects.each do |project| %>
-                    <div class="col-md-6 padding-none">
-                      <%= render "projects/card", project: @project %>
-                    </div>
-                  <% end %>
-                </div>
+            <div class="questions-content">
+              <h1>Q & A</h1>
+               <%= render "projects/question", project: @project %>
+               <%= render "projects/question", project: @project %>
+               <%= render "projects/question", project: @project %>
             </div>
           </div>
           <div class="col-lg-3 margin-top">
@@ -62,7 +63,7 @@
               <% elsif @project.days_left > 0 && !@current_user.participated_to?(@project) %>
                   <%= render "projects/join-project", project: @project %>
               <% elsif @project.days_left < 0 %>
-                  <%= render "projects/project-closed", project: @project %>
+                  <%= render "projects/project-closed", project: project %>
               <% end %>
               <br>
             </div>
@@ -71,4 +72,15 @@
       </div>
     </div>
   </div>
+  <div class="similar margin-top">
+    <div class="similar-title">
+      <div><p>Similar Projects</p></div>
+    </div>
+    <% @similar_projects.each do |project| %>
+      <div class="col-md-4 padding-none">
+        <%= render "projects/card", project: @project %>
+      </div>
+    <% end %>
+  </div>
 </div>
+

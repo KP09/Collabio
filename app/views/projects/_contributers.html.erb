@@ -1,23 +1,20 @@
-<div class="similar margin-top">
-  <p>Similar Projects</p>
-</div>
 <div class="shadow-box margin-top">
   <div class="card-inline">
     <div class="row">
       <div class="col-xs-12 col-lg-1 dynamic-align-left flex-box contribution-avatar">
-      <%= link_to user_path(project.user), style: "margin: 0 auto" do %>
-        <div class="avatar-small" style="background-image: url('<%= cl_image_path (project.user.get_profile_picture) %>')">
+      <%= link_to user_path(contribution.user), style: "margin: 0 auto" do %>
+        <div class="avatar-small" style="background-image: url('<%= cl_image_path (contribution.project.user.get_profile_picture) %>')">
         </div>
       <% end %>
       </div>
       <div class="col-xs-12 col-lg-8">
         <div class="card-header dynamic-align-left flex-box">
           <div>
-            <%= link_to project_path(project) do %>
-              <h3 class="text-link">test</h3>
+            <%= link_to project_path(contribution.project) do %>
+              <h3 class="text-link"><%= contribution.project.title %></h3>
             <% end %>
-            <%= link_to user_path(project.user) do %>
-              <h4 class="text-link">test</h4>
+            <%= link_to user_path(contribution.user) do %>
+              <h4 class="text-link"><%= contribution.user.full_name %></h4>
             <% end %>
           </div>
         </div>
@@ -36,7 +33,9 @@
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
       </div>
       <div class="col-xs-12 col-lg-2 text-center">
-        <div class="btn btn-default">Check it out</div>
+        <%= link_to cl_image_path (contribution.file.path) do %>
+          <div class="btn btn-default">Check it out</div>
+        <% end %>
       </div>
     </div>
   </div>
