@@ -1,108 +1,82 @@
 <div class="page-backgroud index-page">
 	<div class="container">
-		<!-- Tabs -->
-		<div class="row">
-			<div class="col-xs-12" id="main-bar">
-				<div id="dashboard-tabs">
-<!-- 					<ul class="nav nav-tabs">
-						<li role="presentation" class="active"><a data-toggle="tab" href="#projects">Projects</a></li>
-						<li role="presentation"><a data-toggle="tab" href="#contributions">Contribution</a></li>
-					</ul> -->
+	  <!-- Tabs -->
+	  <div class="row">
+	  	<div class="col-xs-12">
+	      <div class="tabs" id="main-bar">		
+		        <a class="tab tab-fix-width active" role="tab" data-toggle="tab" data-target="#projects" aria-controls="projects"><h3>Projects</h3></a>
+		        <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#contributions" aria-controls="contributions"><h3>Contributions</h3></a>
+        	<!-- NEW PROJECT BUTTON-->
+        	<button type="button" class="btn btn-primary" id="add-project" data-toggle="modal" data-target="#myModal">
+        	  Add Project
+        	</button>
+	        	<!-- Modal View for Project-->
+	        	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	        	  <div class="modal-dialog" role="document">
+	        	    <div class="modal-content">
+	        	      <div class="modal-header">
+	        	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        	        <h4 class="modal-title" id="myModalLabel">Add a new project</h4>
+	        	      </div>
+	        	      <%= simple_form_for(@project) do |f| %>
+	        		      <div class="modal-body">
+	        		         <%= f.input :title, maxlength: 40, placeholder: "40 characters maximum" %>
+	        		         <%= f.input :brief, placeholder: "Tell us more about your project" %>
+	        		         <%= f.input :category, placeholder: "Choose a category" %>
+	        		         <%= f.input :end_date, placeholder: "When should project end?" %>
+	        		         <%= f.input :max_participations, placeholder: "How many people can contribute?" %>
+	        		      </div>
+	        		      <div class="modal-footer">
+	        		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        		        <%= f.submit 'Create Project', class: 'btn btn-primary' %>
+	        		      </div>
+	               <% end %>
+	        	    </div>
+	        	  </div>
+	        	</div>
+	      </div>
+	    </div>
+	  </div>
 
-					<div class="tabs">
-					  <a class="tab tab-fix-width active" role="presentation" data-toggle="tab" data-target="#projects" aria-controls="projects">
-					    <h3>Projects</h3>
-					  </a>
-					  <a class="tab tab-fix-width" role="presentation" data-toggle="tab" data-target="#contributions" aria-controls="contributions">
-					    <h3>Contributions</h3>
-					  </a>
-					</div>
+	  <!-- Project Tab -->
+		<div id="projects" class="tab-content fade in">
 
-				</div>
+			<!-- Company Statistics -->
+			<div class="row">
+				<%= render 'dashboard-project-stats', current_user: current_user %>
+			</div>
+			<hr class="line">
+			<!-- User's Active Projects -->
+			<div class="row">
+				<h2 class="text-center"> Your Open Projects</h2>
+				<% if @active_projects == false %>
+						<p class="text-center">You have no active projects</p>
+				<% elsif @active_projects.count > 0 %>
+					<% @active_projects.each do |project| %>
+							<%= render 'dashboard-project', project: project %>
+					<% end %>
+				<% end %>
+			</div>
+			<hr class="line">
 
-				<!-- NEW PROJECT BUTTON-->
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-				  Add Project
-				</button>
-				<!-- Modal View for Project-->
-				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				  <div class="modal-dialog" role="document">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <h4 class="modal-title" id="myModalLabel">Add a new project</h4>
-				      </div>
-				      <%= simple_form_for(@project) do |f| %>
-					      <div class="modal-body">
-					         <%= f.input :title, maxlength: 40, placeholder: "40 characters maximum" %>
-					         <%= f.input :brief, placeholder: "Tell us more about your project" %>
-					         <%= f.input :category, placeholder: "Choose a category" %>
-					         <%= f.input :end_date, placeholder: "When should project end?" %>
-					         <%= f.input :max_participations, placeholder: "How many people can contribute?" %>
-					      </div>
-					      <div class="modal-footer">
-					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					        <%= f.submit 'Create Project', class: 'btn btn-primary' %>
-					      </div>
-			       <% end %>
-				    </div>
-				  </div>
-				</div>
+			<!-- User's Closed Projects-->
+			<div class="row">
+				<h2 class="text-center"> Your Closed Projects</h2>
+				<% if @closed_projects == false %>
+					<p class="text-center"></p>
+				<% elsif @closed_projects.count > 0  %>
+					<% @closed_projects.each do |project| %>
+						<%= render 'dashboard-project', project: project %>
+					<% end %>
+				<% end %>
 			</div>
 		</div>
 
-
-		<!-- USER'S PROJECTS -->
-
-			<!-- COMPANY STATISTICS -->
-			<div class="row tab-pane fade in active">
-				<%= current_user.total_project_views %>
-				<%= current_user.average_project_views %>
-				<%= current_user.companies_total_joins %>
-				<%= current_user.count_contributions_received %>
+		<!-- Company Tabs -->
+		<div id="contributions" class="tab-content fade">
+	    <div class="row">
+				<p> HI! </p>
 			</div>
-
-			<!-- USER'S ACTIVE PROJECTS -->
-			<!-- <div class="row"> -->
-				<div id="projects" class="tab-pane fade in active">
-						<% if @active_projects == false %>
-								<p>You have no active projects</p>
-						<% elsif @active_projects.count > 0 %>
-							<% @active_projects.each do |project| %>
-									<%= render 'dashboard-project', project: project %>
-							<% end %>
-						<% end %>
-
-						<!-- USER'S CLOSED PROJECTS -->
-						<% if @closed_projects == false %>
-							<p>You have no closed projects</p>
-						<% elsif @closed_projects.count > 0  %>
-							<% @closed_projects.each do |project| %>
-								<%= render 'dashboard-project', project: project %>
-							<% end %>
-						<% end %>
-				</div>	
-			<!-- </div> -->
-
-			
-<!-- 			<div class="row">
-				<div id="projects" class="tab-pane fade in active">
-
-				</div>	
-			</div> -->
-
-		<!-- CONTRIBUTIONS -->
-		<!-- <div class="row"> -->
-			<div id="contributions" class="tab-pane fade">
-				<div class="row">
-					<p> HI! </p>
-				</div>
-			</div>	
-		<!-- </div> -->
-
-
+		</div>
 	</div>
 </div>
-
-
-
