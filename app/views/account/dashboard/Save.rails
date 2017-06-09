@@ -1,0 +1,28 @@
+<!-- User Participations -->
+<h1>User Participation</h1>
+
+<% @participations.each do |participation| %>
+  <p><%= participation.project.title %></p>
+  <%= link_to "go to project", project_path(participation.project), class: "btn btn-primary" %>
+<% end %>
+
+<hr>
+
+<!-- User Contributions -->
+<h1>User Contributions</h1>
+
+<% @contributions.each do |contribution| %>
+  <p><%= contribution.comment %></p>
+  <%= link_to "go to project", cl_image_path(contribution.file.path), class: "btn btn-primary" %>
+<% end %>
+
+<!-- User Upvotes -->
+
+<h1>User Upvotes</h1>
+<% @upvotes.each do |upvote| %>
+  <% if upvote.count > 0 %>
+  <p><%= upvote.count %></p>
+  <% else %>
+  <p>No Votes</p>
+  <% end %>
+<% end %>
