@@ -24,6 +24,9 @@
     <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#questions" aria-controls="questions">
       <h3>Questions</h3>
     </a>
+    <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#person-settings" aria-controls="person-settings">
+      <h3>Account settings</h3>
+    </a>
   </div>
 
 <div id="dashboard-scroll">
@@ -63,6 +66,12 @@
       <% current_user.questions.each do |question| %>
         <%= render "user-questions", question: question %>
       <% end %>
+    </div>
+    <!-- Account settings tab -->
+    <div id="person-settings" class="tab-content fade">
+      <div class="col-xs-8 col-xs-offset-2">
+        <%= render "users/individual_form", user: current_user %>
+      </div>
     </div>
   </div>
   </div>
