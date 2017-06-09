@@ -12,8 +12,12 @@
     <%= image_tag 'calendar.svg', class: "profile-icon" %>
   </div>
   <div class="stat-title">
+  <% if project.days_left > 0 then %>
     <p><%= project.days_left %>
-    <%= "Day".pluralize(project.days_left) %> Left</p>
+      <%= "Day".pluralize(project.days_left) %> Left</p>
+    <% else %>
+      <p>Project Closed</p>
+    <% end %>
   </div>
 </div>
 
