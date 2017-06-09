@@ -1,18 +1,15 @@
-<div class="page-backgroud">
-  <div class="container">
+
     <!-- Left section of the dashboard -->
     <div class="col-lg-9 padding-none">
       <!-- Welcome user section -->
-      <div class="welcome-section">
-        <div class="col-lg-3 padding-none">
+      <div class="welcome-section flex-box">
           <div class="user-dash-image">
-            <%= cl_image_tag (@user.get_profile_picture) %>
+            <%= cl_image_tag (current_user.get_profile_picture) %>
           </div>
-        </div>
-        <div class="col-lg-9 margin-top">
-          <h1>Hello James</h1>
-          <p>Welcome to your dashboard</p>
-        </div>
+          <div>
+            <h1>Hello James</h1>
+            <p>Welcome to your dashboard</p>
+          </div>
       </div>
       <div class="right-main">
         <div class="tabs" style="justify-content: center;">
@@ -30,34 +27,37 @@
         </a>
       </div>
 
-      <!-- Project Tab -->
-      <div class="container margin-top">
+      <!-- Open Projects Tab -->
+      <div class="container-fluid margin-top">
+
         <div id="projects" class="tab-content fade in">
-          <p style="font-weight: 100;">Open Projects</p>
-          <% @participations.each do |participation| %>
-            <%= render "participations", participation: participation %>
+          <%= render "header" %>
+          <% if current_user.active_participations %>
+            <% current_user.active_participations.each do |participation| %>
+              <%= render "participations", participation: participation %>
+            <% end %>
           <% end %>
         </div>
-        <!-- Company Tabs -->
+        <!-- Closed Projects Tabs -->
         <div id="closed" class="tab-content fade">
-          <p style="font-weight: 100;">Closed Projects</p>
           <% if current_user.closed_participations %>
+            <%= render "header" %>
             <% current_user.closed_participations.each do |participation| %>
-              <%= render "closed-projects", project: participation.project %>
-              <% end %>
-          <% else %>
-              <p = style="font-size: 12px;">No closed participations</p>
+              <%= render "closed-projects", participation: participation %>
+            <% end %>
           <% end %>
           <hr>
         </div>
-        <!-- Profile Tabs -->
+        <!-- All Contributions Tabs -->
         <div id="contributions" class="tab-content fade">
-          <p style="font-weight: 100;">User Contributions</p>
-          <% @participations.each do |participation| %>
-            <%= render "participations", participation: participation %>
+          <%= render "header-2" %>
+          <% if current_user.user_contributions %>
+            <% current_user.user_contributions.each do |contribution| %>
+              <%= render "user-contributions", contribution: contribution %>
+            <% end %>
           <% end %>
         </div>
-        <!-- Closed Projects -->
+        <!-- Questions asked tab -->
         <div id="questions" class="tab-content fade">
           <p style="font-weight: 100;">User Questions</p>
         </div>
@@ -73,10 +73,10 @@
           <!-- Briefcase -->
           <div class="stat">
            <%= image_tag 'briefcase.svg', class: "profile-icon" %>
-           <% if @user.active_participations %>
+           <% if current_user.active_participations %>
              <span>
-               <strong><%= @user.count_participations %></strong>
-               <%= "Contribution".pluralize(@user.count_participations) %>
+               <strong><%= current_user.count_participations %></strong>
+               <%= "Contribution".pluralize(current_user.count_participations) %>
                in progress
              </span>
            <% else %>
@@ -86,10 +86,10 @@
           <!-- Contributions -->
           <div class="stat">
            <%= image_tag 'contribution.svg', class: "profile-icon" %>
-           <% if @user.closed_contributions %>
+           <% if current_user.closed_contributions %>
              <span>
-               <strong><%= @user.count_contributions %></strong>
-               <%= "Contribution".pluralize(@user.count_contributions) %>
+               <strong><%= current_user.count_contributions %></strong>
+               <%= "Contribution".pluralize(current_user.count_contributions) %>
                made
              </span>
            <% else %>
@@ -99,10 +99,10 @@
           <!-- Stars -->
           <div class="stat">
            <%= image_tag 'star.svg', class: "profile-icon" %>
-           <% if @user.count_starred_contributions >= 1 %>
+           <% if current_user.count_starred_contributions >= 1 %>
              <span>
-               <strong><%= @user.count_starred_contributions %></strong>
-               <%= "Star".pluralize(@user.count_starred_contributions) %>
+               <strong><%= current_user.count_starred_contributions %></strong>
+               <%= "Star".pluralize(current_user.count_starred_contributions) %>
              </span>
            <% else %>
              <span>No stars yet</span>
@@ -111,10 +111,10 @@
           <!-- Upvotes -->
           <div class="stat">
            <%= image_tag 'upvote.svg', class: "profile-icon" %>
-           <% if @user.count_upvotes >= 1 %>
+           <% if current_user.count_upvotes >= 1 %>
              <span>
-               <strong><%= @user.count_upvotes %></strong>
-               <%= "Upvote".pluralize(@user.count_upvotes) %>
+               <strong><%= current_user.count_upvotes %></strong>
+               <%= "Upvote".pluralize(current_user.count_upvotes) %>
              </span>
            <% else %>
              <span>No upvotes yet</span>
@@ -122,5 +122,4 @@
           </div>
       </div>
     </div>
-  </div>
-</div>
+

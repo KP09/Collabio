@@ -6,6 +6,9 @@
     font-weight: 100;
     margin: 0px;
   }
+  img {
+    padding-right: 20px;
+  }
 }
 
 .user-dash-image {
@@ -26,13 +29,31 @@
 }
 
 .project-row {
+  margin-top: 15px;
   background: white;
   border-radius: 5px;
   color: $dark-gray;
   height: 50px;
   padding: 5px 10px;
-  border-bottom: 1px $dark-gray solid;
+  border: 2px $light-gray solid;
   p {
     margin: 0px;
   }
 }
+
+.project-header {
+  margin-top: 15px;
+  color: $dark-gray;
+  height: 50px;
+  padding: 5px 10px;
+  p {
+    margin: 0px;
+    font-weight: 600;
+  }
+}
+
+.full-width-button {
+  width: 100%;
+  padding: 5px;
+}
+

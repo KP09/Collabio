@@ -1,16 +1,14 @@
-<div class="col-lg-8">
-  <div class="project-row flex-box">
-    <div class="col-lg-3">
-      <p><%= participation.project.title %></p>
+<div class="project-row flex-box">
+    <div class="col-lg-5">
+      <p><%= participation.project.title[0..30] %>...</p>
     </div>
     <div class="col-lg-3">
       <p><%= participation.project.user.company_name %></p>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-2">
       <p><%= participation.project.days_left %></p>
     </div>
-    <div class="col-lg-3">
-      <p><%= link_to "view", project_path(participation.project) %></p>
+    <div class="col-lg-2">
+      <p><%= link_to "view", project_path(participation.project), class: "btn btn-primary padding-none full-width-button" %></p>
     </div>
-  </div>
 </div>
