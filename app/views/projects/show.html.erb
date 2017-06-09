@@ -46,7 +46,7 @@
             <div class="questions-content">
               <div class="flex-between margin-top">
                 <div id="ask-question">
-                  <h1 style="font-size: 30px;">Q & A</h1>
+                  <h4>Q & A</h4>
                 </div>
                 <div>
                   <% if user_signed_in? && current_user.participated_to?(@project) %>
@@ -54,15 +54,16 @@
                   <% end %>
                 </div>
               </div>
+              <hr>
                <%= render "projects/question", questions: @questions %>
             </div>
           </div>
           <div class="col-lg-3 margin-top">
             <%= render "projects/counters", project: @project %>
 
-          <% if user_signed_in? && current_user.participated_to?(@project) %>
-              <%= link_to "Leave Project", project_participation_path(@project), class: "btn btn-default", method: :DELETE, style: "width:100%" %>
-          <% end %>
+            <% if user_signed_in? && current_user.participated_to?(@project) %>
+                <%= link_to "Leave Project", project_participation_path(@project), class: "btn btn-default", method: :DELETE, style: "width:100%" %>
+            <% end %>
 
 
             <div class="margin-top">
@@ -85,19 +86,18 @@
               <br>
             </div>
           </div>
+          <div class="col-xs-12 margin-top">
+            <div>
+              <h4>Similar Projects</h4>
+            </div>
+            <hr>
+            <% @similar_projects.each do |project| %>
+              <%= render "shared/card_full_imagery", project: @project %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="similar margin-top">
-    <div class="similar-title">
-      <div><p>Similar Projects</p></div>
-    </div>
-    <% @similar_projects.each do |project| %>
-      <div class="col-md-4 padding-none">
-        <%= render "projects/card", project: @project %>
-      </div>
-    <% end %>
   </div>
 </div>
 
