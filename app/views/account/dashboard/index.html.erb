@@ -4,12 +4,12 @@
     <div class="col-lg-9 padding-none">
       <!-- Welcome user section -->
       <div class="welcome-section">
-        <div class="col-lg-2 padding-none">
+        <div class="col-lg-3 padding-none">
           <div class="user-dash-image">
             <%= cl_image_tag (@user.get_profile_picture) %>
           </div>
         </div>
-        <div class="col-lg-10 margin-top">
+        <div class="col-lg-9 margin-top">
           <h1>Hello James</h1>
           <p>Welcome to your dashboard</p>
         </div>
@@ -35,17 +35,27 @@
         <div id="projects" class="tab-content fade in">
           <p style="font-weight: 100;">Open Projects</p>
           <% @participations.each do |participation| %>
-            <%= participation.project.title %>
+            <%= render "participations", participation: participation %>
           <% end %>
         </div>
         <!-- Company Tabs -->
         <div id="closed" class="tab-content fade">
           <p style="font-weight: 100;">Closed Projects</p>
+          <% if current_user.closed_participations %>
+            <% current_user.closed_participations.each do |participation| %>
+              <%= render "closed-projects", project: participation.project %>
+              <% end %>
+          <% else %>
+              <p = style="font-size: 12px;">No closed participations</p>
+          <% end %>
           <hr>
         </div>
         <!-- Profile Tabs -->
         <div id="contributions" class="tab-content fade">
           <p style="font-weight: 100;">User Contributions</p>
+          <% @participations.each do |participation| %>
+            <%= render "participations", participation: participation %>
+          <% end %>
         </div>
         <!-- Closed Projects -->
         <div id="questions" class="tab-content fade">
@@ -58,7 +68,7 @@
     <!-- Right hand section of the dashboard -->
     <div class="col-lg-3 padding-none">
       <div class="right-dashboard">
-        <h2 style="font-size: 20px"><i class="fa fa-dashboard"></i> Portfolio stats</h2>
+        <h2 class="text-center" style="font-size: 20px;"><i class="fa fa-dashboard"></i> Portfolio stats</h2>
           <hr>
           <!-- Briefcase -->
           <div class="stat">

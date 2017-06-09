@@ -285,6 +285,27 @@ class User < ApplicationRecord
     end
   end
 
+  # Returns the participation of a user for which the deadline has expired
+  def closed_participations
+    closed_participations = self.participations.select{ |p| p.project.end_date < DateTime.now }
+    if closed_participations.count >= 1
+      return closed_participations
+    else
+      return false
+    end
+  end
+
+  # Returns the open projects of a user
+  def open_participations
+    open_participations = self.participations.select{ |p| p.project.end_date > DateTime.now }
+    if closed_participations.count >= 1
+      return closed_participations
+    else
+      return false
+    end
+  end
+
+
   # Returns a hash of companies from which a user (individual has received the most stars)
   def most_rated_by
     rated_frequencies = {}
