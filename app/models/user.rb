@@ -106,7 +106,7 @@ class User < ApplicationRecord
 
   def average_project_views
     average_views = 0
-    if self.company
+    if self.company && total_project_views > 0 && self.projects.count > 0
       average_views = (total_project_views / self.projects.count)
     else
       return 0
