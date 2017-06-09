@@ -1,125 +1,129 @@
+<!-- Left section of the dashboard -->
+<div class="col-lg-9 padding-none">
+  <!-- Welcome user section -->
+  <div class="welcome-section flex-box">
+      <div class="user-dash-image">
+        <%= cl_image_tag (current_user.get_profile_picture) %>
+      </div>
+      <div>
+        <h1>Hello James</h1>
+        <p>Welcome to your dashboard</p>
+      </div>
+  </div>
+  <div class="right-main">
+    <div class="tabs"">
+    <a class="tab tab-fix-width active" role="tab" data-toggle="tab" data-target="#projects" aria-controls="projects">
+      <h3>Open projects</h3>
+    </a>
+    <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#closed" aria-controls="closed">
+      <h3>Closed Projects</h3>
+    </a>
+    <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#contributions" aria-controls="contributions">
+      <h3>Contributions</h3>
+    </a>
+    <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#questions" aria-controls="questions">
+      <h3>Questions</h3>
+    </a>
+  </div>
 
-    <!-- Left section of the dashboard -->
-    <div class="col-lg-9 padding-none">
-      <!-- Welcome user section -->
-      <div class="welcome-section flex-box">
-          <div class="user-dash-image">
-            <%= cl_image_tag (current_user.get_profile_picture) %>
-          </div>
-          <div>
-            <h1>Hello James</h1>
-            <p>Welcome to your dashboard</p>
-          </div>
-      </div>
-      <div class="right-main">
-        <div class="tabs" style="justify-content: center;">
-        <a class="tab tab-fix-width active" role="tab" data-toggle="tab" data-target="#projects" aria-controls="projects">
-          <h3>Open projects</h3>
-        </a>
-        <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#closed" aria-controls="closed">
-          <h3>Closed Projects</h3>
-        </a>
-        <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#contributions" aria-controls="contributions">
-          <h3>Contributions</h3>
-        </a>
-        <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#questions" aria-controls="questions">
-          <h3>Questions</h3>
-        </a>
-      </div>
+<div id="dashboard-scroll">
+  <!-- Open Projects Tab -->
+  <div class="container-fluid margin-top">
 
-      <!-- Open Projects Tab -->
-      <div class="container-fluid margin-top">
-
-        <div id="projects" class="tab-content fade in">
-          <%= render "header" %>
-          <% if current_user.active_participations %>
-            <% current_user.active_participations.each do |participation| %>
-              <%= render "participations", participation: participation %>
-            <% end %>
-          <% end %>
-        </div>
-        <!-- Closed Projects Tabs -->
-        <div id="closed" class="tab-content fade">
-          <% if current_user.closed_participations %>
-            <%= render "header" %>
-            <% current_user.closed_participations.each do |participation| %>
-              <%= render "closed-projects", participation: participation %>
-            <% end %>
-          <% end %>
-          <hr>
-        </div>
-        <!-- All Contributions Tabs -->
-        <div id="contributions" class="tab-content fade">
-          <%= render "header-2" %>
-          <% if current_user.user_contributions %>
-            <% current_user.user_contributions.each do |contribution| %>
-              <%= render "user-contributions", contribution: contribution %>
-            <% end %>
-          <% end %>
-        </div>
-        <!-- Questions asked tab -->
-        <div id="questions" class="tab-content fade">
-          <p style="font-weight: 100;">User Questions</p>
-        </div>
-      </div>
-      </div>
+    <div id="projects" class="tab-content fade in">
+      <%= render "header" %>
+      <% if current_user.active_participations %>
+        <% current_user.active_participations.each do |participation| %>
+          <%= render "participations", participation: participation %>
+        <% end %>
+      <% end %>
     </div>
-
-    <!-- Right hand section of the dashboard -->
-    <div class="col-lg-3 padding-none">
-      <div class="right-dashboard">
-        <h2 class="text-center" style="font-size: 20px;"><i class="fa fa-dashboard"></i> Portfolio stats</h2>
-          <hr>
-          <!-- Briefcase -->
-          <div class="stat">
-           <%= image_tag 'briefcase.svg', class: "profile-icon" %>
-           <% if current_user.active_participations %>
-             <span>
-               <strong><%= current_user.count_participations %></strong>
-               <%= "Contribution".pluralize(current_user.count_participations) %>
-               in progress
-             </span>
-           <% else %>
-             <span>No work in progress</span>
-           <% end %>
-          </div>
-          <!-- Contributions -->
-          <div class="stat">
-           <%= image_tag 'contribution.svg', class: "profile-icon" %>
-           <% if current_user.closed_contributions %>
-             <span>
-               <strong><%= current_user.count_contributions %></strong>
-               <%= "Contribution".pluralize(current_user.count_contributions) %>
-               made
-             </span>
-           <% else %>
-             <span>No contributions yet</span>
-           <% end %>
-          </div>
-          <!-- Stars -->
-          <div class="stat">
-           <%= image_tag 'star.svg', class: "profile-icon" %>
-           <% if current_user.count_starred_contributions >= 1 %>
-             <span>
-               <strong><%= current_user.count_starred_contributions %></strong>
-               <%= "Star".pluralize(current_user.count_starred_contributions) %>
-             </span>
-           <% else %>
-             <span>No stars yet</span>
-           <% end %>
-          </div>
-          <!-- Upvotes -->
-          <div class="stat">
-           <%= image_tag 'upvote.svg', class: "profile-icon" %>
-           <% if current_user.count_upvotes >= 1 %>
-             <span>
-               <strong><%= current_user.count_upvotes %></strong>
-               <%= "Upvote".pluralize(current_user.count_upvotes) %>
-             </span>
-           <% else %>
-             <span>No upvotes yet</span>
-           <% end %>
-          </div>
-      </div>
+    <!-- Closed Projects Tabs -->
+    <div id="closed" class="tab-content fade">
+      <% if current_user.closed_participations %>
+        <%= render "header" %>
+        <% current_user.closed_participations.each do |participation| %>
+          <%= render "closed-projects", participation: participation %>
+        <% end %>
+      <% end %>
+      <hr>
     </div>
+    <!-- All Contributions Tabs -->
+    <div id="contributions" class="tab-content fade">
+      <%= render "header-2" %>
+      <% if current_user.user_contributions %>
+        <% current_user.user_contributions.each do |contribution| %>
+          <%= render "user-contributions", contribution: contribution %>
+        <% end %>
+      <% end %>
+    </div>
+    <!-- Questions asked tab -->
+    <div id="questions" class="tab-content fade">
+      <%= render "header-questions" %>
+      <% current_user.questions.each do |question| %>
+        <%= render "user-questions", question: question %>
+      <% end %>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+
+<!-- Right hand section of the dashboard -->
+<div class="col-lg-3 padding-none">
+  <div class="right-dashboard">
+    <h2 class="text-center" style="font-size: 20px;"><i class="fa fa-dashboard"></i> Portfolio stats</h2>
+      <hr>
+      <!-- Briefcase -->
+      <div class="stat">
+       <%= image_tag 'briefcase.svg', class: "profile-icon" %>
+       <% if current_user.active_participations %>
+         <span>
+           <strong><%= current_user.count_participations %></strong>
+           <%= "Contribution".pluralize(current_user.count_participations) %>
+           in progress
+         </span>
+       <% else %>
+         <span>No work in progress</span>
+       <% end %>
+      </div>
+      <!-- Contributions -->
+      <div class="stat">
+       <%= image_tag 'contribution.svg', class: "profile-icon" %>
+       <% if current_user.closed_contributions %>
+         <span>
+           <strong><%= current_user.count_contributions %></strong>
+           <%= "Contribution".pluralize(current_user.count_contributions) %>
+           made
+         </span>
+       <% else %>
+         <span>No contributions yet</span>
+       <% end %>
+      </div>
+      <!-- Stars -->
+      <div class="stat">
+       <%= image_tag 'star.svg', class: "profile-icon" %>
+       <% if current_user.count_starred_contributions >= 1 %>
+         <span>
+           <strong><%= current_user.count_starred_contributions %></strong>
+           <%= "Star".pluralize(current_user.count_starred_contributions) %>
+         </span>
+       <% else %>
+         <span>No stars yet</span>
+       <% end %>
+      </div>
+      <!-- Upvotes -->
+      <div class="stat">
+       <%= image_tag 'upvote.svg', class: "profile-icon" %>
+       <% if current_user.count_upvotes >= 1 %>
+         <span>
+           <strong><%= current_user.count_upvotes %></strong>
+           <%= "Upvote".pluralize(current_user.count_upvotes) %>
+         </span>
+       <% else %>
+         <span>No upvotes yet</span>
+       <% end %>
+      </div>
+  </div>
+</div>
 
