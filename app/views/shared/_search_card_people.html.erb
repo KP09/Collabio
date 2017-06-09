@@ -1,0 +1,29 @@
+<%= link_to user_path(user) do %>
+  <div class="col-xs-12 col-md-6">
+    <div class="shadow-box margin-top individual-search-card">
+      <div class="flex-between">
+        <div class="flex-box">
+          <div class="avatar-small" style="background-image: url('<%= cl_image_path (user.get_profile_picture) %>')">
+          </div>
+          <div>
+            <p><strong><%= user.full_name %></strong></p>
+            <p><%= user.location %></p>
+          </div>
+        </div>
+        <div class="card-icons flex-between">
+          <div class="flex-icon">
+            <span><strong><%= user.count_contributions %></strong></span>
+            <%= image_tag 'contribution.svg', class: "profile-icon-tiny" %>
+          </div>
+          <div class="flex-icon">
+            <span><strong><%= user.count_starred_contributions %></strong></span>
+            <%= image_tag 'star.svg', class: "profile-icon-tiny" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+
