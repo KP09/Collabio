@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :show ]
 
   def show
+    @user = current_user
     @question = Question.new
     @contribution = Contribution.new
     @similar_projects = Project.all[0..2]

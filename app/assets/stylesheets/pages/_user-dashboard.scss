@@ -24,3 +24,15 @@
   padding: 10px;
   height: 100vh;
 }
+
+.project-row {
+  background: white;
+  border-radius: 5px;
+  color: $dark-gray;
+  height: 50px;
+  padding: 5px 10px;
+  border-bottom: 1px $dark-gray solid;
+  p {
+    margin: 0px;
+  }
+}
