@@ -31,12 +31,12 @@
     margin: 10px 0 10px 0;
   }
   h2 {
-    font-size: $base-size ;
-    margin: 0 0 10px 0;
+    font-size: $base-size +5px ;
+    // margin: 0 0 10px 0;
     font-weight: normal;
   }
   h3 {
-    font-size: $base-size + 2px;
+    font-size: $base-size ;
     margin: 0;
   }
   h4 {
