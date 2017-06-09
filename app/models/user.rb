@@ -94,6 +94,15 @@ class User < ApplicationRecord
     return number_joins
   end
 
+  def company_active_joins
+    number_active_joins = 0
+    active_projects = self.projects.select { |p| p.end_date > DateTime.now }
+      active_projects.each do |p|
+        number_active_joins += p.participations.count
+      end
+    return number_active_joins
+  end
+
   def total_project_views
     total_views = 0
     if self.company

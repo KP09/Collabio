@@ -4,8 +4,9 @@
 }
 
 .card_border:hover {
+  box-shadow: $box-shadow-hover;
+  -webkit-transition: all 0.2s ease;
   opacity: 0.9;
-  -webkit-transition: opacity 0.2s ease;
 }
 
 .search-icon {
@@ -168,4 +169,69 @@ a:-webkit-any-link {
 
     }
   }
+}
+
+.card {
+  h2 {
+    margin-bottom: 0px !important;
+  }
+}
+
+.wide-card {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  color: $charcoal;
+  border-radius: 2px;
+  object-fit: cover;
+  h2 {
+    font-size: 24px;
+    font-weight: lighter;
+  }
+  .image {
+    background-size: cover;
+    margin: 0px 20px;
+    align-self: center;
+  }
+  .company-info {
+    flex-grow: 1;
+    margin: 0px 20px;
+    align-self: center;
+    p:first-child {
+      margin-bottom: 10px;
+    }
+  }
+  .project-metadata {
+    margin: 0px 20px;
+    align-self: center;
+  }
+  p {
+    size: 16px;
+    margin-bottom: 0px;
+  }
+}
+
+.individual-search-card {
+  p {
+    margin: 0 0 0 10px;
+  }
+  .card-icons {
+    text-align: center;
+  }
+  .profile-icon-tiny {
+    margin: 0;
+  }
+  p, span {
+    color: $dark-gray !important;
+  }
+  &:hover {
+  box-shadow: $box-shadow-hover;
+  -webkit-transition: all 0.2s ease;
+  }
+}
+
+.flex-icon {
+  display: flex;
+  flex-direction: column;
+  padding-left: 30px;
 }

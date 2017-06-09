@@ -41,5 +41,18 @@
         <span>No contributions received</span>
       <% end %>
     </div>
+    <!-- People engaged -->
+    <div class="stat">
+      <%= image_tag 'people.svg', class: "profile-icon" %>
+      <% if user.company_active_joins >= 1 %>
+        <span>
+          <strong><%= user.company_active_joins %></strong>
+          <%= "Contribution".pluralize(user.company_active_joins) %>
+          users engaged
+        </span>
+      <% else %>
+        <span>No active users right now</span>
+      <% end %>
+    </div>
   </div>
 </div>

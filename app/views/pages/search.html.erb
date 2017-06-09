@@ -1,10 +1,10 @@
 <div class="container">
   <!-- Tabs -->
   <div class="row ">
-  	<div class="col-xs-12">
+    <div class="col-xs-12">
       <div class="tabs">
         <a class="tab tab-fix-width active" role="tab" data-toggle="tab" data-target="#projects" aria-controls="projects">
-          <h3>Open projects</h3>
+          <h3>Projects</h3>
         </a>
         <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#companies" aria-controls="companies">
           <h3>Companies</h3>
@@ -12,44 +12,32 @@
         <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#people" aria-controls="people">
           <h3>People</h3>
         </a>
-        <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#closedprojects" aria-controls="closedprojects">
-          <h3>Closed projects</h3>
-        </a>
       </div>
     </div>
   </div>
 
   <!-- Project Tab -->
-	<div id="projects" class="tab-content fade in">
+  <div id="projects" class="tab-content fade in">
     <div class="row">
-			<% 	@projects.each do |project| %>
-				<%= render 'shared/card_full_imagery', project: project %>
-			<% end %>
+      <%  @projects.each do |project| %>
+        <%= render 'shared/card_full_imagery', project: project %>
+      <% end %>
     </div>
-	</div>
+  </div>
 
-	<!-- Company Tabs -->
-	<div id="companies" class="tab-content fade">
+  <!-- Company Tabs -->
+  <div id="companies" class="tab-content fade">
     <div class="row">
-			<% @companies.each do |user| %>
-				<%= render 'company_search_results', user: user %>
-			<% end %>
+      <% @companies.each do |user| %>
+        <%= render 'shared/search_card_companies', user: user %>
+      <% end %>
     </div>
-	</div>
+  </div>
 
-	<!-- Profile Tabs -->
-	<div id="people" class="tab-content fade">
-		<% @people.each do |user| %>
-			<%= render 'people-search-results', user: user %>
-		<% end %>
-	</div>
-
-	<!-- Closed Projects -->
-	<div id="closedprojects" class="tab-content fade in">
-		<% 	@expired_projects.each do |project| %>
-			<%= render 'pages/project-search-expired-projects', project: project %>
-		<% end %>
-	</div>
-
-
+  <!-- Profile Tabs -->
+  <div id="people" class="tab-content fade">
+    <% @people.each do |user| %>
+      <%= render 'shared/search_card_people', user: user %>
+    <% end %>
+  </div>
 </div>
