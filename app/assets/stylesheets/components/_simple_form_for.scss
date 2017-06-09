@@ -14,13 +14,24 @@
     background-color: $blue-gray;
     color: white;
     border: none;
-    width: 100%;
     &:focus {
       outline: none;
     }
   }
   a {
     color: $dark-gray !important;
+  }
+}
+
+#loginModal {
+  .btn {
+    width: 100%;
+  }
+}
+
+#signUpModal {
+  .btn {
+    width: 100%;
   }
 }
 
