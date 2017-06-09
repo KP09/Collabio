@@ -4,13 +4,23 @@
 		<div class="row">
 			<div class="col-xs-12" id="main-bar">
 				<div id="dashboard-tabs">
-					<ul class="nav nav-tabs">
+<!-- 					<ul class="nav nav-tabs">
 						<li role="presentation" class="active"><a data-toggle="tab" href="#projects">Projects</a></li>
 						<li role="presentation"><a data-toggle="tab" href="#contributions">Contribution</a></li>
-					</ul>
+					</ul> -->
+
+					<div class="tabs">
+					  <a class="tab tab-fix-width active" role="presentation" data-toggle="tab" data-target="#projects" aria-controls="projects">
+					    <h3>Projects</h3>
+					  </a>
+					  <a class="tab tab-fix-width" role="presentation" data-toggle="tab" data-target="#contributions" aria-controls="contributions">
+					    <h3>Contributions</h3>
+					  </a>
+					</div>
+
 				</div>
+
 				<!-- NEW PROJECT BUTTON-->
-				
 				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 				  Add Project
 				</button>
@@ -34,57 +44,65 @@
 					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					        <%= f.submit 'Create Project', class: 'btn btn-primary' %>
 					      </div>
-
-				       <% end %>
+			       <% end %>
 				    </div>
 				  </div>
 				</div>
-
-
-
-
-
-
 			</div>
 		</div>
 
-		<!-- COMPANY STATISTICS -->
-		<div class="row">
-			<%= current_user.total_project_views %>
-			<%= current_user.average_project_views %>
-			<%= current_user.companies_total_joins %>
-			<%= current_user.count_contributions_received %>
-		</div>
 
-		<!-- USER'S ACTIVE PROJECTS -->
-		<div class="row">
-			<div id="projects" class="tab-pane fade in active">
-				<div class="row">
-					<% if @active_projects == false %>
-							<p>You have no active projects</p>
-					<% elsif @active_projects.count > 0 %>
-						<% @active_projects.each do |project| %>
-								<%= render 'dashboard-project', project: project %>
+		<!-- USER'S PROJECTS -->
+
+			<!-- COMPANY STATISTICS -->
+			<div class="row tab-pane fade in active">
+				<%= current_user.total_project_views %>
+				<%= current_user.average_project_views %>
+				<%= current_user.companies_total_joins %>
+				<%= current_user.count_contributions_received %>
+			</div>
+
+			<!-- USER'S ACTIVE PROJECTS -->
+			<!-- <div class="row"> -->
+				<div id="projects" class="tab-pane fade in active">
+						<% if @active_projects == false %>
+								<p>You have no active projects</p>
+						<% elsif @active_projects.count > 0 %>
+							<% @active_projects.each do |project| %>
+									<%= render 'dashboard-project', project: project %>
+							<% end %>
 						<% end %>
-					<% end %>
+
+						<!-- USER'S CLOSED PROJECTS -->
+						<% if @closed_projects == false %>
+							<p>You have no closed projects</p>
+						<% elsif @closed_projects.count > 0  %>
+							<% @closed_projects.each do |project| %>
+								<%= render 'dashboard-project', project: project %>
+							<% end %>
+						<% end %>
+				</div>	
+			<!-- </div> -->
+
+			
+<!-- 			<div class="row">
+				<div id="projects" class="tab-pane fade in active">
+
+				</div>	
+			</div> -->
+
+		<!-- CONTRIBUTIONS -->
+		<!-- <div class="row"> -->
+			<div id="contributions" class="tab-pane fade">
+				<div class="row">
+					<p> HI! </p>
 				</div>
 			</div>	
-		</div>
-
-		<!-- USER'S CLOSED PROJECTS -->
-		<div class="row">
-			<div id="projects" class="tab-pane fade in active">
-				<% if @closed_projects == false %>
-					<p>You have no closed projects</p>
-				<% elsif @closed_projects.count > 0  %>
-					<% @closed_projects.each do |project| %>
-						<%= render 'dashboard-project', project: project %>
-					<% end %>
-				<% end %>
-			</div>	
-		</div>
-
+		<!-- </div> -->
 
 
 	</div>
 </div>
+
+
+
