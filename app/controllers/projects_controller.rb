@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   impressionist :actions=>[:show]
+  skip_before_action :authenticate_user!, only: [ :show ]
 
   def show
     @question = Question.new

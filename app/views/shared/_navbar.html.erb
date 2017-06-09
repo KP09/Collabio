@@ -41,9 +41,16 @@
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
               <% end %>
             </li>
-            <% if current_user.company %>
+            <% if current_user.is_company? %>
               <li>
                 <%= link_to company_dashboard_index_path do %>
+                  <i class="fa fa-dashboard"></i>  <%= t(".profile", default: "Dashboard") %>
+                <% end %>
+              </li>
+            <% end %>
+            <% if current_user.is_individual? %>
+              <li>
+                <%= link_to account_dashboard_index_path do %>
                   <i class="fa fa-dashboard"></i>  <%= t(".profile", default: "Dashboard") %>
                 <% end %>
               </li>
