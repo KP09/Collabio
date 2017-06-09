@@ -2,6 +2,10 @@
   display: flex;
   justify-content: space-between;
   justify-content: center;
+  hr {
+    border-color: $medium-gray;
+    margin-bottom: 0;
+  }
 }
 
 .company-name-title {

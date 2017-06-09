@@ -21,10 +21,9 @@ class ContributionsController < ApplicationController
     authorize @contribution
   	@contribution.user = current_user
   	if @contribution.save
-  	  redirect_to project_path(@contribution)
+  	  render 'projects/show'
   	else
   	  render 'projects/show'
-  	  # need to make sure the edit view of contributions is called 'edit!'
   	end
   end
 
