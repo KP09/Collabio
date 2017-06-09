@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :participations, dependent: :destroy
   has_many :contributions, dependent: :nullify
   has_many :upvotes, dependent: :destroy
+  has_many :questions
 
   # Validations
   # email and password handled by Devise
