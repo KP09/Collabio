@@ -267,6 +267,16 @@ class User < ApplicationRecord
     end
   end
 
+   # Returns the all contributions of a user
+  def user_contributions
+    user_contributions = self.contributions
+    if user_contributions.count >= 1
+      return user_contributions
+    else
+      return false
+    end
+  end
+
   # Returns the number of participations for a user
   # where the projects is still open
   def count_participations
@@ -297,16 +307,6 @@ class User < ApplicationRecord
   # Returns the participation of a user for which the deadline has expired
   def closed_participations
     closed_participations = self.participations.select{ |p| p.project.end_date < DateTime.now }
-    if closed_participations.count >= 1
-      return closed_participations
-    else
-      return false
-    end
-  end
-
-  # Returns the open projects of a user
-  def open_participations
-    open_participations = self.participations.select{ |p| p.project.end_date > DateTime.now }
     if closed_participations.count >= 1
       return closed_participations
     else

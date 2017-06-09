@@ -1,16 +1,14 @@
-<div class="col-lg-8">
-  <div class="project-row flex-box">
-    <div class="col-lg-6">
-      <p>Project Name</p>
+<div class="project-row flex-box">
+    <div class="col-lg-5">
+      <p><%= contribution.project.title[0..30] %>...</p>
+    </div>
+    <div class="col-lg-3">
+      <p><%= contribution.project.user.company_name %></p>
     </div>
     <div class="col-lg-2">
-      <p>Project Owner</p>
+      <p><%= contribution.starred? %></p>
     </div>
     <div class="col-lg-2">
-      <p>Project Days Left</p>
+      <p><%= link_to "view", cl_image_path(contribution.file.path), class: "btn btn-primary padding-none full-width-button" %></p>
     </div>
-    <div class="col-lg-2">
-      <p>View</p>
-    </div>
-  </div>
 </div>
