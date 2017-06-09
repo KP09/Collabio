@@ -66,16 +66,22 @@
 
 
             <div class="margin-top">
-              <% if @project.days_left > 0 %>
-                <% if user_signed_in? && current_user.participated_to?(@project) %>
+            <% if user_signed_in? %>
+              <% if @project.days_left > 0 && current_user.participated_to?(@project) %>
                   <%= render "projects/make-contribution", project: @project %>
                 <% end %>
               <% elsif @project.days_left < 1 %>
                   <%= render "projects/project-closed", project: @project %>
-              <% end %>
+            <% end %>
+            <% if user_signed_in? %>
               <% if @project.days_left > 0 && !current_user.participated_to?(@project)   %>
                 <%= render "projects/join-project", project: @project %>
               <% end %>
+            <% end %>
+            <% if !user_signed_in? %>
+                <%= render "projects/join-project", project: @project %>
+            <% end %>
+
               <br>
             </div>
           </div>
