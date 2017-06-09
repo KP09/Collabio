@@ -20,6 +20,17 @@ class ApplicationController < ActionController::Base
     redirect_to(root_path)
   end
 
+  # Redirect after sign in (Devise)
+  def after_sign_in_path_for(resource)
+    if current_user.company
+      # Sends companies to dashboard
+      company_dashboard_index_path
+    else
+      # Sends individuals to their profile page
+      user_path(resource)
+    end
+  end
+
   private
 
   def skip_pundit?
