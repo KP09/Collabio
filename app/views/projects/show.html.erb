@@ -86,15 +86,15 @@
               <br>
             </div>
           </div>
-          <div class="col-xs-12 margin-top">
-            <div>
-              <h4>Similar Projects</h4>
-            </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <h4>Similar Projects</h4>
             <hr>
-            <% @similar_projects.each do |project| %>
-              <%= render "shared/card_full_imagery", project: @project %>
-            <% end %>
           </div>
+          <% @similar_projects.each do |project| %>
+            <%= render "shared/card_full_imagery", project: @project %>
+          <% end %>
         </div>
       </div>
     </div>
