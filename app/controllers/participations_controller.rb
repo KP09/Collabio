@@ -1,4 +1,6 @@
 class ParticipationsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
   	@project = Project.find(params[:project_id])
     @participation = Participation.new
