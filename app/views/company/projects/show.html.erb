@@ -40,19 +40,65 @@
     <div class="margin-top">
       <h2>Questions</h2>
       <hr>
-      <div class="shadow-box">
-
-      </div>
+      <% if @project.questions.count > 0 %>
+        <div class="shadow-box">
+          <% @project.sorted_questions.each do |q| %>
+            <span>
+              by
+              <%= link_to q.user.full_name, user_path(q.user), class: "text-link" %>
+              on
+              <%= q.updated_at.strftime('%e %B %Y at %l:%M %p') %>
+            </span>
+            <% if q.answer %>
+              <p><strong>Q:</strong> <%= q.question %></p>
+              <div class="flex-between">
+                <p><strong>A:</strong> <%= q.answer %></p>
+                <%= link_to "Edit answer","#answerquestion-" + q.id.to_s, data: { toggle: "modal"}, class: "text-link"%>
+              </div>
+            <% else %>
+              <%= link_to user_path(q.user), class: "text-link" do %>
+                <span><%= q.user.full_name %></span>
+              <% end %>
+              <div class="flex-between">
+                <p><strong>Q:</strong> <%= q.question %></p>
+                <%= link_to "Answer this question","#answerquestion-" + q.id.to_s, data: { toggle: "modal"}, class: "text-link"%>
+              </div>
+            <% end %>
+            <hr>
+          <% end %>
+        </div>
+      <% else %>
+        <p>No questions</p>
+      <% end %>
     </div>
 
     <!-- Contributions -->
     <div class="margin-top">
       <h2>Contributions</h2>
       <hr>
-
-      <div class="shadow-box">
-      </div>
-
+      <% if @project.contributions.count > 0 %>
+        <% @project.contributions.each do |c| %>
+        <div class="shadow-box">
+          <div class="flex-between">
+            <div>
+              <span>
+                by
+                <%= link_to c.user.full_name, user_path(c.user), class: "text-link" %>
+                on
+                <%= c.updated_at.strftime('%e %B %Y at %l:%M %p') %>
+              </span>
+              <p><strong>Comment: </strong> <%= c.comment %></p>
+            </div>
+            <div>
+              <%= link_to "View work", cl_image_path(c.file.path), class: "text-link" %>
+              <p>Star</p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      <% else %>
+        <p>No contributions</p>
+      <% end %>
     </div>
   </div>
   <!-- END OF LEFT HAND COLUMN -->
@@ -164,5 +210,25 @@
       </div>
     </div>
   </div>
+
+  <!-- Answer modal -->
+  <% @project.questions.each do |q| %>
+  <div class="modal fade" tabindex="-1" role="dialog" id="answerquestion-<%= q.id %>">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+         <h3>Question from <%= q.user.full_name %></h3>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for([q]) do |f| %>
+            <p><strong> Question:</strong> <%= q.question %></p>
+            <%= f.input :answer, label: "Response", class: "form-control" %>
+            <%= f.submit "Save", class: "btn btn-primary"%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
 </div>
 

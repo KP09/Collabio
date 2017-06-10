@@ -16,8 +16,8 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   def user_not_authorized
-    flash[:alert] = "You are not authorized to perform this action."
-    redirect_to(root_path)
+    flash[:alert] = "Oops! You're not authorized to do that"
+    redirect_back(fallback_location: root_path)
   end
 
   # Redirect after sign in (Devise)
