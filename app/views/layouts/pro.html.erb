@@ -10,11 +10,7 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
   <body>
-    <% if !current_user || current_user.is_individual? %>
-      <%= render 'shared/navbar' %>
-    <% else %>
-      <%= render 'shared/navbar_pro' %>
-    <% end %>
+    <%= render 'shared/navbar_pro' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%#= render 'shared/footer' %>
