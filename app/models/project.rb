@@ -1,10 +1,11 @@
 class Project < ApplicationRecord
   is_impressionable
-  
+
   # Associations
   belongs_to :user
   has_many :participations, dependent: :destroy
   has_many :contributions, dependent: :nullify
+  has_many :questions, dependent: :destroy
 
   # Validations
   validates :title, presence: true
@@ -33,6 +34,11 @@ class Project < ApplicationRecord
   # def self.number_participations
   #   Project.participations.countorder(:participations)
   # end
+
+  # Returns the questions asked on a project sorted from newest to oldest
+  def sorted_questions
+    self.questions.sort_by { |q| q.updated_at }.reverse
+  end
 
   private
 

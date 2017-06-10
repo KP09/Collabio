@@ -1,5 +1,16 @@
 <div class="page-backgroud index-page">
-	<div class="container">
+  <div class="col-lg-9 padding-none">
+    <!-- Welcome user section -->
+    <div class="welcome-section flex-box">
+        <div class="user-dash-image">
+          <%= cl_image_tag (current_user.get_profile_picture) %>
+        </div>
+        <div>
+          <h1><%= current_user.company_name %></h1>
+          <p>Welcome to your dashboard</p>
+        </div>
+    </div>
+  </div>
 	  <!-- Tabs -->
 	  <div class="row">
 	  	<div class="col-xs-12">
@@ -53,7 +64,9 @@
 						<p class="text-center">You have no active projects</p>
 				<% elsif @active_projects.count > 0 %>
 					<% @active_projects.each do |project| %>
-							<%= render 'dashboard-project', project: project %>
+            <div class="shadow-box margin-top">
+							<%= link_to project.title, company_project_path(project) %>
+            </div>
 					<% end %>
 				<% end %>
 			</div>
@@ -66,7 +79,7 @@
 					<p class="text-center"></p>
 				<% elsif @closed_projects.count > 0  %>
 					<% @closed_projects.each do |project| %>
-						<%= render 'dashboard-project', project: project %>
+						<%= link_to project.title, company_project_path(project) %>
 					<% end %>
 				<% end %>
 			</div>
@@ -78,5 +91,4 @@
         <%= render 'users/company_form', user: current_user %>
       </div>
 		</div>
-	</div>
 </div>

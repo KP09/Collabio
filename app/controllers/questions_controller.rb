@@ -25,7 +25,7 @@ class QuestionsController < ApplicationController
     @project = @question.project
     authorize @question
     if @question.update(question_params)
-      redirect_to project_path(@project)
+      redirect_back(fallback_location: root_path)
     else
       render 'projects/show'
       # need to make sure the edit view of contributions is called 'edit!'
