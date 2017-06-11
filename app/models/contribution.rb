@@ -11,4 +11,12 @@ class Contribution < ApplicationRecord
   validates :comment, presence: true
 	# Validates :file, presence: true
   validates :project_id, uniqueness: { scope: :user_id }
+
+  def toggle_star
+    if self.starred
+      self.starred = false
+    else
+      self.starred = true
+    end
+  end
 end
