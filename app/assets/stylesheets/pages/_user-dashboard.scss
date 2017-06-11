@@ -19,13 +19,13 @@
 
 .right-main {
   background-color: #fafafa;
-  height: 100vh;
+  height: calc(100vh - 70px - 140px);
 }
 
 .right-dashboard {
   background-color: white;
   padding: 10px;
-  height: 100vh;
+  height: calc(100vh - 70px);
 }
 
 .project-row {
@@ -33,11 +33,11 @@
   background: white;
   border-radius: 5px;
   color: $dark-gray;
-  height: 50px;
   padding: 5px 10px;
   border: 2px $light-gray solid;
   p {
     margin: 0px;
+    width: 17vw;
   }
 }
 
@@ -47,8 +47,9 @@
   height: 50px;
   padding: 5px 10px;
   p {
-    margin: 0px;
+    margin: 0px 10px;
     font-weight: 600;
+    width: 17vw;
   }
 }
 
@@ -58,7 +59,5 @@
 }
 
 #dashboard-scroll {
-  height: 90vh;
   overflow: scroll;
 }
-

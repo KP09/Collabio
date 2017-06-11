@@ -1,19 +1,19 @@
-<div class="project-row flex-box">
-    <div class="col-lg-3">
-      <p><%= question.question[0..25] %>...</p>
+<div class="project-row flex-between">
+    <div>
+      <p class="question-col"><%= question.question[0..25] %>...</p>
     </div>
-    <div class="col-lg-3">
+    <div class="project-col">
       <p><%= question.project.title %></p>
     </div>
-    <div class="col-lg-3">
-      <p><% if question.answer? == true %>
+    <div>
+      <p class="answer-col"><% if question.answer? == true %>
         Anwered
       <% else %>
         Awaiting answer
       <% end %>
       </p>
     </div>
-    <div class="col-lg-3">
-      <p><%= link_to "See Question", project_path(question.project), class: "btn btn-primary padding-none full-width-button" %></p>
+    <div>
+      <p><%= link_to "Open", project_path(question.project), class: "btn btn-primary padding-none full-width-button" %></p>
     </div>
 </div>
