@@ -15,6 +15,9 @@ class Project < ApplicationRecord
   validates :category, presence: true
   # validate :time_valid
 
+  # Possible categories for projects
+  CATEGORIES = []
+
   def project_open?
     days_left > 0
   end

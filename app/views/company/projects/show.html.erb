@@ -91,7 +91,11 @@
             </div>
             <div>
               <%= link_to "View work", cl_image_path(c.file.path), class: "text-link" %>
-              <p>Star</p>
+              <% if c.starred %>
+                <p>Unstar this contribution</p>
+              <% else %>
+                <p>Star this contribution</p>
+              <% end %>
             </div>
           </div>
         </div>
