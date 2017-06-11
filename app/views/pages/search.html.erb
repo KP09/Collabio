@@ -19,6 +19,15 @@
   <!-- Project Tab -->
   <div id="projects" class="tab-content fade in">
     <div class="row">
+      <div class="col-xs-12">
+        <% unless params[:term].blank? %>
+          <% if @projects.count > 0 %>
+            <h5><%= @projects.count %> <%= "project".pluralize(@projects.count) %> matched your search for '<%= params[:term] %>'</h5>
+          <% else %>
+            <h5>No projects matched your search for '<%= params[:term] %>'</h5>
+          <% end %>
+        <% end %>
+      </div>
       <%  @projects.each do |project| %>
         <%= render 'shared/card_full_imagery', project: project %>
       <% end %>
@@ -26,8 +35,17 @@
   </div>
 
   <!-- Company Tabs -->
-  <div id="companies" class="tab-content fade">
+  <div id="companies" class="tab-content fade hidden">
     <div class="row">
+      <div class="col-xs-12">
+        <% unless params[:term].blank? %>
+          <% if @companies.count > 0 %>
+            <h5><%= @companies.count %> <%= "company".pluralize(@companies.count) %> matched your search for '<%= params[:term] %>'</h5>
+          <% else %>
+            <h5>No companies matched your search for '<%= params[:term] %>'</h5>
+          <% end %>
+        <% end %>
+      </div>
       <% @companies.each do |user| %>
         <%= render 'shared/search_card_companies', user: user %>
       <% end %>
@@ -35,7 +53,16 @@
   </div>
 
   <!-- Profile Tabs -->
-  <div id="people" class="tab-content fade">
+  <div id="people" class="tab-content fade hidden">
+    <div class="col-xs-12">
+      <% unless params[:term].blank? %>
+        <% if @people.count > 0 %>
+          <h5><%= @people.count %> <%= "person".pluralize(@people.count) %> matched your search for '<%= params[:term] %>'</h5>
+        <% else %>
+          <h5>No people matched your search for '<%= params[:term] %>'</h5>
+        <% end %>
+      <% end %>
+    </div>
     <% @people.each do |user| %>
       <%= render 'shared/search_card_people', user: user %>
     <% end %>
