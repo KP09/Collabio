@@ -10,7 +10,9 @@
         <p>Welcome to your dashboard</p>
       </div>
   </div>
-  <div class="right-main">
+
+
+  <div class="right-main" id="dashboard-scroll">
     <div class="tabs"">
     <a class="tab tab-fix-width active" role="tab" data-toggle="tab" data-target="#projects" aria-controls="projects">
       <h3>Open projects</h3>
@@ -29,42 +31,54 @@
     </a>
   </div>
 
+
+
 <div id="dashboard-scroll">
   <!-- Open Projects Tab -->
   <div class="container-fluid margin-top">
-
     <div id="projects" class="tab-content fade in">
-      <%= render "header" %>
       <% if current_user.active_participations %>
+        <%= render "header" %>
         <% current_user.active_participations.each do |participation| %>
           <%= render "participations", participation: participation %>
         <% end %>
+      <% else %>
+        <p style="color: black;" class="text-center">You have no open projects</p>
       <% end %>
     </div>
     <!-- Closed Projects Tabs -->
-    <div id="closed" class="tab-content fade">
+
+     <div id="closed" class="tab-content fade">
+
       <% if current_user.closed_participations %>
-        <%= render "header" %>
+       <%= render "header" %>
         <% current_user.closed_participations.each do |participation| %>
           <%= render "closed-projects", participation: participation %>
         <% end %>
+      <% else %>
+        <p style="color: black;" class="text-center">You have no closed projects</p>
       <% end %>
-      <hr>
     </div>
     <!-- All Contributions Tabs -->
     <div id="contributions" class="tab-content fade">
-      <%= render "header-2" %>
       <% if current_user.user_contributions %>
+      <%= render "header-2" %>
         <% current_user.user_contributions.each do |contribution| %>
           <%= render "user-contributions", contribution: contribution %>
         <% end %>
+      <% else %>
+        <p style="color: black;" class="text-center">You have made no contributions</p>
       <% end %>
     </div>
     <!-- Questions asked tab -->
-    <div id="questions" class="tab-content fade">
-      <%= render "header-questions" %>
-      <% current_user.questions.each do |question| %>
-        <%= render "user-questions", question: question %>
+    <div id="questions" class="tab-content dashboard-scroll fade">
+      <% if current_user.questions %>
+        <%= render "header-questions" %>
+        <% current_user.questions.each do |question| %>
+          <%= render "user-questions", question: question %>
+        <% end %>
+      <% else %>
+        <p style="color: black;" class="text-center">You have made no contributions</p>
       <% end %>
     </div>
     <!-- Account settings tab -->
@@ -135,4 +149,3 @@
       </div>
   </div>
 </div>
-
