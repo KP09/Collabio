@@ -16,7 +16,6 @@ class User < ApplicationRecord
   # Validations
   # email and password handled by Devise
   validate :name_validation
-  validates :description, presence: true, on: [:update]
 
   # Attachinary associations
   has_attachment :profile_picture
@@ -273,6 +272,16 @@ class User < ApplicationRecord
     user_contributions = self.contributions
     if user_contributions.count >= 1
       return user_contributions
+    else
+      return false
+    end
+  end
+
+   # Returns the all contributions of a user on a current
+  def user_project_contributions(project)
+    user_project_contributions = self.contributions.where(project_id: project.id)
+    if user_project_contributions.count > 0
+      return user_project_contributions
     else
       return false
     end

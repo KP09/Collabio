@@ -68,11 +68,13 @@
 
             <div class="margin-top">
             <% if user_signed_in? %>
-              <% if @project.days_left > 0 && current_user.participated_to?(@project) %>
+              <% if @project.days_left > 0 && current_user.participated_to?(@project) && !current_user.user_project_contributions(@project) %>
                   <%= render "projects/make-contribution", project: @project %>
-                <% end %>
-              <% elsif @project.days_left < 1 %>
-                  <%= render "projects/project-closed", project: @project %>
+                <% elsif @project.days_left > 0 && current_user.participated_to?(@project) && current_user.user_project_contributions(@project) %>
+                  <%= render "projects/update-contribution", project: @project %>
+              <% end %>
+            <% elsif @project.days_left < 1 %>
+                <%= render "projects/project-closed", project: @project %>
             <% end %>
             <% if user_signed_in? %>
               <% if @project.days_left > 0 && !current_user.participated_to?(@project) && !current_user.is_company? %>
@@ -93,7 +95,7 @@
             <hr>
           </div>
           <% @similar_projects.each do |project| %>
-            <%= render "shared/card_full_imagery", project: @project %>
+            <%= render "shared/card_full_imagery", project: project %>
           <% end %>
         </div>
       </div>

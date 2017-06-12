@@ -1,114 +1,150 @@
 <div class="page-wrapper" id="dashboard-project-show">
-  <div class="container">
   <div class="col-xs-12">
     <br>
-    <%= link_to "Back to dashboard", company_dashboard_index_path, class: "text-link" %>
+    <%= link_to "Back to Dashboard", company_dashboard_index_path, class: "text-link" %>
   </div>
 
-  <!-- LEFT HAND COLUMN -->
-  <div class="col-xs-12 col-lg-9 margin-top">
-    <!-- Project details -->
-      <!-- Title -->
-      <div class="flex-between">
-        <h2>
-          <%= @project.title %>
-        </h2>
+  <div class="col-xs-12 col-lg-9">
+    <!-- Tabs -->
+    <div>
+      <div class="tabs">
+        <a class="tab tab-fix-width tab-transparent active" role="tab" data-toggle="tab" data-target="#contributions" aria-controls="contributions">
+          <h3>Contributions</h3>
+        </a>
+        <a class="tab tab-fix-width tab-transparent" role="tab" data-toggle="tab" data-target="#questions" aria-controls="questions">
+          <h3>Questions</h3>
+        </a>
+        <a class="tab tab-fix-width tab-transparent" role="tab" data-toggle="tab" data-target="#project" aria-controls="project">
+          <h3>Project settings</h3>
+        </a>
+      </div>
+    </div>
+
+    <!-- Contributions tab -->
+    <div id="contributions" class="tab-content fade in">
+      <div class="margin-top">
+        <% if @project.contributions.count > 0 %>
+          <div class="project-header flex-box">
+            <div class="col-md-2">
+              <p>Name</p>
+            </div>
+            <div class="col-md-2">
+              <p>Date</p>
+            </div>
+            <div class="col-md-5">
+              <p>Comment</p>
+            </div>
+          </div>
+          <% @project.contributions.each do |c| %>
+          <div class="project-row flex-box">
+            <div class="col-md-2">
+              <p><%= link_to c.user.full_name, user_path(c.user), class: "text-link" %></p>
+            </div>
+            <div class="col-md-2">
+              <p><%= c.created_at.strftime('%e %B %Y') %></p>
+            </div>
+            <div class="col-md-3">
+              <p><%= c.comment.first(25) %><%= c.comment.length > 25 ? "..." : "" %> </p>
+            </div>
+            <div class="col-md-1">
+              <% if c.starred %>
+                <%= image_tag 'star-dark', class: "profile-icon" %>
+              <% end %>
+            </div>
+            <div class="col-md-4 text-right">
+              <%= link_to "Open", cl_image_path(c.file.path), class: "btn btn-sm btn-default" %>
+              <% if c.starred %>
+                <%= link_to "Unstar", star_path(c), method: :post, class: "btn btn-sm btn-default" %>
+              <% else %>
+                <%= link_to "Star", star_path(c), method: :post, class: "btn btn-sm btn-default" %>
+              <% end %>
+              <%= mail_to c.user.email, "Get in touch", class: "btn btn-sm btn-default" %>
+            </div>
+          </div>
+          <% end %>
+        <% else %>
+          <p>No contributions</p>
+        <% end %>
+      </div>
+    </div>
+
+      <!-- Questions tab -->
+    <div id="questions" class="tab-content fade in hidden">
+      <div class="margin-top">
+        <% if @project.questions.count > 0 %>
+          <div class="project-header flex-box">
+            <div class="col-md-2">
+              <p>Name</p>
+            </div>
+            <div class="col-md-2">
+              <p>Date</p>
+            </div>
+            <div class="col-md-3">
+              <p>Question</p>
+            </div>
+            <div class="col-md-7">
+              <p>Answer</p>
+            </div>
+          </div>
+            <% @project.sorted_questions.each do |q| %>
+              <div class="project-row flex-box">
+                <div class="col-md-2">
+                  <p><%= link_to q.user.full_name, user_path(q.user), class: "text-link" %></p>
+                </div>
+                <div class="col-md-2">
+                  <p><%= q.created_at.strftime('%e %B %Y') %></p>
+                </div>
+                <div class="col-md-3">
+
+                  <p><%= q.question[0..25] %><%= q.question.length > 25 ? "..." : "" %></p>
+
+                </div>
+                <div class="col-md-3">
+
+                  <p><%= q.answer[0..25]  %><%= q.answer.length > 25 ? "..." : "" %></p>
+
+                </div>
+                <div class="col-md-4 text-right">
+                  <% if q.answer %>
+                    <%= link_to "Edit answer","#answerquestion-" + q.id.to_s, data: { toggle: "modal"}, class: "btn btn-sm btn-default"%>
+                  <% else %>
+                    <%= link_to "Answer this question","#answerquestion-" + q.id.to_s, data: { toggle: "modal"}, class: "btn btn-sm btn-default"%>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+          <p>No questions</p>
+          <% end %>
+      </div>
+    </div>
+
+
+
+    <!-- Project tab -->
+    <div id="project" class="tab-content fade in hidden">
+      <div class="margin-top">
+        <h3><strong>Brief:</strong> <%= @project.brief %></h3>
+        <br>
+        <h3><strong>Category:</strong> <%= @project.category %></h3>
+        <br>
+        <h3><strong>End date:</strong> <%= @project.end_date.strftime('%A, %e %B %Y') %></h3>
+        <br>
+        <h3><strong>Maximum number of participations:</strong> <%= @project.max_participations %></h3>
+        <br>
         <div>
-          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#editProject">
+          <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#editProject">
             Edit
           </button>
           <!-- Delete button -->
-          <%= link_to "Delete", project_path(@project), id: "delete", class: "btn btn-danger", data: { confirm: "Are you sure?" }, method: :delete %>
+          <%= link_to "Delete", project_path(@project), id: "delete", class: "btn btn-sm btn-danger", data: { confirm: "Are you sure?" }, method: :delete %>
         </div>
       </div>
-      <hr>
-      <% if @project.project_open? %>
-        <h3><strong>Status: </strong><strong id="active">Active</strong></h3>
-      <% else %>
-        <h3><strong>Status: </strong><strong id="closed">Closed</strong></h3>
-      <% end %>
-      <br>
-      <h3><strong>Brief:</strong> <%= @project.brief %></h3>
-      <br>
-      <h3><strong>Category:</strong> <%= @project.category %></h3>
-      <br>
-      <h3><strong>End date:</strong> <%= @project.end_date.strftime('%A, %e %B %Y') %></h3>
-      <br>
-      <h3><strong>Maximum number of participations:</strong> <%= @project.max_participations %></h3>
-
-    <!-- Q&A -->
-    <div class="margin-top">
-      <h2>Questions</h2>
-      <hr>
-      <% if @project.questions.count > 0 %>
-        <div class="shadow-box">
-          <% @project.sorted_questions.each do |q| %>
-            <span>
-              by
-              <%= link_to q.user.full_name, user_path(q.user), class: "text-link" %>
-              on
-              <%= q.updated_at.strftime('%e %B %Y at %l:%M %p') %>
-            </span>
-            <% if q.answer %>
-              <p><strong>Q:</strong> <%= q.question %></p>
-              <div class="flex-between">
-                <p><strong>A:</strong> <%= q.answer %></p>
-                <%= link_to "Edit answer","#answerquestion-" + q.id.to_s, data: { toggle: "modal"}, class: "text-link"%>
-              </div>
-            <% else %>
-              <%= link_to user_path(q.user), class: "text-link" do %>
-                <span><%= q.user.full_name %></span>
-              <% end %>
-              <div class="flex-between">
-                <p><strong>Q:</strong> <%= q.question %></p>
-                <%= link_to "Answer this question","#answerquestion-" + q.id.to_s, data: { toggle: "modal"}, class: "text-link"%>
-              </div>
-            <% end %>
-            <hr>
-          <% end %>
-        </div>
-      <% else %>
-        <p>No questions</p>
-      <% end %>
-    </div>
-
-    <!-- Contributions -->
-    <div class="margin-top">
-      <h2>Contributions</h2>
-      <hr>
-      <% if @project.contributions.count > 0 %>
-        <% @project.contributions.each do |c| %>
-        <div class="shadow-box">
-          <div class="flex-between">
-            <div>
-              <span>
-                by
-                <%= link_to c.user.full_name, user_path(c.user), class: "text-link" %>
-                on
-                <%= c.updated_at.strftime('%e %B %Y at %l:%M %p') %>
-              </span>
-              <p><strong>Comment: </strong> <%= c.comment %></p>
-            </div>
-            <div>
-              <%= link_to "View work", cl_image_path(c.file.path), class: "text-link" %>
-              <% if c.starred %>
-                <p>Unstar this contribution</p>
-              <% else %>
-                <p>Star this contribution</p>
-              <% end %>
-            </div>
-          </div>
-        </div>
-        <% end %>
-      <% else %>
-        <p>No contributions</p>
-      <% end %>
     </div>
   </div>
-  <!-- END OF LEFT HAND COLUMN -->
 
   <!-- RIGHT HAND COLUMN -->
-  <div class="col-xs-12 col-lg-3 margin-top">
+  <div class="margin-top col-xs-12 col-lg-3">
     <div class="sidebar-content">
       <!-- Project stats -->
       <div>
@@ -166,29 +202,31 @@
         </div>
       </div>
       <!-- Participants -->
-      <div class="margin-top">
-        <h3>
-          <% if @project.participations.count > 0 %>
-            <%= @project.participations.count %>
-            <%= "person".pluralize(@project.participations.count) %>
-            working on this
-          <% else %>
-            No active participants
-          <% end %>
-        </h3>
-        <hr>
-        <% @project.participations.each do |participation| %>
-            <%= link_to user_path(participation.user) do %>
-              <div class="flex-box sidebar-card">
-                <div class="avatar-small" style="background-image: url('<%= cl_image_path (participation.user.get_profile_picture) %>')">
-                </div>
-                <div>
-                  <h4><%= participation.user.full_name %></h4>
-                </div>
-              </div>
+      <% if @project.end_date > DateTime.now %>
+        <div class="margin-top">
+          <h3>
+            <% if @project.participations.count > 0 %>
+              <%= @project.participations.count %>
+              <%= "person".pluralize(@project.participations.count) %>
+              working on this
+            <% else %>
+              No active participants
             <% end %>
-        <% end %>
-      </div>
+          </h3>
+          <hr>
+          <% @project.participations.each do |participation| %>
+              <%= link_to user_path(participation.user) do %>
+                <div class="flex-box sidebar-card">
+                  <div class="avatar-small" style="background-image: url('<%= cl_image_path (participation.user.get_profile_picture) %>')">
+                  </div>
+                  <div>
+                    <h4><%= participation.user.full_name %></h4>
+                  </div>
+                </div>
+              <% end %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 

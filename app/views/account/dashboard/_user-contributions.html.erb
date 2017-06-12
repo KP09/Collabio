@@ -1,6 +1,10 @@
 <div class="project-row flex-between">
     <div>
-      <p><%= contribution.project.title[0..30] %>...</p>
+      <% if contribution.project.title.length >= 30 %>
+        <p><%= contribution.project.title[0..30] %>...</p>
+      <% else %>
+        <p><%= contribution.project.title %></p>
+      <% end %>
     </div>
     <div>
       <p><%= contribution.project.user.company_name %></p>
@@ -8,9 +12,9 @@
     <div>
       <p class="answer-col">
         <% if contribution.starred? %>
-          <i class="fa fa-star"></i> Starred
+          <%= image_tag 'star-dark.svg', class: 'profile-icon' %>
         <% else %>
-          <i class="fa fa-star-o"></i> No Star
+          <p>No Star</p>
         <% end %>
       </p>
     </div>

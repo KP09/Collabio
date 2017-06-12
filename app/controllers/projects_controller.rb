@@ -6,8 +6,8 @@ class ProjectsController < ApplicationController
     @user = current_user
     @question = Question.new
     @contribution = Contribution.new
-    @similar_projects = Project.all[0..2]
     @project = Project.find(params[:id])
+    @similar_projects = @project.similar_projects
     @questions = Question.where(project_id: @project.id)
     authorize @project
     impressionist(@project)

@@ -16,7 +16,22 @@ class Project < ApplicationRecord
   # validate :time_valid
 
   # Possible categories for projects
-  CATEGORIES = []
+  CATEGORIES = ['Admin',
+                'Business Support',
+                'Creative Arts',
+                'Design',
+                'Marketing & PR',
+                'Search Marketing',
+                'Social Media',
+                'Software Development',
+                'Translation',
+                'Tutorials',
+                'Video',
+                'Photo',
+                'Audio',
+                'Web Development',
+                'Writing'
+              ]
 
   def project_open?
     days_left > 0
@@ -41,6 +56,12 @@ class Project < ApplicationRecord
   # Returns the questions asked on a project sorted from newest to oldest
   def sorted_questions
     self.questions.sort_by { |q| q.updated_at }.reverse
+  end
+
+  def similar_projects
+    category = self.category
+    similar_projects = Project.where(category: category)
+    return similar_projects.to_a - [self]
   end
 
   private

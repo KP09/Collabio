@@ -2,15 +2,15 @@
   <div class="contribution">
     <p style="font-size: 16px"><i class="fa fa-cloud-upload"></i>  Contribution Options</p>
     <hr>
-    <p style="font-size: 16px">Completed your contribution? Ready to submit? Click the upload button below to send <%= project.user.company_name %> your contribution </p>
-    <%= link_to "Contribute to project","#make-contribution", data: { toggle: "modal"}, class: "btn btn-primary", style: "width:100%"%>
+    <p style="font-size: 16px">You have already made a contribution to this project</p>
+    <%= link_to "Update Contribution","#update-contribution", data: { toggle: "modal"}, class: "btn btn-primary", style: "width:100%"%>
 </div>
 
-<div class="modal fade" tabindex="-1" role="dialog" id="make-contribution">
+<div class="modal fade" tabindex="-1" role="dialog" id="update-contribution">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-       <h2>Contribute to project: <%= project.title %></h2>
+       <h2>Update Contribution For: <%= project.title %></h2>
       </div>
       <div class="modal-body">
         <%= simple_form_for([@project, @contribution]) do |f| %>

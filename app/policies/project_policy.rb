@@ -1,7 +1,9 @@
 class ProjectPolicy < ApplicationPolicy
 
 	def create?
-	  user.is_company?
+    if user
+  	  user.is_company?
+    end
   end
 
   def edit?
