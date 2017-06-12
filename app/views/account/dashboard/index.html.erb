@@ -32,7 +32,7 @@
   <!-- Open Projects Tab -->
   <div class="container-fluid margin-top" style="margin-bottom: 30px;">
 
-    <div id="projects" class="tab-content fade in">
+    <div id="projects" class="tab-content fade in active">
       <% if current_user.active_participations %>
         <%= render "header" %>
         <% current_user.active_participations.each do |participation| %>
