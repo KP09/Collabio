@@ -16,7 +16,22 @@ class Project < ApplicationRecord
   # validate :time_valid
 
   # Possible categories for projects
-  CATEGORIES = []
+  CATEGORIES = ['Admin',
+                'Business Support',
+                'Creative Arts',
+                'Design',
+                'Marketing & PR',
+                'Search Marketing',
+                'Social Media',
+                'Software Development',
+                'Translation',
+                'Tutorials',
+                'Video',
+                'Photo',
+                'Audio',
+                'Web Development',
+                'Writing'
+              ]
 
   def project_open?
     days_left > 0
