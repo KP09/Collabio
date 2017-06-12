@@ -1,15 +1,19 @@
 <div class="project-row flex-between">
     <div>
-      <p class="question-col"><%= question.question[0..25] %>...</p>
+      <% if question.question.length >= 25 %>
+        <p><%= question.question[0..25] %>...</p>
+      <% else %>
+        <p><%= question.question %></p>
+      <% end %>
     </div>
     <div class="project-col">
       <p><%= question.project.title %></p>
     </div>
     <div>
-      <p class="answer-col"><% if question.answer? == true %>
-        Anwered
+      <p class="answer-col text-center"><% if question.answer? == true %>
+        <i class="fa fa-check" style="color: green;"></i>
       <% else %>
-        Awaiting answer
+        <i class="fa fa-hourglass" style="color: orange;"></i>
       <% end %>
       </p>
     </div>
@@ -28,11 +32,15 @@
       </div>
       <div class="modal-body">
 
-          <p><strong> Question:</strong> <%= question.question %></p>
+          <p><strong> Q:</strong> <%= question.question %></p>
+          <br>
           <% if question.answer %>
           <p><strong> Answer:</strong> <%= question.answer %></p>
           <% else %>
-          <p><strong> Question:</strong> Awaiting Answer</p>
+            <div class="icon text-center">
+              <%= image_tag("brainstorming.svg") %>
+              <p>Awaiting answer</p>
+            </div>
           <% end %>
       </div>
     </div>
