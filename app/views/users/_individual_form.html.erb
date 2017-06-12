@@ -1,15 +1,28 @@
 <div class="alignment body-text font">
-  <%= simple_form_for(user) do |f| %>
+  <%= simple_form_for(current_user) do |f| %>
     <div class="margin"></div>
+    <div class="col-lg-6 padding-none">
+      <div class="first-name" style="padding-right: 10px">
+        <%= f.input :first_name, readonly: true %>
+      </div>
+    </div>
+    <div class="col-lg-6 padding-none">
+      <div class="last_name">
+        <%= f.input :last_name %>
+      </div>
+    </div>
     <%= f.input :email %>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
     <%= f.input :location %>
-    <%= f.input :description %>
+    <%= f.input :description, label: "Bio" %>
+    <div class="col-lg-6">
     <%= f.input :profile_picture, as: :attachinary %>
+    </div>
+    <div class="col-lg-6">
     <%= f.input :cover_photo, as: :attachinary %>
+    </div>
     <div class="text-center">
-      <%= f.submit value: "Save", class: "btn btn-primary", id: "margin-bot" %>
+      <%= f.submit value: "Save", class: "btn btn-primary", style: "width:100%", id: "margin-bot" %>
     </div>
   <% end %>
 </div>
+
