@@ -11,43 +11,7 @@
         </div>
     </div>
   </div>
-	  <!-- Tabs -->
-	  <div class="row">
-	  	<div class="col-xs-12">
-	      <div class="tabs" id="main-bar">
-		        <a class="tab tab-fix-width active" role="tab" data-toggle="tab" data-target="#projects" aria-controls="projects"><h3>Projects</h3></a>
-		        <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#company-settings" aria-controls="company-settings"><h3>Account Settings</h3></a>
-        	<!-- NEW PROJECT BUTTON-->
-        	<button type="button" class="btn btn-primary" id="add-project" data-toggle="modal" data-target="#myModal">
-        	  Add Project
-        	</button>
-	        	<!-- Modal View for Project-->
-	        	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	        	  <div class="modal-dialog" role="document">
-	        	    <div class="modal-content">
-	        	      <div class="modal-header">
-	        	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        	        <h4 class="modal-title" id="myModalLabel">Add a new project</h4>
-	        	      </div>
-	        	      <%= simple_form_for(@project) do |f| %>
-	        		      <div class="modal-body">
-	        		         <%= f.input :title, maxlength: 40, placeholder: "40 characters maximum" %>
-	        		         <%= f.input :brief, placeholder: "Tell us more about your project" %>
-	        		         <%= f.input :category, placeholder: "Choose a category", collection: Project::CATEGORIES %>
-	        		         <%= f.input :end_date, placeholder: "When should project end?" %>
-	        		         <%= f.input :max_participations, placeholder: "How many people can contribute?" %>
-	        		      </div>
-	        		      <div class="modal-footer">
-	        		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        		        <%= f.submit 'Create Project', class: 'btn btn-primary' %>
-	        		      </div>
-	               <% end %>
-	        	    </div>
-	        	  </div>
-	        	</div>
-	      </div>
-	    </div>
-	  </div>
+
 
 	<!-- TABS	 -->
 	<div class="row">
@@ -78,7 +42,7 @@
 								<%= f.input :max_participations, placeholder: "How many people can contribute?" %>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal"><</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 								<%= f.submit 'Create Project', class: 'btn btn-primary' %>
 							</div>
 							<% end %>
