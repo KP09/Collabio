@@ -44,4 +44,7 @@ Rails.application.routes.draw do
   # Upvotes
   resources :upvotes, only: [:create, :destroy]
 
+  # Stars
+  post '/contributions/:id/star', to: 'contributions#star', as: :star
+
 end

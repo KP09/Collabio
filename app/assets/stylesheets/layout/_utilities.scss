@@ -32,6 +32,10 @@ body {
   align-items: center;
 }
 
+.text-right {
+  text-align: right;
+}
+
 // Spacing
 .margin-top {
   margin-top: 30px;
@@ -43,9 +47,15 @@ body {
 
 // Backgrounds
 .page-wrapper {
-  background: $light-gray;
-  min-height: 100vh;
-  padding-bottom: 30px;
+  min-height: calc(100vh - 70px - 170px);
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-grey {
+  background-color: $light-gray;
 }
 
 // Standard white box with shadow

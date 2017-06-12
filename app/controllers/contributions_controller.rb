@@ -35,6 +35,13 @@ class ContributionsController < ApplicationController
     redirect_to project_path(@project)
   end
 
+  def star
+    @contribution = Contribution.find(params[:id])
+    authorize @contribution
+    @contribution.toggle_star
+    redirect_to company_project_path(@contribution.project)
+  end
+
   private
 
   def contribution_params
