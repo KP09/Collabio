@@ -278,6 +278,16 @@ class User < ApplicationRecord
     end
   end
 
+   # Returns the all contributions of a user on a current
+  def user_project_contributions(project)
+    user_project_contributions = self.contributions.where(project_id: project.id)
+    if user_project_contributions.count > 0
+      return user_project_contributions
+    else
+      return false
+    end
+  end
+
   # Returns the number of participations for a user
   # where the projects is still open
   def count_participations
@@ -371,5 +381,4 @@ class User < ApplicationRecord
       end
     end
   end
-
 end
