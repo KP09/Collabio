@@ -58,6 +58,12 @@ class Project < ApplicationRecord
     self.questions.sort_by { |q| q.updated_at }.reverse
   end
 
+  def similar_projects
+    category = self.category
+    similar_projects = Project.where(category: category)
+    return similar_projects.to_a - [self]
+  end
+
   private
 
   def time_valid
