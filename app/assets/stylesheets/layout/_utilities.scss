@@ -8,6 +8,10 @@ body {
   background: $light-gray;
 }
 
+a:-webkit-any-link {
+  text-decoration: none;
+}
+
 // Paddings
 .padded {
   padding-top: 5em;

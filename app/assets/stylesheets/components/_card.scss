@@ -1,75 +1,70 @@
-.card_border {
+.card {
+  background: transparent;
+  color: $dark-gray;
+  text-decoration: none;
+  margin: 15px 0px;
+  &:hover {
+    box-shadow: $box-shadow-hover;
+    -webkit-transition: all 0.2s ease;
+    text-decoration: none;
+  }
+}
+
+.card-border {
   border-radius: 2px;
   box-shadow: $box-shadow;
+  background-color: white;
 }
 
-.card_border:hover {
-  box-shadow: $box-shadow-hover;
-  -webkit-transition: all 0.2s ease;
-  opacity: 0.9;
-}
-
-.search-icon {
-  visibility: hidden;
-}
-
-.card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #f7f7f7;
-  padding: 20px;
-  color: $gray-base;
-  border-radius: 0 0 2px 2px;
-  text-align: center;
-  text-decoration: none;
-  h1 {
-    font-size: 25px;
-    text-decoration: none;
-    margin-top: 0px;
-  }
-  hr {
-    border-color: $brand-color;
-    text-decoration: none;
-    margin: 20px auto;
-  }
-  a {
-    text-decoration: none;
-  }
-}
-
-.creator-avatar {
-  position: absolute;
-  top: -35px;
-}
-
-.card_color_divide {
-  background: $charcoal;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 15px;
-  border-radius: 0 0 2px 2px;
-  color: white;
+.card-banner {
+  background-size: cover;
+  background-position: center;
+  height: 120px;
   p {
-    padding: 0px;
-    margin: 0px;
-    font-size: 12px;
+    padding: 15px 0 0 15px;
+    color: white;
+    margin-bottom: 0;
   }
 }
 
-.right_color_divide {
-  display: flex;
+.card-banner-transparent {
+  background-color: transparent;
+  height: 55px;
 }
 
-.pill {
-  background: white;
-  border-radius: 20px;
-  padding: 2px 10px;
-  margin: 0px 5px;
-  color: $charcoal;
+.card-body {
+  height: 125px;
+  position: relative
+}
+
+.card-avatar {
+  margin: 0 auto;
+  margin-top: 28px;
+}
+
+.card-info {
+  text-align: center;
+  margin: 77px 0 0 0;
+  h2 {
+    font-size: $base-size + 1px;
+  }
+  h3 {
+    font-size: $base-size;
+    font-weight: lighter;
+    margin-top: 15px;
+  }
+}
+
+.card-footer {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  border-top: 1px solid $light-gray;
+  padding-top: 15px;
+  span {
+    margin: 0;
+    font-size: $base-size - 2px;
+  }
 }
 
 .brief {
@@ -97,10 +92,6 @@
 
 .title {
   height: 50px;
-}
-
-a:-webkit-any-link {
-    text-decoration: none;
 }
 
 .cover-image {
@@ -143,30 +134,6 @@ a:-webkit-any-link {
       left: 20px;
       font-size: $base-size;
       font-weight: normal;
-    }
-  }
-  .titles {
-    background-color: white;
-    color: $charcoal;
-    padding: 50px 20px 10px 20px;
-    height: 200px;
-    h2:last-child {
-      margin-bottom: 0;
-    }
-  }
-  .counters {
-    display: flex;
-    justify-content: space-between;
-    background-color: $charcoal;
-    color: $charcoal;
-    padding: 15px 10px;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-    p {
-      margin-bottom: 0;
-      font-size: 14px;
-      font-weight: normal;
-
     }
   }
 }
