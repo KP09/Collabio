@@ -33,7 +33,7 @@
 	        		      <div class="modal-body">
 	        		         <%= f.input :title, maxlength: 40, placeholder: "40 characters maximum" %>
 	        		         <%= f.input :brief, placeholder: "Tell us more about your project" %>
-	        		         <%= f.input :category, placeholder: "Choose a category" %>
+	        		         <%= f.input :category, placeholder: "Choose a category", collection: Project::CATEGORIES %>
 	        		         <%= f.input :end_date, placeholder: "When should project end?" %>
 	        		         <%= f.input :max_participations, placeholder: "How many people can contribute?" %>
 	        		      </div>
@@ -92,3 +92,7 @@
       </div>
 		</div>
 </div>
+
+
+
+
