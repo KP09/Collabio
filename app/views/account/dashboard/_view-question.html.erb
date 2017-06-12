@@ -1,7 +1,0 @@
-<div class="container margin-top">
-  <%= simple_form_for([@question]) do |f| %>
-    <p><%= @question.question %></p>
-    <%= f.input :answer, label: "Answer User Question", class: "form-control" %>
-    <%= f.submit "Submit Question", class: "btn btn-primary", style: "width:100%"%>
-  <% end %>
-</div>
