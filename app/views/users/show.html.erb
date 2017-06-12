@@ -20,7 +20,7 @@
             <!-- User information -->
             <h1><%= @user.full_name %></h1>
             <!-- Shows the location if there is one -->
-            <% if @user.location %>
+            <% if @user.location.length > 0 %>
               <p><i class="fa fa-map-marker"></i> <%= @user.location %></p>
             <% end %>
             <!-- Shows the user description -->
