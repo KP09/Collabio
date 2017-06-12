@@ -1,0 +1,24 @@
+<!-- EDIT PROJECT MODAL VIEW -->
+<div class="modal fade" id="editModal<%= project.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Edit your project</h4>
+			</div>
+			<%= simple_form_for(project) do |f| %>
+			<div class="modal-body">
+				<%= f.input :title, maxlength: 40 %>
+				<%= f.input :brief %>
+				<%= f.input :category %>
+				<%= f.input :end_date %>
+				<%= f.input :max_participations %>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<%= f.submit 'Update Project', class: 'btn btn-primary' %>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>

@@ -11,84 +11,127 @@
         </div>
     </div>
   </div>
-	  <!-- Tabs -->
-	  <div class="row">
-	  	<div class="col-xs-12">
-	      <div class="tabs" id="main-bar">
-		        <a class="tab tab-fix-width active" role="tab" data-toggle="tab" data-target="#projects" aria-controls="projects"><h3>Projects</h3></a>
-		        <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#company-settings" aria-controls="company-settings"><h3>Account Settings</h3></a>
-        	<!-- NEW PROJECT BUTTON-->
-        	<button type="button" class="btn btn-primary" id="add-project" data-toggle="modal" data-target="#myModal">
-        	  Add Project
-        	</button>
-	        	<!-- Modal View for Project-->
-	        	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	        	  <div class="modal-dialog" role="document">
-	        	    <div class="modal-content">
-	        	      <div class="modal-header">
-	        	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        	        <h4 class="modal-title" id="myModalLabel">Add a new project</h4>
-	        	      </div>
-	        	      <%= simple_form_for(@project) do |f| %>
-	        		      <div class="modal-body">
-	        		         <%= f.input :title, maxlength: 40, placeholder: "40 characters maximum" %>
-	        		         <%= f.input :brief, placeholder: "Tell us more about your project" %>
-	        		         <%= f.input :category, placeholder: "Choose a category" %>
-	        		         <%= f.input :end_date, placeholder: "When should project end?" %>
-	        		         <%= f.input :max_participations, placeholder: "How many people can contribute?" %>
-	        		      </div>
-	        		      <div class="modal-footer">
-	        		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        		        <%= f.submit 'Create Project', class: 'btn btn-primary' %>
-	        		      </div>
-	               <% end %>
-	        	    </div>
-	        	  </div>
-	        	</div>
-	      </div>
-	    </div>
-	  </div>
 
-	  <!-- Project Tab -->
-		<div id="projects" class="tab-content fade in">
 
-			<!-- Company Statistics -->
-			<div class="row">
-				<%= render 'dashboard-project-stats', current_user: current_user %>
+	<!-- TABS	 -->
+	<div class="row">
+
+		<div class="col-xs-12 col-md-9">
+			<div class="tabs" role="tablist" id="main-bar">
+			<a class="tab tab-fix-width active" role="tab" data-toggle="tab" data-target="#open-projects" aria-controls="open-projects">Open Projects</a>
+			<a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#closed-projects" aria-controls="closed-projects">Closed Projects</a>
+			<a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#company-settings" aria-controls="company-settings">Account Settings</a>
+				<!-- NEW PROJECT BUTTON-->
+				<button type="button" class="btn btn-primary" id="add-project" data-toggle="modal" data-target="#myModal">
+					Add Project
+				</button>
+				<!-- Modal View for Project-->
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Add a new project</h4>
+							</div>
+							<%= simple_form_for(@project) do |f| %>
+							<div class="modal-body">
+								<%= f.input :title, maxlength: 40, placeholder: "40 characters maximum" %>
+								<%= f.input :brief, placeholder: "Tell us more about your project" %>
+								<%= f.input :category, placeholder: "Choose a category" %>
+								<%= f.input :end_date, placeholder: "When should project end?" %>
+								<%= f.input :max_participations, placeholder: "How many people can contribute?" %>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+								<%= f.submit 'Create Project', class: 'btn btn-primary' %>
+							</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
 			</div>
-			<hr class="line">
-			<!-- User's Active Projects -->
-			<div class="row">
-				<h2 class="text-center"> Your Open Projects</h2>
-				<% if @active_projects == false %>
+		</div>
+	</div>
+	
+	<!-- TABS PANES -->
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-md-9">
+
+					<!-- ACTIVE PROJECTS -->
+					<div class="tab-content fade in active" id="open-projects">
+						<h2 class="text-center"> Your Open Projects</h2>
+						<div class="flex-between project-headers">
+							<div class="flex-item">Project Title</div>
+							<div class="flex-item">Days Remaining</div>
+							<div class="flex-item">Spaces Left</div>
+							<div class="flex-item">Action</div>
+						</div>
+						<% if @active_projects == false %>
 						<p class="text-center">You have no active projects</p>
-				<% elsif @active_projects.count > 0 %>
-					<% @active_projects.each do |project| %>
-            <div class="shadow-box margin-top">
-							<%= link_to project.title, company_project_path(project) %>
-            </div>
-					<% end %>
-				<% end %>
-			</div>
-			<hr class="line">
+						<% elsif @active_projects.count > 0 %>
+							<% @active_projects.each do |project| %>
+								<div class="shadow-box margin-top">
+									<div class="flex-between">
+										<div class="project-info flex-item"> <%= project.title %> </div>
+										<div class="project-info flex-item text-center"> <%= project.days_left %> </div>
+										<div class="project-info flex-item text-center">	<%= project.spaces_left %> </div>
+										<div class="actions-project flex-item">
+										<%= link_to 'View', company_project_path(project), class: "btn btn-default" %>
+										<button type="button" class="btn btn-default last-button" id="edit-project" data-toggle="modal" data-target="#editModal<%= project.id %>">
+											Edit
+										</button>
+										</div>
+											<%= render "edit-project", project: project %>
+									</div>
+								</div>
+							<% end %>
+						<% end %>
+					</div>
 
-			<!-- User's Closed Projects-->
-			<div class="row">
-				<h2 class="text-center"> Your Closed Projects</h2>
-				<% if @closed_projects == false %>
-					<p class="text-center"></p>
-				<% elsif @closed_projects.count > 0  %>
-					<% @closed_projects.each do |project| %>
-						<%= link_to project.title, company_project_path(project) %>
-					<% end %>
-				<% end %>
-			</div>
-		</div>
+			
 
-		<!-- Company Settings -->
-		<div id="company-settings" class="tab-content fade">
-      <div class="col-xs-8 col-xs-offset-2">
-        <%= render 'users/company_form', user: current_user %>
-      </div>
-		</div>
-</div>
+					<!-- CLOSED PROJECTS -->
+					<div class="tab-content fade" id="closed-projects">
+						<h2 class="text-center">Your Closed Projects</h2>
+						<div class="flex-between project-headers">
+							<div class="flex-item">Project Title</div>
+							<div class="flex-item">Days Remaining</div>
+							<div class="flex-item">Spaces Left</div>
+							<div class="flex-item">Action</div>
+						</div>
+						<% if @closed_projects == false %>
+						<p class="text-center"></p>
+						<% elsif @closed_projects.count > 0  %>
+							<% @closed_projects.each do |project| %>
+								<div class="shadow-box margin-top">
+									<div class="flex-between">
+										<div class="project-info flex-item"> <%= project.title %> </div>
+										<div class="project-info flex-item text-center"> Closed </div>
+										<div class="project-info flex-item text-center">	N/A </div>
+										<div class="flex-item old-project-view">
+										<%= link_to 'View', company_project_path(project), class: "btn btn-default" %>
+										</div>
+									</div>
+								</div>
+							<% end %>
+						<% end %>
+					</div>	
+
+					<!-- COMPANY SETTINGS -->
+					<div class="tab-content fade" id="company-settings">
+						<%= render 'users/company_form', user: current_user %>
+					</div>
+
+			</div>
+
+			<!-- COMPANY STATS >>> RIGHT HAND COL-->
+				<div class="col-xs-12 col-md-3">
+					<%= render 'dashboard-project-stats', current_user: current_user %>
+				</div>
+
+			</div>
+		</div>	
+	</div>	
+</div>	
+

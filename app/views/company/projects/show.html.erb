@@ -86,34 +86,40 @@
               <p>Answer</p>
             </div>
           </div>
-          <% @project.sorted_questions.each do |q| %>
-            <div class="project-row flex-box">
-              <div class="col-md-2">
-                <p><%= link_to q.user.full_name, user_path(q.user), class: "text-link" %></p>
+            <% @project.sorted_questions.each do |q| %>
+              <div class="project-row flex-box">
+                <div class="col-md-2">
+                  <p><%= link_to q.user.full_name, user_path(q.user), class: "text-link" %></p>
+                </div>
+                <div class="col-md-2">
+                  <p><%= q.created_at.strftime('%e %B %Y') %></p>
+                </div>
+                <div class="col-md-3">
+
+                  <p><%= q.question[0..25] %><%= q.question.length > 25 ? "..." : "" %></p>
+
+                </div>
+                <div class="col-md-3">
+
+                  <p><%= q.answer[0..25]  %><%= q.answer.length > 25 ? "..." : "" %></p>
+
+                </div>
+                <div class="col-md-4 text-right">
+                  <% if q.answer %>
+                    <%= link_to "Edit answer","#answerquestion-" + q.id.to_s, data: { toggle: "modal"}, class: "btn btn-sm btn-default"%>
+                  <% else %>
+                    <%= link_to "Answer this question","#answerquestion-" + q.id.to_s, data: { toggle: "modal"}, class: "btn btn-sm btn-default"%>
+                  <% end %>
+                </div>
               </div>
-              <div class="col-md-2">
-                <p><%= q.created_at.strftime('%e %B %Y') %></p>
-              </div>
-              <div class="col-md-3">
-                <p><%= q.question.first(25) %><%= q.question.length > 25 ? "..." : "" %></p>
-              </div>
-              <div class="col-md-3">
-                <p><%= q.answer.first(25) %><%= q.answer.length > 25 ? "..." : "" %></p>
-              </div>
-              <div class="col-md-4 text-right">
-                <% if q.answer %>
-                  <%= link_to "Edit answer","#answerquestion-" + q.id.to_s, data: { toggle: "modal"}, class: "btn btn-sm btn-default"%>
-                <% else %>
-                  <%= link_to "Answer this question","#answerquestion-" + q.id.to_s, data: { toggle: "modal"}, class: "btn btn-sm btn-default"%>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-        <% else %>
+            <% end %>
+          <% else %>
           <p>No questions</p>
-        <% end %>
+          <% end %>
       </div>
     </div>
+
+
 
     <!-- Project tab -->
     <div id="project" class="tab-content fade in hidden">
