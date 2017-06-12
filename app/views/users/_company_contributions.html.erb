@@ -1,19 +1,21 @@
-<div class="col-xs-12 margin-top">
-  <h2>Recent and popular contributions to <%= user.full_name %></h2>
-  <hr>
-  <!-- Starred contributions first -->
-  <% if user.starred_contributions %>
-    <% user.starred_contributions.each do |contribution| %>
-      <%= render 'shared/company_contribution_card', contribution: contribution %>
+<% if user.all_contributions.count > 0 %>
+  <div class="col-xs-12 margin-top">
+    <h2>Popular contributions to <%= user.full_name %></h2>
+    <hr>
+    <!-- Starred contributions first -->
+    <% if user.starred_contributions %>
+      <% user.starred_contributions.each do |contribution| %>
+        <%= render 'shared/company_contribution_card', contribution: contribution %>
+      <% end %>
     <% end %>
-  <% end %>
-  <!-- Non-starred contributions second -->
-  <% if user.non_starred_contributions %>
-    <% user.non_starred_contributions.each do |contribution| %>
-      <%= render 'shared/company_contribution_card', contribution: contribution %>
+    <!-- Non-starred contributions second -->
+    <% if user.non_starred_contributions %>
+      <% user.non_starred_contributions.each do |contribution| %>
+        <%= render 'shared/company_contribution_card', contribution: contribution %>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>
 
 
 

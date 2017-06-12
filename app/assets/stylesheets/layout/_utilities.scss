@@ -51,7 +51,11 @@ a:-webkit-any-link {
 
 // Backgrounds
 .page-wrapper {
-  min-height: calc(100vh - 70px - 170px);
+  min-height: calc(100vh - 70px - 190px);
+}
+
+.page-wrapper-footerless {
+  min-height: calc(100vh - 70px);
 }
 
 .bg-white {
