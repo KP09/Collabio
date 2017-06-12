@@ -10,14 +10,14 @@
             <p><%= user.location %></p>
           </div>
         </div>
-        <div class="card-icons flex-between">
+        <div class="card-icons">
           <div class="flex-icon">
-            <span><strong><%= user.projects_open %></strong></span>
             <%= image_tag 'briefcase.svg', class: "profile-icon-tiny" %>
+            <span><%= user.projects_open %> Open <%= "project".pluralize(user.projects_open) %> </span>
           </div>
           <div class="flex-icon">
-            <span><strong><%= user.company_active_joins %></strong></span>
             <%= image_tag 'people.svg', class: "profile-icon-tiny" %>
+            <span><%= user.company_active_joins %> Active <%= "user".pluralize("project") %></span>
           </div>
         </div>
       </div>

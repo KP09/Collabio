@@ -6,9 +6,9 @@
       <div class="row">
         <!-- Project cards for active participations -->
         <% user.active_participations.each do |participation| %>
-          <!-- <div class="col-xs-12 col-sm-6"> -->
-            <%= render 'shared/card_full_imagery_col_6', project: participation.project %>
-          <!-- </div> -->
+          <div class="col-xs-12 col-sm-6">
+            <%= render 'shared/card_open_project_full_imagery', project: participation.project %>
+          </div>
         <% end %>
       </div>
     </div>

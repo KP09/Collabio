@@ -8,19 +8,19 @@
         </div>
     	</div>
       <div class="card-body">
-      	<div class="card-info">
+      	<div class="card-info card-info-imagery">
     			<h2> <%= project.title %></h2>
     			<h3> <%= project.user.company_name %></h3>
       	</div>
-      	<div class="card-footer">
+      	<div class="card-footer card-footer-absolute">
           <div class="flex-around">
             <div class="flex-box">
               <%= image_tag 'calendar.svg', class: 'profile-icon-tiny' %>
-          		<span><%= pluralize(project.spaces_left, 'space') %> left </span>
+          		<span> <%= pluralize(project.spaces_left, 'space') %> left </span>
             </div>
             <div class="flex-box">
               <%= image_tag 'connection.svg', class: 'profile-icon-tiny' %>
-          		<span><%= pluralize(project.days_left, 'day') %> remaining</span>
+          		<span> <%= pluralize(project.days_left, 'day') %> remaining</span>
             </div>
           </div>
       	</div>

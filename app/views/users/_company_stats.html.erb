@@ -47,8 +47,7 @@
       <% if user.company_active_joins >= 1 %>
         <span>
           <strong><%= user.company_active_joins %></strong>
-          <%= "Contribution".pluralize(user.company_active_joins) %>
-          users engaged
+          Active <%= "user".pluralize(user.company_active_joins) %>
         </span>
       <% else %>
         <span>No active users right now</span>
