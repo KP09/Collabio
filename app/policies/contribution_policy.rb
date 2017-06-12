@@ -16,6 +16,10 @@ class ContributionPolicy < ApplicationPolicy
     record.user == user
   end
 
+  def star?
+    record.project.user == user && user.is_company?
+  end
+
   class Scope < Scope
     def resolve
       scope

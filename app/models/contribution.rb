@@ -15,8 +15,10 @@ class Contribution < ApplicationRecord
   def toggle_star
     if self.starred
       self.starred = false
+      self.save
     else
       self.starred = true
+      self.save
     end
   end
 end
