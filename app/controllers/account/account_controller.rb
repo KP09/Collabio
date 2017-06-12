@@ -1,4 +1,5 @@
 class Account::AccountController < ApplicationController
+  layout 'dashboard'
   # Checks whether the current user is a company
   before_action :enforce_account_rights
 

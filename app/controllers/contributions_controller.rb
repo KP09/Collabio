@@ -12,7 +12,8 @@ class ContributionsController < ApplicationController
   	else
       @question = Question.new
       @similar_projects = Project.all
-  	  render 'projects/show'
+      redirect_to project_path(@project)
+      flash[:alert] = "Oops! You've missed something"
   	end
   end
 
@@ -20,10 +21,12 @@ class ContributionsController < ApplicationController
   	@contribution = Contribution.find(params[:id])
     authorize @contribution
   	@contribution.user = current_user
+    @project = Project.find(params[:project_id])
   	if @contribution.save
   	  render 'projects/show'
   	else
-  	  render 'projects/show'
+  	  redirect_to project_path(@project)
+      flash[:alert] = "Oops! You've missed something"
   	end
   end
 

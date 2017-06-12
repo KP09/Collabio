@@ -44,7 +44,7 @@
     </div>
     <!-- Closed Projects Tabs -->
 
-     <div id="closed" class="tab-content fade">
+     <div id="closed" class="tab-content fade hidden">
 
       <% if current_user.closed_participations %>
        <%= render "header" %>
@@ -56,7 +56,7 @@
       <% end %>
     </div>
     <!-- All Contributions Tabs -->
-    <div id="contributions" class="tab-content fade">
+    <div id="contributions" class="tab-content fade hidden">
       <% if current_user.user_contributions %>
       <%= render "header-2" %>
         <% current_user.user_contributions.each do |contribution| %>
@@ -67,7 +67,7 @@
       <% end %>
     </div>
     <!-- Questions asked tab -->
-    <div id="questions" class="tab-content dashboard-scroll fade">
+    <div id="questions" class="tab-content dashboard-scroll fade hidden">
       <% if current_user.questions %>
         <%= render "header-questions" %>
         <% current_user.questions.each do |question| %>
@@ -78,7 +78,7 @@
       <% end %>
     </div>
     <!-- Account settings tab -->
-    <div id="person-settings" class="tab-content fade">
+    <div id="person-settings" class="tab-content fade hidden">
       <div class="col-xs-8 col-xs-offset-2">
         <%= render "users/individual_form", user: current_user %>
       </div>
