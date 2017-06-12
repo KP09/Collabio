@@ -16,7 +16,6 @@ class User < ApplicationRecord
   # Validations
   # email and password handled by Devise
   validate :name_validation
-  validates :description, presence: true, on: [:update]
 
   # Attachinary associations
   has_attachment :profile_picture
