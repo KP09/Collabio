@@ -1,4 +1,4 @@
-<div class="page-backgroud index-page">
+<div class="index-page page-wrapper-footerless">
   <div class="col-lg-9 padding-none">
     <!-- Welcome user section -->
     <div class="welcome-section flex-box">
@@ -52,7 +52,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- TABS PANES -->
 	<div class="container">
 		<div class="row">
@@ -89,10 +89,10 @@
 						<% end %>
 					</div>
 
-			
+
 
 					<!-- CLOSED PROJECTS -->
-					<div class="tab-content fade" id="closed-projects">
+					<div class="tab-content fade hidden" id="closed-projects">
 						<h2 class="text-center">Your Closed Projects</h2>
 						<div class="flex-between project-headers">
 							<div class="flex-item">Project Title</div>
@@ -116,10 +116,10 @@
 								</div>
 							<% end %>
 						<% end %>
-					</div>	
+					</div>
 
 					<!-- COMPANY SETTINGS -->
-					<div class="tab-content fade" id="company-settings">
+					<div class="tab-content fade hidden" id="company-settings">
 						<%= render 'users/company_form', user: current_user %>
 					</div>
 
@@ -131,7 +131,7 @@
 				</div>
 
 			</div>
-		</div>	
-	</div>	
-</div>	
+		</div>
+	</div>
+</div>
 

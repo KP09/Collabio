@@ -37,26 +37,28 @@
             <!-- If the project is no longer active show contributions render -->
             <% else %>
               <div class="similar margin-top">
-                <p>Contributions made to this closed project</p>
+                <p>Contributions to this project</p>
               </div>
               <% @project.contributions.each do |contribution| %>
                 <%= render "projects/contributers", contribution: contribution %>
               <% end %>
             <% end %>
-            <div class="questions-content">
-              <div class="flex-between margin-top">
-                <div id="ask-question">
-                  <h4>Q & A</h4>
+            <% if @project.questions.count > 0 %>
+              <div class="questions-content">
+                <div class="flex-between margin-top">
+                  <div id="ask-question">
+                    <h4>Q & A</h4>
+                  </div>
+                  <div>
+                    <% if user_signed_in? && current_user.participated_to?(@project) %>
+                      <%= link_to "Ask a question","#askquestion", data: { toggle: "modal"}, class: "btn btn-default"%>
+                    <% end %>
+                  </div>
                 </div>
-                <div>
-                  <% if user_signed_in? && current_user.participated_to?(@project) %>
-                    <%= link_to "Ask a question","#askquestion", data: { toggle: "modal"}, class: "btn btn-default"%>
-                  <% end %>
-                </div>
+                <hr>
+                 <%= render "projects/question", questions: @questions %>
               </div>
-              <hr>
-               <%= render "projects/question", questions: @questions %>
-            </div>
+            <% end %>
           </div>
           <div class="col-lg-3 margin-top">
             <%= render "projects/counters", project: @project %>
@@ -89,15 +91,19 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <h4>Similar Projects</h4>
-            <hr>
+        <% if @similar_projects.count > 0 %>
+          <div class="row margin-top">
+            <div class="col-xs-12">
+              <h4>Similar Projects</h4>
+              <hr>
+            </div>
+            <% @similar_projects.each do |project| %>
+              <div class="col-xs-12 col-md-6 col-lg-4">
+                <%= render "shared/card_open_project_full_imagery", project: project %>
+              </div>
+            <% end %>
           </div>
-          <% @similar_projects.each do |project| %>
-            <%= render "shared/card_open_project_full_imagery", project: @project %>
-          <% end %>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>

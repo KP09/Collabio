@@ -64,6 +64,11 @@ class Project < ApplicationRecord
     return similar_projects.to_a - [self]
   end
 
+  # Returns the number of contributions to a project that are starred
+  def count_starred_contributions
+    self.contributions.select { |c| c.starred }.count
+  end
+
   private
 
   def time_valid

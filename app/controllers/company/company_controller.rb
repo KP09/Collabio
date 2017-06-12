@@ -1,6 +1,7 @@
 class Company::CompanyController < ApplicationController
   # Checks whether the current user is a company
   before_action :enforce_company_rights
+  layout "dashboard"
 
   # Skips pundit checks because we define rights outside of Pundit
   skip_after_action :verify_authorized, except: :index, unless: :skip_pundit?

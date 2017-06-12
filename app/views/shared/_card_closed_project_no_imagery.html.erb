@@ -8,7 +8,11 @@
           <div class="card-footer flex-around">
             <div class="flex-box">
               <%= image_tag 'contribution.svg', class: 'profile-icon-tiny' %>
-              <span> <%= pluralize(project.contributions.count, 'contribution') %></span>
+              <span> <%= pluralize(project.contributions.count, 'Contribution') %></span>
+            </div>
+            <div class="flex-box">
+              <%= image_tag 'star.svg', class: 'profile-icon-tiny' %>
+              <span> <%= pluralize(project.count_starred_contributions, 'Star') %> awarded</span>
             </div>
           </div>
         </div>
