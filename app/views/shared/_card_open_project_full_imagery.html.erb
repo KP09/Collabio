@@ -1,0 +1,33 @@
+<!-- Responsive project results card -->
+<%= link_to project_path(project) do %>
+  <div class="card">
+    <div class="card-border">
+    	<div class="card-banner" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('<%= cl_image_path (project.user.get_cover_photo) %>')">
+    		<p class="card-category"> <%= project.category %> </p>
+        <div class="avatar-xl card-avatar" style="background-image: url('<%= cl_image_path project.user.get_profile_picture %>')">
+        </div>
+    	</div>
+      <div class="card-body">
+      	<div class="card-info card-info-imagery">
+    			<h2> <%= project.title %></h2>
+    			<h3> <%= project.user.company_name %></h3>
+      	</div>
+      	<div class="card-footer card-footer-absolute">
+          <div class="flex-around">
+            <div class="flex-box">
+              <%= image_tag 'calendar.svg', class: 'profile-icon-tiny' %>
+          		<span> <%= pluralize(project.spaces_left, 'space') %> left </span>
+            </div>
+            <div class="flex-box">
+              <%= image_tag 'connection.svg', class: 'profile-icon-tiny' %>
+          		<span> <%= pluralize(project.days_left, 'day') %> remaining</span>
+            </div>
+          </div>
+      	</div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+

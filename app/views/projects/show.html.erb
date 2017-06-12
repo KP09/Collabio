@@ -95,7 +95,7 @@
             <hr>
           </div>
           <% @similar_projects.each do |project| %>
-            <%= render "shared/card_full_imagery", project: project %>
+            <%= render "shared/card_open_project_full_imagery", project: @project %>
           <% end %>
         </div>
       </div>

@@ -9,7 +9,7 @@ class PagesController < ApplicationController
     # @top_projects = Project.number_participations
     @expired_projects = Project.expired_projects
     if params[:term].blank?
-  		@projects = Project.all
+  		@projects = Project.select { |p| p.end_date > DateTime.now }
       @companies = User.all.where(company: true)
   		@people = User.where(company: false)
     else

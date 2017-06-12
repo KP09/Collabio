@@ -1,0 +1,18 @@
+<!-- Responsive project results card -->
+<%= link_to project_path(project) do %>
+  <div class="card">
+    <div class="card-border">
+      <div class="horizontal-card-content">
+        <div class="card-info">
+          <h2 class="card-info-fixed-height"><%= project.title %></h2>
+          <div class="card-footer flex-around">
+            <div class="flex-box">
+              <%= image_tag 'contribution.svg', class: 'profile-icon-tiny' %>
+              <span> <%= pluralize(project.contributions.count, 'contribution') %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
