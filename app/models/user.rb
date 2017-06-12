@@ -68,7 +68,7 @@ class User < ApplicationRecord
 
   # Returns true if the user is a company
   def is_company?
-    self.company
+      self.company
   end
 
   # Returns integer of number of projects currently open

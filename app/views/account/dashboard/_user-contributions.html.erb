@@ -6,9 +6,15 @@
       <p><%= contribution.project.user.company_name %></p>
     </div>
     <div>
-      <p class="answer-col"><%= contribution.starred? %></p>
+      <p class="answer-col">
+        <% if contribution.starred? %>
+          <i class="fa fa-star"></i> Starred
+        <% else %>
+          <i class="fa fa-star-o"></i> No Star
+        <% end %>
+      </p>
     </div>
     <div>
-      <p><%= link_to "View", cl_image_path(contribution.file.path), class: "btn btn-primary padding-none full-width-button" %></p>
+      <p><%= link_to "View", cl_image_path(contribution.file.path), class: "btn btn-default padding-none full-width-button" %></p>
     </div>
 </div>

@@ -10,8 +10,6 @@
         <p>Welcome to your dashboard</p>
       </div>
   </div>
-
-
   <div class="right-main" id="dashboard-scroll">
     <div class="tabs"">
     <a class="tab tab-fix-width active" role="tab" data-toggle="tab" data-target="#projects" aria-controls="projects">
@@ -30,12 +28,10 @@
       <h3>Account settings</h3>
     </a>
   </div>
-
-
-
 <div id="dashboard-scroll">
   <!-- Open Projects Tab -->
-  <div class="container-fluid margin-top">
+  <div class="container-fluid margin-top" style="margin-bottom: 30px;">
+
     <div id="projects" class="tab-content fade in">
       <% if current_user.active_participations %>
         <%= render "header" %>
