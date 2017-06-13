@@ -54,7 +54,7 @@
 
 .brief-content {
   margin-top: 35px;
-  padding: 5px;
+  padding: 0px;
   p {
    font-size: 15px;
   }
@@ -208,4 +208,27 @@
 .padded-section {
   padding: 20px;
   margin-left: 35px;
+}
+
+.brief-item {
+  padding: 20px;
+  margin: 4px;
+  p {
+    margin: 0px;
+  }
+  .title {
+    font-weight: 100;
+    font-size: 22px;
+  }
+}
+
+.shadow-box-new {
+  background-color: white;
+  padding-top: 20px;
+  box-shadow: $box-shadow;
+  position: relative;
+  hr {
+    border-color: #ededed;
+    margin-bottom: 0;
+  }
 }
