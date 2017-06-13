@@ -10,7 +10,7 @@
 
         <!-- Cover photo and profile picture -->
         <div class="col-xs-12">
-          <div class="margin-top flex-around" id="profile-banner">
+          <div class="margin-top flex-around" id="profile-banner" style="background-image: url('<%= cl_image_path (@user.get_cover_photo) %>')">
           </div>
           <div class="shadow-box text-center">
             <div id="avatar-container">
