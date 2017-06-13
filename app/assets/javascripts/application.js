@@ -35,6 +35,16 @@ $(document).ready(function(){
         $(this).remove();
       });
     }, 1200);
+
+    function scrollToAnchor(aid){
+        var aTag = $("a[name='"+ aid +"']");
+        $('html,body').animate({scrollTop: aTag.offset().top},'medium');
+    }
+
+    $("#chevron").click(function() {
+       scrollToAnchor('how');
+    });
+
 });
 
 $(document).ready(function(){
