@@ -7,12 +7,15 @@ class QuestionsController < ApplicationController
     @question.project_id = @project.id
     @question.user_id = @user.id
     authorize @question
-    if @question.save
-      redirect_to project_path(@project)
-    else
-      @similar_projects = Project.all.sample(3)
-      render 'projects/show'
-    end
+
+    @question.save
+
+    # if @question.save
+    #   redirect_to project_path(@project)
+    # else
+    #   @similar_projects = Project.all.sample(3)
+    #   render 'projects/show'
+    # end
   end
 
   def edit

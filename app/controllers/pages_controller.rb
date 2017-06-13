@@ -1,8 +1,10 @@
 class PagesController < ApplicationController
-
   skip_before_action :authenticate_user!, only: [ :home, :search ]
 
+  layout 'home', only: [:home]
+
   def home
+    @sample_projects = Project.last(3)
   end
 
   def search

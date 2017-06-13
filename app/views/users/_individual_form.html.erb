@@ -15,7 +15,7 @@
     <%= f.input :location, label: "Where are you based?" %>
     <%= f.input :education, label: "Where did you/are you studying?" %>
     <%= f.input :profession, label: "What is your current occupation?" %>
-    <%= f.input :description, label: "A little bit about yourself" %>
+    <%= f.input :description, label: "A little bit about yourself", input_html: {style: "height: 200px;"} %>
     <div class="col-lg-6">
     <%= f.input :profile_picture, as: :attachinary %>
     </div>
@@ -27,4 +27,3 @@
     </div>
   <% end %>
 </div>
-

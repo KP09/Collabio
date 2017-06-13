@@ -1,23 +1,66 @@
 #homepage-main-banner {
-  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('https://static.pexels.com/photos/28462/pexels-photo-28462.jpg');
   background-size: cover;
   background-position: center;
-  height: 300px;
+  height: 100vh;
+  min-height: 600px;
   color: white;
-  .btn-primary {
-    padding: 15px 95px;
+  h1 {
+    font-size: 50px;
+    margin-top: -70px;
   }
   p {
-    font-size: 55px;
+    font-size: $base-size;
   }
   h2 {
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 100;
   }
 }
 
-#homepage-what {
+.homepage-banner-content {
+  height: calc(100vh - 70px);
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#homepage-form-box {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 10px 25px 30px 25px;
+  border-radius: 3px;
+  margin-top: -100px;
+  .simple_form {
+    .form-control {
+      background-color: rgba(255, 255, 255, 1 );
+      color: $dark-gray;
+      border: none;
+    }
+    .form-control::placeholder {
+      color: #7F7F7F;
+    }
+  }
+  .tab {
+    color: white;
+    &.active {
+      border-bottom: 2px solid white;
+    }
+  }
+  a {
+    color: white;
+  }
+  .btn {
+    width: 100%;
+  }
+  .homepage-form-button {
+
+  }
+}
+
+#homepage-how {
   background-color: white;
+  height: calc(100vh - 470px);
+  min-height: 300px;
 }
 
 .info {
