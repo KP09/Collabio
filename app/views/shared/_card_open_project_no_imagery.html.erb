@@ -12,7 +12,13 @@
           </div>
           <div class="flex-box">
             <%= image_tag 'connection.svg', class: 'profile-icon-tiny' %>
-            <span> <%= pluralize(project.days_left, 'day') %> remaining</span>
+            <% if project.days_left > 0 %>
+              <span> <%= pluralize(project.days_left, 'day') %> remaining</span>
+            <% elsif project.days_left == 0 %>
+              <span>Ends today</span>
+            <% else %>
+              <span>Closed</span>
+            <% end %>
           </div>
         </div>
         </div>
