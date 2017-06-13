@@ -21,7 +21,15 @@
             <h1><%= @user.full_name %></h1>
             <!-- Shows the location if there is one -->
             <% if @user.location && @user.location.length > 0 %>
-              <p><i class="fa fa-map-marker"></i> <%= @user.location %></p>
+              <span class="profile-info-item"><i class="fa fa-map-marker"></i> <%= @user.location %></span>
+            <% end %>
+            <!-- Shows education -->
+            <% if @user.education && @user.education.length > 0 %>
+              <span class="profile-info-item"><i class="fa fa-university"></i> <%= @user.education %></span>
+            <% end %>
+            <!-- Show occupation -->
+            <% if @user.profession && @user.profession.length > 0 %>
+              <span class="profile-info-item"><i class="fa fa-briefcase"></i> <%= @user.profession %></span>
             <% end %>
             <!-- Shows the user description -->
             <div id="user-description">

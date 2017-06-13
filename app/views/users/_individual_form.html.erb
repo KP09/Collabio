@@ -12,8 +12,10 @@
       </div>
     </div>
     <%= f.input :email %>
-    <%= f.input :location %>
-    <%= f.input :description, label: "Bio" %>
+    <%= f.input :location, label: "Where are you based?" %>
+    <%= f.input :education, label: "Where did you/are you studying?" %>
+    <%= f.input :profession, label: "What is your current occupation?" %>
+    <%= f.input :description, label: "A little bit about yourself" %>
     <div class="col-lg-6">
     <%= f.input :profile_picture, as: :attachinary %>
     </div>

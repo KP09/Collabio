@@ -22,7 +22,7 @@
   }
   @media (min-width: 1200px) {
     width: 80%;
-    margin: 0 auto;
+    margin: 10px auto;
   }
 }
 
@@ -57,6 +57,10 @@
   hr {
     margin-bottom: 0;
   }
+}
+
+.profile-info-item {
+  margin: 0 10px 30px 10px;
 }
 
 .spacing-top {
