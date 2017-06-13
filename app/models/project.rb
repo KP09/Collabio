@@ -9,10 +9,12 @@ class Project < ApplicationRecord
 
   # Validations
   validates :title, presence: true
-  validates :brief, presence: true
   validates :end_date, presence: true
   validates :max_participations, presence: true
   validates :category, presence: true
+  validates :goal, presence: true
+  validates :what_company_looking_for, presence: true
+  validates :benefit_to_candidate, presence: true
   # validate :time_valid
 
   # Possible categories for projects
