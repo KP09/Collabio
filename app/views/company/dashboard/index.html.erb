@@ -1,22 +1,20 @@
 <div class="index-page page-wrapper-footerless">
-  <div class="col-lg-9 padding-none">
-    <!-- Welcome user section -->
-    <div class="welcome-section flex-box">
-        <div class="user-dash-image">
-          <%= cl_image_tag (current_user.get_profile_picture) %>
-        </div>
-        <div>
-          <h1><%= current_user.company_name %></h1>
-          <p>Welcome to your dashboard</p>
-        </div>
-    </div>
-  </div>
-
-
-	<!-- TABS	 -->
+	<div class="container-fluid">
 	<div class="row">
-
 		<div class="col-xs-12 col-md-9">
+
+				<!-- Welcome user section -->
+				<div class="welcome-section index-page-header flex-box">
+			    <div class="user-dash-image">
+			      <%= cl_image_tag (current_user.get_profile_picture) %>
+			    </div>
+			    <div>
+			      <h1><%= current_user.company_name %></h1>
+			      <p>Welcome to your dashboard</p>
+			    </div>
+				</div>
+
+			<!-- TABS	 -->
 			<div class="tabs" role="tablist" id="main-bar">
 			<a class="tab tab-fix-width active" role="tab" data-toggle="tab" data-target="#open-projects" aria-controls="open-projects">Open Projects</a>
 			<a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#closed-projects" aria-controls="closed-projects">Closed Projects</a>
@@ -50,17 +48,11 @@
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
 
 	<!-- TABS PANES -->
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12 col-md-9">
 
 					<!-- ACTIVE PROJECTS -->
 					<div class="tab-content fade in active" id="open-projects">
-						<h2 class="text-center"> Your Open Projects</h2>
 						<div class="flex-between project-headers">
 							<div class="flex-item">Project Title</div>
 							<div class="flex-item">Days Remaining</div>
@@ -93,7 +85,6 @@
 
 					<!-- CLOSED PROJECTS -->
 					<div class="tab-content fade hidden" id="closed-projects">
-						<h2 class="text-center">Your Closed Projects</h2>
 						<div class="flex-between project-headers">
 							<div class="flex-item">Project Title</div>
 							<div class="flex-item">Days Remaining</div>
