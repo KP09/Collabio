@@ -29,7 +29,6 @@ $(document).ready(function(){
         var target = $(this).data("target");
         $(target).removeClass("hidden");
       });
-
     });
     window.setTimeout(function() {
       $(".alert").fadeTo(500, 0).slideUp(500, function(){
