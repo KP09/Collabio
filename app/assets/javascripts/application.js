@@ -5,6 +5,9 @@
 //= require jquery-fileupload/basic
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
+//= require froala_editor.min.js
+//= require plugins/emoticons.min.js
+//= require plugins/lists.min.js
 
 
 $(document).ready(function(){
@@ -34,3 +37,9 @@ $(document).ready(function(){
       });
     }, 1200);
 });
+
+$(document).ready(function(){
+    $('#user_description').froalaEditor({
+
+    })
+  });
