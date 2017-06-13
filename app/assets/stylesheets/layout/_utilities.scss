@@ -12,6 +12,17 @@ a:-webkit-any-link {
   text-decoration: none;
 }
 
+.devise-shared-links {
+  margin-top: 10px;
+  a {
+    color: $charcoal;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
 // Paddings
 .padded {
   padding-top: 5em;
