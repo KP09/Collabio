@@ -1,0 +1,9 @@
+$('#question_question').val('');
+$('.modal').modal('hide');
+
+var newQuestion = $("<%= j render 'projects/question', question: @question %>").hide();
+$('.questions').prepend(newQuestion);
+newQuestion.slideDown();
+
+// small hack
+$('.modal').css('display', 'none');

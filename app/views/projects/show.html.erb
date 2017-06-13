@@ -28,7 +28,7 @@
                 <p>Brief:</p>
               </div>
               <div class="brief-content">
-                <p><%= @project.brief %></p>
+                <p><%= @project %></p>
               </div>
             </div>
             <!-- If the project is still active show participants render -->
@@ -45,25 +45,27 @@
             <% end %>
               <div class="questions-content">
                 <div class="flex-between margin-top">
-                  <% if @project.questions.count > 0 %>
                   <div id="ask-question">
                     <h4>Q & A</h4>
                   </div>
 
                   <hr>
-                  <% end %>
+
                   <div>
                     <% if user_signed_in? && current_user.participated_to?(@project) %>
                       <%= link_to "Ask a question","#askquestion", data: { toggle: "modal"}, class: "btn btn-default"%>
                     <% end %>
                   </div>
                 </div>
-
-                <% if @project.questions.count > 0 %>
-                  <% @project.questions.each do |question| %>
-                    <%= render "projects/question", question: question %>
+                <div class="questions">
+                  <% if @project.questions.count > 0 %>
+                    <% @project.questions.reverse.each do |question| %>
+                      <%= render "projects/question", question: question %>
+                    <% end %>
+                  <% else %>
+                    <p>No questions have been asked yet!</p>
                   <% end %>
-                <% end %>
+                </div>
               </div>
           </div>
           <div class="col-lg-3 margin-top">
@@ -122,7 +124,7 @@
        <h2>Add a question</h2>
       </div>
       <div class="modal-body">
-        <%= simple_form_for([@project, @question,]) do |f| %>
+        <%= simple_form_for([@project, @question], remote: true) do |f| %>
           <%= f.input :question, label: "Ask us a question", class: "form-control" %>
           <%= f.submit "Submit Question", class: "btn btn-primary" %>
         <% end %>
