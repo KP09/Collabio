@@ -1,0 +1,6 @@
+$('#question_question').val('');
+$('#askquestion').modal('toggle');
+
+var newQuestion = $("<%= j render 'projects/question', question: @question %>").hide();
+$('.questions').prepend(newQuestion);
+newQuestion.slideDown();
