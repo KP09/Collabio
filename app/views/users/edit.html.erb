@@ -3,7 +3,12 @@
 
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3 shadow-box margin-top">
-        <h2 class="text-center">Hello <%= current_user.first_name %> <%= current_user.last_name %>, Tell us more about yourself</h2>
+        <h2 class="text-center">Hello
+        <% if current_user.is_individual? %>
+          <%= current_user.first_name %> <%= current_user.last_name %>, Tell us more about yourself</h2>
+        <% else %>
+           <%= current_user.company_name %>, Please fill out any missing information below!
+        <% end %>
         <% if current_user.is_individual? %>
           <%= render 'individual_form' %>
         <% else %>
