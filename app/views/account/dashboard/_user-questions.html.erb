@@ -36,10 +36,12 @@
           <br>
           <% if question.answer %>
           <p><strong> Answer:</strong> <%= question.answer %></p>
+          <%= link_to "Go to Project", project_path(question.project) %>
           <% else %>
             <div class="icon text-center">
               <%= image_tag("brainstorming.svg") %>
               <p>Awaiting answer</p>
+              <%= link_to "Go to Project", project_path(question.project) %>
             </div>
           <% end %>
       </div>
