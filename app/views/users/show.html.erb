@@ -32,8 +32,10 @@
               <span class="profile-info-item"><i class="fa fa-briefcase"></i> <%= @user.profession %></span>
             <% end %>
             <!-- Shows the user description -->
-            <div id="user-description fr-view">
-              <p><%= @user.description.html_safe %></p>
+            <div id="user-description">
+              <div class="fr-view">
+                <p><%= @user.description %></p>
+              </div>
             </div>
             <!-- Show a get in touch button unless the user is a company -->
             <!-- or unless they are the active user -->
