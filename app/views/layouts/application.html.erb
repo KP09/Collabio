@@ -16,7 +16,21 @@
       <%= render 'shared/navbar_pro' %>
     <% end %>
     <%= render 'shared/flashes' %>
-    <%= yield %>
+    <% if devise_controller? %>
+      <div class="page-wrapper">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-md-6 col-md-offset-3">
+              <div class="shadow-box margin-top">
+                <%= yield %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
     <%= render 'shared/footer' %>
     <%#= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>

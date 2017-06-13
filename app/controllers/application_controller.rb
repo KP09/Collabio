@@ -24,10 +24,10 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     if current_user.company
       # Sends companies to dashboard
-      edit_user_path(resource)
+      company_dashboard_index_path
     else
       # Sends individuals to their profile page
-      user_path(resource)
+      account_dashboard_index_path
     end
   end
 
