@@ -23,12 +23,25 @@
         </div>
         <div class="row">
           <div class="col-lg-9">
-            <div class="shadow-box margin-top">
+            <div class="shadow-box-new margin-top">
               <div class="box-title">
                 <p>Brief:</p>
               </div>
               <div class="brief-content">
-                <p><%= @project %></p>
+                <div class="brief-item">
+                  <p class="title">PROJECT</p>
+                  <p><%= @project.goal %></p>
+                </div>
+                <hr>
+                <div class="brief-item">
+                  <p class="title"">EXPECTATIONS</p>
+                  <p><%= @project.what_company_looking_for %></p>
+                </div>
+                <hr>
+                <div class="brief-item">
+                  <p class="title"">BENEFIT</h2>
+                  <p><%= @project.benefit_to_candidate %></p>
+                </div>
               </div>
             </div>
             <!-- If the project is still active show participants render -->
@@ -63,7 +76,8 @@
                       <%= render "projects/question", question: question %>
                     <% end %>
                   <% else %>
-                    <p>No questions have been asked yet!</p>
+                    <br>
+                    <p class="text-center">No questions have been asked yet!</p>
                   <% end %>
                 </div>
               </div>

@@ -38,7 +38,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-    $('#user_description').froalaEditor({
+    $('').froalaEditor({
 
     })
   });

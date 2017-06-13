@@ -1,36 +1,18 @@
-<div class="alignment body-text font form_placement">
-  <%= simple_form_for(@user) do |f| %>
-    <div class="margin"></div>
-    <%= f.input :email %>
-    <%= f.input :company_name %>
-    <%= f.input :location %>
-    <%= f.input :description %>
-    <%= f.input :profile_picture, as: :attachinary %>
-    <%= f.input :cover_photo, as: :attachinary %>
-    <div class="text-center">
-      <%= f.submit value: "Save", class: "btn btn-primary", id: "margin-bot" %>
-    </div>
-  <% end %>
-</div>
-
 <div class="alignment body-text font">
   <%= simple_form_for(current_user) do |f| %>
     <div class="margin"></div>
     <div class="col-lg-6 padding-none">
-      <div class="first-name" style="padding-right: 10px">
-        <%= f.input :first_name, readonly: true %>
+      <div class="company_name" style="padding-right: 10px">
+        <%= f.input :company_name %>
       </div>
     </div>
     <div class="col-lg-6 padding-none">
-      <div class="last_name">
-        <%= f.input :last_name %>
+      <div class="email">
+        <%= f.input :email %>
       </div>
     </div>
-    <%= f.input :email %>
-    <%= f.input :location, label: "Where are you based?" %>
-    <%= f.input :education, label: "Where did you/are you studying?" %>
-    <%= f.input :profession, label: "What is your current occupation?" %>
-    <%= f.input :description, label: "A little bit about yourself", input_html: {style: "height: 200px;"} %>
+    <%= f.input :location %>
+    <%= f.input :description, label: "Company Mission", input_html: {style: "height: 200px;"} %>
     <div class="col-lg-6">
     <%= f.input :profile_picture, as: :attachinary %>
     </div>
