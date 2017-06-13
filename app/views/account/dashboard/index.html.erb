@@ -68,7 +68,7 @@
     </div>
     <!-- Questions asked tab -->
     <div id="questions" class="tab-content dashboard-scroll fade hidden">
-      <% if current_user.questions %>
+      <% if current_user.questions.count > 0 %>
         <%= render "header-questions" %>
         <% current_user.questions.each do |question| %>
           <%= render "user-questions", question: question %>
