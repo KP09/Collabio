@@ -3,9 +3,9 @@
 	.nav-tabs > li.active > a {
 		color: $brand-color;
 	}
-	.h1:first-child {
-		font-size: 80px;
-	}
+	.company-project-row {
+		padding: 10px;
+	}	
 	h2:first-child { 
 	margin-top: 20px;
 	margin-bottom: 10px;
@@ -117,6 +117,7 @@
 	.actions-project {
 		display: flex;
 		justify-content: flex-end;
+		padding-right: 40px;
 	}
 	.old-project-view {
 		text-align: center;
