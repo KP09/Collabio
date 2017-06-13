@@ -1,36 +1,35 @@
-<% questions.each do |question| %>
-  <div class="question">
-    <div class="col-lg-4">
-      <div class="flex-box padded-section">
-        <div class="small-icon">
-          <%= image_tag("left-quote.svg") %>
-        </div>
-        <div>
-          <p style="font-style: italic;"><%= question.question %>"</p>
-        </div>
+<div class="question">
+  <div class="col-lg-4">
+    <div class="flex-box padded-section">
+      <div class="small-icon">
+        <%= image_tag("left-quote.svg") %>
       </div>
-    </div>
-    <div class="col-lg-8">
-      <div class="right-question">
-        <% if question.answer.nil? %>
-          <div class="answer-section icon">
-            <%= image_tag("brainstorming.svg") %>
-            <p>Awaiting answer</p>
-            <% if policy(Project).create? && question.project.user == current_user %>
-              <%= link_to "Answer","#answerquestion-" + question.id.to_s, data: { toggle: "modal"}, class: "btn btn-default"%>
-            <% end %>
-          </div>
-        <% else %>
-          <div class="answer-section">
-            <p><%= question.answer %></p>
-            <% if policy(Project).create? && question.project.user == current_user %>
-              <%= link_to "Edit","#answerquestion-" + question.id.to_s, data: { toggle: "modal"}, class: "btn btn-default"%>
-            <% end %>
-          </div>
-        <% end %>
+      <div>
+        <p style="font-style: italic;"><%= question.question %>"</p>
       </div>
     </div>
   </div>
+  <div class="col-lg-8">
+    <div class="right-question">
+      <% if question.answer.nil? %>
+        <div class="answer-section icon">
+          <%= image_tag("brainstorming.svg") %>
+          <p>Awaiting answer</p>
+          <% if policy(Project).create? && question.project.user == current_user %>
+            <%= link_to "Answer","#answerquestion-" + question.id.to_s, data: { toggle: "modal"}, class: "btn btn-default"%>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="answer-section">
+          <p><%= question.answer %></p>
+          <% if policy(Project).create? && question.project.user == current_user %>
+            <%= link_to "Edit","#answerquestion-" + question.id.to_s, data: { toggle: "modal"}, class: "btn btn-default"%>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 
 
@@ -50,6 +49,3 @@
     </div>
   </div>
 </div>
-
-
-<% end %>
