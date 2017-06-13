@@ -52,7 +52,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title, :brief, :category, :end_date, :max_participations, :starred)
+    params.require(:project).permit(:title, :goal, :what_company_looking_for, :benefit_to_candidate, :category, :end_date, :max_participations, :starred)
   end
 
 end

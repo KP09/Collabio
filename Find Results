@@ -1,0 +1,170 @@
+Searching 1052 files for "index-page"
+
+/Users/Rambo/code/rbakri1/teams/Brainpowered/app/assets/stylesheets/pages/_dashboard.scss:
+    1: .index-page {
+    2  	position: relative;
+    3  	.nav-tabs > li.active > a {
+
+/Users/Rambo/code/rbakri1/teams/Brainpowered/app/views/company/dashboard/index.html.erb:
+    1: <div class="index-page page-wrapper-footerless">
+    2  	<div class="container-fluid">
+    3  	<div class="row">
+
+2 matches across 2 files
+
+
+Searching 1065 files for "brief"
+
+/Users/Rambo/code/rbakri1/teams/Brainpowered/app/assets/images/briefcase.svg:
+    2  <svg width="480px" height="480px" viewBox="0 0 480 480" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    3      <!-- Generator: Sketch 44 (41411) - http://www.bohemiancoding.com/sketch -->
+    4:     <title>briefcase</title>
+    5      <desc>Created with Sketch.</desc>
+    6      <defs></defs>
+    7      <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    8:         <g id="briefcase" fill-rule="nonzero" fill="#717C89">
+    9              <path d="M464,300.392 L464,208 L464,160 L464,120 C464,97.944 446.056,80 424,80 L320,80 L320,40 C320,17.944 302.056,0 280,0 L184,0 C161.944,0 144,17.944 144,40 L144,80 L40,80 C17.944,80 0,97.944 0,120 L0,136 L0,208 L0,400 C0,422.056 17.944,440 40,440 L270.808,440 C292.792,464.488 324.576,480 360,480 C426.168,480 480,426.168 480,360 C480,338.296 474.12,317.976 464,300.392 Z M160,40 C160,26.768 170.768,16 184,16 L280,16 C293.232,16 304,26.768 304,40 L304,80 L288,80 L288,40 C288,35.584 284.424,32 280,32 L184,32 C179.576,32 176,35.584 176,40 L176,80 L160,80 L160,40 Z M272,48 L272,80 L192,80 L192,48 L272,48 Z M16,136 L16,120 C16,106.768 26.768,96 40,96 L424,96 C437.232,96 448,106.768 448,120 L448,160 L448,208 C448,230.056 430.056,248 408,248 L402.728,248 C389.432,242.912 375.064,240 360,240 C344.936,240 330.568,242.912 317.272,248 L280,248 L280,224 C280,219.584 276.424,216 272,216 L192,216 C187.576,216 184,219.584 184,224 L184,248 L104,248 L64,248 L56,248 C33.944,248 16,230.056 16,208 L16,136 Z M448,247.112 L448,278.688 C441.728,271.904 434.784,265.76 427.112,260.568 C435.064,257.664 442.192,253.056 448,247.112 Z M264,232 L264,248 L200,248 L200,232 L264,232 Z M96,264 L96,288 L72,288 L72,264 L96,264 Z M40,424 C26.768,424 16,413.232 16,400 L16,247.112 C26.176,257.52 40.336,264 56,264 L56,296 C56,300.416 59.576,304 64,304 L104,304 C108.424,304 112,300.416 112,296 L112,264 L192,264 L272,264 L288.304,264 C259.048,285.904 240,320.728 240,360 C240,383.536 246.912,405.448 258.672,424 L40,424 Z M463.592,368 C459.688,418.96 418.96,459.688 368,463.592 L368,448 L352,448 L352,463.592 C323.12,461.376 297.488,447.4 280,426.36 L280,424 L278.192,424 C265.888,408.304 258.016,389.04 256.4,368 L272,368 L272,352 L256.408,352 C260.312,301.04 301.04,260.312 352,256.408 L352,272 L368,272 L368,256.408 C418.96,260.312 459.688,301.04 463.592,352 L448,352 L448,368 L463.592,368 Z" id="Shape"></path>
+   10              <path d="M368,356.688 L368,288 L352,288 L352,360 C352,362.12 352.84,364.16 354.344,365.656 L402.344,413.656 L413.656,402.344 L368,356.688 Z" id="Shape"></path>
+
+/Users/Rambo/code/rbakri1/teams/Brainpowered/app/assets/stylesheets/components/_card.scss:
+   81  }
+   82  
+   83: .brief {
+   84    padding: 0px !important ;
+   85    height: 20px;
+
+/Users/Rambo/code/rbakri1/teams/Brainpowered/app/assets/stylesheets/pages/_project-show-page.scss:
+   30  }
+   31  
+   32: .brief {
+   33    position: relative;
+   34    width: 100%;
+   ..
+   53  }
+   54  
+   55: .brief-content {
+   56    margin-top: 35px;
+   57    padding: 5px;
+
+/Users/Rambo/code/rbakri1/teams/Brainpowered/app/controllers/projects_controller.rb:
+   53  
+   54    def project_params
+   55:     params.require(:project).permit(:title, :brief, :category, :end_date, :max_participations, :starred)
+   56    end
+   57  
+
+/Users/Rambo/code/rbakri1/teams/Brainpowered/app/views/account/dashboard/_edit-project.html.erb:
+   10  			<div class="modal-body">
+   11  				<%= f.input :title, maxlength: 40 %>
+   12: 				<%= f.input :brief %>
+   13  				<%= f.input :category %>
+   14  				<%= f.input :end_date %>
+
+/Users/Rambo/code/rbakri1/teams/Brainpowered/app/views/account/dashboard/index.html.erb:
+   94      <h2 class="text-center" style="font-size: 20px;"><i class="fa fa-dashboard"></i> Portfolio stats</h2>
+   95        <hr>
+   96:       <!-- Briefcase -->
+   97        <div class="stat">
+   98:        <%= image_tag 'briefcase.svg', class: "profile-icon" %>
+   99         <% if current_user.active_participations %>
+  100           <span>
+
+/Users/Rambo/code/rbakri1/teams/Brainpowered/app/views/company/dashboard/_edit-project.html.erb:
+   10  			<div class="modal-body">
+   11  				<%= f.input :title, maxlength: 40 %>
+   12: 				<%= f.input :brief %>
+   13  				<%= f.input :category %>
+   14  				<%= f.input :end_date %>
+
+/Users/Rambo/code/rbakri1/teams/Brainpowered/app/views/company/projects/show.html.erb:
+  129      <div id="project" class="tab-content fade in hidden">
+  130        <div class="margin-top">
+  131:         <h3><strong>Brief:</strong> <%= @project.brief %></h3>
+  132          <br>
+  133          <h3><strong>Category:</strong> <%= @project.category %></h3>
+
+/Users/Rambo/code/rbakri1/teams/Brainpowered/app/views/projects/show.html.erb:
+   26              <div class="shadow-box margin-top">
+   27                <div class="box-title">
+   28:                 <p>Brief:</p>
+   29                </div>
+   30:               <div class="brief-content">
+   31:                 <p><%= @project.brief %></p>
+   32                </div>
+   33              </div>
+
+/Users/Rambo/code/rbakri1/teams/Brainpowered/app/views/shared/_search_card_companies.html.erb:
+   13          <div class="card-icons">
+   14            <div class="flex-icon">
+   15:             <%= image_tag 'briefcase.svg', class: "profile-icon-tiny" %>
+   16              <span><%= user.projects_open %> Open <%= "project".pluralize(user.projects_open) %> </span>
+   17            </div>
+
+/Users/Rambo/code/rbakri1/teams/Brainpowered/app/views/users/_company_stats.html.erb:
+    5      <!-- Open projects -->
+    6      <div class="stat">
+    7:       <%= image_tag 'briefcase.svg', class: "profile-icon" %>
+    8        <% if user.active_projects %>
+    9          <span>
+
+/Users/Rambo/code/rbakri1/teams/Brainpowered/app/views/users/_individual_stats.html.erb:
+    3      <h3><i class="fa fa-dashboard"></i> Portfolio stats</h3>
+    4      <hr>
+    5:     <!-- Briefcase -->
+    6      <div class="stat">
+    7:       <%= image_tag 'briefcase.svg', class: "profile-icon" %>
+    8        <% if user.active_participations %>
+    9          <span>
+
+/Users/Rambo/code/rbakri1/teams/Brainpowered/db/seeds.rb:
+   78    {
+   79      title: "The Big Project",
+   80:     brief: "This is to address the marketing department's needs to build an audience in China.",
+   81      end_date: (DateTime.now + 5),
+   82      max_participations: 30,
+   ..
+   85    {
+   86      title: "Finance investigation",
+   87:     brief: "Our annual accounts were out by several million pounds and we're looking for talented mathmeticians to correct this. ",
+   88      end_date: (DateTime.now + 9),
+   89      max_participations: 40,
+   ..
+   92    {
+   93      title: "How can we improve our internal organisation",
+   94:     brief: "We are looking to learn from forward thinking young professionals to understand how we can make the working environment better for them and us.",
+   95      end_date: (DateTime.now + 5),
+   96      max_participations: 30,
+   ..
+  100  
+  101  projects.each do |e|
+  102:   Project.create!(user: User.first, title: e[:title], brief: e[:brief], end_date: e[:end_date], max_participations: e[:max_participations], category: e[:category])
+  103  end
+  104  
+
+/Users/Rambo/code/rbakri1/teams/Brainpowered/db/migrate/20170605124012_create_projects.rb:
+    3      create_table :projects do |t|
+    4        t.string :title
+    5:       t.text :brief
+    6        t.datetime :end_date
+    7        t.integer :max_participations
+
+/Users/Rambo/code/rbakri1/teams/Brainpowered/db/migrate/20170613114256_remove_brief_from_project_table.rb:
+    1: class RemoveBriefFromProjectTable < ActiveRecord::Migration[5.1]
+    2    def change
+    3:   	remove_column :projects, :brief
+    4    end
+    5  end
+
+/Users/Rambo/code/rbakri1/teams/Brainpowered/log/development.log:
+    <binary>
+
+/Users/Rambo/code/rbakri1/teams/Brainpowered/tmp/cache/assets/sprockets/v3.0/oB/obKd8Ap6_RnUFkf1h1-WQTrKhNICO1sq_7oQ_qOPaeo.cache:
+    <binary>
+
+/Users/Rambo/code/rbakri1/teams/Brainpowered/tmp/cache/assets/sprockets/v3.0/rc/rcNiUZsA1NzMx-H7oa11p5gsFDOF0dMz3a2kI17x13U.cache:
+    <binary>
+
+/Users/Rambo/code/rbakri1/teams/Brainpowered/tmp/cache/assets/sprockets/v3.0/sb/sbxpdjXPnftWCB9bOi8n3BDQFAP_QMxdHpWGyWGa3jc.cache:
+    <binary>
+
+42 matches across 19 files

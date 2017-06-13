@@ -3,6 +3,9 @@
 	.nav-tabs > li.active > a {
 		color: $brand-color;
 	}
+	.h1:first-child {
+		font-size: 80px;
+	}
 	h2:first-child { 
 	margin-top: 20px;
 	margin-bottom: 10px;

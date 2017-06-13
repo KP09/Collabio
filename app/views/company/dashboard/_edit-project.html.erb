@@ -8,9 +8,11 @@
 			</div>
 			<%= simple_form_for(project) do |f| %>
 			<div class="modal-body">
-				<%= f.input :title, maxlength: 40 %>
-				<%= f.input :brief %>
-				<%= f.input :category %>
+				<%= f.input :title, maxlength: 140%>
+				<%= f.input :goal %>
+				<%= f.input :what_company_looking_for %>
+				<%= f.input :benefit_to_candidate %>
+				<%= f.input :category, placeholder: "Choose a category", collection: Project::CATEGORIES %>
 				<%= f.input :end_date %>
 				<%= f.input :max_participations %>
 			</div>
