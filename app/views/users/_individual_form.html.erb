@@ -1,13 +1,12 @@
 <div class="alignment body-text font">
   <%= simple_form_for(current_user) do |f| %>
-    <div class="margin"></div>
     <div class="col-lg-6 padding-none">
-      <div class="first-name" style="padding-right: 10px">
-        <%= f.input :first_name, readonly: true %>
+      <div style="padding-right: 10px;">
+        <%= f.input :first_name %>
       </div>
     </div>
     <div class="col-lg-6 padding-none">
-      <div class="last_name">
+      <div>
         <%= f.input :last_name %>
       </div>
     </div>
