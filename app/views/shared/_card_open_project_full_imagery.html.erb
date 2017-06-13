@@ -15,11 +15,11 @@
       	<div class="card-footer card-footer-absolute">
           <div class="flex-around">
             <div class="flex-box">
-              <%= image_tag 'calendar.svg', class: 'profile-icon-tiny' %>
+              <%= image_tag 'connection.svg', class: 'profile-icon-tiny' %>
           		<span> <%= pluralize(project.spaces_left, 'space') %> left </span>
             </div>
             <div class="flex-box">
-              <%= image_tag 'connection.svg', class: 'profile-icon-tiny' %>
+              <%= image_tag 'calendar.svg', class: 'profile-icon-tiny' %>
               <% if project.days_left > 0 %>
             		<span> <%= pluralize(project.days_left, 'day') %> remaining</span>
               <% elsif project.days_left == 0 %>
