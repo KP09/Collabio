@@ -7,7 +7,7 @@
     <% project.participations.each do |participation| %>
       <%= link_to (user_path(participation.user)) do %>
         <div class="col-lg-1 shift-contributor-left">
-            <div class="avatar-medium" style="border: solid white 3px; background-image: url('<%= cl_image_path participation.user.get_profile_picture %>')" data-toggle="popover", data-title="<%= participation.user.full_name %>", placement: "bottom" , data-content="<%= participation.user.description %>">
+            <div class="avatar-medium" style="border: solid white 3px; background-image: url('<%= cl_image_path participation.user.get_profile_picture %>')" data-toggle="tooltip", data-title="<%= participation.user.full_name %>", class: "btn btn-primary" %>
             </div>
           </div>
         <% end %>
