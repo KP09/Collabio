@@ -24,9 +24,6 @@
     <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#questions" aria-controls="questions">
       <h3>Questions</h3>
     </a>
-    <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#person-settings" aria-controls="person-settings">
-      <h3>Account settings</h3>
-    </a>
   </div>
 <div id="dashboard-scroll">
   <!-- Open Projects Tab -->
@@ -76,12 +73,6 @@
       <% else %>
         <p style="color: black;" class="text-center">You haven't asked any questions</p>
       <% end %>
-    </div>
-    <!-- Account settings tab -->
-    <div id="person-settings" class="tab-content fade hidden">
-      <div class="col-xs-8 col-xs-offset-2">
-        <%= render "users/individual_form", user: current_user %>
-      </div>
     </div>
   </div>
   </div>
