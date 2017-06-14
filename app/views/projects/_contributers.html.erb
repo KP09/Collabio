@@ -33,7 +33,7 @@
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
       </div>
       <div class="col-xs-12 col-lg-2 text-center">
-        <%= link_to cl_image_path (contribution.file.path) do %>
+        <%= link_to cl_image_path (contribution.file.path), target: "_blank" do %>
           <div class="btn btn-default">Check it out</div>
         <% end %>
       </div>
