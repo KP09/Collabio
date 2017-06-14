@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   end
 
   # Users
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
   resources :users, except: [:index]
 
   # Projects
