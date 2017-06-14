@@ -1,10 +1,10 @@
 <%= simple_form_for(project) do |f| %>
-  <%= f.input :title, maxlength: 140, placeholder: "140 characters maximum" %>
-  <%= f.input :goal, as: :text, input_html: { class: "text-edit"}, placeholder: "What's the goal of your project?" %>
-  <%= f.input :what_company_looking_for,  input_html: { class: "text-edit"}, as: :text, placeholder: "Is there something specific you're looking for in user's contributions?" %>
-  <%= f.input :benefit_to_candidate,  input_html: { class: "text-edit"}, as: :text, placeholder: "A cool benefit to candidates is a great way to motivate them" %>
+  <%= f.input :title, label: 'The title of your project', maxlength: 140, placeholder: "140 characters maximum" %>
+  <%= f.input :goal, label: "What is the goal of this project?", as: :text, input_html: { class: "text-edit"} %>
+  <%= f.input :what_company_looking_for, label: "What exactly will you be looking for from contributors?", input_html: { class: "text-edit"}, as: :text %>
+  <%= f.input :benefit_to_candidate, label: "What's the potential gain for contributors?", input_html: { class: "text-edit"}, as: :text %>
   <%= f.input :category, placeholder: "Choose a category", collection: Project::CATEGORIES %>
   <%= f.input :end_date, placeholder: "When should project end?", format: 'mm-dd-yyyy', default: Time.parse('18:00') %>
-  <%= f.input :max_participations, placeholder: "How many people can contribute?" %>
+  <%= f.input :max_participations, label: "How many contributions will you accept?", placeholder: "Type the amount" %>
   <%= f.submit class: "btn btn-primary" %>
 <% end %>

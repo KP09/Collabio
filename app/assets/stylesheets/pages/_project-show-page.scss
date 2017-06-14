@@ -1,3 +1,4 @@
+// CSS for the company information section (name,logo,project title)
 .company-show-information {
   display: flex;
   justify-content: space-between;
@@ -9,34 +10,21 @@
   h4 {
     margin-bottom: 0px;
   }
-}
-
-.company-name-title {
-  p {
-    margin: 0px;
-  }
-  h2 {
-    font-size: 34px;
-    margin: 0px;
-  }
-}
-
-.company-logo {
+  .logo {
   margin-right: 30px;
+  }
+  .name-title {
+    p {
+      margin: 0px;
+    }
+    h2 {
+      font-size: 34px;
+      margin: 0px;
+    }
+  }
 }
 
-.right-project-details {
-  text-align: right;
-}
-
-.brief {
-  position: relative;
-  width: 100%;
-  background: white;
-  border-radius: 2px;
-  min-height: 20vh;
-  box-shadow: $box-shadow;
-}
+// CSS for the Project information section
 
 .box-title {
   position: absolute;
@@ -52,11 +40,24 @@
   }
 }
 
-.brief-content {
-  margin-top: 35px;
-  padding: 0px;
+.new-brief {
+  background-color: white;
+  box-shadow: $box-shadow;
+  position: relative;
+  hr {
+    border-color: #ededed;
+    margin-bottom: 0;
+  }
+  .brief-item {
+  padding: 20px;
+  margin: 4px;
   p {
-   font-size: 15px;
+    margin: 0px;
+  }
+  .title {
+    font-weight: 100;
+    font-size: 22px;
+    }
   }
 }
 
@@ -65,6 +66,8 @@
   margin-top: 40px;
   text-align: center;
 }
+
+// Counters on right of page CSS
 
 .counter {
   background: white;
@@ -87,21 +90,21 @@
   opacity: 0.8;
 }
 
-.counter-title {
-    background: $charcoal;
-    width: 100%;
-    border-radius: 5px 5px 0px 0px;
-    p {
-      Font-size: 12px;
-      margin: 0px;
-      padding: 10px;
-      color: white;
-    }
-  }
-
-.no-margin {
-  margin-right: 0px;
+.view-count {
+  position: absolute;
+  right:10px;
+  top: 10px;
 }
+
+.stat-image {
+  margin-right: 10px;
+}
+
+.shift-contributor-left {
+  margin-right: -20px;
+}
+
+// CSS for contributions section
 
 .contribution {
   p {
@@ -128,19 +131,6 @@
   }
 }
 
-.view-count {
-  position: absolute;
-  right:10px;
-  top: 10px;
-}
-
-.stat-image {
-  margin-right: 10px;
-}
-
-.shift-contributor-left {
-  margin-right: -20px;
-}
 
 .popover {
   width: 220px;
@@ -150,28 +140,70 @@
   text-align: center;
 }
 
-.question {
-  border-left: solid $charcoal 3px;
-  margin: 20px 0px;
+#ask-question {
+  margin-right: 20px;
+}
+
+.padded-section {
+  padding: 20px;
+  margin-left: 35px;
+}
+
+
+// This is the CSS Code for the question section
+
+.left-question {
   background: white;
-  height: 170px;
-  border-radius: 2px;
+  padding: 10px;
+  border-left: 2px $dark-gray solid;
+  border-bottom: 1px $light-gray solid;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  min-height: 170px;
+  border-radius: 2px 0px 0px 2px;
+  p {
+    margin-left: 55px;
+  }
+  .icon {
+  img {
+    width: 30px;
+    text-align: center;
+    margin-right: 10px;
+    }
+  }
+}
+
+.position-logo {
+  position: absolute;
+  top:20px;
+  left: 20px;
+}
+
+.right-question {
+  background: white;
+  padding: 10px;
+  border-left: 1px $light-gray solid;
+  border-bottom: 1px $light-gray solid;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 170px;
+  border-radius: 0px 2px 2px 0px;
   a {
     visibility: hidden;
   }
 }
 
-.question:hover {
+.right-question:hover {
   background:white;
   opacity: 0.7;
   border-radius: 2px;
    a {
     visibility: visible;
   }
-}
-
-#ask-question {
-  margin-right: 20px;
 }
 
 .icon {
@@ -182,47 +214,3 @@
   }
 }
 
-.small-icon {
-  img {
-    width: 30px;
-    text-align: center;
-    position: absolute;
-    top: 16px;
-    left: 23px;
-  }
-}
-
-.answer-section {
-  padding: 30px;
-  margin-left: 20px;
-  border-left: solid $light-gray 2px;
-  min-height: 170px;
-  text-align: center;
-}
-
-.padded-section {
-  padding: 20px;
-  margin-left: 35px;
-}
-
-.brief-item {
-  padding: 20px;
-  margin: 4px;
-  p {
-    margin: 0px;
-  }
-  .title {
-    font-weight: 100;
-    font-size: 22px;
-  }
-}
-
-.new-brief {
-  background-color: white;
-  box-shadow: $box-shadow;
-  position: relative;
-  hr {
-    border-color: #ededed;
-    margin-bottom: 0;
-  }
-}
