@@ -7,6 +7,9 @@
   <div class="container">
     <div class="row">
       <!-- Banner Header text -->
+      <% if user_signed_in? %>
+        <div class="col-md-2"></div>
+      <% end %>
       <div class="col-xs-12 col-md-8 homepage-banner-content">
         <div class="text-center">
           <h1>Work speaks louder than words</h1>
@@ -21,24 +24,26 @@
       <!-- Sign up for Site - banner -->
 
       <div class="col-xs-12 col-md-4 homepage-banner-content">
-        <div id="homepage-form-box">
-          <div class="tabs">
-            <a class="tab active" role="tab" data-toggle="tab" data-target="#person-sign-up" aria-controls="person-sign-up">
-              <h3>I'm a person</h3>
-            </a>
-            <a class="tab" role="tab" data-toggle="tab" data-target="#company-sign-up">
-              <h3>We're a company</h3>
-            </a>
-          </div>
-          <div>
-            <div class="tab-content margin-top" id="person-sign-up">
-              <%= render 'users/person_sign_up' %>
+        <% unless user_signed_in? %>
+          <div id="homepage-form-box">
+            <div class="tabs">
+              <a class="tab active" role="tab" data-toggle="tab" data-target="#person-sign-up" aria-controls="person-sign-up">
+                <h3>I'm a person</h3>
+              </a>
+              <a class="tab" role="tab" data-toggle="tab" data-target="#company-sign-up">
+                <h3>We're a company</h3>
+              </a>
             </div>
-            <div class="tab-content margin-top hidden" id="company-sign-up">
-              <%= render 'users/company_sign_up' %>
+            <div>
+              <div class="tab-content margin-top" id="person-sign-up">
+                <%= render 'users/person_sign_up' %>
+              </div>
+              <div class="tab-content margin-top hidden" id="company-sign-up">
+                <%= render 'users/company_sign_up' %>
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
       </div>
 
     </div>
