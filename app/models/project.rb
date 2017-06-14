@@ -15,7 +15,7 @@ class Project < ApplicationRecord
   validates :goal, presence: true
   validates :what_company_looking_for, presence: true
   validates :benefit_to_candidate, presence: true
-  # validate :time_valid
+  validate :time_valid
 
   # Possible categories for projects
   CATEGORIES = ['Admin',
