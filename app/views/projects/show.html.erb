@@ -6,14 +6,14 @@
           <div class="col-lg-12 col-xs-12">
             <div class="left-project-info">
               <div class="flex-box">
-                <div class="company-logo">
+                <div class="logo">
                   <%= link_to(user_path(@project.user)) do %>
                     <div class="avatar-large" style="background-image: url('<%= cl_image_path @project.user.get_profile_picture %>')">
                     </div>
                   <% end %>
                   </a>
                 </div>
-                <div class="company-name-title">
+                <div class="name-title">
                   <p><%= @project.user.company_name %></p>
                   <h2><%= @project.title %></h2>
                 </div>
@@ -74,7 +74,9 @@
                 <div class="questions">
                   <% if @project.questions.count > 0 %>
                     <% @project.questions.reverse.each do |question| %>
-                      <%= render "projects/question", question: question %>
+                      <div class="q margin-top">
+                        <%= render "projects/question", question: question %>
+                      </div>
                     <% end %>
                   <% else %>
                     <br>

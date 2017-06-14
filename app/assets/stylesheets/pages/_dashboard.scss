@@ -6,6 +6,9 @@
 	.company-project-row {
 		padding: 10px;
 	}	
+	.project-row {
+		color: #595959 !important;
+	}
 	h2:first-child { 
 	margin-top: 20px;
 	margin-bottom: 10px;
@@ -126,6 +129,17 @@
 	.last-button {
 		margin-left: 5px;
 	}
+	.fr-toolbar .fr-command.fr-btn, .fr-popup .fr-command.fr-btn {
+		color: #595959 !important;
+	}
+
+	.fr-toolbar {
+		border-top: 5px solid #595959 !important;
+	}
+
+	.form-control {
+		color: #595959 !important;	
+	}
 }
 /*
 .badge-bordered {
@@ -137,3 +151,7 @@
 .index-page-header {
 	margin-left: -15px;
 }
+
+
+
+

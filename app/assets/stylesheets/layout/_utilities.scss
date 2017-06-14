@@ -77,6 +77,12 @@ a:-webkit-any-link {
   background-color: $light-gray;
 }
 
+// Remove default margin and padding
+
+.no-margin {
+  margin-right: 0px;
+}
+
 // Standard white box with shadow
 .shadow-box {
   background-color: white;
