@@ -60,8 +60,15 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootsy (2.4.0)
+      carrierwave (~> 1.0)
+      mini_magick (~> 4.6)
     builder (3.2.3)
     byebug (9.0.6)
+    carrierwave (1.1.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     cloudinary (1.1.7)
       aws_cf_signer
       rest-client
@@ -120,6 +127,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mini_magick (4.7.0)
     mini_portile2 (2.2.0)
     minitest (5.10.2)
     multi_json (1.12.1)
@@ -217,9 +225,6 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
-    wysiwyg-rails (2.6.1)
-      font-awesome-sass (~> 4.4, >= 4.4.0)
-      railties (>= 3.2, < 6.0)
 
 PLATFORMS
   ruby
@@ -230,6 +235,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  bootsy
   cloudinary
   coffee-rails
   devise
@@ -252,7 +258,6 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   uglifier
-  wysiwyg-rails
 
 RUBY VERSION
    ruby 2.3.3p222

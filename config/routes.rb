@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   #mounting attachinary => plugin for image upload
   mount Attachinary::Engine => "/attachinary"
 
+  #mounting Bootsy => plugin text edit
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+
 
   # Search results
   get '/search', to: 'pages#search'
