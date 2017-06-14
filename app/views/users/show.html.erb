@@ -33,9 +33,7 @@
             <% end %>
             <!-- Shows the user description -->
             <div id="user-description">
-              <div class="fr-view">
-                <p><%= @user.description %></p>
-              </div>
+              <%= simple_format(@user.description) %>
             </div>
             <!-- Show a get in touch button unless the user is a company -->
             <!-- or unless they are the active user -->
