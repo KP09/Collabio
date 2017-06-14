@@ -1,32 +1,107 @@
 <div class="page-wrapper" id="dashboard-project-show">
-  <div class="col-xs-12 col-lg-9">
-    <br>
-    <%= link_to "Back to Dashboard", company_dashboard_index_path, class: "text-link" %>
-  </div>
-
-  <div class="col-xs-12 col-lg-9">
-    <h1><%= @project.title %></h1>
-  </div>
-
-  <div class="col-xs-12 col-lg-9">
-    <!-- Tabs -->
-    <div>
-      <div class="tabs">
-        <a class="tab tab-fix-width tab-transparent active" role="tab" data-toggle="tab" data-target="#contributions" aria-controls="contributions">
-          <h3>Contributions</h3>
-        </a>
-        <a class="tab tab-fix-width tab-transparent" role="tab" data-toggle="tab" data-target="#questions" aria-controls="questions">
-          <h3>Questions</h3>
-        </a>
-        <a class="tab tab-fix-width tab-transparent" role="tab" data-toggle="tab" data-target="#project" aria-controls="project">
-          <h3>Project settings</h3>
-        </a>
+  <div class="container">
+    <div class="row">
+      <!-- Back to dashboard link -->
+      <div class="col-xs-12">
+        <br>
+        <%= link_to "Back to Dashboard", company_dashboard_index_path, class: "text-link" %>
       </div>
-    </div>
-
-    <!-- Contributions tab -->
-    <div id="contributions" class="tab-content fade in">
-      <div class="margin-top">
+      <div class="col-xs-12">
+        <h1><%= @project.title %></h1>
+        <hr>
+      </div>
+      <!-- Project info -->
+      <div class="col-xs-12 col-lg-8">
+        <div class="fr-view">
+          <h3><strong>Goal</strong></h3>
+          <p><%= @project.goal.html_safe %></p>
+        </div>
+        <br>
+        <div class="fr-view">
+          <h3><strong>Looking for</strong></h3>
+          <p><%= @project.what_company_looking_for.html_safe %></p>
+        </div>
+        <br>
+        <div class="fr-view">
+          <h3><strong>Contributor benefits</strong></h3>
+          <p><%= @project.benefit_to_candidate.html_safe %></p>
+        </div>
+        <br>
+      </div>
+      <div class="col-xs-12 col-lg-4">
+        <h3><strong>Category:</strong> <%= @project.category %></h3>
+        <br>
+        <h3><strong>End date:</strong> <%= @project.end_date.strftime('%A, %e %B %Y, %l:%M %p') %></h3>
+        <br>
+        <h3><strong>Maximum number of participations:</strong> <%= @project.max_participations %></h3>
+        <br>
+        <h3><strong>Views:</strong> <%= @project.impressionist_count(filter: :ip_address) %></h3>
+        <br>
+        <h3><strong>People working on this:</strong> <%= @project.participations.count %></h3>
+        <br>
+        <h3><strong>Contributions received:</strong> <%= @project.contributions.count %></h3>
+      </div>
+      <div class="col-xs-12">
+        <div class="buttons">
+          <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#editProject">
+            Edit
+          </button>
+          <!-- Delete button -->
+          <%= link_to "Delete", project_path(@project), id: "delete", class: "btn btn-sm btn-danger", data: { confirm: "Are you sure?" }, method: :delete %>
+        </div>
+      </div>
+      <!-- Questions -->
+      <div class="col-xs-12 margin-top">
+        <h2>Questions</h2>
+        <hr>
+        <% if @project.questions.count > 0 %>
+          <div class="project-header flex-box">
+            <div class="col-md-2">
+              <p>Name</p>
+            </div>
+            <div class="col-md-2">
+              <p>Date</p>
+            </div>
+            <div class="col-md-3">
+              <p>Question</p>
+            </div>
+            <div class="col-md-7">
+              <p>Answer</p>
+            </div>
+          </div>
+          <% @project.sorted_questions.each do |q| %>
+            <div class="project-row flex-box">
+              <div class="col-md-2">
+                <p><%= link_to q.user.full_name, user_path(q.user), class: "text-link" %></p>
+              </div>
+              <div class="col-md-2">
+                <p><%= q.created_at.strftime('%e %B %Y') %></p>
+              </div>
+              <div class="col-md-3">
+                <p><%= q.question %><%= q.question.length > 25 ? "..." : "" %></p>
+              </div>
+              <div class="col-md-3">
+                <% if q.answer %>
+                  <p><%= q.answer %><%= q.answer.length > 25 ? "..." : "" %></p>
+                <% end %>
+              </div>
+              <div class="col-md-4 text-right">
+                <% if q.answer %>
+                  <%= link_to "Edit answer","#answerquestion-" + q.id.to_s, data: { toggle: "modal"}, class: "btn btn-sm btn-default"%>
+                <% else %>
+                  <%= link_to "Answer this question","#answerquestion-" + q.id.to_s, data: { toggle: "modal"}, class: "btn btn-sm btn-default"%>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+        <p>No questions</p>
+        <% end %>
+      </div>
+      <!-- Contributions -->
+      <div class="col-xs-12 margin-top">
+        <h2>Contributions</h2>
+        <hr>
         <% if @project.contributions.count > 0 %>
           <div class="project-header flex-box">
             <div class="col-md-2">
@@ -56,7 +131,7 @@
               <% end %>
             </div>
             <div class="col-md-4 text-right">
-              <%= link_to "Open", cl_image_path(c.file.path), class: "btn btn-sm btn-default" %>
+              <%= link_to "Open", cl_image_path(c.file.path), class: "btn btn-sm btn-default", target: "_blank" %>
               <% if c.starred %>
                 <%= link_to "Unstar", star_path(c), method: :post, class: "btn btn-sm btn-default" %>
               <% else %>
@@ -71,172 +146,8 @@
         <% end %>
       </div>
     </div>
-
-      <!-- Questions tab -->
-    <div id="questions" class="tab-content fade in hidden">
-      <div class="margin-top">
-        <% if @project.questions.count > 0 %>
-          <div class="project-header flex-box">
-            <div class="col-md-2">
-              <p>Name</p>
-            </div>
-            <div class="col-md-2">
-              <p>Date</p>
-            </div>
-            <div class="col-md-3">
-              <p>Question</p>
-            </div>
-            <div class="col-md-7">
-              <p>Answer</p>
-            </div>
-          </div>
-
-            <% @project.sorted_questions.each do |q| %>
-
-              <div class="project-row flex-box">
-                <div class="col-md-2">
-                  <p><%= link_to q.user.full_name, user_path(q.user), class: "text-link" %></p>
-                </div>
-                <div class="col-md-2">
-                  <p><%= q.created_at.strftime('%e %B %Y') %></p>
-                </div>
-                <div class="col-md-3">
-                  <p><%= q.question %><%= q.question.length > 25 ? "..." : "" %></p>
-                </div>
-                <div class="col-md-3">
-                  <% if q.answer %>
-                    <p><%= q.answer %><%= q.answer.length > 25 ? "..." : "" %></p>
-                  <% end %>
-                </div>
-                <div class="col-md-4 text-right">
-                  <% if q.answer %>
-                    <%= link_to "Edit answer","#answerquestion-" + q.id.to_s, data: { toggle: "modal"}, class: "btn btn-sm btn-default"%>
-                  <% else %>
-                    <%= link_to "Answer this question","#answerquestion-" + q.id.to_s, data: { toggle: "modal"}, class: "btn btn-sm btn-default"%>
-                  <% end %>
-                </div>
-              </div>
-            <% end %>
-          <% else %>
-          <p>No questions</p>
-          <% end %>
-      </div>
-    </div>
-
-
-
-    <!-- Project tab -->
-    <div id="project" class="tab-content fade in hidden">
-      <div class="margin-top">
-        <h3><strong>Goal:</strong> <%= @project.goal %></h3>
-        <br>
-        <h3><strong>Goal:</strong> <%= @project.what_company_looking_for %></h3>
-        <br>
-        <h3><strong>Goal:</strong> <%= @project.benefit_to_candidate %></h3>
-        <br>
-        <h3><strong>Category:</strong> <%= @project.category %></h3>
-        <br>
-        <h3><strong>End date:</strong> <%= @project.end_date.strftime('%A, %e %B %Y') %></h3>
-        <br>
-        <h3><strong>Maximum number of participations:</strong> <%= @project.max_participations %></h3>
-        <br>
-        <div>
-          <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#editProject">
-            Edit
-          </button>
-          <!-- Delete button -->
-          <%= link_to "Delete", project_path(@project), id: "delete", class: "btn btn-sm btn-danger", data: { confirm: "Are you sure?" }, method: :delete %>
-        </div>
-      </div>
-    </div>
   </div>
-
-  <!-- RIGHT HAND COLUMN -->
-  <div class="col-xs-12 col-lg-3">
-    <div class="sidebar-content">
-      <!-- Project stats -->
-      <div>
-        <h3><i class="fa fa-bar-chart"></i> Project stats</h3>
-        <hr>
-        <!-- Views -->
-        <div class="flex-box stat">
-          <%= image_tag ('eye'), class: "profile-icon" %>
-          <div>
-            <h4>
-              <% if @project.impressionist_count(filter: :ip_address) > 0 %>
-                <strong>
-                  <%= @project.impressionist_count(filter: :ip_address) %>
-                </strong>
-                <%= "View".pluralize(@project.impressionist_count(filter: :ip_address)) %>
-              <% else %>
-                No views yet
-              <% end %>
-            </h4>
-          </div>
-        </div>
-        <!-- Spaces left -->
-        <div class="flex-box stat">
-          <%= image_tag ('connection'), class: "profile-icon" %>
-          <div>
-            <h4>
-              <% if @project.spaces_left > 0 %>
-                <strong>
-                  <%= @project.spaces_left %>
-                </strong>
-                <%= "Space".pluralize(@project.spaces_left) %>
-                left
-              <% else %>
-                No spaces left
-              <% end %>
-            </h4>
-          </div>
-        </div>
-        <!-- Contributions received -->
-        <div class="flex-box stat">
-          <%= image_tag ('contribution'), class: "profile-icon" %>
-          <div>
-            <h4>
-              <% if @project.contributions.count > 0 %>
-                <strong>
-                  <%= @project.contributions.count %>
-                </strong>
-                <%= "Contribution".pluralize(@project.contributions.count) %>
-                received
-              <% else %>
-                No contributions yet
-              <% end %>
-            </h4>
-          </div>
-        </div>
-      </div>
-      <!-- Participants -->
-      <% if @project.end_date > DateTime.now %>
-        <div class="margin-top">
-          <h3>
-            <% if @project.participations.count > 0 %>
-              <%= @project.participations.count %>
-              <%= "person".pluralize(@project.participations.count) %>
-              working on this
-            <% else %>
-              No active participants
-            <% end %>
-          </h3>
-          <hr>
-          <% @project.participations.each do |participation| %>
-              <%= link_to user_path(participation.user) do %>
-                <div class="flex-box sidebar-card">
-                  <div class="avatar-small" style="background-image: url('<%= cl_image_path (participation.user.get_profile_picture) %>')">
-                  </div>
-                  <div>
-                    <h4><%= participation.user.full_name %></h4>
-                  </div>
-                </div>
-              <% end %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-  </div>
+</div>
 
   <!-- Edit modal -->
   <div class="modal fade" id="editProject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

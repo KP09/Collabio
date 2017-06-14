@@ -29,22 +29,13 @@
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 								<h4 class="modal-title" id="myModalLabel">Add a new project</h4>
 							</div>
-							<%= simple_form_for(@project) do |f| %>
 							<div class="modal-body">
-							  <%= f.input :title, maxlength: 140, placeholder: "140 characters maximum" %>
-                <%= f.input :goal, as: :text, input_html: { class: "text-edit"}, placeholder: "What's the goal of your project?" %>
-                <%= f.input :what_company_looking_for,  input_html: { class: "text-edit"}, as: :text, placeholder: "Is there something specific you're looking for in user's contributions?" %>
-                <%= f.input :benefit_to_candidate,  input_html: { class: "text-edit"}, as: :text, placeholder: "A cool benefit to candidates is a great way to motivate them" %>
-                <%= f.input :category, placeholder: "Choose a category", collection: Project::CATEGORIES %>
-                <%= f.input :end_date, placeholder: "When should project end?", format: 'mm-dd-yyyy' %>
-                <%= f.input :max_participations, placeholder: "How many people can contribute?" %>
-                <%= f.submit class: "btn btn-primary" %>
-              <% end %>
-            </div>
-					</div>
-				</div>
-			</div>
-		</div>
+							  <%= render 'projects/form', project: Project.new %>
+              </div>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
 
 	<!-- TABS PANES -->
 
@@ -78,8 +69,6 @@
 						<% end %>
 					</div>
 
-
-
 					<!-- CLOSED PROJECTS -->
 					<div class="tab-content fade hidden" id="closed-projects">
 						<div class="flex-between project-headers">
@@ -92,7 +81,7 @@
 						<p class="text-center"></p>
 						<% elsif @closed_projects.count > 0  %>
 							<% @closed_projects.each do |project| %>
-								<div class="shadow-box margin-top company-project-row">
+								<div class="project-row margin-top company-project-row">
 									<div class="flex-between">
 										<div class="project-info flex-item"> <%= project.title %> </div>
 										<div class="project-info flex-item text-center"> Closed </div>
