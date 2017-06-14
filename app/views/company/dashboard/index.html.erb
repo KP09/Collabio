@@ -13,29 +13,34 @@
 			    </div>
 				</div>
 			<!-- TABS	 -->
-			<div class="tabs" role="tablist" id="main-bar">
-			<a class="tab tab-fix-width active" role="tab" data-toggle="tab" data-target="#open-projects" aria-controls="open-projects">Open Projects</a>
-			<a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#closed-projects" aria-controls="closed-projects">Closed Projects</a>
-			<a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#company-settings" aria-controls="company-settings">Account Settings</a>
-				<!-- NEW PROJECT BUTTON-->
-				<button type="button" class="btn btn-primary" id="add-project" data-toggle="modal" data-target="#myModal">
-					Add Project
-				</button>
-				<!-- Modal View for Project-->
-				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="myModalLabel">Add a new project</h4>
-							</div>
-							<div class="modal-body">
-							  <%= render 'projects/form', project: Project.new %>
+      <div class="flex-between">
+        <div class="tabs" role="tablist" id="main-bar">
+          <a class="tab tab-fix-width active" role="tab" data-toggle="tab" data-target="#open-projects" aria-controls="open-projects">Open Projects</a>
+          <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#closed-projects" aria-controls="closed-projects">Closed Projects</a>
+          <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#company-settings" aria-controls="company-settings">Account Settings</a>
+          <!-- Modal View for Project-->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Add a new project</h4>
+                </div>
+                <div class="modal-body">
+                  <%= render 'projects/form', project: Project.new %>
+                </div>
               </div>
-  					</div>
-  				</div>
-  			</div>
-  		</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <!-- NEW PROJECT BUTTON-->
+          <button type="button" class="btn btn-primary" id="add-project" data-toggle="modal" data-target="#myModal">
+            Add a new Project
+          </button>
+        </div>
+      </div>
+
 
 	<!-- TABS PANES -->
 
