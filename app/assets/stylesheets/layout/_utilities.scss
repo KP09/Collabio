@@ -23,6 +23,10 @@ a:-webkit-any-link {
   }
 }
 
+.modal-backdrop {
+  z-index: -1;
+}
+
 // Paddings
 .padded {
   padding-top: 5em;
