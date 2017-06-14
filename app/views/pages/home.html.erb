@@ -23,8 +23,8 @@
 
       <!-- Sign up for Site - banner -->
 
-      <div class="col-xs-12 col-md-4 homepage-banner-content">
-        <% unless user_signed_in? %>
+      <% unless user_signed_in? %>
+        <div class="col-xs-12 col-md-4 homepage-banner-content">
           <div id="homepage-form-box">
             <div class="tabs">
               <a class="tab active" role="tab" data-toggle="tab" data-target="#person-sign-up" aria-controls="person-sign-up">
@@ -43,8 +43,8 @@
               </div>
             </div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
 
     </div>
     </div>

@@ -38,7 +38,11 @@ class User < ApplicationRecord
     # elsif linkedin_picture_url
     #   return linkedin_picture_url
     else
-      return 'sample'
+      if self.is_individual?
+        return 'person_q35bpk'
+      else
+        return 'company_empty_vuafgx'
+      end
     end
   end
 
@@ -47,7 +51,7 @@ class User < ApplicationRecord
     if cover_photo
       return cover_photo.path
     else
-      return 'http://unsplash.it/1200/?random'
+      return 'cover_ob7d7i'
     end
   end
 
