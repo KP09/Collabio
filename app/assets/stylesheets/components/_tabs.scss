@@ -31,6 +31,8 @@
   padding: 20px 0 10px 0;
   transition: all 0.2s ease;
   box-sizing: border-box;
+  // Fixes weird bug in Chrome
+  -webkit-backface-visibility: hidden;
   &:hover {
   cursor: pointer;
   text-decoration: none;
