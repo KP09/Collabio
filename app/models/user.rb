@@ -39,7 +39,7 @@ class User < ApplicationRecord
     #   return linkedin_picture_url
     else
       if self.is_individual?
-        return 'person.png'
+        return 'person_q35bpk'
       else
         return 'company_empty_vuafgx'
       end
