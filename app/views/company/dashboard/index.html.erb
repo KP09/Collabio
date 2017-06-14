@@ -36,7 +36,7 @@
                 <%= f.input :what_company_looking_for,  input_html: { class: "text-edit"}, as: :text, placeholder: "Is there something specific you're looking for in user's contributions?" %>
                 <%= f.input :benefit_to_candidate,  input_html: { class: "text-edit"}, as: :text, placeholder: "A cool benefit to candidates is a great way to motivate them" %>
                 <%= f.input :category, placeholder: "Choose a category", collection: Project::CATEGORIES %>
-                <%= f.input :end_date, placeholder: "When should project end?", format: 'mm-dd-yyyy' %>
+                <%= f.input :end_date, placeholder: "When should project end?", format: 'mm-dd-yyyy', default: Time.parse('18:00') %>
                 <%= f.input :max_participations, placeholder: "How many people can contribute?" %>
                 <%= f.submit class: "btn btn-primary" %>
               <% end %>
