@@ -1,8 +1,12 @@
 <div class="navbar-custom-transparent">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-brand" do %>
-    <% if current_user.is_company? %>
-      <%= image_tag "logo_pro.png" %>
+    <% if !current_user %>
+      <% if current_user.is_company? %>
+        <%= image_tag "logo_pro.png" %>
+      <% else %>
+        <%= image_tag "logo.png" %>
+      <% end %>
     <% else %>
       <%= image_tag "logo.png" %>
     <% end %>

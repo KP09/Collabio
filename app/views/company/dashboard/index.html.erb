@@ -102,7 +102,11 @@
 
 					<!-- COMPANY SETTINGS -->
 					<div class="tab-content fade hidden" id="company-settings">
-						<%= render 'users/company_form', user: current_user %>
+            <div class="container-fluid">
+              <div class="col-xs-8 col-xs-offset-2">
+    						<%= render 'users/company_form', user: current_user %>
+              </div>
+            </div>
 					</div>
 
 			</div>
