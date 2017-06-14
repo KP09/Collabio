@@ -1,8 +1,8 @@
 <%= simple_form_for(project) do |f| %>
   <%= f.input :title, label: 'The title of your project', maxlength: 140, placeholder: "140 characters maximum" %>
-  <%= f.input :goal, label: "What is the goal of this project?", as: :text, input_html: { class: "text-edit"} %>
-  <%= f.input :what_company_looking_for, label: "What exactly will you be looking for from contributors?", input_html: { class: "text-edit"}, as: :text %>
-  <%= f.input :benefit_to_candidate, label: "What's the potential gain for contributors?", input_html: { class: "text-edit"}, as: :text %>
+  <%= f.input :goal, label: "What is the goal of this project?", as: :bootsy, editor_options: { link: false, color: false, image: false, blockquote: false} %>
+  <%= f.input :what_company_looking_for, label: "What exactly will you be looking for from contributors?", as: :bootsy, editor_options: { link: false, color: false, image: false, blockquote: false}, class: "btn btn-default" %>
+  <%= f.input :benefit_to_candidate, label: "What's the potential gain for contributors?", as: :bootsy, editor_options: { link: false, color: false, image: false, blockquote: false} %>
   <%= f.input :category, placeholder: "Choose a category", collection: Project::CATEGORIES %>
   <%= f.input :end_date, placeholder: "When should project end?", format: 'mm-dd-yyyy', default: Time.parse('18:00') %>
   <%= f.input :max_participations, label: "How many contributions will you accept?", placeholder: "Type the amount" %>

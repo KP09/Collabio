@@ -9,9 +9,9 @@
 			<%= simple_form_for(project) do |f| %>
 			<div class="modal-body">
           <%= f.input :title, maxlength: 140, placeholder: "140 characters maximum" %>
-          <%= f.input :goal, as: :text, input_html: { class: "text-edit"}, placeholder: "What's the goal of your project?" %>
-          <%= f.input :what_company_looking_for,  input_html: { class: "text-edit"}, as: :text, placeholder: "Is there something specific you're looking for in user's contributions?" %>
-          <%= f.input :benefit_to_candidate,  input_html: { class: "text-edit"}, as: :text, placeholder: "A cool benefit to candidates is a great way to motivate them" %>
+          <%= f.input :goal, as: :bootsy, input_html: { height: 100}, placeholder: "What's the goal of your project?" %>
+          <%= f.input :what_company_looking_for, as: :bootsy, placeholder: "Is there something specific you're looking for in user's contributions?" %>
+          <%= f.input :benefit_to_candidate, as: :bootsy, placeholder: "A cool benefit to candidates is a great way to motivate them" %>
           <%= f.input :category, placeholder: "Choose a category", collection: Project::CATEGORIES %>
           <%= f.input :end_date, placeholder: "When should project end?", format: 'mm-dd-yyyy' %>
           <%= f.input :max_participations, placeholder: "How many people can contribute?" %>

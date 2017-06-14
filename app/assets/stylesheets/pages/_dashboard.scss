@@ -5,11 +5,11 @@
 	}
 	.company-project-row {
 		padding: 10px;
-	}	
+	}
 	.project-row {
 		color: #595959 !important;
 	}
-	h2:first-child { 
+	h2:first-child {
 	margin-top: 20px;
 	margin-bottom: 10px;
 	}
@@ -80,7 +80,7 @@
 	    height: 2px;
 	    border: 0;
 	    padding: 0;
-	    border-top: 1px solid $blue-gray; 
+	    border-top: 1px solid $blue-gray;
 		}
 		i {
 			margin-right: 5px;
@@ -138,8 +138,10 @@
 	}
 
 	.form-control {
-		color: #595959 !important;	
+		color: #595959 !important;
 	}
+
+
 }
 /*
 .badge-bordered {
@@ -152,6 +154,23 @@
 	margin-left: -15px;
 }
 
+// .simple_form {
+//   .btn {
+//     background-color: white !important;
+//     color: $dark-gray !important;
+//   }
+// }
 
+.wysihtml5-sandbox {
+  height: 300px !important;
+}
 
-
+.wysihtml5-toolbar {
+  .btn {
+    background-color: white !important;
+    color: $dark-gray !important;
+  }
+  li {
+    margin: 0 5px 5px 0 !important;
+  }
+}
