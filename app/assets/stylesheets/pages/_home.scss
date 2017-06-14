@@ -22,10 +22,10 @@
     text-align: center;
     width: 100%;
     position: absolute;
-    bottom: 15px;
-    color: white;
+    bottom: 60px;
+    color: $brand-color;
     a {
-      color: white;
+      color: $brand-color;
     }
   }
   #chevron-box {
@@ -78,8 +78,7 @@
 
 #homepage-how {
   background-color: white;
-  height: calc(100vh - 470px);
-  min-height: 300px;
+  min-height: 350px;
 }
 
 .info {
@@ -97,4 +96,8 @@
 .icon-about {
   margin-top: 25px;
   height: 60px;
+}
+
+.three-about-sections {
+  height: 300px;
 }

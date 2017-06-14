@@ -1,7 +1,12 @@
-<div id="homepage-main-banner" style="background-image: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5 ) 80%), url('<%= cl_image_path ('homepage_v1') %>')">
+<div style="background-color: white;" >
+  <div id="homepage-main-banner" style="-webkit-clip-path: polygon(0 0, 100% 0, 100% 82%, 0 100%);
+ background-image: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5 ) 80%), url('<%= cl_image_path ('homepage_v1') %>')">
+
   <%= render 'shared/navbar_transparent' %>
+
   <div class="container">
     <div class="row">
+      <!-- Banner Header text -->
       <div class="col-xs-12 col-md-8 homepage-banner-content">
         <div class="text-center">
           <h1>Work speaks louder than words</h1>
@@ -12,6 +17,9 @@
           </p>
         </div>
       </div>
+
+      <!-- Sign up for Site - banner -->
+
       <div class="col-xs-12 col-md-4 homepage-banner-content">
         <div id="homepage-form-box">
           <div class="tabs">
@@ -32,61 +40,64 @@
           </div>
         </div>
       </div>
+
     </div>
-  </div>
-  <div id="chevron-container">
-    <%= link_to '#how', id: "chevron" do %>
-      <div id="chevron-box">
-        <p>More Info</p>
-        <%= image_tag 'chevron-down.svg', id: "chevron" %>
-      </div>
-    <% end %>
+    </div>
+    <div id="chevron-container">
+      <%= link_to '#how', id: "chevron" do %>
+        <div id="chevron-box">
+          <%= image_tag 'chevron-down.svg', id: "chevron" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 
+
 <a name="how"></a>
-<div id="homepage-how">
+<div id="homepage-how" style="clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 84%);">
   <div class="section-spacing">
     <div class="three-about-sections">
       <div class="container">
-        <div class="row">
-          <div class="col-xs-12 text-center">
-            <h2>How it works</h2>
-          </div>
+        <div class="col-xs-12 text-center">
+          <h2>How it works</h2>
         </div>
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-4">
             <div class="col-md-4">
               <%= image_tag("icon_1.png", class: "icon-about") %>
             </div>
             <div class="col-md-8">
               <div class="info">
                 <h2>Discover</h2>
-                <p>Create an account by clicking the sign up button below. Fill in all your basic information and lets get rolling.</p>
+                <p>Whether its marketing or legal services, search projects that interest you and start contributing in a few clicks</p>
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-4">
             <div class="col-md-4">
               <%= image_tag("icon_2.png", class: "icon-about") %>
             </div>
             <div class="col-md-8">
               <div class="info">
-                <h2>Search for projects</h2>
-                <p>Create an account by clicking the sign up button below. Fill in all your basic information and get lets get rolling.</p>
+                <h2>Create</h2>
+                <p>So you have joined a design sprint? Now its your turn! Go away, kill it! Once you have finished simply upload your contribution.</p>
               </div>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-4">
             <div class="col-md-4">
               <%= image_tag("icon_3.png", class: "icon-about") %>
             </div>
             <div class="col-md-8">
               <div class="info">
-                <h2>Create an account</h2>
-                <p>Create an account by clicking the sign up button below. Fill in all your basic information and get lets get rolling.</p>
+                <h2>Impress</h2>
+                <p>Once the project has closed your contributions will be added to your public profile. Share with friends, family, colleagues and employers</p>
               </div>
             </div>
+          </div>
+          <div class="get-started text-center margin-top">
+            <%= link_to "Get Started Now", new_user_registration_path, class: "btn btn-default margin-top" %>
           </div>
         </div>
       </div>
