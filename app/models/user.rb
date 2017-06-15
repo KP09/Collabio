@@ -349,6 +349,7 @@ class User < ApplicationRecord
   end
 
   # Returns a hash of companies and frequencies for closed contributions
+  # for individuals
   def favorite_companies
     company_frequencies = {}
     if self.closed_contributions
@@ -366,6 +367,12 @@ class User < ApplicationRecord
         return false
       end
     end
+  end
+
+  # Returns a hash of the categories for which
+  # an individual has the most starred contributions
+  def top_categories
+    starred_contributions =
   end
 
   private
