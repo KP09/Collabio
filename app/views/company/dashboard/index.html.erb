@@ -46,7 +46,7 @@
 					<!-- ACTIVE PROJECTS -->
 					<div class="tab-content fade in active" id="open-projects">
 						<div class="flex-between project-headers">
-							<div class="col-xs-3"><p>Project Title</p></div>
+							<div class="col-xs-3"><p id="project-title">Project Title</p></div>
 							<div class="col-xs-3 text-center"><p>Days Remaining</p></div>
 							<div class="col-xs-3 text-center"><p>Spaces Left</p></div>
 							<div class="col-xs-3"></div>
@@ -87,10 +87,10 @@
 							<% @closed_projects.each do |project| %>
 								<div class="project-row margin-top company-project-row">
 									<div class="flex-between">
-										<div class="project-info flex-item"><%= project.title %> </div>
-										<div class="project-info flex-item text-center"><%= project.contributions.count %></div>
-										<div class="project-info flex-item text-center"><%= project.count_starred_contributions %></div>
-										<div class="flex-item text-right">
+										<div class="project-info flex-item" id="closed-project-info"><%= project.title %> </div>
+										<div class="project-info flex-item text-center" id="closed-project-info"><%= project.contributions.count %></div>
+										<div class="project-info flex-item text-center" id="closed-project-info"><%= project.count_starred_contributions %></div>
+										<div class="flex-item text-right" id="closed-project-info">
 										<%= link_to 'Manage', company_project_path(project), class: "btn btn-default" %>
 										</div>
 									</div>
@@ -100,12 +100,12 @@
 					</div>
 			</div>
 
-			<!-- COMPANY STATS >>> RIGHT HAND COL-->
+			<!-- COMPANY STATS-->
 				<div class="col-xs-12 col-md-3 padding-none">
           <div class="flex-around dashboard-right-header">
             <h2 class="text-center" style="font-size: 20px;"><i class="fa fa-bar-chart"></i> Company statistics</h2>
           </div>
-          <div class="right-dashboard">
+          <div class="right-dashboard" style="margin-bottom: -30px;">
   					<%= render 'dashboard-project-stats', current_user: current_user %>
           </div>
 				</div>

@@ -11,6 +11,15 @@
 	.nav-tabs > li.active > a {
 		color: $brand-color;
 	}
+	#closed-project-title {
+		margin-left: 5px;
+	}
+	#closed-project-info {
+		color: #717C89;
+	}
+	.btn-default {
+		color: $blue-gray;
+	}
 	.company-project-row {
 		padding: 10px;
 	}
@@ -25,7 +34,7 @@
 		margin-top: 15px;
     font-weight: 600;
     // font-weight: bold;
-    color: $dark-gray;
+    color: $charcoal;
 	}
 	.project-info {
 		color: $blue-gray;
@@ -61,6 +70,7 @@
 	}
 	#add-project {
 		margin-left: 25px;
+		margin-right: 10px;
 		align-self: center;
 	}
 	.btn-view {
