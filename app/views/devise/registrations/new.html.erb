@@ -1,17 +1,33 @@
-<h2 class="text-center">Sign up</h2>
+<h2 class="text-center">Create an account</h2>
 
-  <div class="tabs">
-    <a class="tab active" role="tab" data-toggle="tab" data-target="#person-sign-up-devise" aria-controls="person-sign-up-devise">
-      <h3>I'm a student</h3> 
-    </a>
-    <a class="tab" role="tab" data-toggle="tab" data-target="#company-sign-up-devise" aria-controls="company-sign-up-devise">
-      <h3>We're a company</h3>
-    </a>
-  </div>
-  <div class="tab-content margin-top" id="person-sign-up-devise">
-    <%= render 'users/person_sign_up' %>
-  </div>
-  <div class="tab-content margin-top hidden" id="company-sign-up-devise">
-    <%= render 'users/company_sign_up' %>
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="text-center panel-title">
+              I'm a student
+          </h4>
+        </div>
+      </a>
+      <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+          <%= render 'users/person_sign_up' %>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <div class="panel-heading" role="tab" id="headingTwo">
+          <h4 class="text-center panel-title">
+              We're a company
+          </h4>
+        </div>
+      </a>
+      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+        <div class="panel-body">
+          <%= render 'users/company_sign_up' %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

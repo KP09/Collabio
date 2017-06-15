@@ -23,8 +23,9 @@ a:-webkit-any-link {
   }
 }
 
-.modal-backdrop {
-  z-index: -1;
+// Panel links
+.panel > a {
+  color: $blue-gray;
 }
 
 // Paddings
