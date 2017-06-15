@@ -110,22 +110,38 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Sign up</h4>
+          <h4 class="modal-title" id="myModalLabel">Create an account</h4>
         </div>
         <div class="modal-body">
-          <div class="tabs">
-            <a class="tab active" role="tab" data-toggle="tab" data-target="#person-sign-up" aria-controls="person-sign-up">
-              <h3>I'm a student</h3>
-            </a>
-            <a class="tab" role="tab" data-toggle="tab" data-target="#company-sign-up">
-              <h3>We're a company</h3>
-            </a>
-          </div>
-          <div class="tab-content margin-top" id="person-sign-up">
-            <%= render 'users/person_sign_up' %>
-          </div>
-          <div class="tab-content margin-top hidden" id="company-sign-up">
-            <%= render 'users/company_sign_up' %>
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOneNavbar" aria-expanded="true" aria-controls="collapseOneNavbar">
+                <div class="panel-heading" role="tab" id="headingOneNavbar">
+                  <h4 class="text-center panel-title">
+                      I'm a student
+                  </h4>
+                </div>
+              </a>
+              <div id="collapseOneNavbar" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOneNavbar">
+                <div class="panel-body">
+                  <%= render 'users/person_sign_up' %>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwoNavbar" aria-expanded="false" aria-controls="collapseTwoNavbar">
+                <div class="panel-heading" role="tab" id="headingTwoNavbar">
+                  <h4 class="text-center panel-title">
+                      We're a company
+                  </h4>
+                </div>
+              </a>
+              <div id="collapseTwoNavbar" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwoNavbar">
+                <div class="panel-body">
+                  <%= render 'users/company_sign_up' %>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
