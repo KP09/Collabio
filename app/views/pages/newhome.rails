@@ -3,11 +3,7 @@
   <div class="content container">
     <div class="row">
     <!-- Left hand column containing the Welcome text and discover button -->
-      <% if !user_signed_in? %>
       <div class="col-xs-12 col-lg-8 home-columns">
-      <% else %>
-      <div class="col-xs-12 col-lg-12 home-columns">
-      <% end %>
         <div class="left-welcome">
           <h1>Work speaks louder than words</h1>
           <h2>Boost your CV by working on real projects for real companies</h2>
@@ -16,7 +12,6 @@
         </div>
       </div>
       <!-- Right hand column containing the different sign up forms -->
-      <% unless user_signed_in? %>
       <div class="col-xs-12 col-lg-4 home-columns">
         <div id="homepage-sign-up-box">
           <h2 class="text-center">Create an account</h2>
@@ -52,71 +47,56 @@
           </div>
         </div>
       </div>
-      <% end %>
     </div>
   </div>
-  <div id="chevron-container">
-    <%= link_to '#how', id: "chevron" do %>
-      <div id="chevron-box">
-        <%= image_tag 'chevron-down.svg', id: "chevron" %>
-      </div>
-    <% end %>
-  </div>
 </div>
-
-
 <a name="how"></a>
-<div id="homepage-how" style="clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 84%);">
-  <div class="section-spacing">
-    <div class="three-about-sections">
-      <div class="container">
-        <div class="col-xs-12 text-center">
-          <h2>How it works</h2>
+<div>
+  <div class="container">
+    <div class="col-xs-12 text-center">
+      <h2>How it works</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="col-md-4">
+          <%= image_tag("icon_1.png", class: "icon-about") %>
         </div>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="col-md-4">
-              <%= image_tag("icon_1.png", class: "icon-about") %>
-            </div>
-            <div class="col-md-8">
-              <div class="info">
-                <h2>Discover</h2>
-                <p>Whether its marketing or legal services, search projects that interest you and start contributing in a few clicks</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="col-md-4">
-              <%= image_tag("icon_2.png", class: "icon-about") %>
-            </div>
-            <div class="col-md-8">
-              <div class="info">
-                <h2>Create</h2>
-                <p>So you have joined a design sprint? Now its your turn! Go away, kill it! Once you have finished simply upload your contribution.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="col-md-4">
-              <%= image_tag("icon_3.png", class: "icon-about") %>
-            </div>
-            <div class="col-md-8">
-              <div class="info">
-                <h2>Impress</h2>
-                <p>Once the project has closed your contributions will be added to your public profile. Share with friends, family, colleagues and employers</p>
-              </div>
-            </div>
-          </div>
-          <div class="get-started text-center margin-top">
-            <%= link_to "Get Started Now", new_user_registration_path, class: "btn btn-default margin-top" %>
+        <div class="col-md-8">
+          <div class="info">
+            <h2>Discover</h2>
+            <p>Whether its marketing or legal services, search projects that interest you and start contributing in a few clicks</p>
           </div>
         </div>
+      </div>
+      <div class="col-md-4">
+        <div class="col-md-4">
+          <%= image_tag("icon_2.png", class: "icon-about") %>
+        </div>
+        <div class="col-md-8">
+          <div class="info">
+            <h2>Create</h2>
+            <p>So you have joined a design sprint? Now its your turn! Go away, kill it! Once you have finished simply upload your contribution.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="col-md-4">
+          <%= image_tag("icon_3.png", class: "icon-about") %>
+        </div>
+        <div class="col-md-8">
+          <div class="info">
+            <h2>Impress</h2>
+            <p>Once the project has closed your contributions will be added to your public profile. Share with friends, family, colleagues and employers</p>
+          </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <%= link_to "Get Started Now", new_user_registration_path, class: "btn btn-default margin-top" %>
       </div>
     </div>
   </div>
 </div>
-
-<div id="homepage-what" style="clip-path: polygon(0 0, 100% 0, 100% 89%, 0% 100%)";>
+<div>
   <div class="container">
     <div class="col-xs-12 col-lg-10 col-lg-offset-1 margin-top margin-bottom">
       <div class="text-center">
@@ -127,7 +107,7 @@
   </div>
 </div>
 
-<div id="homepage-sample">
+<div>
   <div class="container">
     <div class="row">
       <br>
@@ -140,5 +120,3 @@
     </div>
   </div>
 </div>
-
-

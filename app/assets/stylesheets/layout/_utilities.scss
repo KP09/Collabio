@@ -52,6 +52,12 @@ a:-webkit-any-link {
   align-items: center;
 }
 
+.flex-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .text-right {
   text-align: right;
 }
