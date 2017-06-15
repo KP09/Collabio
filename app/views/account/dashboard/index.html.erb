@@ -28,7 +28,6 @@
 <div id="dashboard-scroll">
   <!-- Open Projects Tab -->
   <div class="container-fluid margin-top" style="margin-bottom: 30px;">
-
     <div id="projects" class="tab-content fade in active">
       <% if current_user.active_participations %>
         <%= render "header" %>
@@ -81,9 +80,11 @@
 
 <!-- Right hand section of the dashboard -->
 <div class="col-lg-3 padding-none">
+  <div class="dashboard-right-header flex-around padding-none">
+    <h2 class="text-center" style="font-size: 20px;"><i class="fa fa-bar-chart"></i> Your statistics</h2>
+  </div>
+
   <div class="right-dashboard">
-    <h2 class="text-center" style="font-size: 20px;"><i class="fa fa-dashboard"></i> Portfolio stats</h2>
-      <hr>
       <!-- Briefcase -->
       <div class="stat">
        <%= image_tag 'briefcase.svg', class: "profile-icon" %>

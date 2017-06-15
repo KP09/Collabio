@@ -1,7 +1,7 @@
 <div class="index-page page-wrapper-footerless">
 	<div class="container-fluid">
 	<div class="row">
-		<div class="col-xs-12 col-md-9">
+		<div class="col-xs-12 col-md-9 padding-none">
 				<!-- Welcome user section -->
 				<div class="welcome-section index-page-header flex-box">
 			    <div class="user-dash-image">
@@ -17,7 +17,6 @@
         <div class="tabs" role="tablist" id="main-bar">
           <a class="tab tab-fix-width active" role="tab" data-toggle="tab" data-target="#open-projects" aria-controls="open-projects">Open Projects</a>
           <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#closed-projects" aria-controls="closed-projects">Closed Projects</a>
-          <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#company-settings" aria-controls="company-settings">Account Settings</a>
           <!-- Modal View for Project-->
           <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
@@ -47,10 +46,10 @@
 					<!-- ACTIVE PROJECTS -->
 					<div class="tab-content fade in active" id="open-projects">
 						<div class="flex-between project-headers">
-							<div class="flex-item">Project Title</div>
-							<div class="flex-item">Days Remaining</div>
-							<div class="flex-item">Spaces Left</div>
-							<div class="flex-item">Action</div>
+							<div class="col-xs-3"><p>Project Title</p></div>
+							<div class="col-xs-3 text-center"><p>Days Remaining</p></div>
+							<div class="col-xs-3 text-center"><p>Spaces Left</p></div>
+							<div class="col-xs-3"></div>
 						</div>
 						<% if @active_projects == false %>
 						<p class="text-center">You have no active projects</p>
@@ -58,12 +57,12 @@
 							<% @active_projects.each do |project| %>
 								<div class="project-row margin-top company-project-row">
 									<div class="flex-between">
-										<div class="project-info flex-item"> <%= project.title %> </div>
-										<div class="project-info flex-item text-center"> <%= project.days_left %> </div>
-										<div class="project-info flex-item text-center">	<%= project.spaces_left %> </div>
-										<div class="actions-project flex-item">
-										<%= link_to 'View', company_project_path(project), class: "btn btn-default" %>
-										<button type="button" class="btn btn-default last-button" id="edit-project" data-toggle="modal" data-target="#editModal<%= project.id %>">
+										<div class="col-xs-3"> <%= project.title %> </div>
+										<div class="col-xs-3 text-center"> <%= project.days_left %> </div>
+										<div class="col-xs-3 text-center">	<%= project.spaces_left %> </div>
+										<div class="col-xs-3 text-right">
+										<%= link_to 'Manage', company_project_path(project), class: "btn btn-default" %>
+										<button type="button" class="btn btn-default text-right" id="edit-project" data-toggle="modal" data-target="#editModal<%= project.id %>">
 											Edit
 										</button>
 										</div>
@@ -77,45 +76,39 @@
 					<!-- CLOSED PROJECTS -->
 					<div class="tab-content fade hidden" id="closed-projects">
 						<div class="flex-between project-headers">
-							<div class="flex-item">Project Title</div>
-							<div class="flex-item">Days Remaining</div>
-							<div class="flex-item">Spaces Left</div>
-							<div class="flex-item">Action</div>
-						</div>
+              <div class="col-xs-3"><p>Project Title</p></div>
+              <div class="col-xs-3 text-center"><p>Contributions received</p></div>
+              <div class="col-xs-3 text-center"><p>Stars awarded</p></div>
+              <div class="col-xs-3"></div>
+            </div>
 						<% if @closed_projects == false %>
 						<p class="text-center"></p>
 						<% elsif @closed_projects.count > 0  %>
 							<% @closed_projects.each do |project| %>
 								<div class="project-row margin-top company-project-row">
 									<div class="flex-between">
-										<div class="project-info flex-item"> <%= project.title %> </div>
-										<div class="project-info flex-item text-center"> Closed </div>
-										<div class="project-info flex-item text-center">	N/A </div>
-										<div class="flex-item old-project-view">
-										<%= link_to 'View', company_project_path(project), class: "btn btn-default" %>
+										<div class="project-info flex-item"><%= project.title %> </div>
+										<div class="project-info flex-item text-center"><%= project.contributions.count %></div>
+										<div class="project-info flex-item text-center"><%= project.count_starred_contributions %></div>
+										<div class="flex-item text-right">
+										<%= link_to 'Manage', company_project_path(project), class: "btn btn-default" %>
 										</div>
 									</div>
 								</div>
 							<% end %>
 						<% end %>
 					</div>
-
-					<!-- COMPANY SETTINGS -->
-					<div class="tab-content fade hidden" id="company-settings">
-            <div class="container-fluid">
-              <div class="col-xs-8 col-xs-offset-2">
-    						<%= render 'users/company_form', user: current_user %>
-              </div>
-            </div>
-					</div>
-
 			</div>
 
 			<!-- COMPANY STATS >>> RIGHT HAND COL-->
-				<div class="col-xs-12 col-md-3">
-					<%= render 'dashboard-project-stats', current_user: current_user %>
+				<div class="col-xs-12 col-md-3 padding-none">
+          <div class="flex-around dashboard-right-header">
+            <h2 class="text-center" style="font-size: 20px;"><i class="fa fa-bar-chart"></i> Company statistics</h2>
+          </div>
+          <div class="right-dashboard">
+  					<%= render 'dashboard-project-stats', current_user: current_user %>
+          </div>
 				</div>
-
 			</div>
 		</div>
 	</div>

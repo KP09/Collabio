@@ -1,28 +1,44 @@
-
-	<div class="stats-box">
-		<div class="stats-flex">
-			<h4 class="text-center"><i class="fa fa-bar-chart"> </i> Company Statistics</h4>
-		</div>
-
-		<hr>
-
-			<!-- Total views -->
-			<div class="stats-flex">
-				<h4><i class="fa fa-eye"> </i>  <%= current_user.total_project_views %> total project  <%=  'view'.pluralize(current_user.total_project_views)%></h4>
-			</div>
-
-			<!-- Average views -->
-			<div class="stats-flex">
-				<h4><i class="fa fa-area-chart"></i>  <%= current_user.average_project_views %> average project <%= 'view'.pluralize(current_user.average_project_views) %></h4>
-			</div>
-
-			<!-- Project joiners -->
-			<div class="stats-flex">
-				<h4><i class="fa fa-users"></i>  <%= current_user.companies_total_joins %> project <%= 'joiners'.pluralize(current_user.companies_total_joins) %></h4>
-			</div>
-
-			<!-- Project contributors -->
-			<div class="stats-flex">
-				<h4><i class="fa fa-envelope"></i>  <%= current_user.count_contributions_received %> project <%= 'contributors'.pluralize(current_user.count_contributions_received) %></h4>
-			</div>
-	</div>
+  <!-- Briefcase -->
+  <div class="stat">
+   <%= image_tag 'eye.svg', class: "profile-icon" %>
+   <% if current_user.active_participations %>
+     <span>
+       <strong><%= current_user.total_project_views %></strong> total project  <%=  'view'.pluralize(current_user.total_project_views)%>
+     </span>
+   <% else %>
+     <span>No views yet</span>
+   <% end %>
+  </div>
+  <!-- Contributions -->
+  <div class="stat">
+   <%= image_tag 'line-chart.svg', class: "profile-icon" %>
+   <% if current_user.closed_contributions %>
+     <span>
+       <strong><%= current_user.average_project_views %> </strong> average project <%= 'view'.pluralize(current_user.average_project_views) %>
+     </span>
+   <% else %>
+     <span>No average views</span>
+   <% end %>
+  </div>
+  <!-- Stars -->
+  <div class="stat">
+   <%= image_tag 'people.svg', class: "profile-icon" %>
+   <% if current_user.count_starred_contributions >= 1 %>
+     <span>
+       <strong><%= current_user.companies_total_joins %></strong> project <%= 'joiners'.pluralize(current_user.companies_total_joins) %>
+     </span>
+   <% else %>
+     <span>No people engaged yet</span>
+   <% end %>
+  </div>
+  <!-- Upvotes -->
+  <div class="stat">
+   <%= image_tag 'contribution.svg', class: "profile-icon" %>
+   <% if current_user.count_upvotes >= 1 %>
+     <span>
+       <strong><%= current_user.count_contributions_received %></strong> project <%= 'contributors'.pluralize(current_user.count_contributions_received) %>
+     </span>
+   <% else %>
+     <span>No contributions received yet</span>
+   <% end %>
+  </div>
