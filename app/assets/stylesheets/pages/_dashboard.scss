@@ -20,6 +20,10 @@
 	.btn-default {
 		color: $blue-gray;
 	}
+	.company-projects {
+		overflow-y: scroll;
+		height: 494px;
+	}
 	.company-project-row {
 		padding: 10px;
 	}
