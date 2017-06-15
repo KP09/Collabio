@@ -13,7 +13,7 @@
       <div class="col-xs-12 col-md-8 homepage-banner-content">
         <div class="text-center">
           <h1>Work speaks louder than words</h1>
-          <h2>Build your portfolio by contributing to real projects, for real companies</h2>
+          <h2>Boost your CV by working on real projects for real companies</h2>
           <br>
           <p>
             <%= link_to "Start discovering", search_path, class: "btn btn-primary" %>
@@ -26,25 +26,43 @@
       <% unless user_signed_in? %>
         <div class="col-xs-12 col-md-4 homepage-banner-content">
           <div id="homepage-form-box">
-            <div class="tabs">
-              <a class="tab active" role="tab" data-toggle="tab" data-target="#person-sign-up" aria-controls="person-sign-up">
-                <h3>I'm a student</h3>
-              </a>
-              <a class="tab" role="tab" data-toggle="tab" data-target="#company-sign-up">
-                <h3>We're a company</h3>
-              </a>
-            </div>
-            <div>
-              <div class="tab-content margin-top" id="person-sign-up">
-                <%= render 'users/person_sign_up' %>
+            <h2 class="text-center">Create an account</h2>
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                  <h4 class="text-center panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      I'm a student
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                  <div class="panel-body">
+                    <%= render 'users/person_sign_up' %>
+                  </div>
+                </div>
               </div>
-              <div class="tab-content margin-top hidden" id="company-sign-up">
-                <%= render 'users/company_sign_up' %>
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                  <h4 class="text-center panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      We're a company
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                  <div class="panel-body">
+                    <%= render 'users/company_sign_up' %>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       <% end %>
+
+      <!-- NEW SIGN UP -->
+
 
     </div>
     </div>
@@ -110,7 +128,7 @@
   </div>
 </div>
 
-<div id="homepage-what">
+<div id="homepage-what" style="clip-path: polygon(0 0, 100% 0, 100% 89%, 0% 100%)";>
   <div class="container">
     <div class="col-xs-12 col-lg-10 col-lg-offset-1 margin-top margin-bottom">
       <div class="text-center">
@@ -121,9 +139,11 @@
   </div>
 </div>
 
-<div id="homepage-sample">
+<div id="homepage-sample" style="clip-path: polygon(0 11%, 100% 0, 100% 89%, 0% 100%)";>
   <div class="container">
     <div class="row">
+      <br>
+      <h2 class="text-center">Trending now</h2>
       <% @sample_projects.each do |project| %>
         <div class="col-xs-12 col-md-6 col-lg-4">
           <%= render 'shared/card_open_project_full_imagery', project: project %>

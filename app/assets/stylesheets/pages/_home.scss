@@ -33,6 +33,19 @@
     height: 50px;
     margin: 0 auto;
   }
+  .panel {
+    background: transparent;
+    border: none;
+  }
+  .panel-heading {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid white;
+    border-radius: 5px;
+  }
+  .panel-body {
+    border-top: none;
+    padding-top: 0;
+  }
 }
 
 .homepage-banner-content {
@@ -46,8 +59,8 @@
 
 #homepage-form-box {
   background-color: rgba(0, 0, 0, 0.3);
-  padding: 10px 25px 30px 25px;
-  border-radius: 3px;
+  padding: 10px 25px 15px 25px;
+  border-radius: 5px;
   margin-top: -100px;
   .simple_form {
     .form-control {
@@ -73,7 +86,7 @@
     width: 100%;
   }
   .homepage-form-button {
-
+    background-color: $brand-color;
   }
 }
 
@@ -102,3 +115,10 @@
 .three-about-sections {
   height: 300px;
 }
+
+
+#homepage-sample {
+  background-color: white;
+}
+
+
