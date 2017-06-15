@@ -5,13 +5,13 @@
       <div class="col-xs-12">
         <div class="tabs">
           <a class="tab tab-fix-width active" role="tab" data-toggle="tab" data-target="#projects" aria-controls="projects">
-            <h3>Projects</h3>
+            <h3>Projects (<%= @projects.count.to_i %>)</h3>
           </a>
           <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#companies" aria-controls="companies">
-            <h3>Companies</h3>
+            <h3>Companies (<%= @companies.count.to_i %>)</h3>
           </a>
           <a class="tab tab-fix-width" role="tab" data-toggle="tab" data-target="#people" aria-controls="people">
-            <h3>People</h3>
+            <h3>People (<%= @people.count.to_i %>)</h3>
           </a>
         </div>
       </div>
