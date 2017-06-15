@@ -86,18 +86,20 @@
 						<% if @closed_projects == false %>
 						<p class="text-center"></p>
 						<% elsif @closed_projects.count > 0  %>
-							<% @closed_projects.each do |project| %>
-								<div class="project-row margin-top company-project-row">
-									<div class="flex-between">
-										<div class="project-info flex-item" id="closed-project-info"><%= project.title %> </div>
-										<div class="project-info flex-item text-center" id="closed-project-info"><%= project.contributions.count %></div>
-										<div class="project-info flex-item text-center" id="closed-project-info"><%= project.count_starred_contributions %></div>
-										<div class="flex-item text-right" id="closed-project-info">
-										<%= link_to 'Manage', company_project_path(project), class: "btn btn-default" %>
+							<div class="company-projects">
+								<% @closed_projects.each do |project| %>
+									<div class="project-row margin-top company-project-row">
+										<div class="flex-between">
+											<div class="project-info flex-item" id="closed-project-info"><%= project.title %> </div>
+											<div class="project-info flex-item text-center" id="closed-project-info"><%= project.contributions.count %></div>
+											<div class="project-info flex-item text-center" id="closed-project-info"><%= project.count_starred_contributions %></div>
+											<div class="flex-item text-right" id="closed-project-info">
+											<%= link_to 'Manage', company_project_path(project), class: "btn btn-default" %>
+											</div>
 										</div>
 									</div>
-								</div>
-							<% end %>
+								<% end %>
+							</div>	
 						<% end %>
 					</div>
 			</div>
