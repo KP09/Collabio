@@ -4,9 +4,11 @@ class ProjectsController < ApplicationController
 
   def show
     @user = current_user
+    @projects = Project.all
     @question = Question.new
     @contribution = Contribution.new
     @project = Project.find(params[:id])
+    @three_projects = @projects.first(3)
     @similar_projects = @project.similar_projects
     @questions = Question.where(project_id: @project.id)
     authorize @project
