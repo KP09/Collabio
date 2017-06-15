@@ -18,19 +18,23 @@ class Project < ApplicationRecord
   validate :time_valid
 
   # Possible categories for projects
-  CATEGORIES = ['Admin',
-                'Business Support',
+  CATEGORIES = ['Audio',
+                'Accounting',
+                'Business Development',
                 'Creative Arts',
                 'Design',
-                'Marketing & PR',
-                'Search Marketing',
+                'Marketing',
+                'Public Relations',
+                'Finance',
+                'Human Resources',
                 'Social Media',
                 'Software Development',
                 'Translation',
-                'Tutorials',
+                'Education',
                 'Video',
                 'Photo',
-                'Audio',
+                'Product development',
+                'Sales',
                 'Web Development',
                 'Writing'
               ]
