@@ -1,5 +1,5 @@
-<div class="project-row">
-    <div>
+<div class="project-row row flex-box">
+    <div class="col-xs-12 col-lg-3">
       <%= link_to (project_path(participation.project)), class: "text-link" do %>
         <% if participation.project.title.length >= 30 %>
           <p class="text-link"><%= participation.project.title[0..30] %>...</p>
@@ -8,13 +8,13 @@
         <% end %>
       <% end %>
     </div>
-    <div>
+    <div class="col-xs-12 col-lg-3">
       <p><%= participation.project.user.company_name %></p>
     </div>
-    <div>
+    <div class="col-xs-12 col-lg-3">
       <p class="answer-col"><%= participation.project.days_left %></p>
     </div>
-    <div>
+    <div class="col-xs-12 col-lg-3">
       <%= link_to "Contribute to project","#make-participation" + "-" + participation.project.id.to_s , data: { toggle: "modal"}, class: "btn btn-default"%>
     </div>
 </div>
