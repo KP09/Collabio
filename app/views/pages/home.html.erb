@@ -29,13 +29,13 @@
             <h2 class="text-center">Create an account</h2>
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
-                  <h4 class="text-center panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      I'm a student
-                    </a>
-                  </h4>
-                </div>
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="text-center panel-title">
+                        I'm a student
+                    </h4>
+                  </div>
+                </a>
                 <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                   <div class="panel-body">
                     <%= render 'users/person_sign_up' %>
@@ -43,13 +43,13 @@
                 </div>
               </div>
               <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingTwo">
-                  <h4 class="text-center panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      We're a company
-                    </a>
-                  </h4>
-                </div>
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="text-center panel-title">
+                        We're a company
+                    </h4>
+                  </div>
+                </a>
                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                   <div class="panel-body">
                     <%= render 'users/company_sign_up' %>
@@ -139,7 +139,7 @@
   </div>
 </div>
 
-<div id="homepage-sample" style="clip-path: polygon(0 11%, 100% 0, 100% 89%, 0% 100%)";>
+<div id="homepage-sample">
   <div class="container">
     <div class="row">
       <br>
