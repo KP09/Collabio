@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   resources :upvotes, only: [:create, :destroy]
 
   # Stars
-  post '/contributions/:id/star', to: 'contributions#star', as: :star
+  post '/contributions/:id', to: 'contributions#star', as: :star
+  delete '/contributions/:id', to: 'contributions#unstar', as: :unstar
 
 end

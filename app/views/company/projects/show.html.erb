@@ -127,15 +127,19 @@
             </div>
             <div class="col-md-1">
               <% if c.starred %>
-                <%= image_tag 'star-dark.svg', class: "profile-icon" %>
+                <%= image_tag 'star-dark.svg', class: "profile-icon", id: "contribution-" + c.id.to_s + "-star-img" %>
+              <% else %>
+                <%= image_tag 'star-dark.svg', class: "profile-icon", style: "display: none", id: "contribution-" + c.id.to_s + "-star-img" %>
               <% end %>
             </div>
             <div class="col-md-4 text-right">
               <%= link_to "Open", cl_image_path(c.file.path), class: "btn btn-sm btn-default", target: "_blank" %>
               <% if c.starred %>
-                <%= link_to "Unstar", star_path(c), method: :post, class: "btn btn-sm btn-default" %>
+                <%= link_to "Unstar", unstar_path(c), method: :delete, class: "btn btn-sm btn-default", id: "contribution-" + c.id.to_s + "-unstar", remote: true %>
+                <%= link_to "Star", star_path(c), method: :post, class: "btn btn-sm btn-default", id: "contribution-" + c.id.to_s + "-star", remote: true, style: "display: none" %>
               <% else %>
-                <%= link_to "Star", star_path(c), method: :post, class: "btn btn-sm btn-default" %>
+                <%= link_to "Unstar", unstar_path(c), method: :delete, class: "btn btn-sm btn-default", id: "contribution-" + c.id.to_s + "-unstar", remote: true, style: "display: none" %>
+                <%= link_to "Star", star_path(c), method: :post, class: "btn btn-sm btn-default", id: "contribution-" + c.id.to_s + "-star", remote: true %>
               <% end %>
               <%= mail_to c.user.email, "Get in touch", class: "btn btn-sm btn-default" %>
             </div>
