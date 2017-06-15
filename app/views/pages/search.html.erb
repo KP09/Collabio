@@ -22,14 +22,12 @@
       <div class="row">
         <div class="col-xs-12">
           <% unless params[:term].blank? %>
-            <div class="margin-top">
-              <% if @projects.count > 0 %>
-                <h5><%= @projects.count %> <%= "project".pluralize(@projects.count) %> matched your search for '<%= params[:term] %>'</h5>
-              <% else %>
-                <h5>No projects matched your search for '<%= params[:term] %>'</h5>
-              <% end %>
+            <% if @projects.count > 0 %>
+              <h5><%= @projects.count %> <%= "project".pluralize(@projects.count) %> matched your search for '<%= params[:term] %>'</h5>
+            <% else %>
+              <h5>No projects matched your search for '<%= params[:term] %>'</h5>
             <% end %>
-          </div>
+          <% end %>
         </div>
         <%  @projects.each do |project| %>
           <div class="col-xs-12 col-md-6 col-lg-4">
@@ -43,15 +41,13 @@
     <div id="companies" class="tab-content fade hidden">
       <div class="row">
         <div class="col-xs-12">
-          <div class="margin-top">
-            <% unless params[:term].blank? %>
-              <% if @companies.count > 0 %>
-                <h5><%= @companies.count %> <%= "company".pluralize(@companies.count) %> matched your search for '<%= params[:term] %>'</h5>
-              <% else %>
-                <h5>No companies matched your search for '<%= params[:term] %>'</h5>
-              <% end %>
+          <% unless params[:term].blank? %>
+            <% if @companies.count > 0 %>
+              <h5><%= @companies.count %> <%= "company".pluralize(@companies.count) %> matched your search for '<%= params[:term] %>'</h5>
+            <% else %>
+              <h5>No companies matched your search for '<%= params[:term] %>'</h5>
             <% end %>
-          </div>
+          <% end %>
         </div>
         <% @companies.each do |user| %>
           <%= render 'shared/search_card_companies', user: user %>
@@ -63,14 +59,12 @@
     <div id="people" class="tab-content fade hidden">
       <div class="col-xs-12">
         <% unless params[:term].blank? %>
-          <div class="margin-top">
-            <% if @people.count > 0 %>
-              <h5><%= @people.count %> <%= "person".pluralize(@people.count) %> matched your search for '<%= params[:term] %>'</h5>
-            <% else %>
-              <h5>No people matched your search for '<%= params[:term] %>'</h5>
-            <% end %>
+          <% if @people.count > 0 %>
+            <h5><%= @people.count %> <%= "person".pluralize(@people.count) %> matched your search for '<%= params[:term] %>'</h5>
+          <% else %>
+            <h5>No people matched your search for '<%= params[:term] %>'</h5>
           <% end %>
-        </div>
+        <% end %>
       </div>
       <% @people.each do |user| %>
         <%= render 'shared/search_card_people', user: user %>
