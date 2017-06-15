@@ -349,6 +349,7 @@ class User < ApplicationRecord
   end
 
   # Returns a hash of companies and frequencies for closed contributions
+  # for individuals
   def favorite_companies
     company_frequencies = {}
     if self.closed_contributions
@@ -365,6 +366,26 @@ class User < ApplicationRecord
       else
         return false
       end
+    end
+  end
+
+  # Returns a hash of the categories for which
+  # an individual has the most starred contributions
+  def top_categories
+    starred_contributions = self.contributions.select { |c| c.starred }
+    category_frequencies = {}
+    if starred_contributions
+      starred_contributions.each do |c|
+        category = c.project.category
+        if category_frequencies[category]
+          category_frequencies[category] += 1
+        else
+          category_frequencies[category] = 1
+        end
+      end
+      return category_frequencies.sort_by { |k,v| v }.reverse.first(3)
+    else
+      return false
     end
   end
 

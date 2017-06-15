@@ -77,6 +77,7 @@
           <!-- If the user is a person -->
           <% if @user.is_individual? %>
             <%= render 'individual_stats', user: @user %>
+            <%= render 'individual_top_categories', user: @user %>
             <%= render 'individual_companies_rank', user: @user %>
             <%= render 'individual_fav_companies', user: @user %>
           <% end %>
