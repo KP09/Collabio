@@ -41,7 +41,8 @@ $(document).ready(function(){
     }
 
     $("#chevron").click(function() {
-       scrollToAnchor('how');
+      event.preventDefault();
+      scrollToAnchor('how');
     });
 
 });
