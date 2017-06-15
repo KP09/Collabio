@@ -62,7 +62,7 @@
 										<div class="col-xs-3 text-center">	<%= project.spaces_left %> </div>
 										<div class="col-xs-3 text-right">
 										<%= link_to 'Manage', company_project_path(project), class: "btn btn-default" %>
-										<button type="button" class="btn btn-default last-button" id="edit-project" data-toggle="modal" data-target="#editModal<%= project.id %>">
+										<button type="button" class="btn btn-default text-right" id="edit-project" data-toggle="modal" data-target="#editModal<%= project.id %>">
 											Edit
 										</button>
 										</div>
@@ -90,7 +90,7 @@
 										<div class="project-info flex-item"><%= project.title %> </div>
 										<div class="project-info flex-item text-center"><%= project.contributions.count %></div>
 										<div class="project-info flex-item text-center"><%= project.count_starred_contributions %></div>
-										<div class="flex-item old-project-view">
+										<div class="flex-item text-right">
 										<%= link_to 'Manage', company_project_path(project), class: "btn btn-default" %>
 										</div>
 									</div>
