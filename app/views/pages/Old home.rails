@@ -1,66 +1,77 @@
-<div class="welcome-banner" style="background-image: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5 ) 80%), url('<%= cl_image_path ('homepage_v1') %>')">
+<div style="background-color: white;" >
+  <div id="homepage-main-banner" style="background-image: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5 ) 80%), url('<%= cl_image_path ('homepage_v1') %>')">
+
   <%= render 'shared/navbar_transparent' %>
-  <div class="content container">
+
+  <div class="container">
     <div class="row">
-    <!-- Left hand column containing the Welcome text and discover button -->
-      <% if !user_signed_in? %>
-      <div class="col-xs-12 col-lg-8 home-columns">
-      <% else %>
-      <div class="col-xs-12 col-lg-12 home-columns">
+      <!-- Banner Header text -->
+      <% if user_signed_in? %>
+        <div class="col-md-2"></div>
       <% end %>
-        <div class="left-welcome">
+      <div class="col-xs-12 col-md-8 homepage-banner-content">
+        <div class="text-center">
           <h1>Work speaks louder than words</h1>
           <h2>Boost your CV by working on real projects for real companies</h2>
           <br>
-          <%= link_to "Start discovering", search_path, class: "btn btn-primary" %>
+          <p>
+            <%= link_to "Start discovering", search_path, class: "btn btn-primary" %>
+          </p>
         </div>
       </div>
-      <!-- Right hand column containing the different sign up forms -->
+
+      <!-- Sign up for Site - banner -->
+
       <% unless user_signed_in? %>
-      <div class="col-xs-12 col-lg-4 home-columns">
-        <div id="homepage-sign-up-box">
-          <h2 class="text-center">Create an account</h2>
-          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                <div class="panel-heading" role="tab" id="headingOne">
-                  <h4 class="text-center panel-title">
-                      I'm a student
-                  </h4>
-                </div>
-              </a>
-              <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                <div class="panel-body">
-                  <%= render 'users/person_sign_up' %>
+        <div class="col-xs-12 col-md-4 homepage-banner-content">
+          <div id="homepage-form-box">
+            <h2 class="text-center">Create an account</h2>
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="text-center panel-title">
+                        I'm a student
+                    </h4>
+                  </div>
+                </a>
+                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                  <div class="panel-body">
+                    <%= render 'users/person_sign_up' %>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="panel panel-default">
-              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                <div class="panel-heading" role="tab" id="headingTwo">
-                  <h4 class="text-center panel-title">
-                      We're a company
-                  </h4>
-                </div>
-              </a>
-              <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                <div class="panel-body">
-                  <%= render 'users/company_sign_up' %>
+              <div class="panel panel-default">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="text-center panel-title">
+                        We're a company
+                    </h4>
+                  </div>
+                </a>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                  <div class="panel-body">
+                    <%= render 'users/company_sign_up' %>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      <% end %>
+
+      <!-- NEW SIGN UP -->
+
+
+    </div>
+    </div>
+    <div id="chevron-container">
+      <%= link_to '#how', id: "chevron" do %>
+        <div id="chevron-box">
+          <%= image_tag 'chevron-down.svg', id: "chevron" %>
+        </div>
       <% end %>
     </div>
-  </div>
-  <div id="chevron-container">
-    <%= link_to '#how', id: "chevron" do %>
-      <div id="chevron-box">
-        <%= image_tag 'chevron-down.svg', id: "chevron" %>
-      </div>
-    <% end %>
   </div>
 </div>
 

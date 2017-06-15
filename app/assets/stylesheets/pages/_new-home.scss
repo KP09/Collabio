@@ -1,28 +1,11 @@
-#homepage-main-banner {
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  min-height: 600px;
-  position: relative;
-  h1 {
-    font-size: 50px;
-    margin-top: -70px;
-  }
-  p {
-    font-size: $base-size;
-  }
-  h2 {
-    font-size: 20px;
-    font-weight: 100;
-  }
+.welcome-banner {
+  min-height: 100vh;
   #chevron {
     width: 30px;
   }
   #chevron-container {
     text-align: center;
     width: 100%;
-    position: absolute;
-    bottom: 60px;
     color: $brand-color;
     a {
       color: $brand-color;
@@ -32,6 +15,30 @@
     width: 80px;
     height: 50px;
     margin: 0 auto;
+  }
+  .content {
+    color: white;
+    text-align: center;
+    min-height: 80vh;
+
+    .col-xs-12 {
+      display: flex;
+      align-items: center;
+    }
+
+    .left-welcome {
+      width: 100%;
+    }
+  }
+  h1 {
+    font-size: 50px;
+  }
+  p {
+    font-size: $base-size;
+  }
+  h2 {
+    font-size: 20px;
+    font-weight: 100;
   }
   .panel {
     background: transparent;
@@ -48,20 +55,12 @@
   }
 }
 
-.homepage-banner-content {
-  height: calc(100vh - 150px);
-  min-height: 600px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  color: white;
-}
 
-#homepage-form-box {
+#homepage-sign-up-box {
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
-  padding: 10px 25px 15px 25px;
+  padding: 20px 25px 20px 25px;
   border-radius: 5px;
-  margin-top: -100px;
   .simple_form {
     .form-control {
       background-color: rgba(255, 255, 255, 1 );
@@ -94,6 +93,10 @@
   background-color: white;
   min-height: 350px;
 }
+.btn {
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
 
 .info {
   h2 {
@@ -112,12 +115,22 @@
   height: 60px;
 }
 
+
 .three-about-sections {
-  height: 300px;
+  padding: 60px 0px;
+  width: 100%;
 }
 
-
-#homepage-sample {
+@media (min-width: 1200px) {
+  .content {
+    .col-xs-12 {
+      min-height: 80vh;
+    }
+  }
 }
 
-
+@media (max-width: 1200px) {
+  #homepage-sign-up-box {
+    margin-top: 20px;
+  }
+}
