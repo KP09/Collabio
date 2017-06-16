@@ -129,12 +129,12 @@ class User < ApplicationRecord
 
   # Returns the number of closed contributions
   def count_contributions
-    self.contributions.select{ |c| c.project.end_date < DateTime.now }.count
+    self.contributions.count
   end
 
-  # Returns the number of starred and closed contributions
+  # Returns the number of starred contributions
   def count_starred_contributions
-    self.contributions.select{ |c| c.project.end_date < DateTime.now && c.starred == true }.count
+    self.contributions.select{ |c| c.starred == true }.count
   end
 
   # Returns the total number of upvotes a user has on all their closed contributions
@@ -205,7 +205,7 @@ class User < ApplicationRecord
     # For each project
     self.projects.each do |project|
     # Select the contributions that are starred
-      project_starred_contributions = project.contributions.select { |c| c.starred == true && c.project.end_date < DateTime.now }
+      project_starred_contributions = project.contributions.select { |c| c.starred == true }
       # And push them into an array
       project_starred_contributions.each do |contribution|
         starred_contributions << contribution
@@ -220,7 +220,7 @@ class User < ApplicationRecord
     # For each project
     self.projects.each do |project|
     # Select the contributions that are starred
-      project_starred_contributions = project.contributions.select { |c| c.starred == false && c.project.end_date < DateTime.now }
+      project_starred_contributions = project.contributions.select { |c| c.starred == false }
       # And push them into an array
       project_starred_contributions.each do |contribution|
         non_starred_contributions << contribution
@@ -332,7 +332,7 @@ class User < ApplicationRecord
   # Returns a hash of companies from which a user (individual has received the most stars)
   def most_rated_by
     rated_frequencies = {}
-    starred_contributions = self.contributions.select { |c| c.starred == true && c.project.end_date < DateTime.now }
+    starred_contributions = self.contributions.select { |c| c.starred == true }
     if starred_contributions.count >= 1
       starred_contributions.each do |c|
         project_owner = c.project.user
