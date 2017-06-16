@@ -50,54 +50,6 @@
           <%= link_to "Delete", project_path(@project), id: "delete", class: "btn btn-sm btn-danger", data: { confirm: "Are you sure?" }, method: :delete %>
         </div>
       </div>
-      <!-- Questions -->
-      <div class="col-xs-12 margin-top">
-        <h2>Questions</h2>
-        <hr>
-        <% if @project.questions.count > 0 %>
-          <div class="project-header flex-box">
-            <div class="col-md-2">
-              <p>Name</p>
-            </div>
-            <div class="col-md-2">
-              <p>Date</p>
-            </div>
-            <div class="col-md-3">
-              <p>Question</p>
-            </div>
-            <div class="col-md-7">
-              <p>Answer</p>
-            </div>
-          </div>
-          <% @project.sorted_questions.each do |q| %>
-            <div class="project-row flex-box">
-              <div class="col-md-2">
-                <p><%= link_to q.user.full_name, user_path(q.user), class: "text-link" %></p>
-              </div>
-              <div class="col-md-2">
-                <p><%= q.created_at.strftime('%e %B %Y') %></p>
-              </div>
-              <div class="col-md-3">
-                <p><%= q.question %><%= q.question.length > 25 ? "..." : "" %></p>
-              </div>
-              <div class="col-md-3">
-                <% if q.answer %>
-                  <p><%= q.answer %><%= q.answer.length > 25 ? "..." : "" %></p>
-                <% end %>
-              </div>
-              <div class="col-md-4 text-right">
-                <% if q.answer %>
-                  <%= link_to "Edit answer","#answerquestion-" + q.id.to_s, data: { toggle: "modal"}, class: "btn btn-sm btn-default"%>
-                <% else %>
-                  <%= link_to "Answer this question","#answerquestion-" + q.id.to_s, data: { toggle: "modal"}, class: "btn btn-sm btn-default"%>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-        <% else %>
-        <p>No questions</p>
-        <% end %>
-      </div>
       <!-- Contributions -->
       <div class="col-xs-12 margin-top">
         <h2>Contributions</h2>
@@ -147,6 +99,54 @@
           <% end %>
         <% else %>
           <p>No contributions</p>
+        <% end %>
+      </div>
+      <!-- Questions -->
+      <div class="col-xs-12 margin-top">
+        <h2>Questions</h2>
+        <hr>
+        <% if @project.questions.count > 0 %>
+          <div class="project-header flex-box">
+            <div class="col-md-2">
+              <p>Name</p>
+            </div>
+            <div class="col-md-2">
+              <p>Date</p>
+            </div>
+            <div class="col-md-3">
+              <p>Question</p>
+            </div>
+            <div class="col-md-7">
+              <p>Answer</p>
+            </div>
+          </div>
+          <% @project.sorted_questions.each do |q| %>
+            <div class="project-row flex-box">
+              <div class="col-md-2">
+                <p><%= link_to q.user.full_name, user_path(q.user), class: "text-link" %></p>
+              </div>
+              <div class="col-md-2">
+                <p><%= q.created_at.strftime('%e %B %Y') %></p>
+              </div>
+              <div class="col-md-3">
+                <p><%= q.question %><%= q.question.length > 25 ? "..." : "" %></p>
+              </div>
+              <div class="col-md-3">
+                <% if q.answer %>
+                  <p><%= q.answer %><%= q.answer.length > 25 ? "..." : "" %></p>
+                <% end %>
+              </div>
+              <div class="col-md-4 text-right">
+                <% if q.answer %>
+                  <%= link_to "Edit answer","#answerquestion-" + q.id.to_s, data: { toggle: "modal"}, class: "btn btn-sm btn-default"%>
+                <% else %>
+                  <%= link_to "Answer this question","#answerquestion-" + q.id.to_s, data: { toggle: "modal"}, class: "btn btn-sm btn-default"%>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+        <p>No questions</p>
         <% end %>
       </div>
     </div>
