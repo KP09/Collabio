@@ -123,17 +123,6 @@
          <span>No stars yet</span>
        <% end %>
       </div>
-      <!-- Upvotes -->
-      <div class="stat">
-       <%= image_tag 'upvote.svg', class: "profile-icon" %>
-       <% if current_user.count_upvotes >= 1 %>
-         <span>
-           <strong><%= current_user.count_upvotes %></strong>
-           <%= "Upvote".pluralize(current_user.count_upvotes) %>
-         </span>
-       <% else %>
-         <span>No upvotes yet</span>
-       <% end %>
-      </div>
+
   </div>
 </div>
