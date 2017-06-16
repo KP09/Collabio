@@ -28,14 +28,14 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-       <h3>Question submitted on project: <%= question.project.title %></h3>
+       <h3><%= question.project.title %></h3>
       </div>
       <div class="modal-body">
 
-          <p><strong> Q:</strong> <%= question.question %></p>
+          <p><strong> Your question:</strong> <%= question.question %></p>
           <br>
           <% if question.answer %>
-          <p><strong> Answer:</strong> <%= question.answer %></p>
+          <p><strong> <%= question.project.user.full_name %>'s answer:</strong> <%= question.answer %></p>
           <%= link_to "Go to Project", project_path(question.project) %>
           <% else %>
             <div class="icon text-center">

@@ -48,7 +48,7 @@
 						<div class="flex-between project-headers">
 							<div class="col-xs-3"><p id="project-title">Project Title</p></div>
 							<div class="col-xs-3 text-center"><p>Days Remaining</p></div>
-							<div class="col-xs-3 text-center"><p>Spaces Left</p></div>
+							<div class="col-xs-3 text-center"><p>Contributions so far</p></div>
 							<div class="col-xs-3"></div>
 						</div>
 						<% if @active_projects == false %>
@@ -60,7 +60,7 @@
 									<div class="flex-between">
 										<div class="col-xs-3"> <%= project.title %> </div>
 										<div class="col-xs-3 text-center"> <%= project.days_left %> </div>
-										<div class="col-xs-3 text-center">	<%= project.spaces_left %> </div>
+										<div class="col-xs-3 text-center">	<%= project.contributions.count %> </div>
 										<div class="col-xs-3 text-right">
 											<%= link_to 'Manage', company_project_path(project), class: "btn btn-default" %>
 											<button type="button" class="btn btn-default text-right" id="edit-project" data-toggle="modal" data-target="#editModal<%= project.id %>">
@@ -99,7 +99,7 @@
 										</div>
 									</div>
 								<% end %>
-							</div>	
+							</div>
 						<% end %>
 					</div>
 			</div>
