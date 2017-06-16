@@ -150,12 +150,12 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-       <h2>Add a question</h2>
+       <h2>Ask <%= @project.user.full_name %> a question</h2>
       </div>
       <div class="modal-body">
         <%= simple_form_for([@project, @question], remote: true) do |f| %>
-          <%= f.input :question, label: "Ask us a question", class: "form-control" %>
-          <%= f.submit "Submit Question", class: "btn btn-primary" %>
+          <%= f.input :question, label: false, class: "form-control" %>
+          <%= f.submit "Submit Question", class: "btn btn-primary", placeholder: "Your question" %>
         <% end %>
       </div>
     </div>
