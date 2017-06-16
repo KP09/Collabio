@@ -352,8 +352,8 @@ class User < ApplicationRecord
   # for individuals
   def favorite_companies
     company_frequencies = {}
-    if self.closed_contributions
-      self.closed_contributions.each do |c|
+    if self.contributions.count > 0
+      self.contributions.each do |c|
         owner = c.project.user
         if company_frequencies[owner]
           company_frequencies[owner] += 1
