@@ -82,9 +82,19 @@
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+        <% if current_user %>
+          <li><%= link_to "Profile", user_path(current_user) %></li>
+          <% if current_user.is_company? %>
+            <li><%= link_to "Dashboard", company_dashboard_index_path %></li>
+          <% else %>
+            <li><%= link_to "Dashboard", account_dashboard_index_path %></li>
+          <% end %>
+            <li><%= link_to destroy_user_session_path, method: :delete do %>
+                <%= t(".sign_out", default: "Log out") %></li>
+              <% end %>
+        <% else %>
+          <li><%= link_to "Login", new_user_path %></li>
+        <% end %>
       </ul>
     </div>
   </div>
