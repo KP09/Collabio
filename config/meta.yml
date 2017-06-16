@@ -1,0 +1,4 @@
+meta_product_name: "BrainPowered"
+meta_title: "Work speaks louder than words"
+meta_description: "Boost your CV by working on real projects with real companies"
+meta_image: "meta.jpg"                       # should exist in `app/assets/images/`
