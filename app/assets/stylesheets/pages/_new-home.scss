@@ -136,6 +136,19 @@
   }
 }
 
+@media (max-width: 995px) {
+  .three-about-sections {
+    text-align: center;
+    padding: 50px;
+    .col-md-4 {
+    background: #f7f7f7;
+    padding: 12px;
+    margin-top: 20px;
+    border-radius: 5px;
+    }
+  }
+}
+
 #homepage-what {
   background: $blue-gray;
   color: white;
