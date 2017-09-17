@@ -1,56 +1,44 @@
   <!-- Briefcase -->
   <div class="stat">
    <%= image_tag 'eye.svg', class: "profile-icon" %>
-   <%# if current_user.active_participations %>
+   <% if current_user.active_participations %>
      <span>
-      <!-- ACTUAL CODE -->
-       <!-- <strong><%#= current_user.total_project_views %></strong> total project  <%#=  'view'.pluralize(current_user.total_project_views)%> -->
-       <!-- DEMO TWEAKS (CAN BE DELETED AFTER FRIDAY 16 JUNE) -->
-       <strong>184</strong> total project views
+       <strong><%= current_user.total_project_views %></strong> total project  <%=  'view'.pluralize(current_user.total_project_views)%>
      </span>
-   <%# else %>
-     <!-- <span>No views yet</span> -->
-   <%# end %>
+   <% else %>
+     <span>No views yet</span>
+   <% end %>
   </div>
   <!-- Contributions -->
   <div class="stat">
    <%= image_tag 'line-chart.svg', class: "profile-icon" %>
-   <%# if current_user.closed_contributions %>
+   <% if current_user.closed_contributions %>
      <span>
-       <!-- ACTUAL CODE -->
-       <!-- <strong><%#= current_user.average_project_views %> </strong> average project <%#= 'view'.pluralize(current_user.average_project_views) %> -->
-       <!-- DEMO TWEAKS (CAN BE DELETED AFTER FRIDAY 16 JUNE) -->
-       <strong>118</strong> average project views
+       <strong><%= current_user.average_project_views %> </strong> average project <%= 'view'.pluralize(current_user.average_project_views) %>
      </span>
-   <%# else %>
-     <!-- <span>No average views</span> -->
-   <%# end %>
+   <% else %>
+     <span>No average views</span>
+   <% end %>
   </div>
   <!-- Stars -->
   <div class="stat">
    <%= image_tag 'people.svg', class: "profile-icon" %>
-   <%# if current_user.count_starred_contributions >= 1 %>
+   <% if current_user.count_starred_contributions >= 1 %>
      <span>
-       <!-- ACTUAL CODE -->
-       <!-- <strong><%#= current_user.companies_total_joins %></strong> project <%#= 'joiners'.pluralize(current_user.companies_total_joins) %> -->
-       <!-- DEMO TWEAKS (CAN BE DELETED AFTER FRIDAY 16 JUNE) -->
-       <strong>24</strong> People engaged to date
+       <strong><%= current_user.companies_total_joins %></strong> project <%= 'joiners'.pluralize(current_user.companies_total_joins) %>
      </span>
-   <%# else %>
-     <!-- <span>No people engaged yet</span> -->
-   <%# end %>
+   <% else %>
+     <span>No people engaged yet</span>
+   <% end %>
   </div>
   <!-- Upvotes -->
   <div class="stat">
    <%= image_tag 'contribution.svg', class: "profile-icon" %>
-   <%# if current_user.count_upvotes >= 1 %>
+   <% if current_user.count_upvotes >= 1 %>
      <span>
-        <!-- ACTUAL CODE -->
-       <!-- <strong><%#= current_user.count_contributions_received %></strong> project <%#= 'contributors'.pluralize(current_user.count_contributions_received) %> -->
-       <!-- DEMO TWEAKS (CAN BE DELETED AFTER FRIDAY 16 JUNE) -->
-       <strong>16</strong> Contributions received
+       <strong><%= current_user.count_contributions_received %></strong> project <%= 'contributors'.pluralize(current_user.count_contributions_received) %>
      </span>
-   <%# else %>
-     <!-- <span>No contributions received yet</span> -->
-   <%# end %>
+   <% else %>
+     <span>No contributions received yet</span>
+   <% end %>
   </div>
